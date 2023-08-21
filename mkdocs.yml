@@ -1,5 +1,5 @@
-site_name: Public docs
-site_description: This is a demo site for the Material for MkDocs theme.
+site_name: Documentation for Amesto FortyTwo
+site_description: Documentation and user guides for Amesto FortyTwo
 copyright: Made on the run 🏃
 theme:
   name: material
@@ -35,7 +35,7 @@ theme:
     - search.share
     - content.action.edit
     - content.action.view
-repo_url: https://github.com/mysteq/demo-mkdocs-material
+repo_url: https://github.com/amestofortytwo/public-docs.byfortytwo.com
 edit_uri: edit/main/docs/
 plugins:
   - git-revision-date-localized:
@@ -53,7 +53,7 @@ markdown_extensions:
 extra:
   analytics:
     provider: plausible
-    domain: mysteq.github.io
+    domain: docs.byfortytwo.com
     feedback:
       title: Was this page helpful?
       ratings:
@@ -69,13 +69,11 @@ extra:
           note: >-
             Thanks for your feedback!
   social:
-    - icon: fontawesome/brands/mastodon 
-      link: https://fosstodon.org/something
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/something
+      link: https://twitter.com/AmestoFortytwo
     - icon: fontawesome/brands/github
-      link: https://github.com/mysteq/demo-mkdocs-material
+      link: https://github.com/amestofortytwo
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/something
+      link: https://www.linkedin.com/company/amesto-fortytwo
     
     
