@@ -1,0 +1,33 @@
+---
+name: ci 
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/main.yml
+      - mkdocs.yml
+      - 'docs/**'
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1 # v4.7.0
+        with:
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: sudo apt-get install -y pngquant
+      - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install pillow cairosvg
+      - run: pip install material-plausible-plugin
+      - run: mkdocs gh-deploy --force
