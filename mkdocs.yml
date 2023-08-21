@@ -3,11 +3,13 @@ site_description: Documentation and user guides for Amesto FortyTwo
 copyright: Made on the run 🏃
 theme:
   name: material
+  logo: assets/amesto-fortytwo-white.png
+  favicon: assets/favicon-32x32.png
   palette:
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: "black"
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -15,6 +17,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: "black"
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
