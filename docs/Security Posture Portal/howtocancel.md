@@ -16,4 +16,4 @@ To cancel your subscription of the portal is very easy and are done through your
 
 !!! note
 
-    If you have any issues contact us on assistance@amestofortytwo.com 
+    If you have any issues contact us on assistance@amestofortytwo.com .
