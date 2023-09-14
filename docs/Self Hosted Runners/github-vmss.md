@@ -5,7 +5,7 @@ This documentation shows you how to configure an Azure Virtual Machine Scale Set
 To configure, you need to follow the three steps below:
 
 1. Configuring the Virtual Machine Scale Set
-2. Configuring the VMSS instances to auto-register to GitHub
+2. Configuring the VMSS instances to automatically register to GitHub
 3. Testing the self hosted runner (Not really required)
 
 ## Step 1 - Configuring the Virtual Machine Scale Set
@@ -85,7 +85,7 @@ Under **Upgrade policy**, switch from manual to **Automatic**.
 
 ![](media/20230914095007.png)
 
-## Step 2 - Configuring the VMSS instances to auto-register to GitHub
+## Step 2 - Configuring the VMSS instances to automatically register to GitHub
 
 Example - TODO by Marius og Ketil:
 
