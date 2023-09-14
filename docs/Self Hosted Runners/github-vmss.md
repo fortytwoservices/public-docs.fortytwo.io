@@ -87,6 +87,25 @@ Under **Upgrade policy**, switch from manual to **Automatic**.
 
 ## Step 2 - Configuring the VMSS instances to auto-register to GitHub
 
+Example - TODO by Marius og Ketil:
+
+### Ubuntu
+
+```bash
+# Install
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.309.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.309.0/actions-runner-linux-x64-2.309.0.tar.gz
+echo "2974243bab2a282349ac833475d241d5273605d3628f0685bd07fb5530f9bb1a  actions-runner-linux-x64-2.309.0.tar.gz" | shasum -a 256 -c
+tar xzf ./actions-runner-linux-x64-2.309.0.tar.gz
+
+
+./config.sh --url https://github.com/XXX --token XXX --unattended
+sudo ./svc.sh install
+sudo ./svc.sh start
+```
+
+### Windows
+
 ## Step 3 - Example of using the self hosted runners
 
 The following is an example action using the pool we just created. It should be created with a name of ```.github/workflows/test.yml```. Note the runs-on configured as self-hosted, which can be configured to require additional things, such as "Linux" and so on.
