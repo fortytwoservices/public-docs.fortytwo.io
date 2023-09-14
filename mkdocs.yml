@@ -1,5 +1,5 @@
-site_name: Documentation for Amesto FortyTwo
-site_description: Documentation and user guides for Amesto FortyTwo
+site_name: Documentation for Amesto Fortytwo
+site_description: Documentation and user guides for Amesto Fortytwo
 copyright: Made on the run 🏃
 theme:
   name: material
@@ -52,7 +52,7 @@ markdown_extensions:
       permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences 
+  - pymdownx.superfences
   - admonition
 extra:
   analytics:
@@ -79,5 +79,3 @@ extra:
       link: https://github.com/amestofortytwo
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/amesto-fortytwo
-    
-    
