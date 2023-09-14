@@ -3,8 +3,8 @@ site_description: Documentation and user guides for Amesto Fortytwo
 copyright: Made on the run 🏃
 theme:
   name: material
-  # logo: assets/amesto-fortytwo-white.png
-  # favicon: assets/favicon-32x32.png
+  logo: assets/amesto-fortytwo-white.png
+  favicon: assets/favicon-32x32.png
   # font: Abhaya Libre
   # palette:
   #   # Palette toggle for light mode
