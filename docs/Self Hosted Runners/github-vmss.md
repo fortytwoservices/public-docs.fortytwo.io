@@ -1,0 +1,130 @@
+# Configuring GitHub self hosted runners using VMSS
+
+**Note:** This guide is unfinished
+
+This documentation shows you how to configure an Azure Virtual Machine Scale Set (VMSS) with the latest Self Hosted Runner image, and configuring the VMSS instances to automatically register as self hosted runners in GitHub. Using a VMSS gives you the ability easily increase and decrease the number of active runners whenever you want, manually for now, but it is possible to automate. Additionally, the VMSS will always create instances based on the latest runner image published to the Azure Marketplace, so you will never need to worry about updating the operating system and toolkit - just like the hosted runners!
+
+To configure, you need to follow the three steps below:
+
+1. Configuring the Virtual Machine Scale Set
+2. Configuring the VMSS instances to automatically register to GitHub
+3. Testing the self hosted runner (Not really required)
+
+## Step 1 - Configuring the Virtual Machine Scale Set
+
+**Note:** If you do not want to handle the creation of the VMSS manually, you can use our [Azure Managed Application](./github-managedapp) instead.
+
+Start by going to the Azure Portal and click **+Create a resource**. 
+
+![](media/20230914091454.png)
+
+Search for **Virtual Machine Scale Set**, click on the result and click **Create**
+
+![](media/20230914091624.png)
+
+### Basics
+
+- **Project details**
+    - **Subscription** - A subscription you have contributor access to
+        - **Resource group** - A new or existing resource group
+- **Scale set details**
+    - **Virtual machine scale set name** - The name of the scale set itself. Cannot be changed after deployment, but everything is stateless, so you can simply deploy a new scale set if needed.
+    - **Region** - The region where you want your runners to be located
+    - **Availability zone** - Configure to None in order to allow for a cluster with few running instances
+- **Orchestration**
+    - **Orchestration mode** - Configure to **Uniform**, as we will be running only a single image and runner type
+    - **Security type** - Standard is the only supported for our image currently
+- **Instance details**
+    - **Image** - Locate the Amesto Fortytwo **Self Hosted Runner for GitHub** image and select whether you want an Ubuntu or Windows based runner:
+
+    ![](media/20230914092637.png)
+
+    - **Run with Azure Spot discount** - Only select this if you know how to handle spot, and if your pipelines can tolerate evictions
+    - **Size** - Choose the virtual machine size you want to run the runners as
+- **Administrator account**
+    - Configure an administrator account for you virtual machines
+
+![](media/20230914091817.png)
+![](media/20230914092429.png)
+
+### Spot
+
+Skip configuring **Spot** unless you chose to **Run with Azure spot discount**.
+
+### Disks
+
+Leave **Disks** as default and go to the next page.
+
+### Networking
+
+On the **Networking** page, you can choose between creating a new network or reuse an existing one. You can easily connect to a virtual network that is peered into a Azure Landing Zones solution and use private endpoints and stuff. Please be aware that the runners require internet connectivity in order to reach GitHub.
+
+- **Load balancing options** - Choose **None**, as GitHub takes care of this
+
+The default settings will work just fine in most cases:
+
+![](media/20230914093403.png)
+
+### Scaling
+
+For scaling, GitHub will take care of everything. However, you should configure **Initial instance count** to **0**, as we need to configure the VMSS for GitHub connectivity before creating our instances.
+
+![](media/20230914093755.png)
+
+### Management, Health, Advanced and Tags
+
+No need to configure any of this. Just click next and complete the deployment of VMSS.
+
+![](media/20230914093939.png)
+
+### Final configuration
+
+After successfully creating the VMSS instance, click **Go to resource**
+
+![](media/20230914094919.png)
+
+Under **Upgrade policy**, switch from manual to **Automatic**.
+
+![](media/20230914095007.png)
+
+## Step 2 - Configuring the VMSS instances to automatically register to GitHub
+
+Unfinished example - TODO by Marius og Ketil:
+
+### Ubuntu
+
+```bash
+# Install
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64.tar.gz -L https://github.com/actions/runner/releases/download/v2.309.0/actions-runner-linux-x64-2.309.0.tar.gz
+echo "2974243bab2a282349ac833475d241d5273605d3628f0685bd07fb5530f9bb1a  actions-runner-linux-x64.tar.gz" | shasum -a 256 -c
+tar xzf ./actions-runner-linux-x64.tar.gz
+
+
+./config.sh --url https://github.com/XXX --token XXX --unattended
+sudo ./svc.sh install
+sudo ./svc.sh start
+```
+
+### Windows
+
+## Step 3 - Example of using the self hosted runners
+
+The following is an example action using the pool we just created. It should be created with a name of ```.github/workflows/test.yml```. Note the runs-on configured as self-hosted, which can be configured to require additional things, such as "Linux" and so on.
+
+```yaml
+name: GitHub Actions Example
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: self-hosted
+    steps:
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server"
+```
+
+After a commit, we should see this action running just fine:
+
+![](media/20230914154822.png)
+
+That's it, you now have self hosted runners for GitHub up and running, that will automatically be updated whenever the hosted runners are updated (through our image). Have fun!
