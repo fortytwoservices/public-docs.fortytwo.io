@@ -12,7 +12,7 @@ To configure, you need to follow the three steps below:
 
 ## Step 1 - Configuring the Virtual Machine Scale Set
 
-**Note:** If you do not want to handle the creation of the VMSS manually, you can use our [Azure Managed Application](./github-managedapp) instead.
+**Note:** If you do not want to handle the creation of the VMSS manually, you can use our [Azure Managed Application](./github-managedapp.md) instead.
 
 Start by going to the Azure Portal and click **+Create a resource**. 
 
