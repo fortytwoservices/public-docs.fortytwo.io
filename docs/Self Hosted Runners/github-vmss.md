@@ -89,8 +89,21 @@ Under **Upgrade policy**, switch from manual to **Automatic**.
 
 ## Step 3 - Example of using the self hosted runners
 
-The following is an example action using the pool we just created:
+The following is an example action using the pool we just created. It should be created with a name of ```.github/workflows/test.yml```. Note the runs-on configured as self-hosted, which can be configured to require additional things, such as "Linux" and so on.
 
 ```yaml
-
+name: GitHub Actions Example
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: self-hosted
+    steps:
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server"
 ```
+
+After a commit, we should see this action running just fine:
+
+![](media/20230914154822.png)
+
+That's it, you now have self hosted runners for GitHub up and running, that will automatically be updated whenever the hosted runners are updated (through our image). Have fun!
