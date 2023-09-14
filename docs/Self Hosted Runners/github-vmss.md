@@ -79,66 +79,12 @@ Under **Upgrade policy**, switch from manual to **Automatic**.
 
 ![](media/20230914095007.png)
 
-## Step 2 - Configuring the GitHub Agent Pool
-
-Now the the VMSS is up and running, we are ready to configure the GitHub side of things. 
-
-On the organization level (not while in a project), go to **Organization settings**
-
-Find **Agent pools** and click **Add pools**
-
-![](media/20230914095252.png)
-
-Select **Azure virtual machine scale set**
-
-![](media/20230914095739.png)
-
-Find you VMSS and name your pool:
-
-![](media/20230914095932.png)
-
-Configure your preferred **Pool options**. We recommend having at least 1 agent on standby, though if cost is an issue, you can set it to 0 (you will have longer wait times for your first run due to provisioning the instance)
-
-![](media/20230914100312.png)
-
-Click **Create**.
-
-You should now be ready to use the VMSS as runners. After configuring the DevOps side of things, you should see the following extension added to your VMSS:
-
-![](media/20230914100432.png)
+## Step 2 - Configuring the GitHub Actions agent
 
 ## Step 3 - Example of using the self hosted runners
 
-The following is an example pipeline using the pool we just created:
+The following is an example action using the pool we just created:
 
 ```yaml
-stages:
-  - stage: run
-    displayName: Run
-    jobs:
-      - job: run
-        displayName: Run
-        pool: SelfHostedRunnerUbuntu # Name of your VMSS pool
-        steps:
-          - task: PowerShell@2
-            name: Test
-            displayName: "Test"
-            inputs:
-              targetType: inline
-              pwsh: true
-              script: uname -a
+
 ```
-
-After running the pipeline, you should see that an agent has come online:
-
-![](media/20230914101257.png)
-
-And from the VMSS side of things, we can see that an instance has been created:
-
-![](media/20230914101321.png)
-
-And of course, we can see that the pipeline is working just fine:
-
-![](media/20230914101652.png)
-
-That's it, you now have an agent pool in GitHub, that will automatically be updated whenever the Microsoft Hosted Runners are updated (through our image). Have fun!
