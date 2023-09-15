@@ -727,15 +727,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terraform-code" class="md-nav__link">
-    Terraform code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-your-azure-subscription" class="md-nav__link">
-    Connecting to your Azure subscription
+  <a href="#deployment" class="md-nav__link">
+    Deployment
   </a>
   
 </li>
@@ -910,15 +903,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terraform-code" class="md-nav__link">
-    Terraform code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-your-azure-subscription" class="md-nav__link">
-    Connecting to your Azure subscription
+  <a href="#deployment" class="md-nav__link">
+    Deployment
   </a>
   
 </li>
@@ -960,8 +946,9 @@
 <li><a href="https://developer.hashicorp.com/terraform/downloads?product_intent=terraform">Terraform installed</a></li>
 <li><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI installed</a></li>
 </ul>
-<h2 id="terraform-code">Terraform code<a class="headerlink" href="#terraform-code" title="Permanent link">&para;</a></h2>
-<p>We have published <a href="https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm">this Terraform module</a> for simplified deployment, which can be used like this:</p>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>We have published <a href="https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm">this Terraform module</a> for simplified deployment. If you are not familiar with using Terraform, consider using the <a href="../azuredevops-vmss-step1-manual/">manual method</a> instead, but it should be fairly easy for most people. </p>
+<p>Start by creating an empty folder with a single file <code>main.tf</code>, with the below content:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;azurerm&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nb">features</span><span class="w"> </span><span class="p">{}</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
@@ -972,8 +959,11 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="na">runner_platform</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;azure_devops&quot;</span><span class="c1"> # azure_devops or github</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
 </code></pre></div>
-<h2 id="connecting-to-your-azure-subscription">Connecting to your Azure subscription<a class="headerlink" href="#connecting-to-your-azure-subscription" title="Permanent link">&para;</a></h2>
+<p>Next, open a shell (cmd, terminal, powershell) and run the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">az</span> <span class="n">login</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">az</span> <span class="n">account</span> <span class="nb">set </span><span class="p">-</span><span class="n">-subscription</span> <span class="s2">&quot;&lt;your subscription id&gt;&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">terraform</span> <span class="n">init</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">terraform</span> <span class="n">apply</span>
 </code></pre></div>
 <p><a href="../azuredevops-vmss-step2/">Continue to step 2 - Configuring the Azure DevOps Agent Pool</a></p>
 
