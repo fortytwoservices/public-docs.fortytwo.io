@@ -17,7 +17,7 @@ Run the following with az-cli to configure an extension on the VMSS that will au
 VMSS=vmss-test-noeast
 RG=rg-test-noeast
 PAT=ghp_xxx
-ORG=mysteq/demo-terraform-vmss-ghrunner
+ORG=amesfortytwo
 USER=admin42
 LABEL=label1,label2
 az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
