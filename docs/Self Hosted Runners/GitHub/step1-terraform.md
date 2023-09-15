@@ -7,7 +7,7 @@
 
 ## Deployment
 
-We have published [this Terraform module](https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./azuredevops-vmss-step1-manual.md) instead, but it should be fairly easy for most people. 
+We have published [this Terraform module](https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./1.md) instead, but it should be fairly easy for most people. 
 
 Start by creating an empty folder with a single file ```main.tf```, with the below content:
 
