@@ -1,11 +1,11 @@
-site_name: Documentation for Amesto FortyTwo
-site_description: Documentation and user guides for Amesto FortyTwo
+site_name: Documentation for Amesto Fortytwo
+site_description: Documentation and user guides for Amesto Fortytwo
 copyright: Made on the run 🏃
 theme:
   name: material
   logo: assets/amesto-fortytwo-white.png
   favicon: assets/favicon-32x32.png
-  font: Abhaya Libre
+  # font: Abhaya Libre
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -22,8 +22,8 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to light mode
-  icon:
-    repo: fontawesome/brands/github
+  # icon:
+  #   repo: fontawesome/brands/github
   features:
     - navigation.footer
     - navigation.tracking
@@ -52,7 +52,7 @@ markdown_extensions:
       permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences 
+  - pymdownx.superfences
   - admonition
 extra:
   analytics:
@@ -79,5 +79,3 @@ extra:
       link: https://github.com/amestofortytwo
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/amesto-fortytwo
-    
-    
