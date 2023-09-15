@@ -1104,7 +1104,7 @@ To register a PAT, go to "Settings" -&gt; "Developer settings" -&gt; "Personal a
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>--version<span class="w"> </span><span class="m">2</span>.1<span class="w"> </span>--publisher<span class="w"> </span>Microsoft.Azure.Extensions<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>--protected-settings<span class="w"> </span><span class="s2">&quot;{\&quot;fileUris\&quot;: [\&quot;https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\&quot;],\&quot;commandToExecute\&quot;: \&quot;sh script.sh </span><span class="nv">$ORG</span><span class="s2"> </span><span class="nv">$PAT</span><span class="s2"> </span><span class="nv">$USER</span><span class="s2"> </span><span class="nv">$LABEL</span><span class="s2">\&quot;}&quot;</span>
 </code></pre></div>
-<p>Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli.</p>
+<p>Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.</p>
 <p><img alt="" src="../media/2023-09-15_13-53-43.png" /></p>
 <h2 id="verify-that-the-runner-is-registered">Verify that the runner is registered<a class="headerlink" href="#verify-that-the-runner-is-registered" title="Permanent link">&para;</a></h2>
 <p>After the previous has been done, you should be able to verify within the organization or the repository that the runner is registered.</p>
