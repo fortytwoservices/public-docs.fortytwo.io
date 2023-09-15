@@ -1,17 +1,7 @@
-# Welcome
+# Amesto Fortytwo public documentation area
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Want to know who we are? [Read up on our website](https://www.amestofortytwo.com).
 
-## Commands
+## What is this site about?
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+This site is a public documentation area for our product and services. It is continously updated by the respective product teams.
