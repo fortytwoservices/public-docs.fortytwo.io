@@ -55,7 +55,7 @@ The default settings will work just fine in most cases:
 
 ### Scaling
 
-For scaling, Azure DevOps will take care of everything. However, you should configure **Initial instance count** to **0**, as we need to configure the VMSS for Azure DevOps connectivity before creating our instances.
+For scaling, Azure DevOps will take care of everything. However, you should configure **Initial instance count** to **0**, as we need to configure the VMSS for Github connectivity before creating our instances.
 
 ![](media/20230914093755.png)
 

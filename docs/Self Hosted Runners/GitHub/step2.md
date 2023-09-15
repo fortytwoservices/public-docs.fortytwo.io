@@ -1,29 +1,38 @@
 # Step 2 - Configuring the virtual machine scale set for auto registration
 
-Now the the VMSS is up and running, we are ready to configure the Azure DevOps side of things. 
+Now the the VMSS is up and running, we are ready to configure the Github runner.
 
-On the organization level (not while in a project), go to **Organization settings**
+## Get a PAT from Github for either repo or organization
 
-Find **Agent pools** and click **Add pools**
+If you are registering the runners for a repo, the PAT needs to have access to "repo". If you are registering the runners for an organization, the PAT needs to have access to "manage_runners:org".
+To register a PAT, go to "Settings" -> "Developer settings" -> "Personal access tokens" -> "Tokens (classic) and click "Generate new token".
 
-![](media/20230914095252.png)
+![](media/2023-09-15_13-50-27.png)
 
-Select **Azure virtual machine scale set**
+## Configure the VMSS to auto register
 
-![](media/20230914095739.png)
+Run the following with az-cli to configure an extension on the VMSS that will auto register the runner with Github. Replace the variables with your correct information.
 
-Find you VMSS and name your pool:
+```bash
+VMSS=vmss-test-noeast
+RG=rg-test-noeast
+PAT=ghp_xxx
+ORG=amesfortytwo
+USER=admin42
+LABEL=label1,label2
+az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
+    --version 2.1 --publisher Microsoft.Azure.Extensions \
+    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\"],\"commandToExecute\": \"sh script.sh $ORG $PAT $USER $LABEL\"}"
+```
 
-![](media/20230914095932.png)
+Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
 
-Configure your preferred **Pool options**. We recommend having at least 1 agent on standby, though if cost is an issue, you can set it to 0 (you will have longer wait times for your first run due to provisioning the instance)
+![](media/2023-09-15_13-53-43.png)
 
-![](media/20230914100312.png)
+## Verify that the runner is registered
 
-Click **Create**.
+After the previous has been done, you should be able to verify within the organization or the repository that the runner is registered.
 
-You should now be ready to use the VMSS as runners. After configuring the DevOps side of things, you should see the following extension added to your VMSS:
-
-![](media/20230914100432.png)
+![](media/2023-09-15_14-12-59.png)
 
 [Continue to step 3 - Testing the self hosted runner](./step3.md)
