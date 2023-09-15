@@ -1,4 +1,4 @@
-# Cancel subscription of the Security Posture Portal
+# Cancel SaaS subscription
 
 To cancel your subscription of the portal is very easy and are done through your Azure portal. Follow the steps below to cancel at any point.
 

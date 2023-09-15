@@ -1,4 +1,4 @@
-# Welcome to Amesto Fortytwo Security Posture portal for Microsoft 365
+# Amesto Fortytwo Security Posture portal for Microsoft 365
 
 ## Intro
 
@@ -30,7 +30,7 @@ Not really. We only have read access to your Microsoft 365 configuration.
 
 No. While Secure Score is great, it is very limited and only checks a few very basic things. It does not check for holes in your conditional access policies, not for the use of SPF/DMARC/DKIM in your environment, not for policies for user app consent, or the other hundreds of checks in this portal.
 
-### Azure Marketplace
+## Azure Marketplace
 
 The portal is available through [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/amestofortytwoas1653635920536.securityposture-2023?tab=Overview)
 ![Azure marketplace screenshot](./media/marketplace_screenshot.png)

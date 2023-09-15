@@ -1,4 +1,4 @@
-# Setup and onboard the portal from Azure marketplace
+# Getting started
 
 This is an detailed description of how to setup our Security Posture Portal from Azure Marketplace. The steps are pritty much easy to understand but we have documented every step here in this guide.
 
