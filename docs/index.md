@@ -1,4 +1,4 @@
-# Amesto Fortytwo public documentation area
+# Home
 
 Want to know who we are? [Read up on our website](https://www.amestofortytwo.com).
 
