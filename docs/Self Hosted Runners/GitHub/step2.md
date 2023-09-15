@@ -25,7 +25,7 @@ az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG
     --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\"],\"commandToExecute\": \"sh script.sh $ORG $PAT $USER $LABEL\"}"
 ```
 
-Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli.
+Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
 
 ![](media/2023-09-15_13-53-43.png)
 
