@@ -47,13 +47,16 @@ This is an detailed description of how to setup our Security Posture Portal from
     Our app only has Read permissions for configurations elements and we will not every be able to reads any of your users data.
 
 ![Give permissions to our app](./media/setup_step10.png)
+
 3. Setup Exchange and Teams permissions
 Follow the guide on the onboarding steps.
+
 4. Give yourself and users permissions
 Follow the guide on the onboarding steps.
+
 5. Navigate to the portal
 Follow the guide on the onboarding steps.
 
 !!! note
 
-    If you have any issues contact us on assistance@amestofortytwo.com 
+    If you have any issues contact us on assistance@amestofortytwo.com
