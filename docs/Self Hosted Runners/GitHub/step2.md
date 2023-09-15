@@ -1,4 +1,4 @@
-# Step 2 - Configuring the Azure DevOps Agent Pool
+# Step 2 - Configuring the virtual machine scale set for auto registration
 
 Now the the VMSS is up and running, we are ready to configure the Azure DevOps side of things. 
 

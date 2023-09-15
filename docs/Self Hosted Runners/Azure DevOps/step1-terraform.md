@@ -1,4 +1,4 @@
-# Step 1 - Configuring the Virtual Machine Scale Set manually
+# Step 1 - Configuring the Virtual Machine Scale Set using Terraform
 
 ## Prereqs
 

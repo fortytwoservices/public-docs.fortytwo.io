@@ -75,4 +75,4 @@ Under **Upgrade policy**, switch from manual to **Automatic**.
 
 ![](media/20230914095007.png)
 
-[Continue to step 2 - Configuring the Azure DevOps Agent Pool](./step2.md)
+[Continue to step 2 - Configuring the virtual machine scale set for auto registration](./step2.md)

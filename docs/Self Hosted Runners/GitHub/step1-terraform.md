@@ -1,4 +1,4 @@
-# Step 1 - Configuring the Virtual Machine Scale Set manually
+# Step 1 - Configuring the Virtual Machine Scale Set using Terraform
 
 ## Prereqs
 
@@ -32,4 +32,4 @@ terraform init
 terraform apply
 ```
 
-[Continue to step 2 - Configuring the Azure DevOps Agent Pool](./step2.md)
+[Continue to step 2 - Configuring the virtual machine scale set for auto registration](./step2.md)
