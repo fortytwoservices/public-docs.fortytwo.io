@@ -1,4 +1,4 @@
-# Step 1 - Configuring the Virtual Machine Scale Set manually
+# Step 1a - Configuring the Virtual Machine Scale Set manually
 
 **Note:** If you do not want to handle the creation of the VMSS manually, you can use our [other methods](./1.md) instead.
 
