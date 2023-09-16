@@ -30,13 +30,15 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.instant
-    - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.indexes
     - header.autohide
     - search.suggest
     - search.highlight
     - search.share
+    - toc.follow
+    - toc.integrate
     - content.action.edit
     - content.action.view
 repo_url: https://github.com/amestofortytwo/public-docs.byfortytwo.com

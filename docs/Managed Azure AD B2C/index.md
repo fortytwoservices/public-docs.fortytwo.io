@@ -1,0 +1,3 @@
+# Managed Azure AD B2C
+
+This is currently a work in progress and more will come here...
