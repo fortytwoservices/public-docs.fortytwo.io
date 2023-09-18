@@ -23,7 +23,7 @@ Search for **Virtual Machine Scale Set**, click on the result and click **Create
     - **Orchestration mode** - Configure to **Uniform**, as we will be running only a single image and runner type
     - **Security type** - Standard is the only supported for our image currently
 - **Instance details**
-    - **Image** - Locate the Amesto Fortytwo **Self Hosted Runner for Azure DevOps** image and select whether you want an Ubuntu or Windows based runner:
+    - **Image** - Locate the Amesto Fortytwo **Self Hosted Runner for Azure GitHub** image and select whether you want an Ubuntu or Windows based runner:
 
     ![](media/20230914092637.png)
 
@@ -45,9 +45,9 @@ Leave **Disks** as default and go to the next page.
 
 ### Networking
 
-On the **Networking** page, you can choose between creating a new network or reuse an existing one. You can easily connect to a virtual network that is peered into a Azure Landing Zones solution and use private endpoints and stuff. Please be aware that the runners require internet connectivity in order to reach Azure DevOps.
+On the **Networking** page, you can choose between creating a new network or reuse an existing one. You can easily connect to a virtual network that is peered into a Azure Landing Zones solution and use private endpoints and stuff. Please be aware that the runners require internet connectivity in order to reach GitHub.
 
-- **Load balancing options** - Choose **None**, as Azure DevOps takes care of this
+- **Load balancing options** - Choose **None**, as GitHub takes care of this
 
 The default settings will work just fine in most cases:
 
@@ -55,7 +55,7 @@ The default settings will work just fine in most cases:
 
 ### Scaling
 
-For scaling, Azure DevOps will take care of everything. However, you should configure **Initial instance count** to **0**, as we need to configure the VMSS for Github connectivity before creating our instances.
+For scaling, you should configure **Initial instance count** to **0**, as we need to configure the VMSS for Github connectivity before creating our first instances.
 
 ![](media/20230914093755.png)
 
