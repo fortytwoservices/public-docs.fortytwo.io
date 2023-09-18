@@ -1102,7 +1102,7 @@
 <li>
 <p><strong>Instance details</strong></p>
 <ul>
-<li><strong>Image</strong> - Locate the Amesto Fortytwo <strong>Self Hosted Runner for Azure DevOps</strong> image and select whether you want an Ubuntu or Windows based runner:</li>
+<li><strong>Image</strong> - Locate the Amesto Fortytwo <strong>Self Hosted Runner for Azure GitHub</strong> image and select whether you want an Ubuntu or Windows based runner:</li>
 </ul>
 <p><img alt="" src="../media/20230914092637.png" /></p>
 <ul>
@@ -1120,14 +1120,14 @@
 <h3 id="disks">Disks<a class="headerlink" href="#disks" title="Permanent link">&para;</a></h3>
 <p>Leave <strong>Disks</strong> as default and go to the next page.</p>
 <h3 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h3>
-<p>On the <strong>Networking</strong> page, you can choose between creating a new network or reuse an existing one. You can easily connect to a virtual network that is peered into a Azure Landing Zones solution and use private endpoints and stuff. Please be aware that the runners require internet connectivity in order to reach Azure DevOps.</p>
+<p>On the <strong>Networking</strong> page, you can choose between creating a new network or reuse an existing one. You can easily connect to a virtual network that is peered into a Azure Landing Zones solution and use private endpoints and stuff. Please be aware that the runners require internet connectivity in order to reach GitHub.</p>
 <ul>
-<li><strong>Load balancing options</strong> - Choose <strong>None</strong>, as Azure DevOps takes care of this</li>
+<li><strong>Load balancing options</strong> - Choose <strong>None</strong>, as GitHub takes care of this</li>
 </ul>
 <p>The default settings will work just fine in most cases:</p>
 <p><img alt="" src="../media/20230914093403.png" /></p>
 <h3 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Permanent link">&para;</a></h3>
-<p>For scaling, Azure DevOps will take care of everything. However, you should configure <strong>Initial instance count</strong> to <strong>0</strong>, as we need to configure the VMSS for Github connectivity before creating our instances.</p>
+<p>For scaling, you should configure <strong>Initial instance count</strong> to <strong>0</strong>, as we need to configure the VMSS for Github connectivity before creating our first instances.</p>
 <p><img alt="" src="../media/20230914093755.png" /></p>
 <h3 id="management-health-advanced-and-tags">Management, Health, Advanced and Tags<a class="headerlink" href="#management-health-advanced-and-tags" title="Permanent link">&para;</a></h3>
 <p>No need to configure any of this. Just click next and complete the deployment of VMSS.</p>
@@ -1144,7 +1144,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 16, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
       
         <br>
         Created:
