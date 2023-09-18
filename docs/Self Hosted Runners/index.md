@@ -2,5 +2,5 @@
 
 Guide for:
 
-- [Azure DevOps](Azure%20DevOps/1.md)
-- [GitHub](GitHub/1.md)
+- [Azure DevOps](Azure%20DevOps/index.md)
+- [GitHub](GitHub/index.md)
