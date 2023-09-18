@@ -1,6 +1,6 @@
 # Configuring Azure DevOps self hosted runners using VMSS
 
-This documentation shows you how to configure an Azure Virtual Machine Scale Set (VMSS) with the latest Self Hosted Runner image, and connecting the VMSS as an agent pool in Azure DevOps. Using a VMSS in Azure DevOps gives you the ability to automatically increase and decrease the number of active runners dynamically based on pipeline demand. Additionally, the VMSS will always create instances based on the latest runner image published to the Azure Marketplace, so you will never need to worry about updating the operating system and toolkit - just like the Microsoft Hosted Runners!
+This documentation shows you how to configure an Azure Virtual Machine Scale Set (VMSS) that will always be running the latest Self Hosted Runner image, and connecting the VMSS as an agent pool in Azure DevOps. Using a VMSS in Azure DevOps gives you the ability to automatically increase and decrease the number of active runners dynamically based on pipeline demand. Additionally, the VMSS will always create instances based on the latest runner image published to the Azure Marketplace, so you will never need to worry about updating the operating system and toolkit - just like the Microsoft Hosted Runners!
 
 To configure, you need to follow the three steps below:
 
