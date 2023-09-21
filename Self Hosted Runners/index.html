@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
@@ -985,7 +985,15 @@
 
 
 <h1 id="self-hosted-runners">Self Hosted Runners<a class="headerlink" href="#self-hosted-runners" title="Permanent link">&para;</a></h1>
-<p>Guide for:</p>
+<p>Do you need self hosted runners for Azure DevOps og GitHub, and simply want to have the same runners as Microsoft's Hosted Runners without any more fuzz? Look no further. This solution uses an image that is continuously updated with the same cadence as the Microsoft Hosted Runners, with the same application versions installed.</p>
+<h2 id="can-you-see-my-data">Can you see my data?<a class="headerlink" href="#can-you-see-my-data" title="Permanent link">&para;</a></h2>
+<p>No, this is simply a configuration of a Virtual machine scale set using published VM images and contains no call home functionality or similar.</p>
+<h2 id="can-you-access-my-virtual-machines">Can you access my virtual machines?<a class="headerlink" href="#can-you-access-my-virtual-machines" title="Permanent link">&para;</a></h2>
+<p>No, you control everything yourself.</p>
+<h2 id="why-do-you-recommend-using-a-virtual-machine-scale-set">Why do you recommend using a Virtual Machine Scale Set?<a class="headerlink" href="#why-do-you-recommend-using-a-virtual-machine-scale-set" title="Permanent link">&para;</a></h2>
+<p>We recommend using a Virtual Machine Scale Set because it can continuously grab the latest image from Azure Marketplace, ensuring that you always have the latest runner, and because it can be used to automatically scale up and down the number of agents you have available, without you needing to worry about it. It is also cheaper, as you do not need to run many idle agents.</p>
+<h2 id="how-do-i-configure-this">How do I configure this?<a class="headerlink" href="#how-do-i-configure-this" title="Permanent link">&para;</a></h2>
+<p>Follow one of these:</p>
 <ul>
 <li><a href="Azure%20DevOps/">Azure DevOps</a></li>
 <li><a href="GitHub/">GitHub</a></li>
@@ -996,7 +1004,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:
