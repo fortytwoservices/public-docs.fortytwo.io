@@ -1,6 +1,6 @@
 # Shared Teams channel
 
-Hi! If you have gotten the link to this guide shared with you, it means that Amesto Fortytwo AS have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
+Hello there! If you have gotten the link to this guide shared with you, it means that Amesto Fortytwo AS have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
 This guide is for you to set up and verify the needed configuration in your tenant to be able to join the shared channel.
 
 ## Configure cross-tenant access settings in Azure AD
