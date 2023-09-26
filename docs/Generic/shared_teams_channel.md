@@ -13,7 +13,7 @@ This guide is for you to set up and verify the needed configuration in your tena
   
       Changes to cross-tenant access settings may take up to six hours to take effect.
 
-Sign in to [Entra ID](https://entra.microsoft.com/#home) using your account with the required access.
+Sign in to [Entra admin center](https://entra.microsoft.com/#home) using your account with the required access.
 Under "Identity" in the menu, select "External Identities", and then select "Cross-tenant access settings".
 
 ![Picture of "Cross-tenant access settings"](media/shared_teams_channel.png)
