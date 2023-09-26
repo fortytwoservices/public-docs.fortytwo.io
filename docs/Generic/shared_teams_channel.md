@@ -70,6 +70,7 @@ Make sure that "Join external shared channels" is set to "On". If it is "Off", c
 ## Completion
 
 You have now completed the configuration needed to join the shared channel. Please give us feedback that is done.
+Your users will get invited to the shared channel by our team.
 
 ## References
 
