@@ -45,7 +45,7 @@ Select the "Office 365" application, and then click the button "Select".
 
 ![Picture of "Outbound access settings - Amesto"](media/shared_teams_channel-5.png)
 
-Lick the button "Save", choose "Yes" to confirm, and close the "Outbound access settings" blade.
+Click the button "Save", choose "Yes" to confirm, and close the "Outbound access settings" blade.
 
 ## Verify Teams configuration
 
