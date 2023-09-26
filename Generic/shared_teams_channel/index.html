@@ -1203,15 +1203,17 @@
 
 
 <h1 id="shared-teams-channel">Shared Teams channel<a class="headerlink" href="#shared-teams-channel" title="Permanent link">&para;</a></h1>
-<p>Hi! If you have gotten the link to this guide shared with you, it means that Amesto Fortytwo AS have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
+<p>Hello there! If you have gotten the link to this guide shared with you, it means that Amesto Fortytwo AS have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
 This guide is for you to set up and verify the needed configuration in your tenant to be able to join the shared channel.</p>
 <h2 id="configure-cross-tenant-access-settings-in-azure-ad">Configure cross-tenant access settings in Azure AD<a class="headerlink" href="#configure-cross-tenant-access-settings-in-azure-ad" title="Permanent link">&para;</a></h2>
-<p>???+ tip "RBAC roles needed"</p>
-<div class="highlight"><pre><span></span><code>User with Security Administrator or Global Administrator role is needed to make these changes in Entra ID.
-</code></pre></div>
-<p>???+ note "Time to effect"</p>
-<div class="highlight"><pre><span></span><code>  Changes to cross-tenant access settings may take up to six hours to take effect.
-</code></pre></div>
+<details class="tip" open="open">
+<summary>RBAC roles needed</summary>
+<p>User with Security Administrator or Global Administrator role is needed to make these changes in Entra ID.</p>
+</details>
+<details class="note" open="open">
+<summary>Time to effect</summary>
+<p>Changes to cross-tenant access settings may take up to six hours to take effect.</p>
+</details>
 <p>Sign in to <a href="https://entra.microsoft.com/#home">Entra ID</a> using your account with the required access.
 Under "Identity" in the menu, select "External Identities", and then select "Cross-tenant access settings".</p>
 <p><img alt="Picture of &quot;Cross-tenant access settings&quot;" src="../media/shared_teams_channel.png" /></p>
@@ -1232,9 +1234,10 @@ On the "External users and groups" tab, choose "Allow access" and set "Applies t
 <p><img alt="Picture of &quot;Outbound access settings - Amesto&quot;" src="../media/shared_teams_channel-5.png" /></p>
 <p>Lick the button "Save", choose "Yes" to confirm, and close the "Outbound access settings" blade.</p>
 <h2 id="verify-teams-configuration">Verify Teams configuration<a class="headerlink" href="#verify-teams-configuration" title="Permanent link">&para;</a></h2>
-<p>???+ tip "RBAC roles needed"</p>
-<div class="highlight"><pre><span></span><code>User with Teams Administrator role is needed to make these changes in Teams.
-</code></pre></div>
+<details class="tip" open="open">
+<summary>RBAC roles needed</summary>
+<p>User with Teams Administrator role is needed to make these changes in Teams.</p>
+</details>
 <p>Shared channels is enabled by default in Teams. Follow this procedure to confirm the settings.</p>
 <h3 id="verify-teams-policy">Verify Teams policy<a class="headerlink" href="#verify-teams-policy" title="Permanent link">&para;</a></h3>
 <p>In the <a href="https://admin.teams.microsoft.com/">Teams admin center</a>, expand "Teams", and then select "Teams policies".</p>
