@@ -3,6 +3,7 @@ site_description: Documentation and user guides for Amesto Fortytwo
 copyright: Made on the run 🏃
 theme:
   name: material
+  custom_dir: docs/overrides
   logo: assets/amesto-fortytwo-white.png
   favicon: assets/favicon-32x32.png
   # font: Abhaya Libre
@@ -49,6 +50,9 @@ plugins:
   - tags
   - search
   - material-plausible
+  - git-committers:
+      repository: amestofortytwo/public-docs.byfortytwo.com
+      branch: main
 markdown_extensions:
   - toc:
       permalink: true
