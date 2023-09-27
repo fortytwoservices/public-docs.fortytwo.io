@@ -1,1 +1,4 @@
-# public-docs.byfortytwo.com
+# Public repository for Amesto Fortytwo public documentation
+
+This repository contains the source files for the public documentation pages for Amesto Fortytwo. The page is published [here](https://docs.byfortytwo.com/).
+It is controlled and updated by all Fortytwo employees.
