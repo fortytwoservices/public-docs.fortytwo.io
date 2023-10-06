@@ -24,11 +24,7 @@ This is the primary application responsible for retrieving and processing all co
 
     The application do not have _any_ write or any other permissions able to alter and/or do anything in your tenant.
 
-- Microsoft Entra ID (Azure Active Directory)
-- Microsoft Exchange
-- Microsoft Teams
-- Microsoft Defende for Endpoint
-- Privileged Escalation Graph
+The application requires a large set of read consents for reading from the Microsoft Graph, and Global Reader for accesing Microsoft Teams and Microsoft Exchange.
 
 ### Hide app from users
 
