@@ -1,4 +1,4 @@
-# Manager access and permissions to the portal
+# Manage access and permissions to the portal
 
 To manage access to the portal, we utilize app role assignments in Entra ID. By default, if you have no roles assigned, the user will be presented with demo data in the portal.
 
