@@ -35,3 +35,7 @@ We store policy results in a database in Azure Western Europe. All access are co
 ## I want to re-sell this to my customers
 
 Sure! We have a partner program. [Send us an email](mailto:<hello@amestofortytwo.com>)
+
+## I want to see the onboarding page again, where can I find it?
+
+The onboarding page are available [here](https://portal.amestofortytwo.com/onboarding-msp)
