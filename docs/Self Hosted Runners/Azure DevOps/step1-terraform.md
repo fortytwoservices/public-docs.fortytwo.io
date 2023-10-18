@@ -28,8 +28,8 @@ Next, open a shell (cmd, terminal, powershell) and run the following:
 ```PowerShell
 az login
 az account set --subscription "<your subscription id>"
-az vm image terms accept --offer self_hosted_runner_ado --plan ubuntu_latest --publisher amestofortytwoas1653635920536
-az vm image terms accept --offer self_hosted_runner_ado --plan windows_latest --publisher amestofortytwoas1653635920536
+az vm image terms accept --offer self_hosted_runner_ado --plan ubuntu-latest --publisher amestofortytwoas1653635920536
+az vm image terms accept --offer self_hosted_runner_ado --plan windows-latest --publisher amestofortytwoas1653635920536
 terraform init
 terraform apply
 ```
