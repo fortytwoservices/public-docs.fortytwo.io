@@ -46,6 +46,7 @@ edit_uri: edit/main/docs/
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
+      fallback_to_build_date: true
   - tags
   - search
   - material-plausible
