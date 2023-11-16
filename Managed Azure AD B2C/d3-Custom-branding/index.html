@@ -2506,12 +2506,12 @@ It's primary function is to upload files, set content type and set cache control
 <p>If later updated, this version will be publicly available from this <a href="https://github.com/timpeteren/bravotocharlie/blob/main/B2C-BlobManagement.ps1">GitHub repository</a>.</p>
 <h5 id="script-execution">Script execution<a class="headerlink" href="#script-execution" title="Permanent link">&para;</a></h5>
 <p>To run the script in a pipeline, the following input parameters must be provided:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">B2C-BlobManagement</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-TenantId</span> <span class="n">tid</span> <span class="n">-Subscription</span> <span class="n">sub</span> <span class="n">-ClientId</span> <span class="n">id</span> <span class="n">-ClientSecret</span> <span class="n">secret</span> <span class="n">-Subscription</span> <span class="n">sub</span> <span class="n">-ResourceGroup</span> <span class="n">rg</span> <span class="n">-StorageAccountName</span> <span class="n">sa</span> <span class="n">-ContainerName</span> <span class="n">container</span> <span class="n">-SourceFolder</span> <span class="n">pathToFolder</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">B2C-BlobManagement</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-TenantId</span> <span class="n">tid</span> <span class="n">-Subscription</span> <span class="n">sub</span> <span class="n">-ClientId</span> <span class="n">id</span> <span class="n">-ClientSecret</span> <span class="n">secret</span> <span class="n">-Subscription</span> <span class="n">sub</span> <span class="n">-ResourceGroup</span> <span class="n">rg</span> <span class="n">-StorageAccountName</span> <span class="n">sa</span> <span class="n">-ContainerName</span> <span class="n">container</span> <span class="n">-SourceFolder</span> <span class="n">pathToFolder</span>
+</span></code></pre></div>
 <p>This is a snippet from the script documentation, first .EXAMPLE, where more information can be found.</p>
 <p>For use on the command line, locally, the script requires a lot fewer parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">B2C-BlobManagement</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-EnvPrefix</span> <span class="n">d</span><span class="p">/</span><span class="n">t</span><span class="p">/</span><span class="n">p</span> <span class="n">-Username</span> <span class="n">myUser</span><span class="nv">@myDomain</span><span class="p">.</span><span class="n">com</span> <span class="n">-Upload</span><span class="p">:</span><span class="nv">$true</span> <span class="n">-Download</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-SourceFolder</span> <span class="n">C</span><span class="p">:\</span><span class="n">GIT</span><span class="p">\</span><span class="n">Source</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">B2C-BlobManagement</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-EnvPrefix</span> <span class="n">d</span><span class="p">/</span><span class="n">t</span><span class="p">/</span><span class="n">p</span> <span class="n">-Username</span> <span class="n">myUser</span><span class="nv">@myDomain</span><span class="p">.</span><span class="n">com</span> <span class="n">-Upload</span><span class="p">:</span><span class="nv">$true</span> <span class="n">-Download</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-SourceFolder</span> <span class="n">C</span><span class="p">:\</span><span class="n">GIT</span><span class="p">\</span><span class="n">Source</span>
+</span></code></pre></div>
 <h5 id="script-variables-manually-configured-section">Script variables - manually configured section<a class="headerlink" href="#script-variables-manually-configured-section" title="Permanent link">&para;</a></h5>
 <p><code>-EnvPrefix</code> must be provided as an input parameter when running the script locally.
 This parameter will fetch the environment variables for either development, test or production.</p>
@@ -2523,32 +2523,32 @@ Only when the script is run as part of an automated process and in the context o
 </blockquote>
 <p>This is for uploading files from a local folder to a storage account container (.EXAMPLE number four).
 Subscription, resource group and storage accounts must be provided in the script section <em>Manually configured variables</em> (see below).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">#region Manually configured variables</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c"># Overrides for default values from param block</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$ContainerOverride</span> <span class="c">#= &quot;branding&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">$UploadOverride</span> <span class="c">#= $true</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$DownloadOverride</span> <span class="c">#= $false</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$NoTestPreReqsOverride</span> <span class="c">#= $true</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c">## Container name, folder names and storage account names for various B2C environments</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$DestinationFolderD</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding dev&quot;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$SourceFolderD</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding dev&quot;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nv">$StorageAccountNameD</span> <span class="p">=</span> <span class="s2">&quot;storageAccountDev&quot;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nv">$ResourceGroupD</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupTest&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">$SubscriptionD</span> <span class="p">=</span> <span class="s2">&quot;d&quot;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">$DestinationFolderT</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding test&quot;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nv">$SourceFolderT</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding test&quot;</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nv">$StorageAccountNameT</span> <span class="p">=</span> <span class="s2">&quot;storageAccountTest&quot;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nv">$ResourceGroupT</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupTest&quot;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nv">$SubscriptionT</span> <span class="p">=</span> <span class="s2">&quot;t&quot;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nv">$DestinationFolderP</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding prod&quot;</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nv">$SourceFolderP</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding prod&quot;</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="nv">$StorageAccountNameP</span> <span class="p">=</span> <span class="s2">&quot;storageAccountProd&quot;</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nv">$ResourceGroupP</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupProd&quot;</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nv">$SubscriptionP</span> <span class="p">=</span> <span class="s2">&quot;p&quot;</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">#region Manually configured variables</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c"># Overrides for default values from param block</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$ContainerOverride</span> <span class="c">#= &quot;branding&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">$UploadOverride</span> <span class="c">#= $true</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$DownloadOverride</span> <span class="c">#= $false</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$NoTestPreReqsOverride</span> <span class="c">#= $true</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c">## Container name, folder names and storage account names for various B2C environments</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$DestinationFolderD</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding dev&quot;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$SourceFolderD</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding dev&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nv">$StorageAccountNameD</span> <span class="p">=</span> <span class="s2">&quot;storageAccountDev&quot;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nv">$ResourceGroupD</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupTest&quot;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">$SubscriptionD</span> <span class="p">=</span> <span class="s2">&quot;d&quot;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">$DestinationFolderT</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding test&quot;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nv">$SourceFolderT</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding test&quot;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nv">$StorageAccountNameT</span> <span class="p">=</span> <span class="s2">&quot;storageAccountTest&quot;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nv">$ResourceGroupT</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupTest&quot;</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nv">$SubscriptionT</span> <span class="p">=</span> <span class="s2">&quot;t&quot;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nv">$DestinationFolderP</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding prod&quot;</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nv">$SourceFolderP</span> <span class="p">=</span> <span class="s2">&quot;C:\GIT\ProjectX\branding prod&quot;</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="nv">$StorageAccountNameP</span> <span class="p">=</span> <span class="s2">&quot;storageAccountProd&quot;</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nv">$ResourceGroupP</span> <span class="p">=</span> <span class="s2">&quot;resourceGroupProd&quot;</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nv">$SubscriptionP</span> <span class="p">=</span> <span class="s2">&quot;p&quot;</span>
+</span></code></pre></div>
 <p>All parameters can be provided on the command line.
 However, when running the script locally (frequently) it can be convenient to set persistent environment values.
 Values and names for the respective parameters can be provided by an Azure Administrator.</p>

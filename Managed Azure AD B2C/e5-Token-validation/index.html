@@ -2325,11 +2325,11 @@
 <p>When receiving an <strong>id_token</strong> the token must be validated before it can be used to authenticate the user. Tokens are not encrypted, only signed, therefore the embedded signature must validated to ensure the authenticity of the <strong>id_token</strong>. Only then can the applications process the required claims according to it's requirement. Claims are packaged and transported in JSON Web Tokens (JWTs) and leverages public key cryptography to sign and verify token validity. Validating the <strong>access_token</strong> is equally important to ensure the authenticity of the token and that it is issued for use to query the resource (API).</p>
 <p>There are many open-source libraries that are available for validating JWTs, depending on your language of preference. Consider exploring those options rather than implementing your own validation logic. The information here will be useful in figuring out how to properly use those libraries.</p>
 <p>Every custom policy created in the Identity Experience Framework has a dedicated OpenID Connect metadata endpoint. This allows apps to fetch necessary information at runtime, including amongst others endpoints, token contents, and token signing keys. For example the metadata document for the <strong>B2C_1A_v1_signupsignin</strong> policy in the <strong>{tenantName}.onmicrosoft.com</strong> tenant would be located at:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_v1_signupsignin
-</code></pre></div>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_v1_signupsignin
+</span></code></pre></div>
 <p>One of the properties of this configuration document is the <em>jwks_uri</em>, which values for the same policy can be found at:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_v1_signupsignin
-</code></pre></div>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_v1_signupsignin
+</span></code></pre></div>
 <blockquote>
 <p>TIP!</p>
 <p>When using custom domain, {tenantName}.b2clogin.com, in the examples, can be replaced with the domain name.</p>

@@ -2419,29 +2419,29 @@ Both Connect-AzAccount (recommended, but requires Az.Account PowerShell module) 
 <p>The script is <a href="https://github.com/timpeteren/bravotocharlie/blob/main/B2C-PolicyManagement.ps1">available on GitHub</a>.</p>
 <h5 id="script-execution">Script execution<a class="headerlink" href="#script-execution" title="Permanent link">&para;</a></h5>
 <p>The script can be executed without any input parameters, but the in-script variable <a href="#script-variables">Placeholders</a> must be configured, or else the script will throw '<em>... - not a valid placeholder ...</em>'.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">B2C-PolicyManagement</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">B2C-PolicyManagement</span>
+</span></code></pre></div>
 <p>This is a snippet from the script documentation, second .EXAMPLE.<br />
 One or multiple policy files can be added as input parameters.</p>
 <p>Use <code>-DeployFolder</code> to override the creation of a default <strong>Deploy</strong> folder in the current working directory.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">B2C-PolicyManagement</span> <span class="n">-PolicyFiles</span> <span class="p">.\</span><span class="n">3-b2c_1a_v2_signupsignin</span><span class="p">.</span><span class="n">xml</span><span class="p">,</span> <span class="p">.\</span><span class="n">4-b2c_1a_v2_passwordreset</span><span class="p">.</span><span class="n">xml</span> <span class="n">-DeployFolder</span> <span class="n">MinDeploy</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">B2C-PolicyManagement</span> <span class="n">-PolicyFiles</span> <span class="p">.\</span><span class="n">3-b2c_1a_v2_signupsignin</span><span class="p">.</span><span class="n">xml</span><span class="p">,</span> <span class="p">.\</span><span class="n">4-b2c_1a_v2_passwordreset</span><span class="p">.</span><span class="n">xml</span> <span class="n">-DeployFolder</span> <span class="n">MinDeploy</span>
+</span></code></pre></div>
 <h5 id="script-variables">Script variables<a class="headerlink" href="#script-variables" title="Permanent link">&para;</a></h5>
 <p>The <code>$Placeholders</code> list variable must be filled out for the script to run successfully.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$Placeholders</span> <span class="p">=</span> <span class="p">@{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">&quot;PLACEHOLDER_TENANTNAME&quot;</span>                  <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">&quot;PLACEHOLDER_TENANTID&quot;</span>                    <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s2">&quot;PLACEHOLDER_BRANDINGBASEURL&quot;</span>             <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="s2">&quot;PLACEHOLDER_INSTRUMENTATIONKEY&quot;</span>          <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="s2">&quot;PLACEHOLDER_IEF_CLIENTID&quot;</span>                <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;PLACEHOLDER_IEFPROXY_CLIENTID&quot;</span>           <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s2">&quot;PLACEHOLDER_B2C_EXTENSIONS_APP_CLIENTID&quot;</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">&quot;PLACEHOLDER_B2C_EXTENSIONS_APP_OBJECTID&quot;</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s2">&quot;PLACEHOLDER_AAD_COMMON_APP_CLIENTID&quot;</span>     <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="s2">&quot;PLACEHOLDER_IDPORTEN_CLIENTID&quot;</span>           <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="s2">&quot;PLACEHOLDER_HELPERAPI_URL&quot;</span>               <span class="p">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
-</code></pre></div>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$Placeholders</span> <span class="p">=</span> <span class="p">@{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">&quot;PLACEHOLDER_TENANTNAME&quot;</span>                  <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">&quot;PLACEHOLDER_TENANTID&quot;</span>                    <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s2">&quot;PLACEHOLDER_BRANDINGBASEURL&quot;</span>             <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="s2">&quot;PLACEHOLDER_INSTRUMENTATIONKEY&quot;</span>          <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="s2">&quot;PLACEHOLDER_IEF_CLIENTID&quot;</span>                <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;PLACEHOLDER_IEFPROXY_CLIENTID&quot;</span>           <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s2">&quot;PLACEHOLDER_B2C_EXTENSIONS_APP_CLIENTID&quot;</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">&quot;PLACEHOLDER_B2C_EXTENSIONS_APP_OBJECTID&quot;</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s2">&quot;PLACEHOLDER_AAD_COMMON_APP_CLIENTID&quot;</span>     <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="s2">&quot;PLACEHOLDER_IDPORTEN_CLIENTID&quot;</span>           <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="s2">&quot;PLACEHOLDER_HELPERAPI_URL&quot;</span>               <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Values and names for the respective parameters can be provided by a tenant administrator.</p>
 
   <hr>
