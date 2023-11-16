@@ -1,4 +1,4 @@
-# FEIDE
+# FEIDE + Microsoft Entra ID
 
 !!! tip "FEIDE-katalog som en tjeneste"
     Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, enten kjørende i Azure hos oss eller i Azure hos deg. Vi sørger da for at katalogen alltid er operativ og populert med korrekte data. Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.
@@ -13,7 +13,7 @@ Alle kommuner og fylkeskommuner må tilby sine ansatte og elever en måte å log
 
 For å kunne tilby FEIDE for sine brukere, må en kommune/fylkeskommune etablere en eller flere LDAP-servere med et standardisert schema, som inneholder data i et bestemt format. Disse serverene inneholder store mengder personlig identifiserbar informasjon (PII), og bør sikres på en god måte, ved at den isoleres fra miljøet og etableres som en helt separat løsning i eksempelvis Azure.
 
-![](media/20231116101242.png)
+![](media/20231116122501.png)
 
 !!! success "Designvalg FEIDE.01"
     Serverene som inneholder FEIDE-katalogen etableres i Azure, i et separat virtuelt nettverk med kun åpning fra FEIDE-tjenesten og løsningen for provisjonering av innhold.
@@ -54,6 +54,7 @@ Designet legger opp til at det ikke settes noe passord på brukeren i FEIDE, og 
 
     * Krever bruk av Single Sign-On via Entra ID
     * Bedrer sikkerheten ved pålogging
+    * Fjerner behov for synk av passord fra on-premises AD
 
 ## FEIDE som en tjeneste
 
@@ -63,5 +64,7 @@ Vi i Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, som innebærer av vi 
 - Katalogen alltid er operativ, sikret og monitorert
 - Alt av sertifikater, skjema-oppdatering og liknende håndteres
 - Migrering fra eksisterende katalog til ny Amesto Fortytwo managed FEIDE-katalog
+
+![](media/20231116122214.png)
 
 Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.
