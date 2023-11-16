@@ -22,7 +22,7 @@
     
     
       
-        <title>FEIDE - Documentation for Amesto Fortytwo</title>
+        <title>FEIDE + Microsoft Entra ID - Documentation for Amesto Fortytwo</title>
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#feide" class="md-skip">
+        <a href="#feide-microsoft-entra-id" class="md-skip">
           Skip to content
         </a>
       
@@ -164,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FEIDE
+              FEIDE + Microsoft Entra ID
             
           </span>
         </div>
@@ -2250,7 +2250,7 @@
   
 
 
-<h1 id="feide">FEIDE<a class="headerlink" href="#feide" title="Permanent link">&para;</a></h1>
+<h1 id="feide-microsoft-entra-id">FEIDE + Microsoft Entra ID<a class="headerlink" href="#feide-microsoft-entra-id" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">FEIDE-katalog som en tjeneste</p>
 <p>Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, enten kjørende i Azure hos oss eller i Azure hos deg. Vi sørger da for at katalogen alltid er operativ og populert med korrekte data. Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.</p>
@@ -2283,7 +2283,7 @@
 </tbody>
 </table>
 <p>For å kunne tilby FEIDE for sine brukere, må en kommune/fylkeskommune etablere en eller flere LDAP-servere med et standardisert schema, som inneholder data i et bestemt format. Disse serverene inneholder store mengder personlig identifiserbar informasjon (PII), og bør sikres på en god måte, ved at den isoleres fra miljøet og etableres som en helt separat løsning i eksempelvis Azure.</p>
-<p><img alt="" src="media/20231116101242.png" /></p>
+<p><img alt="" src="media/20231116122501.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.01</p>
 <p>Serverene som inneholder FEIDE-katalogen etableres i Azure, i et separat virtuelt nettverk med kun åpning fra FEIDE-tjenesten og løsningen for provisjonering av innhold.</p>
@@ -2326,6 +2326,7 @@
 <ul>
 <li>Krever bruk av Single Sign-On via Entra ID</li>
 <li>Bedrer sikkerheten ved pålogging</li>
+<li>Fjerner behov for synk av passord fra on-premises AD</li>
 </ul>
 </div>
 <h2 id="feide-som-en-tjeneste">FEIDE som en tjeneste<a class="headerlink" href="#feide-som-en-tjeneste" title="Permanent link">&para;</a></h2>
@@ -2336,6 +2337,7 @@
 <li>Alt av sertifikater, skjema-oppdatering og liknende håndteres</li>
 <li>Migrering fra eksisterende katalog til ny Amesto Fortytwo managed FEIDE-katalog</li>
 </ul>
+<p><img alt="" src="media/20231116122214.png" /></p>
 <p>Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.</p>
 
   <hr>
