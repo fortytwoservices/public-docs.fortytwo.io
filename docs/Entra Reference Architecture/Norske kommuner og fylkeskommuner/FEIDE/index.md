@@ -47,4 +47,10 @@ Innholdet i FEIDE-katalogen [inneholder en del attributter](https://docs.feide.n
     * Direkte integrert mot versjonert kode
     * Muliggjør å begrense hvem som kan koble til FEIDE-katalog på IP
 
-Designet legger opp til at det ikke settes noe passord på brukeren i FEIDE, og at [Single Sign-On mot Entra ID](https://docs.feide.no/home_organizations/feide_login_with_azuread.html) benyttes for pålogging. 
+Designet legger opp til at det ikke settes noe passord på brukeren i FEIDE, og at [Single Sign-On mot Entra ID](https://docs.feide.no/home_organizations/feide_login_with_azuread.html) benyttes for pålogging.
+
+!!! success "Designvalg FEIDE.05"
+    Brukere i FEIDE-katalogen etableres som disablede brukere uten passord
+
+    * Krever bruk av Single Sign-On via Entra ID
+    * Bedrer sikkerheten ved pålogging
