@@ -97,7 +97,7 @@ A redirect_uri for native apps using **Microsoft Authentication Library** may lo
 
 - msal**APPID**://auth
 - urn:ieft:wg.oauth:2.0:oob
-- <https://\<tenant\>.b2clogin.com/oauth2/nativeclient>
+- <https://{tenantName}.b2clogin.com/oauth2/nativeclient>
 
 ## Application registration form
 
@@ -131,6 +131,6 @@ This is a template that can be used once an app registration has been created:
 
 | Name | Type | Reply URLs | Allow implicit flow | Scope | API Permissions | Client ID | Client Secret | Environment |
 | -    | -    | -          | -                   | -     | -               | -         | -            | -            |
-|  Mirage Web | Web App | <https://localhost/web/auth> <https://mydev.environment.net/auth> | false | N/A | Mirage API (user_impersonation) | \<appId> | \<appSecret> | Dev |
-|  Mirage API | API | <https://localhost/api/auth> | false | user_impersonation | N/A | \<appId> | N/A | Dev |
+|  Mirage Web | Web App | <https://localhost/web/auth> <https://mydev.environment.net/auth> | false | N/A | Mirage API (user_impersonation) | <appId\> | <appSecret\> | Dev |
+|  Mirage API | API | <https://localhost/api/auth> | false | user_impersonation | N/A | <appId\> | N/A | Dev |
 |      |      |            |                     |       |                 |           |              |              |
