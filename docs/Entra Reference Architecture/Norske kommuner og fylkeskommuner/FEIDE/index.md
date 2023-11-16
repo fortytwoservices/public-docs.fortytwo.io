@@ -54,3 +54,14 @@ Designet legger opp til at det ikke settes noe passord på brukeren i FEIDE, og 
 
     * Krever bruk av Single Sign-On via Entra ID
     * Bedrer sikkerheten ved pålogging
+
+## FEIDE som en tjeneste
+
+Vi i Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, som innebærer av vi sørger for at:
+
+- Katalogen synkroniseres med skoleadministrativt system
+- Katalogen alltid er operativ, sikret og monitorert
+- Alt av sertifikater, skjema-oppdatering og liknende håndteres
+- Migrering fra eksisterende katalog til ny Amesto Fortytwo managed FEIDE-katalog
+
+Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.
