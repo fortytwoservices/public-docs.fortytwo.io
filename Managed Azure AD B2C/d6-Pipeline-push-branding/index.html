@@ -2462,7 +2462,7 @@ When the pipeline discovers changes committed to the branding folder, regardless
 </code></pre></div>
 <h4 id="test-and-production-pipelines">Test and Production pipelines<a class="headerlink" href="#test-and-production-pipelines" title="Permanent link">&para;</a></h4>
 <p>For test and production, a manual action is required to trigger pipeline for deployment of branding files to respective environments.<br />
-There are no "Environments/\&lt;Test/Production&gt;/branding" folders, the Development files are generalized so that they can be <em>promoted</em> to other environments using environment specific parameters.</p>
+There are no "Environments/&lt;Test/Production&gt;/branding" folders, the Development files are generalized so that they can be <em>promoted</em> to other environments using environment specific parameters.</p>
 <p>This is the (current) configuration for the test and production environment (replace <em>Test</em> with <em>Prod</em>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>trigger:
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  paths:
@@ -2491,7 +2491,7 @@ With pipeline configuration changes, the pipelines will trigger and start (but w
 <li>Double-check the proposed changes (<strong>Files</strong>), assign (one or more) <strong>Required reviewer</strong> and select <strong>Create</strong></li>
 <li>When the PR is created, make sure that there are *<strong>no</strong>* <em>Merge conflicts</em></li>
 <li>Inform reviewer(s) of PR (copy and share the web site link in the browser address field)</li>
-<li>Configure <strong>Auto-complete</strong> (<em>Merge type</em> <strong>Merge</strong> - <strong>Delete \&lt;working branch&gt; after merging</strong>) for automatic merge or wait for PR to be approved, then select <strong>Complete</strong></li>
+<li>Configure <strong>Auto-complete</strong> (<em>Merge type</em> <strong>Merge</strong> - <strong>Delete &lt;working branch&gt; after merging</strong>) for automatic merge or wait for PR to be approved, then select <strong>Complete</strong></li>
 <li>Switch back to <strong>main</strong> branch, pull newly applied changes, delete working branch</li>
 </ol>
 <h3 id="checking-in-files-to-git-repository-with-visual-studio-code">Checking in files to git repository with Visual Studio Code<a class="headerlink" href="#checking-in-files-to-git-repository-with-visual-studio-code" title="Permanent link">&para;</a></h3>
@@ -2522,18 +2522,18 @@ With pipeline configuration changes, the pipelines will trigger and start (but w
 <h4 id="branching-terminal-shell">Branching - terminal / shell<a class="headerlink" href="#branching-terminal-shell" title="Permanent link">&para;</a></h4>
 <p>By supplying the <strong>-c</strong> parameter the git switch command creates and switches to the branch:</p>
 <ol>
-<li>git switch -c \&lt;new branch name&gt;</li>
+<li>git switch -c &lt;new branch name&gt;</li>
 <li>Make changes</li>
 <li>git add <strong>.</strong> (or <strong>git add *</strong>) (adds all changes, single files can be select instead)</li>
-<li>git commit -m "\&lt;commit message&gt;"</li>
+<li>git commit -m "&lt;commit message&gt;"</li>
 <li>git status (see which files are committed)</li>
-<li>git push --set-upstream origin \&lt;branch name&gt;
-(The <strong>-set-upstream</strong> is a one-time operation to create the new branch in Azure DevOps, new commits only need <strong>git push</strong>)</li>
+<li>git push -u origin &lt;branch name&gt;<br />
+(The <strong>-u</strong> == <strong>--set-upstream</strong> and is a one-time operation to create the new branch in Azure DevOps, new commits only need <strong>git push</strong>)</li>
 <li>Create <strong>pull request</strong> (PR) in Azure DevOps</li>
 <li>Approve and merge PR</li>
 <li>git checkout main</li>
 <li>git pull</li>
-<li>git branch -d \&lt;new branch name&gt; (deletes local branch, optional, but recommended)</li>
+<li>git branch -d &lt;new branch name&gt; (deletes local branch, optional, but recommended)</li>
 </ol>
 
   <hr>
