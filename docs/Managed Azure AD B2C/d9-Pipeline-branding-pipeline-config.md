@@ -123,7 +123,7 @@ These credentials are loaded during pipeline execution and are necessary to perf
 
 #### Azure DevOps Pipelines variable group - content deployment
 
-*Customer b2c content deployment - \<env>* is used for deploying custom policies and custom styling (UI) files.
+*Customer b2c content deployment - <env\>* is used for deploying custom policies and custom styling (UI) files.
 
 The ***content*** variable group holds credentials for the app registration used for content deployment for the specified environment.
 
@@ -148,7 +148,7 @@ The minimum requirement for managing files in the container is **Reader and Data
 
 ### Branding
 
-The branding pipelines are named **\<Environment> - branding** and uses the variable group **Customer b2c content deployment - \<Environment>**.
+The branding pipelines are named **<Environment\> - branding** and uses the variable group **Customer b2c content deployment - <Environment\>**.
 
 ### Upload branding files via Azure DevOps pipeline
 
@@ -180,7 +180,7 @@ trigger:
 #### Test and Production pipelines - branding
 
 For test and production, a manual action is required to trigger pipeline for deployment of branding files to respective environments.  
-There are no **Environments/\<Test/Production>/branding** folders, the Development files are generalized so that they can be *promoted* to other environments using environment specific parameters.
+There are no **Environments/<Test/Production\>/branding** folders, the Development files are generalized so that they can be *promoted* to other environments using environment specific parameters.
 
 This is the (current) configuration for the test and production environment (replace *Test* with *Prod*):
 
@@ -197,7 +197,7 @@ With pipeline configuration changes, the pipelines will trigger and start (but w
 
 ### Policies
 
-The policies pipelines are named **\<Environment> - policies - vX** and uses the variable group **Customer b2c content deployment - \<Environment>**.
+The policies pipelines are named **<Environment\> - policies - vX** and uses the variable group **Customer b2c content deployment - <Environment\>**.
 
 #### Polices - Dev
 
@@ -285,7 +285,7 @@ trigger:
 #### Test and Production pipelines - policies
 
 For test and production environments, a manual action is required to trigger pipeline for deployment of custom policy files.  
-There are no **Environments/\<Test/Production\>/policies** folders, the **Development** files are generalized so that they can be *promoted* to other environments using environment specific parameters.
+There are no **Environments/<Test/Production\>/policies** folders, the **Development** files are generalized so that they can be *promoted* to other environments using environment specific parameters.
 
 This is the (current) configuration for the production environment:
 
@@ -321,7 +321,7 @@ The following (recommended) [procedure](#recommended-procedure) uses an Azure De
 1. Double-check the proposed changes (**Files**), assign (one or more) **Required reviewer** and select **Create**
 1. When the PR is created, make sure that there are \***no**\* *Merge conflicts*
 1. Inform reviewer(s) of PR (copy and share the web site link in the browser address field)
-1. Configure **Auto-complete** (*Merge type* **Merge** - **Delete \<working branch\> after merging**) for automatic merge or wait for PR to be approved, then select **Complete**
+1. Configure **Auto-complete** (*Merge type* **Merge** - **Delete <working branch\> after merging**) for automatic merge or wait for PR to be approved, then select **Complete**
 1. Switch back to **main** branch, pull newly applied changes, delete working branch
 
 ### Checking in files to git repository with Visual Studio Code
@@ -357,15 +357,15 @@ In [Visual Studio Code](https://code.visualstudio.com/) create a new branch by f
 
 By supplying the **-c** parameter the git switch command creates and switches to the branch:
 
-1. git switch -c \<new branch name\>
+1. git switch -c <new branch name\>
 1. Make changes
 1. git add **.** (or **git add \***) (adds all changes, single files can be select instead)
-1. git commit -m "\<commit message\>"
+1. git commit -m "<commit message\>"
 1. git status (see which files are committed)
-1. git push --set-upstream origin \<branch name\>
-(The **-set-upstream** is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
+1. git push --set-upstream origin <branch name\>  
+(The **-u** == **--set-upstream** and is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
 1. Create **pull request** (PR) in Azure DevOps
 1. Approve and merge PR
 1. git checkout main
 1. git pull
-1. git branch -d \<new branch name\> (deletes local branch, optional, but recommended)
+1. git branch -d <new branch name\> (deletes local branch, optional, but recommended)
