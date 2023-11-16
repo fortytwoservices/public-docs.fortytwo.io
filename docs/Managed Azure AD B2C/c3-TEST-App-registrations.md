@@ -92,8 +92,8 @@ The most common placement for secrets is Azure Key Vault, where access policies 
 
 | Name | Type | Reply URLs | Allow implicit flow | Scope | API Permissions | Client ID | Client Secret | Environment | Comments |
 | - | - | - | - | - | - | - | - | - | - |
-| JWT.ms | Web App | <https://jwt.ms/> | access_token id_token | N/A | Graph: openid+offline_access | \<appId> | N/A | Test | Any IDP - AzureADandPersonalMicrosoftAccount - User Journey test app |
-| companyApp - web app - test | Web App | \<replyUrl> | N/A | N/A | Graph: openid+offline_access | \<appId> | \<appSecret> | Test | Any IDP |
+| JWT.ms | Web App | <https://jwt.ms/> | access_token id_token | N/A | Graph: openid+offline_access | <appId\> | N/A | Test | Any IDP - AzureADandPersonalMicrosoftAccount - User Journey test app |
+| companyApp - web app - test | Web App | <replyUrl\> | N/A | N/A | Graph: openid+offline_access | <appId\> | <appSecret\> | Test | Any IDP |
 |   |   |   |   |   |   |   |   |   |   |
 
 ## App registration secrets
@@ -104,6 +104,6 @@ There will be Azure Key Vaults for applications that require client secrets for 
 
  Name | Type | Azure Key Vault | Client ID | Environment | Comments |
 | - | - | - | - | - | - |
-| companyApp - web app - test | Web App | URIx | \<appId> | Test | |
-| company - iac - identity | N/A | URIx | \<appId> | Test | Owned by company, service principal for running IaC (may be stored in Key Vault / DevOps library variable group) |
+| companyApp - web app - test | Web App | URIx | <appId\> | Test | |
+| company - iac - identity | N/A | URIx | <appId\> | Test | Owned by company, service principal for running IaC (may be stored in Key Vault / DevOps library variable group) |
 |   |   |   |   |   |   |

@@ -32,8 +32,8 @@ The application registration process yields a couple of values for the applicati
 The application communicates with the Microsoft Identity platform by sending requests to the v2.0 endpoint:
 
 ```http
-https://\<tenantName>.b2clogin.com/\<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize
-https://\<tenantName>.b2clogin.com/\<tenantName>.onmicrosoft.com/oauth2/v2.0/token
+https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/oauth2/v2.0/authorize
+https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/oauth2/v2.0/token
 ```
 
 ## OAuth 2.0 and OpenID Connect flows
