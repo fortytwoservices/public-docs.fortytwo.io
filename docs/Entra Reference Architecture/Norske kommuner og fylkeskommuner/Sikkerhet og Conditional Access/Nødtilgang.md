@@ -1,6 +1,6 @@
 # Nødtilgang
 
-Nødtilgangskontoer i Entra ID gir et ekstra sikkerhetslag ved å tillate autoriserte personer å få tilgang til kritiske Entra ID-ressurser i tilfelle en uventet hendelse, for eksempel når alle normale administratorer er utilgjengelige. Dette kan være svært nyttig i nødstilfeller eller hvis det oppstår problemer med å få tilgang til Entra ID og Microsoft 365. Erfaring tilsier at det kan ta flere dager å re-etablere tilgang til en tenant hvis man mister all ting og har behov for hjelp av Microsoft for å få tilbake tilgang.
+Nødtilgangskontoer (Også kalt Break Glass Account) i Entra ID gir et ekstra sikkerhetslag ved å tillate autoriserte personer å få tilgang til kritiske Entra ID-ressurser i tilfelle en uventet hendelse, for eksempel når alle normale administratorer er utilgjengelige. Dette kan være svært nyttig i nødstilfeller eller hvis det oppstår problemer med å få tilgang til Entra ID og Microsoft 365. Erfaring tilsier at det kan ta flere dager å re-etablere tilgang til en tenant hvis man mister all ting og har behov for hjelp av Microsoft for å få tilbake tilgang.
 
 !!! success "Designvalg SEC.01"
     En brukerkkonto etableres med hensikt å være brukt kun ved nødstilfeller,
