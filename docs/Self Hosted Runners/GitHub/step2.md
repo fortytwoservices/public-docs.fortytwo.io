@@ -30,9 +30,10 @@ PAT=ghp_xxx
 ORG=amesfortytwo
 USER=admin42
 LABEL=label1,label2
+RGROUP=test # Runner Group. Optional and can be left out/blank.
 az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
     --version 2.1 --publisher Microsoft.Azure.Extensions \
-    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\"],\"commandToExecute\": \"sh script.sh $ORG $PAT $USER $LABEL\"}"
+    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\"],\"commandToExecute\": \"sh script.sh $ORG $PAT $USER $LABEL $RGROUP\"}"
 ```
 
 Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
