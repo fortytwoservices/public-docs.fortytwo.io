@@ -11,8 +11,22 @@ Det er ofte mulig å integrere en applikasjon på flere måter, og for å sørge
 
 ## Brukerprovisjonering
 
-- [SCIM-basert integrasjon](./brukerprovisjonering1.md)
-- [Populering av applikasjon via API-basert integrasjon](./brukerprovisjonering2.md)
-- [Filuttrekk](./brukerprovisjonering3.md)
-- [Applikasjon leser selv via Microsoft Graph](./brukerprovisjonering4.md)
+1. [SCIM-basert integrasjon](./Brukerprovisjonering/1.md)
+2. [Populering av applikasjon via API-basert integrasjon](./Brukerprovisjonering/2.md)
+3. [Filuttrekk](./Brukerprovisjonering/3.md)
+4. [Applikasjon leser selv via Microsoft Graph](./Brukerprovisjonering/4.md)
+
+## Single Sign-On
+
+1. [Multi-tenant app for SaaS applikasjoner](./Single%20Sign-On/1.md)
+2. [OpenID Connect integrasjon](./Single%20Sign-On/2.md)
+3. [SAML federering](./Single%20Sign-On/3.md)
+
+## Autorisasjon
+
+1. [App-roller og tildelinger](./Autorisasjon/1.md)
+2. [Assigned groups as claim](./Autorisasjon/2.md)
+3. [SCIM-transferred groups](./Autorisasjon/3.md)
+4. [Pipeline transferring app roles to app via API integration](./Autorisasjon/4.md)
+5. [Application reading groups from Microsoft Graph](./Autorisasjon/5.md)
 
