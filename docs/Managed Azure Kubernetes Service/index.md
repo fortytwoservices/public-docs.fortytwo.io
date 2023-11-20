@@ -6,11 +6,11 @@ Azure Kubernetes Service (AKS) stands at the forefront of innovation, offering a
 
 The journey with AKS can often be complex, especially when it comes to transitioning from development to a secure, production-ready environment. While AKS provides a cutting-edge foundation, ensuring that your cluster is secure, compliant, and ready to handle real-world, production-grade workloads requires additional expertise and configuration. This is where many face challenges — implementing the necessary security measures and ensuring the production readiness of their AKS environment can be a daunting task.
 
-## Azure Kubernetes by Fortytwo: Secure by Default
+## Managed Azure Kubernetes: Secure by Default
 
 Recognizing this critical need, we at Fortytwo are thrilled to introduce "Azure Kubernetes by Fortytwo" — a solution exclusively available on the Azure Marketplace, offering a production-grade AKS cluster that's secure by default. Our platform team, with its deep expertise in cloud infrastructure and security, has meticulously crafted a solution that takes the robustness of AKS and enhances it with layers of security and operational readiness.
 
-## Why Choose Azure Kubernetes by Fortytwo?
+## Why Choose Managed Azure Kubernetes?
 
 **Production-Grade Security**: With Azure Kubernetes by Fortytwo, you don't just get AKS; you get AKS that's been fortified. Our clusters are configured with Microsofts own best practices considering security, ensuring that your applications are protected from day one.
 
