@@ -3028,7 +3028,7 @@
 <p class="admonition-title">FEIDE-katalog som en tjeneste</p>
 <p>Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, enten kjørende i Azure hos oss eller i Azure hos deg. Vi sørger da for at katalogen alltid er operativ og populert med korrekte data. Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.</p>
 </div>
-<p>Alle kommuner og fylkeskommuner må tilby sine ansatte og elever en måte å logge på FEIDE på, for å kunne få tilgang til løsninger som kun har integrasjon mot nettop FEIDE for pålogging. FEIDE består i hovedsak av følgende komponenter, hvor begret <em>Vertsorganisasjon</em> benyttes om kommunen / fylkeskommunen:</p>
+<p>Alle kommuner og fylkeskommuner må tilby sine ansatte og elever en måte å logge på FEIDE på, for å kunne få tilgang til løsninger som kun har integrasjon mot nettopp FEIDE for pålogging. FEIDE består i hovedsak av følgende komponenter, hvor begrepet <em>Vertsorganisasjon</em> benyttes om kommunen / fylkeskommunen:</p>
 <table>
 <thead>
 <tr>
@@ -3045,7 +3045,7 @@
 </tr>
 <tr>
 <td>LDAP-katalog</td>
-<td>En LDAP katalog som benyttes av FEIDE for oppslag av informasjon om brukere, som GREP-koder, undervisningsgrupper, personnummer og liknende.</td>
+<td>En LDAP katalog som benyttes av FEIDE for oppslag av informasjon om brukere, som GREP-koder, undervisningsgrupper, personnummer og liknende</td>
 <td>Vertsorganisasjon</td>
 </tr>
 <tr>
@@ -3055,8 +3055,8 @@
 </tr>
 </tbody>
 </table>
-<p>For å kunne tilby FEIDE for sine brukere, må en kommune/fylkeskommune etablere en eller flere LDAP-servere med et standardisert schema, som inneholder data i et bestemt format. Disse serverene inneholder store mengder personlig identifiserbar informasjon (PII), og bør sikres på en god måte, ved at den isoleres fra miljøet og etableres som en helt separat løsning i eksempelvis Azure.</p>
-<p><img alt="" src="media/20231116122501.png" /></p>
+<p>For å kunne tilby FEIDE for sine brukere, må en kommune/fylkeskommune etablere en eller flere LDAP-servere med et standardisert skjema, som inneholder data i et bestemt format. Disse serverene inneholder store mengder personlig identifiserbar informasjon (PII), og bør sikres på en god måte, ved at den isoleres fra miljøet og etableres som en helt separat løsning i eksempelvis Azure.</p>
+<p><img alt="FEIDE designskisse" src="media/20231116122501.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.01</p>
 <p>Serverene som inneholder FEIDE-katalogen etableres i Azure, i et separat virtuelt nettverk med kun åpning fra FEIDE-tjenesten og løsningen for provisjonering av innhold.</p>
@@ -3065,10 +3065,10 @@
 </ul>
 </div>
 <h2 id="ldap">LDAP<a class="headerlink" href="#ldap" title="Permanent link">&para;</a></h2>
-<p>LDAPv3 som protokoll er veldefinert og med FEIDE står man fritt til å velge hvilken LDAP-løsning man måtte ønske, så lenge man benyttes de <a href="https://www.feide.no/ldap-skjema-feide">påkrevde skjemaene</a>. Gode valg av LDAP-servere er Microsoft sin <strong>AD LDS</strong> og <strong>OpenLDAP</strong>.</p>
+<p>LDAPv3 som protokoll er veldefinert, og med FEIDE står man fritt til å velge hvilken LDAP-løsning man måtte ønske, så lenge man benyttes de <a href="https://www.feide.no/ldap-skjema-feide">påkrevde skjemaene</a>. Gode valg av LDAP-servere er Microsoft sin <strong>AD LDS</strong> og <strong>OpenLDAP</strong>.</p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.02</p>
-<p>LDAP-katalogen etableres som en instans av AD LDS</p>
+<p>LDAP-katalogen etableres som en instans av AD LDS.</p>
 <ul>
 <li>Trivielt å drifte for windows-administratorer</li>
 </ul>
@@ -3082,20 +3082,20 @@
 </ul>
 </div>
 <h2 id="provisjonering-av-innhold">Provisjonering av innhold<a class="headerlink" href="#provisjonering-av-innhold" title="Permanent link">&para;</a></h2>
-<p>Innholdet i FEIDE-katalogen <a href="https://docs.feide.no/reference/schema/index.html">inneholder en del attributter</a> som kun bør eksistere i det skoleadministrative systemet og ikke i eksempelvis Active Directory eller Entra ID. Det etableres derfor en løsning som leser tildelte brukere fra en Enterprise App i Entra ID (For scoping av hvilke brukere som skal ha FEIDE-bruker) og slår dette sammen med data fra det skoleadministrative systemet og populerer FEIDE-katalogen med de riktige dataene.</p>
+<p>Innholdet i FEIDE-katalogen <a href="https://docs.feide.no/reference/schema/index.html">inneholder en del attributter</a> som kun bør eksistere i det skoleadministrative systemet og ikke i eksempelvis Active Directory eller Entra ID. Det etableres derfor en løsning som leser tildelte brukere fra en Enterprise App i Entra ID (for scoping av hvilke brukere som skal ha FEIDE-bruker) og slår dette sammen med data fra det skoleadministrative systemet og populerer FEIDE-katalogen med de riktige dataene.</p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.04</p>
-<p>Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med <a href="http://localhost:8000/Self%20Hosted%20Runners/">self hosted agent med fast IP</a>.</p>
+<p>Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med <a href="../../../Self%20Hosted%20Runners/">self hosted agent med fast IP</a>.</p>
 <ul>
 <li>Enkel feilsøking og overvåkning</li>
 <li>Direkte integrert mot versjonert kode</li>
 <li>Muliggjør å begrense hvem som kan koble til FEIDE-katalog på IP</li>
 </ul>
 </div>
-<p>Designet legger opp til at det ikke settes noe passord på brukeren i FEIDE, og at <a href="https://docs.feide.no/home_organizations/feide_login_with_azuread.html">Single Sign-On mot Entra ID</a> benyttes for pålogging.</p>
+<p>Designet legger opp til at det ikke settes noe passord på brukerne i FEIDE, og at <a href="https://docs.feide.no/home_organizations/feide_login_with_azuread.html">Single Sign-On mot Entra ID</a> benyttes for pålogging.</p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.05</p>
-<p>Brukere i FEIDE-katalogen etableres som disablede brukere uten passord</p>
+<p>Brukere i FEIDE-katalogen etableres som disablede brukere uten passord.</p>
 <ul>
 <li>Krever bruk av Single Sign-On via Entra ID</li>
 <li>Bedrer sikkerheten ved pålogging</li>
@@ -3110,7 +3110,7 @@
 <li>Alt av sertifikater, skjema-oppdatering og liknende håndteres</li>
 <li>Migrering fra eksisterende katalog til ny Amesto Fortytwo managed FEIDE-katalog</li>
 </ul>
-<p><img alt="" src="media/20231116122214.png" /></p>
+<p><img alt="FEIDE, som en tjeneste, designskisse" src="media/20231116122214.png" /></p>
 <p>Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.</p>
 
   <hr>
@@ -3118,7 +3118,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 20, 2023</span>
       
         <br>
         Created:
