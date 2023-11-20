@@ -54,7 +54,7 @@ Designet legger opp til at det ikke settes noe passord på brukerne i FEIDE, og 
 
     * Krever bruk av Single Sign-On via Entra ID
     * Bedrer sikkerheten ved pålogging
-    * Fjerner behov for synk av passord fra on-premises AD
+    * Fjerner potensielt behov for synk av passord fra on-premises AD, og dermed også behovet for on-premises AD
 
 ## FEIDE som en tjeneste
 
