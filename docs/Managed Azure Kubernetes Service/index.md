@@ -1,4 +1,4 @@
-# Azure Kubernetes by Fortytwo
+# Managed Azure Kubernetes Service
 
 Azure Kubernetes Service (AKS) stands at the forefront of innovation, offering a powerful, scalable, and highly flexible platform that's perfect for businesses looking to leverage the full potential of containerized applications. With AKS, you're not just adopting a technology; you're embracing a future where agility, speed, and efficiency define your operational capabilities.
 
