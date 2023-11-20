@@ -1,7 +1,7 @@
 # Norske kommuner og fylkeskommuner
 
 !!! note "Content in Norwegian"
-    The content in this subsection is in Norwegian, as it is targeted to Norwegian munipalities
+    The content in this subsection is in Norwegian, as it is targeted to Norwegian municipalities
 
 !!! note "Ikke ferdig"
     Denne dokumentasjonen er ikke ferdig, og bør ansees som work in progress
