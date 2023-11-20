@@ -5,11 +5,11 @@
 
 Alle kommuner og fylkeskommuner må tilby sine ansatte og elever en måte å logge på FEIDE på, for å kunne få tilgang til løsninger som kun har integrasjon mot nettopp FEIDE for pålogging. FEIDE består i hovedsak av følgende komponenter, hvor begrepet *Vertsorganisasjon* benyttes om kommunen / fylkeskommunen:
 
-| Komponent | Beskrivelse | Forvaltes av |
-|-|-|-|
-| FEIDE-plattformen | Sentral løsning som håndterer autentisering | SIKT |
-| LDAP-katalog | En LDAP katalog som benyttes av FEIDE for oppslag av informasjon om brukere, som GREP-koder, undervisningsgrupper, personnummer og liknende | Vertsorganisasjon |
-| Tjenester | Tjenester som benytter FEIDE som påloggingstjeneste | Tjenestetilbyder |
+| Komponent         | Beskrivelse                                                                                                                                 | Forvaltes av      |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| FEIDE-plattformen | Sentral løsning som håndterer autentisering                                                                                                 | SIKT              |
+| LDAP-katalog      | En LDAP katalog som benyttes av FEIDE for oppslag av informasjon om brukere, som GREP-koder, undervisningsgrupper, personnummer og liknende | Vertsorganisasjon |
+| Tjenester         | Tjenester som benytter FEIDE som påloggingstjeneste                                                                                         | Tjenestetilbyder  |
 
 For å kunne tilby FEIDE for sine brukere, må en kommune/fylkeskommune etablere en eller flere LDAP-servere med et standardisert skjema, som inneholder data i et bestemt format. Disse serverene inneholder store mengder personlig identifiserbar informasjon (PII), og bør sikres på en god måte, ved at den isoleres fra miljøet og etableres som en helt separat løsning i eksempelvis Azure.
 
