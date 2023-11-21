@@ -29,8 +29,3 @@ Recognizing this critical need, we at Fortytwo are thrilled to introduce "Azure 
 ## Can I have the code?
 
 Our entire solution is open-source, hosted in our GitHub repository, offering you unparalleled access and control. This means if you wish to own the code, or dive deeper into how we build and maintain our state-of-the-art Kubernetes solutions, you have complete freedom to do so. Furthermore, if you prefer a more hands-on approach, we are ready to provide the code personally and assist you in your journey. Whether you plan to add new resources, customize existing configurations, or just want to understand the nuts and bolts of your Kubernetes environment, our open-source commitment puts you in the driver's seat.
-
-Follow one of these:
-
-- [Azure DevOps](Azure%20DevOps/index.md)
-- [GitHub](GitHub/index.md)
