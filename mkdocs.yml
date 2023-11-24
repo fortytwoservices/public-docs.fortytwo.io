@@ -41,6 +41,7 @@ theme:
     - toc.integrate
     - content.action.edit
     - content.action.view
+    - content.code.copy
 repo_url: https://github.com/amestofortytwo/public-docs.byfortytwo.com
 edit_uri: edit/main/docs/
 plugins:
