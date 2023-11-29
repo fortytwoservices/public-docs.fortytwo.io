@@ -7,31 +7,33 @@
 
 ## Deployment
 
-We have published [this Terraform module](https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./1.md) instead, but it should be fairly easy for most people. 
+We have published [this Terraform module](https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./step1-manual.md) instead, but it should be fairly easy for most people. 
 
-Start by creating an empty folder with a single file ```main.tf```, with the below content:
+Start by creating an empty folder with a single file ```main.tf```, with the below content, and running ther ```terraform.ps1``` code line by line:
 
-```hcl
-provider "azurerm" {
-  features {}
-}
+=== ":octicons-file-code-16: `main.tf`"
 
-module "vmss" {
-  source                         = "amestofortytwo/selfhostedrunnervmss/azurerm"
-  operating_system               = "ubuntu"       # windows or ubuntu
-  runner_platform                = "azure_devops" # azure_devops or github
-}
-```
+    ```hcl
+    provider "azurerm" {
+      features {}
+    }
 
-Next, open a shell (cmd, terminal, powershell) and run the following:
+    module "vmss" {
+      source                         = "amestofortytwo/selfhostedrunnervmss/azurerm"
+      operating_system               = "ubuntu"       # windows or ubuntu
+      runner_platform                = "azure_devops" # azure_devops or github
+    }
+    ```
 
-```PowerShell
-az login
-az account set --subscription "<your subscription id>"
-az vm image terms accept --offer self_hosted_runner_ado --plan ubuntu-latest --publisher amestofortytwoas1653635920536
-az vm image terms accept --offer self_hosted_runner_ado --plan windows-latest --publisher amestofortytwoas1653635920536
-terraform init
-terraform apply
-```
+=== ":octicons-file-code-16: `terraform.ps1`"
+
+    ```PowerShell
+    az login
+    az account set --subscription "<your subscription id>"
+    az vm image terms accept --offer self_hosted_runner_ado --plan ubuntu-latest --publisher amestofortytwoas1653635920536
+    az vm image terms accept --offer self_hosted_runner_ado --plan windows-latest --publisher amestofortytwoas1653635920536
+    terraform init
+    terraform apply
+    ```
 
 [Continue to step 2 - Configuring the Azure DevOps Agent Pool](./step2.md)

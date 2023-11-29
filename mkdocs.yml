@@ -47,6 +47,7 @@ edit_uri: edit/main/docs/
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
+      fallback_to_build_date: true
   - tags
   - search
   - material-plausible
@@ -55,9 +56,20 @@ markdown_extensions:
       permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences
   - pymdownx.details
   - admonition
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 extra:
   analytics:
     provider: plausible

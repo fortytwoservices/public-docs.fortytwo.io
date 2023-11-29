@@ -22,7 +22,7 @@ Billing is done through Azure Marketplace and we will add billing to your CSP in
 
 ## Can I cancel whenever i want?
 
-Yes, we have no lock-in. You can easily cancel the subscription in your Microsoft 365 Admin portal. [See how here](cancelsubscription.md)
+Yes, we have no lock-in. You can easily cancel the subscription in your Microsoft 365 Admin portal. [See how here](03_cancelsubscription.md)
 
 ## Where can I read Terms and Conditions?
 

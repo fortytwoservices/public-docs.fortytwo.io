@@ -1,6 +1,6 @@
 # Step 1a - Configuring the Virtual Machine Scale Set manually
 
-**Note:** If you do not want to handle the creation of the VMSS manually, you can use our [other methods](./1.md) instead.
+**Note:** If you do not want to handle the creation of the VMSS manually, you can use our [other methods](./index.md#select-your-deployment-option) instead.
 
 Start by going to the Azure Portal and click **+Create a resource**. 
 
