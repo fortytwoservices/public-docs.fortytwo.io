@@ -28,7 +28,7 @@ VMSS=vmss-test-noeast
 RG=rg-test-noeast
 PAT=ghp_xxx
 ORG=amesfortytwo
-USER=admin42
+USER=runneradmin
 LABEL=label1,label2
 RGROUP=test # Runner Group. Optional and can be left out/blank.
 az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
