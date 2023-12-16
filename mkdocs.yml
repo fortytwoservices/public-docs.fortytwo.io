@@ -30,7 +30,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.instant
-    - navigation.expand
     - navigation.top
     - navigation.indexes
     - header.autohide
