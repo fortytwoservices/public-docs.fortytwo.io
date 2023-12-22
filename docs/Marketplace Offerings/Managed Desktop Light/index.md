@@ -2,7 +2,7 @@
 
 This product is a lightweight Managed Desktop solution. It is designed for environments which require a simple, secure and low-cost desktop environment, and do not want the complexity of a full Managed Desktop solution with multiple sessionHosts, user profiles and network connectivity to other services.
 
-[Link to offer on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/amestofortytwoas1653635920536.managed_desktop_light-preview?tab=Overview&flightCodes=3f38b7b4-b5ca-4d73-b1a7-92a6329c7fa8 "Marketplace link")
+[Link to offer on Azure Marketplace](https://azuremarketplace.microsoft.com/nb-no/marketplace/apps/amestofortytwoas1653635920536.managed_desktop_light?tab=Overview "Marketplace link")
 
 ## Use cases
 
