@@ -42,6 +42,10 @@ Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal o
 
 ![](media/2023-09-15_13-53-43.png)
 
+## For Windows Self-hosted Runners
+
+TODO! Sorry, I haven't had time to test this yet.
+
 ### Verify that the runner is registered
 
 After the previous has been done, you should be able to verify within the organization or the repository that the runner is registered.
@@ -50,6 +54,4 @@ After the previous has been done, you should be able to verify within the organi
 
 [Continue to step 3 - Testing the self hosted runner](./step3.md)
 
-## For Windows Self-hosted Runners
 
-TODO! Sorry, I haven't had time to test this yet.
