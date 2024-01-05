@@ -3987,9 +3987,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configure-the-vmss-to-auto-register" class="md-nav__link">
+  <a href="#configure-the-vmss-to-auto-register-new" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure the VMSS to auto register
+      Configure the VMSS to auto register (New)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-vmss-to-auto-register-legacy-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure the VMSS to auto register (Legacy way)
     </span>
   </a>
   
@@ -4007,13 +4016,22 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="For Windows Self-hosted Runners">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-configuration-examples-for-the-vmss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced configuration examples for the VMSS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced configuration examples for the VMSS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#verify-that-the-runner-is-registered" class="md-nav__link">
+  <a href="#offboard-github-runner-upon-termination-eventsscale-down" class="md-nav__link">
     <span class="md-ellipsis">
-      Verify that the runner is registered
+      Offboard Github runner upon termination events/scale-down
     </span>
   </a>
   
@@ -4021,6 +4039,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-that-the-runner-is-registered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify that the runner is registered
+    </span>
+  </a>
   
 </li>
       
@@ -4112,24 +4139,47 @@ To register a PAT, go to "Settings" -&gt; "Developer settings" -&gt; "Personal a
 <h3 id="personal-repository-runners">Personal repository runners<a class="headerlink" href="#personal-repository-runners" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../media/2023-09-15_13-50-27.png" /></p>
 <h2 id="for-ubuntu-self-hosted-runners">For Ubuntu Self-hosted Runners<a class="headerlink" href="#for-ubuntu-self-hosted-runners" title="Permanent link">&para;</a></h2>
-<h3 id="configure-the-vmss-to-auto-register">Configure the VMSS to auto register<a class="headerlink" href="#configure-the-vmss-to-auto-register" title="Permanent link">&para;</a></h3>
+<p>To configure the VMSS to auto-register, use the below new method. The legacy way is just mentioned for reference.</p>
+<h3 id="configure-the-vmss-to-auto-register-new">Configure the VMSS to auto register (New)<a class="headerlink" href="#configure-the-vmss-to-auto-register-new" title="Permanent link">&para;</a></h3>
 <p>Run the following with az-cli to configure an extension on the VMSS that will auto register the runner with Github. Replace the variables with your correct information.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">VMSS</span><span class="o">=</span>vmss-test-noeast<span class="w">   </span><span class="c1"># Name of the VMSS.</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">RG</span><span class="o">=</span>rg-test-noeast<span class="w">       </span><span class="c1"># Resource group for the VMSS.</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">PAT</span><span class="o">=</span>ghp_xxx<span class="w">             </span><span class="c1"># The PAT generated in the previous steps.</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">SCOPE</span><span class="o">=</span>amesfortytwo<span class="w">      </span><span class="c1"># Can be spesified as either the organization or the owner/repository.</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">USER</span><span class="o">=</span>runner<span class="w">             </span><span class="c1"># Username for the runner created on the VMSS.</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">LABEL</span><span class="o">=</span>label1,label2<span class="w">     </span><span class="c1"># Comma separated list of labels for the runner.</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">RGROUP</span><span class="o">=</span><span class="nb">test</span><span class="w">             </span><span class="c1"># Runner Group. Optional and can be left out/blank.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">SCOPE</span><span class="o">=</span>amesfortytwo<span class="w">      </span><span class="c1"># -s: Can be spesified as either the organization, the owner/repository, or enterprises/enterprisename.</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">USER</span><span class="o">=</span>runner<span class="w">             </span><span class="c1"># -u: Username for the runner created on the VMSS.</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">LABEL</span><span class="o">=</span>label1,label2<span class="w">     </span><span class="c1"># (Optional) -l: Comma separated list of labels for the runner.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">RGROUP</span><span class="o">=</span><span class="nb">test</span><span class="w">             </span><span class="c1"># (Optional) -r: Runner Group.</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>az<span class="w"> </span>vmss<span class="w"> </span>extension<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vmss-name<span class="w"> </span><span class="nv">$VMSS</span><span class="w"> </span>--name<span class="w"> </span>customScript<span class="w"> </span>--resource-group<span class="w"> </span><span class="nv">$RG</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>--version<span class="w"> </span><span class="m">2</span>.1<span class="w"> </span>--publisher<span class="w"> </span>Microsoft.Azure.Extensions<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--protected-settings<span class="w"> </span><span class="s2">&quot;{\&quot;fileUris\&quot;: [\&quot;https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\&quot;],\&quot;commandToExecute\&quot;: \&quot;bash script.sh </span><span class="nv">$SCOPE</span><span class="s2"> </span><span class="nv">$PAT</span><span class="s2"> </span><span class="nv">$USER</span><span class="s2"> </span><span class="nv">$LABEL</span><span class="s2"> </span><span class="nv">$RGROUP</span><span class="s2">\&quot;}&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--protected-settings<span class="w"> </span><span class="s2">&quot;{\&quot;fileUris\&quot;: [\&quot;https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\&quot;],\&quot;commandToExecute\&quot;: \&quot;RUNNER_CFG_PAT=</span><span class="nv">$PAT</span><span class="s2"> bash script.sh -s </span><span class="nv">$SCOPE</span><span class="s2"> -u </span><span class="nv">$USER</span><span class="s2"> -l </span><span class="nv">$LABEL</span><span class="s2"> -r </span><span class="nv">$RGROUP</span><span class="s2"> -f\&quot;}&quot;</span>
+</span></code></pre></div>
+<p>Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.</p>
+<p><img alt="" src="../media/2023-09-15_13-53-43.png" /></p>
+<h3 id="configure-the-vmss-to-auto-register-legacy-way">Configure the VMSS to auto register (Legacy way)<a class="headerlink" href="#configure-the-vmss-to-auto-register-legacy-way" title="Permanent link">&para;</a></h3>
+<p>Run the following with az-cli to configure an extension on the VMSS that will auto register the runner with Github. Replace the variables with your correct information.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">VMSS</span><span class="o">=</span>vmss-test-noeast<span class="w">   </span><span class="c1"># Name of the VMSS.</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">RG</span><span class="o">=</span>rg-test-noeast<span class="w">       </span><span class="c1"># Resource group for the VMSS.</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">PAT</span><span class="o">=</span>ghp_xxx<span class="w">             </span><span class="c1"># The PAT generated in the previous steps.</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">SCOPE</span><span class="o">=</span>amesfortytwo<span class="w">      </span><span class="c1"># Can be spesified as either the organization or the owner/repository.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">USER</span><span class="o">=</span>runner<span class="w">             </span><span class="c1"># Username for the runner created on the VMSS.</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">LABEL</span><span class="o">=</span>label1,label2<span class="w">     </span><span class="c1"># Comma separated list of labels for the runner.</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">RGROUP</span><span class="o">=</span><span class="nb">test</span><span class="w">             </span><span class="c1"># Runner Group. Optional and can be left out/blank.</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>az<span class="w"> </span>vmss<span class="w"> </span>extension<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vmss-name<span class="w"> </span><span class="nv">$VMSS</span><span class="w"> </span>--name<span class="w"> </span>customScript<span class="w"> </span>--resource-group<span class="w"> </span><span class="nv">$RG</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--version<span class="w"> </span><span class="m">2</span>.1<span class="w"> </span>--publisher<span class="w"> </span>Microsoft.Azure.Extensions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--protected-settings<span class="w"> </span><span class="s2">&quot;{\&quot;fileUris\&quot;: [\&quot;https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/script.sh\&quot;],\&quot;commandToExecute\&quot;: \&quot;bash script.sh </span><span class="nv">$SCOPE</span><span class="s2"> </span><span class="nv">$PAT</span><span class="s2"> </span><span class="nv">$USER</span><span class="s2"> </span><span class="nv">$LABEL</span><span class="s2"> </span><span class="nv">$RGROUP</span><span class="s2">\&quot;}&quot;</span>
 </span></code></pre></div>
 <p>Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.</p>
 <p><img alt="" src="../media/2023-09-15_13-53-43.png" /></p>
 <h2 id="for-windows-self-hosted-runners">For Windows Self-hosted Runners<a class="headerlink" href="#for-windows-self-hosted-runners" title="Permanent link">&para;</a></h2>
 <p>TODO! Sorry, I haven't had time to test this yet.</p>
-<h3 id="verify-that-the-runner-is-registered">Verify that the runner is registered<a class="headerlink" href="#verify-that-the-runner-is-registered" title="Permanent link">&para;</a></h3>
+<h2 id="advanced-configuration-examples-for-the-vmss">Advanced configuration examples for the VMSS<a class="headerlink" href="#advanced-configuration-examples-for-the-vmss" title="Permanent link">&para;</a></h2>
+<h3 id="offboard-github-runner-upon-termination-eventsscale-down">Offboard Github runner upon termination events/scale-down<a class="headerlink" href="#offboard-github-runner-upon-termination-eventsscale-down" title="Permanent link">&para;</a></h3>
+<p>If you the Github runner instance to offboard itself from Github upon termination events/scale-down, you will need to enable termination notifications on the VMSS. This can be done with the following in the portal:</p>
+<p><img alt="Alt text" src="../media/step2-2.png" /></p>
+<p>Also the Terraform module has a variable for this:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span><span class="na">enable_termination_notifications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</span></code></pre></div>
+<h2 id="verify-that-the-runner-is-registered">Verify that the runner is registered<a class="headerlink" href="#verify-that-the-runner-is-registered" title="Permanent link">&para;</a></h2>
 <p>After the previous has been done, you should be able to verify within the organization or the repository that the runner is registered.</p>
 <p><img alt="" src="../media/2023-09-15_14-12-59.png" /></p>
 <p><a href="../step3/">Continue to step 3 - Testing the self hosted runner</a></p>
@@ -4155,7 +4205,7 @@ To register a PAT, go to "Settings" -&gt; "Developer settings" -&gt; "Personal a
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 29, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 5, 2024</span>
   </span>
 
     
