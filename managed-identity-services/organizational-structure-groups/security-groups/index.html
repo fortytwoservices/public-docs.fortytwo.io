@@ -3966,6 +3966,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Organizational structure as security groups
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3975,6 +3986,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-the-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use the groups
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4028,7 +4067,9 @@
 
 
 <h1 id="organizational-structure-as-security-groups">Organizational structure as security groups<a class="headerlink" href="#organizational-structure-as-security-groups" title="Permanent link">&para;</a></h1>
-<p>Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. These groups can either be granted permissions directly, such as permissions on a file share or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature <a href="https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of">Group membership in a dynamic group in Microsoft Entra ID</a>.</p>
+<p>Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as security groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. The groups are usually named <strong>org - Company - Top unit - Lower unit</strong> and similar, and can be found by a simple <strong>starts-with</strong> search. Please do not modify or delete these groups, as our service will modify them back or re-create them automatically, to reflect the current organization hierarchy.</p>
+<h2 id="how-to-use-the-groups">How to use the groups<a class="headerlink" href="#how-to-use-the-groups" title="Permanent link">&para;</a></h2>
+<p>These groups can either be granted permissions directly, such as permissions on a file share, SharePoint site or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature <a href="https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of">Group membership in a dynamic group in Microsoft Entra ID</a>.</p>
 <p>This means that if you have an existing Team, where you want to dynamically add users, you can convert the team to criteria based membership by following these steps:</p>
 <ol>
 <li>In the Entra or Azure portal, find the group and update the <strong>Membership type</strong> to <strong>Dynamic user</strong>, and click <strong>Add dynamic query</strong></li>
@@ -4042,7 +4083,9 @@
 <p><strong>Add members from three different groups</strong></p>
 <p><code>user.memberof -any (group.objectId -in ['0ec82ade-dc40-4ad9-bf0d-0993adc231aa','c240c88b-6554-4158-92ee-fdef974c3dc4','c240c88b-6554-4158-92ee-fdef974c3dc4'])</code></p>
 <p>There are <a href="https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of#preview-limitations">quite a few limitations</a> to the feature currently. Most noteably it is not possible to use other operations, such as <strong>-all</strong> (in order to only add members that are a member of multiple groups) and it is not possible to combine with other filters, such as <strong>user.jobTitle -ne 'Consultant'</strong>.</p>
-<p>If you want to add some manual users as well as the dynamic ones, you can create an additional group with the manual users and add the object id of that group to the filter. As an example, you can have the Team <strong>HR Department</strong>, where you have our dynamic group <strong>org - Company - HR</strong> as a memberof, but also the group <strong>HR Department - Manual users</strong>.</p>
+<p><strong>I want a dynamic Team, but also <em>one</em> ekstra person</strong></p>
+<p>Due to the limitation of combining the memberOf query with other queries, what you need to do if you want to add some manual users as well as the dynamic ones, you can create an additional group with the manual users and add the object id of that group to the filter. </p>
+<p>As an example, you can have the Team <strong>HR Department</strong>, where you have our dynamic group <strong>org - Company - HR</strong> as a memberof, but also the group <strong>HR Department - Manual users</strong>, where you put the manually managed ones.</p>
 <p><code>user.memberof -any (group.objectId -in ['ObjectID of org - Company - HR','ObjectID of HR Department - Manual users'])</code></p>
 
 
