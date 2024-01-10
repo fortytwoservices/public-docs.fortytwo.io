@@ -50,6 +50,7 @@ plugins:
   - tags
   - search
   - material-plausible
+  - awesome-pages
 markdown_extensions:
   - toc:
       permalink: true
