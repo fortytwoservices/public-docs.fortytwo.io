@@ -1,6 +1,10 @@
 # Organizational structure as security groups
 
-Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. These groups can either be granted permissions directly, such as permissions on a file share or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature [Group membership in a dynamic group in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of).
+Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as security groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. The groups are usually named **org - Company - Top unit - Lower unit** and similar, and can be found by a simple **starts-with** search. Please do not modify or delete these groups, as our service will modify them back or re-create them automatically, to reflect the current organization hierarchy.
+
+## How to use the groups
+
+These groups can either be granted permissions directly, such as permissions on a file share, SharePoint site or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature [Group membership in a dynamic group in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of).
 
 This means that if you have an existing Team, where you want to dynamically add users, you can convert the team to criteria based membership by following these steps:
 
@@ -20,6 +24,10 @@ This means that if you have an existing Team, where you want to dynamically add 
 
 There are [quite a few limitations](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of#preview-limitations) to the feature currently. Most noteably it is not possible to use other operations, such as **-all** (in order to only add members that are a member of multiple groups) and it is not possible to combine with other filters, such as **user.jobTitle -ne 'Consultant'**.
 
-If you want to add some manual users as well as the dynamic ones, you can create an additional group with the manual users and add the object id of that group to the filter. As an example, you can have the Team **HR Department**, where you have our dynamic group **org - Company - HR** as a memberof, but also the group **HR Department - Manual users**.
+**I want a dynamic Team, but also *one* ekstra person**
+
+Due to the limitation of combining the memberOf query with other queries, what you need to do if you want to add some manual users as well as the dynamic ones, you can create an additional group with the manual users and add the object id of that group to the filter. 
+
+As an example, you can have the Team **HR Department**, where you have our dynamic group **org - Company - HR** as a memberof, but also the group **HR Department - Manual users**, where you put the manually managed ones.
 
 ```user.memberof -any (group.objectId -in ['ObjectID of org - Company - HR','ObjectID of HR Department - Manual users'])```
