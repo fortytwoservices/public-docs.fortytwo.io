@@ -1,6 +1,6 @@
-# Organization structure groups
+# Organizational structure as security groups
 
-Through our "organizational structure as security groups"-service, we generate each organizational unit as groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. These groups can either be granted permissions directly, such as permissions on a file share or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature [Group membership in a dynamic group in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of).
+Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. These groups can either be granted permissions directly, such as permissions on a file share or assigned an enterprise app, or they can be added as member of other groups. Please note that there are very few features in Entra ID that supports nested groups. Instead of nested groups, what you can do is to use the feature [Group membership in a dynamic group in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of).
 
 This means that if you have an existing Team, where you want to dynamically add users, you can convert the team to criteria based membership by following these steps:
 
