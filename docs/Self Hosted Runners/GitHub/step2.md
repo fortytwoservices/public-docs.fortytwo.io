@@ -67,11 +67,32 @@ Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal o
 
 ## For Windows Self-hosted Runners
 
-TODO! Sorry, I haven't had time to test this yet.
+To configure the VMSS to auto-register, use the below new method.
+
+### Configure the VMSS to auto register for Windows
+
+Run the following with az-cli under a powershell terminal to configure an extension on the VMSS that will auto register the runner with Github. Replace the variables with your correct information.
+
+```powershell
+$VMSS=vmss-test-noeast    # Name of the VMSS.
+$RG=rg-test-noeast        # Resource group for the VMSS.
+$PAT=ghp_xxx              # The PAT generated in the previous steps.
+$SCOPE=amesfortytwo       # Can be spesified as either the organization, the owner/repository, or enterprises/enterprisename.
+$USER=runner              # Username for the runner created on the VMSS.
+$USERPASSWORD=12Passw0rd_ # Password for the runner user created on the VMSS.
+$LABEL=label1,label2      # (Optional) Comma separated list of labels for the runner.
+az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
+    --version 2.1 --publisher Microsoft.Azure.Extensions \
+    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/amestofortytwo/terraform-azurerm-selfhostedrunnervmss/main/scripts/invoke-ghrunner.ps1\"],\"commandToExecute\": \"powershell -ExecutionPolicy Unrestricted -Command .\\invoke-ghrunner.ps1 -runnerscope $SCOPE -githubpat $PAT -user $USER -userpassword $USERPASSWORD -label $LABEL\"}"
+```
+
+Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
+
+![](media/2023-09-15_13-53-43.png)
 
 ## Advanced configuration examples for the VMSS
 
-### Offboard Github runner upon termination events/scale-down
+### Offboard Github runner upon termination events/scale-down (Linux)
 
 If you the Github runner instance to offboard itself from Github upon termination events/scale-down, you will need to enable termination notifications on the VMSS. This can be done with the following in the portal:
 
