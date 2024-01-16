@@ -33,3 +33,27 @@ Follow the [Microsoft documentation](https://learn.microsoft.com/en-us/entra/ide
 
 ### Provisioning to Entra ID (Cloud only)
 
+1. Sign into the [Entra Portal](https://entra.microsoft.com/) as a Global Administrator
+2. Under **Enterprise applications** click **New application**
+
+![](media/20240116123957.png)
+
+3. Search for **API-Driven Provisioning** and select the one named **API-driven provisioning to Microsoft Entra ID**
+
+![](media/20240116124036.png)
+
+4. Give the application a logical name, such as **Contoso HR Inbound Provisioning** and click **Create**
+
+![](media/20240116124144.png)
+
+5. When the application has been created, go to **Provisioning** in the left menu and click **Get started**
+
+![](media/20240116124330.png)
+
+6. Switch **Provisioning mode** to **Automatic** and click **Save**
+
+![](media/20240116124436.png)
+
+7. Go back to the **Overview**, still under *Provisioning*.
+
+
