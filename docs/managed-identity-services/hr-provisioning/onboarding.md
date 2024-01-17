@@ -1,4 +1,4 @@
-# Onboarding HR Provisioning
+# Onboarding
 
 Thank you for your interest in our HR Provisioning service. In order to onboard to the service, the following steps are required:
 
