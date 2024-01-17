@@ -1,4 +1,4 @@
-# Service Description: Fortytwo HR Provisioning
+# Service description
 
 At Fortytwo, we understand the critical importance of maintaining seamless integration between your Human Resources (HR) system and Entra ID for efficient user account management. Our managed service, *Fortytwo HR Provisioning*, is designed to streamline and automate the synchronization of HR data with the Entra ID Inbound Provisioning API. This ensures that your user accounts remain up-to-date and aligned with HR processes, facilitating a smooth joiner-mover-leaver lifecycle process.
 

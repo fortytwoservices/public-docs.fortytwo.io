@@ -1,4 +1,4 @@
-# Organizational structure as security groups
+# How to use
 
 Through our "organizational structure as security groups"-service, we generate each element in the organizational hierarchy as security groups in Entra ID, with the option of enabling write-back to on-premises Active Directory. The groups are usually named **org - Company - Top unit - Lower unit** and similar, and can be found by a simple **starts-with** search. Please do not modify or delete these groups, as our service will modify them back or re-create them automatically, to reflect the current organization hierarchy.
 
