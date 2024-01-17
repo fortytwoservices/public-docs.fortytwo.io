@@ -2,7 +2,7 @@
 
 ## Required HR configuration
 
-In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access. Please provide this to your Fortytwo contact during the initial phase of implementation.
+In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access, to access the [this API](https://api.dottie.no/swagger/index.html). Please provide this to your Fortytwo contact during the initial phase of implementation.
 
 ## Schema used for attribute mapping
 
