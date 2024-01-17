@@ -1,6 +1,6 @@
 # Home
 
-Want to know who we are? [Read up on our website](https://www.amestofortytwo.com).
+Want to know who we are? [Read up on our website](https://www.fortytwo.io).
 
 ## What is this site about?
 
