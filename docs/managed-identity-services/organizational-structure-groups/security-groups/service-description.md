@@ -6,10 +6,10 @@ At Fortytwo, we understand the critical importance of maintaining seamless integ
 
 ## Key Features
 
-- **Data Sync:** This service ensures synchronization of the organizational structure from your HR system to Active Directory and Entra ID security groups, reducing manual efforts and minimizing the risk of discrepancies.
-- **Seamless Integration:** Our service seamlessly integrates with Entra ID, establishing a robust connection that guarantees the accuracy and consistency of user account information.
-- **Improved Joiner-Mover-Leaver Process:** WHen a user joins or moves withing your organization, permissions are automatically updated using the created security groups. This results in efficient onboarding, relocation, and offboarding procedures. 
-- **Scalability and Reliability:** The service is designed to scale with your organization's growth and is built on a reliable infrastructure, ensuring continuous operation and data integrity.
+- **Data sync:** This service ensures synchronization of the organizational structure from your HR system to Active Directory and Entra ID security groups, reducing manual efforts and minimizing the risk of discrepancies.
+- **Seamless integration:** Our service seamlessly integrates with Entra ID, establishing a robust connection that guarantees the accuracy and consistency of user account information.
+- **Improved Joiner-Mover-Leaver process:** WHen a user joins or moves withing your organization, permissions are automatically updated using the created security groups. This results in efficient onboarding, relocation, and offboarding procedures. 
+- **Scalability and reliability:** The service is designed to scale with your organization's growth and is built on a reliable infrastructure, ensuring continuous operation and data integrity.
 
 ## Benefits
 
@@ -17,7 +17,7 @@ At Fortytwo, we understand the critical importance of maintaining seamless integ
 - **Efficiency:** Eliminate manual data entry and reduce the risk of errors by automating the provisioning process.
 - **Reduced IT cost:** Eliminate manual processes for IT.
 - **Compliance:** Ensure that users loose access to services they are no longer entitled to when leaving or moving within the organization.
-- **User Experience:** Users are automatically assigned applications and permissions relevant for them.
+- **User experience:** Users are automatically assigned applications and permissions relevant for them.
 
 The service empowers your organization with a reliable and efficient solution for maintaining synchronization between your HR system and Entra ID, enabling you to focus on strategic HR initiatives while ensuring data accuracy and compliance. Experience the next level of HR and identity management integration with Fortytwo.
 
@@ -40,3 +40,9 @@ The service empowers your organization with a reliable and efficient solution fo
 | Share best practices                   | Fortytwo    |
 | Report issues                          | Customer    |
 | Inform end users about data processing | Customer    |
+
+## Pricing
+
+**200 USD** per month
+
+Billing can be done through [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/amestofortytwoas1653635920536.managed_identity_services?tab=PlansAndPrice) or directly.
