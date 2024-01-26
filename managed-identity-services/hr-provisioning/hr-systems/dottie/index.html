@@ -4168,31 +4168,27 @@
 <h2 id="required-hr-configuration">Required HR configuration<a class="headerlink" href="#required-hr-configuration" title="Permanent link">&para;</a></h2>
 <p>In order for Fortytwo to connect to the HR system, we require a <strong>Client ID</strong> and <strong>Client secret</strong> configured under API access, to access <a href="https://api.dottie.no/swagger/index.html">this API</a>. Please provide this to your Fortytwo contact during the initial phase of implementation.</p>
 <h2 id="how-to-create-client-id-and-secret-in-dottie">How to create Client ID and Secret in Dottie<a class="headerlink" href="#how-to-create-client-id-and-secret-in-dottie" title="Permanent link">&para;</a></h2>
-<ol>
+<ul>
 <li>Go to Settings -&gt; Integrations on <a href="https://app.dottie.no/settings/integrations/api">this url</a></li>
-<li>
-<p>Click "New API User".
-<img alt="Select New API User" src="../../media/dottie_api_1.png" /></p>
-</li>
-<li>
-<p>Click "Create new".</p>
-</li>
-<li>
-<p>Take a note of "Client ID" and "API Key" and click "Close".
-<img alt="Note down keys" src="../../media/dottie_api_2.png" /></p>
-</li>
-<li>
-<p>Now, Edit the user you just created. (You might need to refresh the browser to see it)
-<img alt="Edit newly created user" src="../../media/dottie_api_3.png" /></p>
-</li>
-<li>
-<p>Add the role "Toppleder/Top Leader". and click "Close" and "Close".
-<img alt="Agg topleader role" src="../../media/dottie_api_4.png" /></p>
-</li>
-<li>
-<p>Done. Give the keys to your Fortytwo contact person.</p>
-</li>
-</ol>
+<li>Click "New API User".</li>
+</ul>
+<p><img alt="Select New API User" src="../../media/dottie_api_1.png" /></p>
+<ul>
+<li>Click "Create new".</li>
+<li>Take a note of "Client ID" and "API Key" and click "Close".</li>
+</ul>
+<p><img alt="Note down keys" src="../../media/dottie_api_2.png" /></p>
+<ul>
+<li>Now, Edit the user you just created. (You might need to refresh the browser to see it)</li>
+</ul>
+<p><img alt="Edit newly created user" src="../../media/dottie_api_3.png" /></p>
+<ul>
+<li>Add the role "Toppleder/Top Leader". and click "Close" and "Close".</li>
+</ul>
+<p><img alt="Agg topleader role" src="../../media/dottie_api_4.png" /></p>
+<ul>
+<li>Done. Give the keys to your Fortytwo contact person.</li>
+</ul>
 <h2 id="schema-used-for-attribute-mapping">Schema used for attribute mapping<a class="headerlink" href="#schema-used-for-attribute-mapping" title="Permanent link">&para;</a></h2>
 <p>The service sendes each employee as a standard SCIM representation to the Entra ID Inbound Provisioning API. The below is a full example of the payload we send, and can be used to define attribute mapping in the customer tenant:</p>
 <div class="language-JSON highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
