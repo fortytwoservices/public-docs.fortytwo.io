@@ -2,7 +2,30 @@
 
 ## Required HR configuration
 
-In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access, to access the [this API](https://api.dottie.no/swagger/index.html). Please provide this to your Fortytwo contact during the initial phase of implementation.
+In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access, to access [this API](https://api.dottie.no/swagger/index.html). Please provide this to your Fortytwo contact during the initial phase of implementation.
+
+## How to create Client ID and Secret in Dottie
+
+1. Go to Settings -> Integrations on [this url](https://app.dottie.no/settings/integrations/api)
+2. Click "New API User".
+
+![Select New API User](../media/dottie_api_1.png)
+
+3. Click "Create new".
+
+4. Take a note of "Client ID" and "API Key" and click "Close".
+
+![Note down keys](../media/dottie_api_2.png)
+
+5. Now, Edit the user you just created. (You might need to refresh the browser to see it)
+
+![Edit newly created user](../media/dottie_api_3.png)
+
+6. Add the role "Toppleder/Top Leader". and click "Close" and "Close".
+
+![Agg topleader role](../media/dottie_api_4.png)
+
+7. Done. Give the keys to your Fortytwo contact person.
 
 ## Schema used for attribute mapping
 
