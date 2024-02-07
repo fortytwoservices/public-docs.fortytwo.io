@@ -20,7 +20,7 @@ You can enable private access to Azure resources through either [service endpoin
 
 You can connect your self hosted runners to on-premises, other landing zones or privately to other cloud services through several methods. An example cloud by Virtual WAN, but of course network peering, VPN gateways and other methods are also available:
 
-![](media/20240207152412.png)
+![](media/20240207153029.png)
 
 ## Can you see my data?
 
