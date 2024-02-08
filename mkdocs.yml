@@ -51,9 +51,9 @@ plugins:
   - awesome-pages
   - redirects:
       redirect_maps:
-        'Self Hosted Runners/GitHub/index.md': 'marketplace-offerings/self-hosted-runners/github/'
-        'Self Hosted Runners/Azure DevOps/index.md': 'marketplace-offerings/self-hosted-runners/ado/'
-        'Self Hosted Runners/index.md': 'marketplace-offerings/self-hosted-runners/'
+        'Self%20Hosted%20Runners/GitHub/index.md': 'marketplace-offerings/self-hosted-runners/github/'
+        'Self%20Hosted%20Runners/Azure%20DevOps/index.md': 'marketplace-offerings/self-hosted-runners/ado/'
+        'Self%20Hosted%20Runners/index.md': 'marketplace-offerings/self-hosted-runners/'
 markdown_extensions:
   - toc:
       permalink: true

@@ -38,5 +38,5 @@ We recommend using a Virtual Machine Scale Set because it can continuously grab 
 
 Follow one of these:
 
-- [Azure DevOps](Azure%20DevOps/index.md)
-- [GitHub](GitHub/index.md)
+- [Azure DevOps](ado/index.md)
+- [GitHub](github/index.md)
