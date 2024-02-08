@@ -33,4 +33,5 @@ jobs:
       - run: pip install pillow cairosvg
       - run: pip install material-plausible-plugin
       - run: pip install mkdocs-awesome-pages-plugin
+      - run: pip install mkdocs-redirects
       - run: mkdocs gh-deploy --force
