@@ -1,6 +1,7 @@
 # Shared Teams channel
 
-Hello there! If you have gotten the link to this guide shared with you, it means that Amesto Fortytwo AS have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
+Hello there! If you have gotten the link to this guide shared with you, it means that Fortytwo have already agreed to set up a shared channel between our organizations, and we've prepared the setup on our side.
+
 This guide is for you to set up and verify the needed configuration in your tenant to be able to join the shared channel.
 
 ## Configure cross-tenant access settings in Entra ID
@@ -19,8 +20,8 @@ Under "Identity" in the menu, select "External Identities", and then select "Cro
 ![Picture of "Cross-tenant access settings"](media/shared_teams_channel.png)
 
 Select the tab "Organizational settings", and then click "Add organization".
-On the "Add organization" pane, type the full domain name for our organization "amesto.com" and press "Enter".
-It should populate the field "Name" with "Amesto", and then click the button for "Add".
+On the "Add organization" pane, type the full domain name for our organization "fortytwo.io" and press "Enter".
+It should populate the field "Name" with "Fortytwo", and then click the button for "Add".
 
 ![Picture of "Add organization" pane](media/shared_teams_channel-1.png)
 
