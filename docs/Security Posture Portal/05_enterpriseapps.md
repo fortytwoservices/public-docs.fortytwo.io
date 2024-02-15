@@ -1,8 +1,8 @@
 # Enterprise applications installed in your tenant
 
-As part of onboarding to use our portal Amesto Fortytwo install two Enterprise applications in your tenant. The following page document how and what they are used for.
+As part of onboarding to use our portal Fortytwo install two Enterprise applications in your tenant. The following page document how and what they are used for.
 
-## Amesto Fortytwo Portal app
+## Fortytwo Portal app
 
 To enable seamless single sign-on access to the portal for you and fellow users within your organization, the prerequisite is this application. This dedicated app serves as the cornerstone of authentication for the portal and facilitates all role assignments.
 
@@ -16,7 +16,7 @@ The following roles are available in the app.
 | Security Posture Admin    | Currently same as Security Posture Operator, but in the future, more administrative tasks will be available to this role. Give youself this role.     |
 | Security Posture Reader    | Provides a read only access to the security posture feature in the portal     |
 
-## Amesto Fortytwo - Security Posture Polic Engine app
+## Fortytwo - Security Posture Polic Engine app
 
 This is the primary application responsible for retrieving and processing all configuration data. It interacts with the following systems through the Microsoft Graph API, utilizing **READ** permissions.
 

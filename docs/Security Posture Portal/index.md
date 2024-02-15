@@ -1,14 +1,14 @@
-# Amesto Fortytwo Security Posture portal for Microsoft 365
+# Fortytwo Security Posture portal for Microsoft 365
 
 ## Intro
 
-[More commercial information can be read here](https://www.amestofortytwo.com/portal-by-fortytwo)
+[More commercial information can be read here](https://www.fortytwo.io/portal-by-fortytwo)
 
 A solution that monitors your Microsoft 365 configuration and compares it to best practices.
 
 In an ever-evolving landscape of threats, making sure your Microsoft 365 environment is as secure as possible while also maintaining usability is difficult.
 
-Introducing Amesto Fortytwo Security Posture for Microsoft 365, a solution that continuously monitors your Microsoft 365 configuration and compares it to best practices.
+Introducing Fortytwo Security Posture for Microsoft 365, a solution that continuously monitors your Microsoft 365 configuration and compares it to best practices.
 
 All your Microsoft 365 configuration with possible improvements will be reported with an explanation of why we check for this, an explanation on the consequence of following that best practice is, and a detailed guide on how to configure your environment in a best practice manner.
 
@@ -37,4 +37,4 @@ The portal is available through [Microsoft Azure Marketplace](https://azuremarke
 
 ## Public Roadmap
 
-Our portal is under continuous development and we regularly update our [Public Roadmap](https://github.com/orgs/amestofortytwo/projects/12), which can be found here. If you have any suggestions, ideas, or feedback, we would greatly appreciate hearing from you. Please reach out to us at [Assistance email](mailto:assistance@amestofortytwo.com).
+Our portal is under continuous development and we regularly update our [Public Roadmap](https://github.com/orgs/amestofortytwo/projects/12), which can be found here. If you have any suggestions, ideas, or feedback, we would greatly appreciate hearing from you. Please reach out to us at [Assistance email](mailto:assistance@fortytwo.io).

@@ -60,8 +60,8 @@ Also worth noting, in some situations the ideal flow is for *all changes* that p
 App registration creation and maintenance can be divided into these categories:
 
 - Defined and owned by company IaC
-- Defined and owned by Amesto Fortytwo (managed service provider) IaC
-- Manually created and / or maintained by company or Amesto Fortytwo
+- Defined and owned by Fortytwo (managed service provider) IaC
+- Manually created and / or maintained by company or Fortytwo
 
 App registrations *should* only be defined by IaC in a test environment (exceptions should be few).
 
@@ -70,7 +70,7 @@ App registrations *should* only be defined by IaC in a test environment (excepti
 This list of app registrations will include applications developed (or implemented) by the company:
 
 - companyApp - web app - test
-- JWT.ms (owned by Amesto Fortytwo IaC, for User Journey testing and token issuance)
+- JWT.ms (owned by Fortytwo IaC, for User Journey testing and token issuance)
 
 #### App registrations with secrets
 

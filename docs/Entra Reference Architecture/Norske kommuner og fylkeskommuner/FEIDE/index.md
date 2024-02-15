@@ -1,7 +1,7 @@
 # FEIDE + Microsoft Entra ID
 
 !!! tip "FEIDE-katalog som en tjeneste"
-    Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, enten kjørende i Azure hos oss eller i Azure hos deg. Vi sørger da for at katalogen alltid er operativ og populert med korrekte data. Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.
+    Fortytwo tilbyr FEIDE-katalog som en tjeneste, enten kjørende i Azure hos oss eller i Azure hos deg. Vi sørger da for at katalogen alltid er operativ og populert med korrekte data. Ta kontakt med <a href="mailto:hello@fortytwo.io">hello@fortytwo.io</a> for mer informasjon og pris.
 
 Alle kommuner og fylkeskommuner må tilby sine ansatte og elever en måte å logge på FEIDE på, for å kunne få tilgang til løsninger som kun har integrasjon mot nettopp FEIDE for pålogging. FEIDE består i hovedsak av følgende komponenter, hvor begrepet *Vertsorganisasjon* benyttes om kommunen / fylkeskommunen:
 
@@ -58,13 +58,13 @@ Designet legger opp til at det ikke settes noe passord på brukerne i FEIDE, og 
 
 ## FEIDE som en tjeneste
 
-Vi i Amesto Fortytwo tilbyr FEIDE-katalog som en tjeneste, som innebærer av vi sørger for at:
+Vi i Fortytwo tilbyr FEIDE-katalog som en tjeneste, som innebærer av vi sørger for at:
 
 - Katalogen synkroniseres med skoleadministrativt system
 - Katalogen alltid er operativ, sikret og monitorert
 - Alt av sertifikater, skjema-oppdatering og liknende håndteres
-- Migrering fra eksisterende katalog til ny Amesto Fortytwo managed FEIDE-katalog
+- Migrering fra eksisterende katalog til ny Fortytwo managed FEIDE-katalog
 
 ![FEIDE, som en tjeneste, designskisse](media/20231116122214.png)
 
-Ta kontakt med <a href="mailto:hello@amestofortytwo.com">hello@amestofortytwo.com</a> for mer informasjon og pris.
+Ta kontakt med <a href="mailto:hello@fortytwo.io">hello@fortytwo.io</a> for mer informasjon og pris.

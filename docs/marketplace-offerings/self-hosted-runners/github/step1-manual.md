@@ -23,7 +23,7 @@ Search for **Virtual Machine Scale Set**, click on the result and click **Create
     - **Orchestration mode** - Configure to **Uniform**, as we will be running only a single image and runner type
     - **Security type** - Standard is the only supported for our image currently
 - **Instance details**
-    - **Image** - Locate the Amesto Fortytwo **Self Hosted Runner for Azure GitHub** image and select whether you want an Ubuntu or Windows based runner:
+    - **Image** - Locate the Fortytwo **Self Hosted Runner for Azure GitHub** image and select whether you want an Ubuntu or Windows based runner:
 
     ![](media/20230914092637.png)
 

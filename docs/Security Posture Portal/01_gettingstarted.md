@@ -27,7 +27,7 @@ This is an detailed description of how to setup our Security Posture Portal from
 1. Configure your tenant environment.
     - Choose which Azure subscription you would like to add the app to.
     - Choose which Resource group the app should live in. Choose "New" if you dont have any.
-    - Give the app an appropiate name ``Amesto Fortytwo Security Posture Portal``
+    - Give the app an appropiate name ``Fortytwo Security Posture Portal``
     - Choose ``On`` on Recurring billing.
 
 ![Choose subscription and resource group](./media/setup_step4.png)
@@ -40,7 +40,7 @@ This is an detailed description of how to setup our Security Posture Portal from
 
 1. Approve/Consent our Single Signon Application. This is to that you can access the portal with your own Microsoft 365 account.
 
-2. Give our enterprise app ``Amesto Fortytwo Portal`` read permissions to your tenant.
+2. Give our enterprise app ``Fortytwo Portal`` read permissions to your tenant.
 
 !!! info
     This app is required for us to read the configuration in your tenant.
@@ -59,4 +59,4 @@ Follow the guide on the onboarding steps.
 
 !!! note
 
-    If you have any issues contact us on assistance@amestofortytwo.com
+    If you have any issues contact us on assistance@fortytwo.io

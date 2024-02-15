@@ -2,7 +2,7 @@
 
 !!! note
 
-    If you have any issues contact us on assistance@amestofortytwo.com
+    If you have any issues contact us on assistance@fortytwo.io
 
 ## Change the billing subscription
 

@@ -29,7 +29,7 @@ For å sikre at nødtilgangskontoen alltid er tilgjengelig i kritiske situasjone
 
     * Reduserer sjansen for at feilkonfigurasjon av Conditional Access policies ødelegger nødtilgangsløsningen
 
-For å ytterligere sikre Conditional Access-miljøet og minimere risikoen for utilsiktet blokkering av tilgang, gir man samtykke til Amesto Fortytwo sin nødtilgangsapp. Denne appen får kun tilgang til å endre Conditional Access policies, og dens rolle begrenses til kun å håndtere disse spesifikke policyendringene. Dette gir et ekstra sikkerhetslag ved å tillate rask tilgang i tilfelle utilsiktet selvforskyldt utestengelse fra systemet på grunn av feilkonfigurasjon av Conditional Access. Appen sikrer at kun nødvendige endringer kan utføres, og at de gjøres på en kontrollert måte for å gjenopprette nødvendig tilgang uten å kompromittere systemets sikkerhet.
+For å ytterligere sikre Conditional Access-miljøet og minimere risikoen for utilsiktet blokkering av tilgang, gir man samtykke til Fortytwo sin nødtilgangsapp. Denne appen får kun tilgang til å endre Conditional Access policies, og dens rolle begrenses til kun å håndtere disse spesifikke policyendringene. Dette gir et ekstra sikkerhetslag ved å tillate rask tilgang i tilfelle utilsiktet selvforskyldt utestengelse fra systemet på grunn av feilkonfigurasjon av Conditional Access. Appen sikrer at kun nødvendige endringer kan utføres, og at de gjøres på en kontrollert måte for å gjenopprette nødvendig tilgang uten å kompromittere systemets sikkerhet.
 
 !!! success "Designvalg SEC.06"
     Som ekstra tiltak for å unngå uhell med Conditional Access gjøres et consent av [Fortytwo sin nødtilgangsapp](https://login.microsoftonline.com/common/adminconsent?client_id=f5df81e5-34ae-43ca-bc87-3b254e42a4b0).

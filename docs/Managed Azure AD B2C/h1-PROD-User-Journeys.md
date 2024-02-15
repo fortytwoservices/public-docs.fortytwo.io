@@ -21,7 +21,7 @@ User Journeys are flexible and can be customized to interact with APIs, they can
 
 User Journeys does not have to be advanced, nor complex, and best practice is to keep them as simple as possible, while keeping the user experience in mind.
 
-The Amesto Fortytwo Managed B2C offering leverages custom policies as the building blocks for our User Journeys.  
+The Fortytwo Managed B2C offering leverages custom policies as the building blocks for our User Journeys.  
 
 When naming a User Journey it is good practice to use descriptive names, taking into consideration the flow, and potentially also language support.
 

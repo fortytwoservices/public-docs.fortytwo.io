@@ -6,7 +6,7 @@
 !!! note "Ikke ferdig"
     Denne dokumentasjonen er ikke ferdig, og bør ansees som work in progress
 
-Velkommen til Amesto Fortytwo's referansearkitektur for Identity and Access Management (IAM) / Identity Governance and Administration (IGA) for norske kommuner og fylkeskommuner. Denne siden er utformet som en veiledning og en blueprint som kan benyttes for å styrke og sikre digitale identiteter og tilgang til informasjonssystemer i offentlige enheter og baserer seg på bruk av Microsoft Entra ID som kjernekomponent.
+Velkommen til Fortytwo's referansearkitektur for Identity and Access Management (IAM) / Identity Governance and Administration (IGA) for norske kommuner og fylkeskommuner. Denne siden er utformet som en veiledning og en blueprint som kan benyttes for å styrke og sikre digitale identiteter og tilgang til informasjonssystemer i offentlige enheter og baserer seg på bruk av Microsoft Entra ID som kjernekomponent.
 
 Helt overordnet og oppsummert er arkitekturen lagt opp til å benytte Entra ID fullt ut, med valgfritt Active Directory med brukere og grupper provisjonert via Entra ID. Det er ingen andre IAM-produkter involvert i designet.
 

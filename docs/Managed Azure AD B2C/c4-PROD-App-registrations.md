@@ -72,7 +72,7 @@ App registrations *must* be defined by IaC in a production environment (except o
 This list of app registrations will include applications developed (or implemented) by the company:
 
 - companyApp - web app - prod
-- JWT.ms (owned by Amesto Fortytwo IaC, for User Journey testing and token issuance)
+- JWT.ms (owned by Fortytwo IaC, for User Journey testing and token issuance)
 
 #### App registrations with secrets
 

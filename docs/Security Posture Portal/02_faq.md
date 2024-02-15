@@ -26,7 +26,7 @@ Yes, we have no lock-in. You can easily cancel the subscription in your Microsof
 
 ## Where can I read Terms and Conditions?
 
-You can read terms and conditions [here](https://www.amestofortytwo.com/terms-and-conditions)
+You can read terms and conditions [here](https://www.fortytwo.io/terms-and-conditions)
 
 ## Where is my data stored?
 
@@ -34,8 +34,8 @@ We store policy results in a database in Azure Western Europe. All access are co
 
 ## I want to re-sell this to my customers
 
-Sure! We have a partner program. [Send us an email](mailto:<hello@amestofortytwo.com>)
+Sure! We have a partner program. [Send us an email](mailto:<hello@fortytwo.io>)
 
 ## I want to see the onboarding page again, where can I find it?
 
-The onboarding page are available [here](https://portal.amestofortytwo.com/onboarding-msp)
+The onboarding page are available [here](https://portal.fortytwo.io/onboarding-msp)

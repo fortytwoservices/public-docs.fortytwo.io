@@ -23,7 +23,7 @@ Here lies the documentation for the Managed Azure AD B2C solution that is availa
 
 ## The intent
 
-The intention is to improve the understanding of the Microsoft Identity Platform and the Identity Experience Framework, which we use as our building blocks for the Amesto Fortytwo Managed AD B2C Azure Marketplace offering.
+The intention is to improve the understanding of the Microsoft Identity Platform and the Identity Experience Framework, which we use as our building blocks for the Fortytwo Managed AD B2C Azure Marketplace offering.
 
 ## Modern authentication
 
@@ -64,4 +64,4 @@ The tenant specific configuration is required for users that are about to integr
 
 Go to [Customer Identity Access Management and the Identity Experience Framework](./a-CIAM-IEF-introduction.md) and start the Journey of making your application a part of the new Identity Platform.
 
-If you do not already have a B2C tenant or simply wish to try out our offering, go to [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/amestofortytwoas1653635920536.b2c?tab=overview), select **Get It Now**, configure delegation details and send us an email at helloATamestofortytwo.com and we will provision you a complete B2C environment using our pipelines.
+If you do not already have a B2C tenant or simply wish to try out our offering, go to [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/amestofortytwoas1653635920536.b2c?tab=overview), select **Get It Now**, configure delegation details and send us an email at helloATfortytwo.io and we will provision you a complete B2C environment using our pipelines.

@@ -13,9 +13,9 @@ To cancel your subscription of the portal is very easy and are done through your
 
 !!! warning "Remember to delete apps"
 
-    Both Enterprise apps, **Amesto Fortytwo Portal** and **Amesto Fortytwo - Security Posture Polic Engine** are _not_ deleted automatically and needs to be manually deleted from your tenant.
+    Both Enterprise apps, **Fortytwo Portal** and **Fortytwo - Security Posture Polic Engine** are _not_ deleted automatically and needs to be manually deleted from your tenant.
     Read how to delete and enterprise application [here](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/delete-application-portal?tabs=http&pivots=portal)
 
 !!! note
 
-    If you have any issues contact us on assistance@amestofortytwo.com .
+    If you have any issues contact us on assistance@fortytwo.io .

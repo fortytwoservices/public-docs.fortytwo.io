@@ -76,7 +76,7 @@ markdown_extensions:
 extra:
   analytics:
     provider: plausible
-    domain: docs.byfortytwo.com
+    domain: docs.fortytwo.io
     feedback:
       title: Was this page helpful?
       ratings:
@@ -97,4 +97,4 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/amestofortytwo
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/amesto-fortytwo
+      link: https://www.linkedin.com/company/fortytwobyamesto

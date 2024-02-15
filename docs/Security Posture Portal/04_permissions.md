@@ -4,7 +4,7 @@ To manage access to the portal, we utilize app role assignments in Entra ID. By 
 
 1. Go to the [Enterprise applications blade](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview) in the Entra portal.
 
-2. Find the application named **Amesto Fortytwo Portal**.
+2. Find the application named **Fortytwo Portal**.
 
 3. In the application pane, find **Users and groups** and click **+ Add user/group**
 

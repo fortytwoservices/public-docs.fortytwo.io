@@ -31,20 +31,20 @@ Our organization should appear in the organizations list. At this point, all acc
 
 Select the "Outbound access" link for our organization.
 
-![Picture of "Cross-tenant access settings"](media/shared_teams_channel-2.png)
+![](media/shared_teams_channel-2.png)
 
 On the "B2B direct connect" tab, click the button for "Customize settings".
 On the "External users and groups" tab, choose "Allow access" and set "Applies to" to a group or spesific users, or to "All &lt;org.name&gt; users" if you allow all users in your organization to be invited to shared channels.
 
-![Picture of "Outbound access settings - Amesto"](media/shared_teams_channel-3.png)
+![](media/shared_teams_channel-3.png)
 
 On the "External applications" tab, choose "Allow access" and "Select external applications". Click "Add Microsoft applications".
 
-![Picture of "Outbound access settings - Amesto"](media/shared_teams_channel-4.png)
+![](media/shared_teams_channel-4.png)
 
 Select the "Office 365" application, and then click the button "Select".
 
-![Picture of "Outbound access settings - Amesto"](media/shared_teams_channel-5.png)
+![](media/shared_teams_channel-5.png)
 
 Click the button "Save", choose "Yes" to confirm, and close the "Outbound access settings" blade.
 

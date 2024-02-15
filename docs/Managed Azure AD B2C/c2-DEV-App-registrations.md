@@ -44,8 +44,8 @@ Our goal should be to enable developers, rather build guard rails than motes.
 App registration creation and maintenance can be divided into these categories:
 
 - Defined and owned by company IaC
-- Defined and owned by Amesto Fortytwo (managed service provider) IaC
-- Manually created and / or maintained by company or Amesto Fortytwo
+- Defined and owned by Fortytwo (managed service provider) IaC
+- Manually created and / or maintained by company or Fortytwo
 
 In a development environment it is not uncommon to find app registrations fitting all these categories.
 
@@ -54,7 +54,7 @@ In a development environment it is not uncommon to find app registrations fittin
 This list of app registrations will include applications developed (or implemented) by the company:
 
 - companyApp - web app - dev
-- JWT.ms (owned by Amesto Fortytwo IaC, for User Journey testing and token issuance)
+- JWT.ms (owned by Fortytwo IaC, for User Journey testing and token issuance)
 
 #### Allow changes to app registrations outside of IaC
 
