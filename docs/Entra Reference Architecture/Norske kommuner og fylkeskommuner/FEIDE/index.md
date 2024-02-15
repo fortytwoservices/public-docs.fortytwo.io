@@ -41,7 +41,7 @@ LDAP-katalogen må være tilgjengelig for at FEIDE-pålogging skal virke, og det
 Innholdet i FEIDE-katalogen [inneholder en del attributter](https://docs.feide.no/reference/schema/index.html) som kun bør eksistere i det skoleadministrative systemet og ikke i eksempelvis Active Directory eller Entra ID. Det etableres derfor en løsning som leser tildelte brukere fra en Enterprise App i Entra ID (for scoping av hvilke brukere som skal ha FEIDE-bruker) og slår dette sammen med data fra det skoleadministrative systemet og populerer FEIDE-katalogen med de riktige dataene.
 
 !!! success "Designvalg FEIDE.04"
-    Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med [self hosted agent med fast IP](../../../Self%20Hosted%20Runners/index.md).
+    Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med [self hosted agent med fast IP](../../../marketplace-offerings/self-hosted-runners/index.md).
 
     * Enkel feilsøking og overvåkning
     * Direkte integrert mot versjonert kode
