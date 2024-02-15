@@ -4090,7 +4090,7 @@
 <p>Innholdet i FEIDE-katalogen <a href="https://docs.feide.no/reference/schema/index.html">inneholder en del attributter</a> som kun bør eksistere i det skoleadministrative systemet og ikke i eksempelvis Active Directory eller Entra ID. Det etableres derfor en løsning som leser tildelte brukere fra en Enterprise App i Entra ID (for scoping av hvilke brukere som skal ha FEIDE-bruker) og slår dette sammen med data fra det skoleadministrative systemet og populerer FEIDE-katalogen med de riktige dataene.</p>
 <div class="admonition success">
 <p class="admonition-title">Designvalg FEIDE.04</p>
-<p>Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med <a href="../../../Self%20Hosted%20Runners/index.md">self hosted agent med fast IP</a>.</p>
+<p>Innholdet i LDAP-katalogen provisjoneres ved hjelp av en Azure DevOps Pipeline kjørende med <a href="../../../marketplace-offerings/self-hosted-runners/">self hosted agent med fast IP</a>.</p>
 <ul>
 <li>Enkel feilsøking og overvåkning</li>
 <li>Direkte integrert mot versjonert kode</li>
