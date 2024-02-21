@@ -9,7 +9,7 @@
 
 We have published [this Terraform module](https://registry.terraform.io/modules/amestofortytwo/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./step1-manual.md) instead, but it should be fairly easy for most people. 
 
-Start by creating an empty folder with a single file ```main.tf```, with the below content, and running ther ```terraform.ps1``` code line by line:
+Start by creating an empty folder with a single file ```main.tf```, with the below content, and running the ```terraform.ps1``` code line by line:
 
 === ":octicons-file-code-16: `main.tf`"
 
