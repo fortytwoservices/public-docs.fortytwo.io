@@ -6,9 +6,9 @@ This also means that a wrongly joined user can continue to be wrongly joined, ev
 
 The "Restart provisioning" button in the Entra ID portal does not clear this sticky join. Instead, the below steps must be done:
 
-1. Sign into the Entra ID tenant and find the Inbound Provisioning API
-2. Open a PowerShell
-3. Extract your Graph access token using developer mode and set the $accesstoken variable in PowerShell:
+- Sign into the Entra ID tenant and find the Inbound Provisioning API
+- Open a PowerShell
+- Extract your Graph access token using developer mode and set the $accesstoken variable in PowerShell:
 
 ![](media/20240305091031.png)
 
@@ -16,7 +16,7 @@ The "Restart provisioning" button in the Entra ID portal does not clear this sti
 $accesstoken = "ey....=="
 ```
 
-4. Find the provisioning API endpoint and copy it into the $api variable
+- Find the provisioning API endpoint and copy it into the $api variable
 
 ![](media/20240305091214.png)
 
@@ -24,13 +24,13 @@ $accesstoken = "ey....=="
 $api = "https://..../bulkUpload"
 ```
 
-5. Run the below PowerShell to restart sync fully:
+- Run the below PowerShell to restart sync fully:
 
-```PowerShell
-Invoke-RestMethod -Uri ($uri -replace "/bulkUpload","/restart") -Method Post -Body '{"criteria":{"resetScope":"Full"}}' -ContentType "application/json" -Headers @{Authorization = "Bearer $accesstoken"}
-```
+    ```PowerShell
+    Invoke-RestMethod -Uri ($uri -replace "/bulkUpload","/restart") -Method Post -Body '{"criteria":{"resetScope":"Full"}}' -ContentType "application/json" -Headers @{Authorization = "Bearer $accesstoken"}
+    ```
 
-6. The API should now show the following:
+- The API should now show the following:
 
 ![](media/20240305091456.png)
 
