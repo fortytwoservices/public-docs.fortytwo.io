@@ -4063,28 +4063,30 @@
 <p>The Entra ID Inbound Provisioning API maintains a "sticky join", meaning it will statefully remember which Active Directory and Entra ID object has successfully been synced with a SCIM object.</p>
 <p>This also means that a wrongly joined user can continue to be wrongly joined, even though an attribute is switched over to another user account.</p>
 <p>The "Restart provisioning" button in the Entra ID portal does not clear this sticky join. Instead, the below steps must be done:</p>
-<ol>
+<ul>
 <li>Sign into the Entra ID tenant and find the Inbound Provisioning API</li>
 <li>Open a PowerShell</li>
 <li>Extract your Graph access token using developer mode and set the $accesstoken variable in PowerShell:</li>
-</ol>
+</ul>
 <p><img alt="" src="../media/20240305091031.png" /></p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$accesstoken</span> <span class="p">=</span> <span class="s2">&quot;ey....==&quot;</span>
 </span></code></pre></div>
-<ol>
+<ul>
 <li>Find the provisioning API endpoint and copy it into the $api variable</li>
-</ol>
+</ul>
 <p><img alt="" src="../media/20240305091214.png" /></p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$api</span> <span class="p">=</span> <span class="s2">&quot;https://..../bulkUpload&quot;</span>
 </span></code></pre></div>
-<ol>
-<li>Run the below PowerShell to restart sync fully:</li>
-</ol>
+<ul>
+<li>
+<p>Run the below PowerShell to restart sync fully:</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="p">(</span><span class="nv">$uri</span> <span class="o">-replace</span> <span class="s2">&quot;/bulkUpload&quot;</span><span class="p">,</span><span class="s2">&quot;/restart&quot;</span><span class="p">)</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Body</span> <span class="s1">&#39;{&quot;criteria&quot;:{&quot;resetScope&quot;:&quot;Full&quot;}}&#39;</span> <span class="n">-ContentType</span> <span class="s2">&quot;application/json&quot;</span> <span class="n">-Headers</span> <span class="p">@{</span><span class="n">Authorization</span> <span class="p">=</span> <span class="s2">&quot;Bearer $accesstoken&quot;</span><span class="p">}</span>
 </span></code></pre></div>
-<ol>
-<li>The API should now show the following:</li>
-</ol>
+</li>
+<li>
+<p>The API should now show the following:</p>
+</li>
+</ul>
 <p><img alt="" src="../media/20240305091456.png" /></p>
 <p>All joins will now be re-evaluated on the next full sync cycle from the Fortytwo HR provisioning service, which will happen each night.</p>
 
