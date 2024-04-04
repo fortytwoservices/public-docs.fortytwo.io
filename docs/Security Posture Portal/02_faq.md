@@ -18,7 +18,10 @@ Yes, we have a big roadmap for future modules. Stay updated on our [Public Roadm
 
 ## How is billing done?
 
-Billing is done through Azure Marketplace and we will add billing to your CSP invoice from Microsoft.
+We have two options regarding billing:
+
+1. Signup through Stripe with a Visa/Mastercard.
+2. Billing through Azure Marketplace. Billing done through your existing CSP provider.
 
 ## Can I cancel whenever i want?
 

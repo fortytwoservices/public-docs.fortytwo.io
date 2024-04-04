@@ -1,6 +1,10 @@
 # Getting started
 
-This is an detailed description of how to setup our Security Posture Portal from Azure Marketplace. The steps are pritty much easy to understand but we have documented every step here in this guide.
+This is an detailed description of how to setup our Fortify Portal from Azure Marketplace. The steps are pritty much easy to understand but we have documented every step here in this guide.
+
+!!! note
+
+    From April 2024 the name of the portal changed from "Security Posture Portal" to "Fortify Portal". It´s the same product.
 
 ## Setup through Azure Marketplace
 
@@ -22,12 +26,12 @@ This is an detailed description of how to setup our Security Posture Portal from
 
 !!! note
 
-    To be able to add the Security Posture Portal to your tenant you need at least ``Contributor`` access 
+    To be able to add the Fortify Portal to your tenant you need at least ``Contributor`` access 
 
 1. Configure your tenant environment.
     - Choose which Azure subscription you would like to add the app to.
     - Choose which Resource group the app should live in. Choose "New" if you dont have any.
-    - Give the app an appropiate name ``Fortytwo Security Posture Portal``
+    - Give the app an appropiate name ``Fortytwo Fortify Portal``
     - Choose ``On`` on Recurring billing.
 
 ![Choose subscription and resource group](./media/setup_step4.png)
@@ -38,25 +42,12 @@ This is an detailed description of how to setup our Security Posture Portal from
 
 ### Run through our onboarding wizard
 
-1. Approve/Consent our Single Signon Application. This is to that you can access the portal with your own Microsoft 365 account.
-
-2. Give our enterprise app ``Fortytwo Portal`` read permissions to your tenant.
-
-!!! info
-    This app is required for us to read the configuration in your tenant.
-    Our app only has Read permissions for configurations elements and we will not every be able to reads any of your users data.
-
-![Give permissions to our app](./media/setup_step10.png)
-
-3. Setup Exchange and Teams permissions
-Follow the guide on the onboarding steps.
-
-4. Give yourself and users permissions
-Follow the guide on the onboarding steps.
-
-5. Navigate to the portal
-Follow the guide on the onboarding steps.
+After you have finished in the Azure Portal you are redirected to <https://portal.fortytwo.io/onboarding-msp> - Follow the onboarding wizard to connect your tenants data.
 
 !!! note
 
-    If you have any issues contact us on assistance@fortytwo.io
+    If you have any issues contact us on support@fortytwo.io
+
+## Setup through Stripe/Visa card
+
+Navigate directly to <https://portal.fortytwo.io> and select "Try it for free". Signup with your Corporate email account and follow the wizard to buy an subscription.

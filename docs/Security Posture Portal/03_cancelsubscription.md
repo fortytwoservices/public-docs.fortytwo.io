@@ -1,5 +1,9 @@
 # Cancel SaaS subscription
 
+!!! note
+
+    From April 2024 the name of the portal changed from "Security Posture Portal" to "Fortify Portal". It´s the same product.
+
 To cancel your subscription of the portal is very easy and are done through your Azure portal. Follow the steps below to cancel at any point.
 
 1. Go to the [Azure portal](https://portal.azure.com/#home).

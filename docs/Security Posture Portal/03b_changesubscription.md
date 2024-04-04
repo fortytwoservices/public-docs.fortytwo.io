@@ -2,7 +2,7 @@
 
 !!! note
 
-    If you have any issues contact us on assistance@fortytwo.io
+    From April 2024 the name of the portal changed from "Security Posture Portal" to "Fortify Portal". It´s the same product.
 
 ## Change the billing subscription
 
@@ -27,3 +27,7 @@ Choose "Edit recurring billing" on the SaaS app and follow the screen instructio
 ## References
 
 - [SaaS subscription lifecycle management](https://learn.microsoft.com/en-us/marketplace/saas-subscription-lifecycle-management)
+
+!!! note
+
+    If you have any issues contact us on support@fortytwo.io
