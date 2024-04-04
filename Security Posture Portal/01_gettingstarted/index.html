@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2442,6 +2442,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup-through-stripevisa-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup through Stripe/Visa card
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4130,7 +4139,11 @@
 
 
 <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
-<p>This is an detailed description of how to setup our Security Posture Portal from Azure Marketplace. The steps are pritty much easy to understand but we have documented every step here in this guide.</p>
+<p>This is an detailed description of how to setup our Fortify Portal from Azure Marketplace. The steps are pritty much easy to understand but we have documented every step here in this guide.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From April 2024 the name of the portal changed from "Security Posture Portal" to "Fortify Portal". It´s the same product.</p>
+</div>
 <h2 id="setup-through-azure-marketplace">Setup through Azure Marketplace<a class="headerlink" href="#setup-through-azure-marketplace" title="Permanent link">&para;</a></h2>
 <h3 id="install-the-app-from-azure-marketplace">Install the app from Azure marketplace<a class="headerlink" href="#install-the-app-from-azure-marketplace" title="Permanent link">&para;</a></h3>
 <ol>
@@ -4146,13 +4159,13 @@
 <h3 id="configure-your-azure-environment">Configure your Azure environment<a class="headerlink" href="#configure-your-azure-environment" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To be able to add the Security Posture Portal to your tenant you need at least <code>Contributor</code> access </p>
+<p>To be able to add the Fortify Portal to your tenant you need at least <code>Contributor</code> access </p>
 </div>
 <ol>
 <li>Configure your tenant environment.<ul>
 <li>Choose which Azure subscription you would like to add the app to.</li>
 <li>Choose which Resource group the app should live in. Choose "New" if you dont have any.</li>
-<li>Give the app an appropiate name <code>Fortytwo Security Posture Portal</code></li>
+<li>Give the app an appropiate name <code>Fortytwo Fortify Portal</code></li>
 <li>Choose <code>On</code> on Recurring billing.</li>
 </ul>
 </li>
@@ -4162,38 +4175,13 @@
 <p><img alt="Review and subscribe when ready" src="../media/setup_step5.png" />
 3. The setup will take a couple of minutes. When its done you will be asked to <code>Go to the publisher site to finish setup</code>. You are now being redirected to our onboarding page</p>
 <h3 id="run-through-our-onboarding-wizard">Run through our onboarding wizard<a class="headerlink" href="#run-through-our-onboarding-wizard" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Approve/Consent our Single Signon Application. This is to that you can access the portal with your own Microsoft 365 account.</p>
-</li>
-<li>
-<p>Give our enterprise app <code>Fortytwo Portal</code> read permissions to your tenant.</p>
-</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This app is required for us to read the configuration in your tenant.
-Our app only has Read permissions for configurations elements and we will not every be able to reads any of your users data.</p>
-</div>
-<p><img alt="Give permissions to our app" src="../media/setup_step10.png" /></p>
-<ol>
-<li>
-<p>Setup Exchange and Teams permissions
-Follow the guide on the onboarding steps.</p>
-</li>
-<li>
-<p>Give yourself and users permissions
-Follow the guide on the onboarding steps.</p>
-</li>
-<li>
-<p>Navigate to the portal
-Follow the guide on the onboarding steps.</p>
-</li>
-</ol>
+<p>After you have finished in the Azure Portal you are redirected to <a href="https://portal.fortytwo.io/onboarding-msp">https://portal.fortytwo.io/onboarding-msp</a> - Follow the onboarding wizard to connect your tenants data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you have any issues contact us on assistance@fortytwo.io</p>
+<p>If you have any issues contact us on support@fortytwo.io</p>
 </div>
+<h2 id="setup-through-stripevisa-card">Setup through Stripe/Visa card<a class="headerlink" href="#setup-through-stripevisa-card" title="Permanent link">&para;</a></h2>
+<p>Navigate directly to <a href="https://portal.fortytwo.io">https://portal.fortytwo.io</a> and select "Try it for free". Signup with your Corporate email account and follow the wizard to buy an subscription.</p>
 
 
 
@@ -4216,7 +4204,7 @@ Follow the guide on the onboarding steps.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 4, 2024</span>
   </span>
 
     
@@ -4303,7 +4291,7 @@ Follow the guide on the onboarding steps.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fortytwo Security Posture portal for Microsoft 365">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fortytwo Fortify portal for Microsoft 365">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -4313,7 +4301,7 @@ Follow the guide on the onboarding steps.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Fortytwo Security Posture portal for Microsoft 365
+                Fortytwo Fortify portal for Microsoft 365
               </div>
             </div>
           </a>
@@ -4404,7 +4392,7 @@ Follow the guide on the onboarding steps.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tracking", "navigation.instant", "navigation.top", "navigation.indexes", "header.autohide", "search.suggest", "search.highlight", "search.share", "toc.follow", "toc.integrate", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
     
   </body>
