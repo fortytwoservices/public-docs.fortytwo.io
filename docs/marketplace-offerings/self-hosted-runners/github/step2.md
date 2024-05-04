@@ -77,14 +77,14 @@ Run the following with az-cli under a powershell terminal to configure an extens
 $VMSS=vmss-test-noeast    # Name of the VMSS.
 $RG=rg-test-noeast        # Resource group for the VMSS.
 $PAT=ghp_xxx              # The PAT generated in the previous steps.
-$DOMAIN=github.com        # The domain of the Github instance (default is github.com), use if running GHES.
+$GHHOST=github.com        # The domain of the Github instance (default is github.com), use if running GHES.
 $SCOPE=amesfortytwo       # Can be spesified as either the organization, the owner/repository, or enterprises/enterprisename.
 $USER=runner              # Username for the runner created on the VMSS.
 $USERPASSWORD=12Passw0rd_ # Password for the runner user created on the VMSS.
 $LABEL=label1,label2      # (Optional) Comma separated list of labels for the runner.
 az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG \
     --version 2.1 --publisher Microsoft.Azure.Extensions \
-    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/fortytwoservices/terraform-azurerm-selfhostedrunnervmss/main/scripts/invoke-ghrunner.ps1\"],\"commandToExecute\": \"powershell -ExecutionPolicy Unrestricted -Command .\\invoke-ghrunner.ps1 -runnerscope $SCOPE -githubpat $PAT -githubdomain $DOMAIN -user $USER -userpassword $USERPASSWORD -label $LABEL\"}"
+    --protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/fortytwoservices/terraform-azurerm-selfhostedrunnervmss/main/scripts/invoke-ghrunner.ps1\"],\"commandToExecute\": \"powershell -ExecutionPolicy Unrestricted -Command .\\invoke-ghrunner.ps1 -runnerscope $SCOPE -githubpat $PAT -githubhostname $GHHOST -user $USER -userpassword $USERPASSWORD -label $LABEL\"}"
 ```
 
 Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
