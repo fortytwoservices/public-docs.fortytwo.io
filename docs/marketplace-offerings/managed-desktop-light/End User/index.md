@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-The Azure Virtual Desktop client is available for Windows, MacOS, iOS, Android and HTML5. 
+The Azure Virtual Desktop client is available for Windows, MacOS, iOS, Android and HTML5.
 The client is available from this page: [Azure Virtual Desktop clients](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-windows?tabs=subscribe "Azure Virtual Desktop clients")
 
 **_NB!_** Printing is **_NOT_** supported in the HTML5 client.
@@ -21,7 +21,7 @@ The first time you login to the sessionDesktop, you will be asked to authenticat
 
 ![First connect](media/firstconnect.png "First connect")
 
-You can also adjust tne settings for the sessionDesktop, by right clicking on the sessionDesktop and select "Settings".
+You can also adjust the settings for the sessionDesktop, by right clicking on the sessionDesktop and select "Settings".
 
 ![Settings](media/settings.png "Settings")
 
