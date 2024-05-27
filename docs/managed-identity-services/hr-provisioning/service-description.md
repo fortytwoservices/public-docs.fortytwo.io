@@ -2,7 +2,7 @@
 
 At Fortytwo, we understand the critical importance of maintaining seamless integration between your Human Resources (HR) system and your identity platform with Active Directory and Entra ID, for efficient user account management. Our service, *Fortytwo HR Provisioning*, is designed to streamline and automate the synchronization of HR data with the identity platform through the [Entra ID Inbound Provisioning API](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/inbound-provisioning-api-concepts). This ensures that your user accounts remain up-to-date and aligned with HR processes, facilitating a smooth joiner-mover-leaver lifecycle process.
 
-![](media/20240117100244.png)
+![](media/Fortytwo_Managed_Identity_services_overview.jpg)
 
 ## Key features
 
@@ -48,9 +48,10 @@ At Fortytwo, we understand the critical importance of maintaining seamless integ
 | Report issues                          | Customer    |
 | Inform end users about data processing | Customer    |
 
-## Pricing
+## Pricing and information
 
 - **500 USD** per month, includes **300 users**
 - **0.30 USD** per additional user
 
-Billing can be done through [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/amestofortytwoas1653635920536.managed_identity_services?tab=PlansAndPrice) or directly.
+- Billing can be done through [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/amestofortytwoas1653635920536.managed_identity_services?tab=PlansAndPrice) or directly.
+- More info [here](https://www.fortytwo.io/managed-identity-services)
