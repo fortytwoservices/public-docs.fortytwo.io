@@ -2640,7 +2640,7 @@
           <li class="md-nav__item">
   <a href="#11-create-automation-account-and-import-module" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1: Create Automation Account and import module
+      1.1 Create Automation Account and import module
     </span>
   </a>
   
@@ -2649,17 +2649,17 @@
           <li class="md-nav__item">
   <a href="#12-if-not-using-marketplace-offer-create-a-user-assigned-managed-identity" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2: (If not using Marketplace offer?) Create a User Assigned Managed Identity
+      1.2 (If not using Marketplace offer?) Create a User Assigned Managed Identity
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2: (If not using Marketplace offer?) Create a User Assigned Managed Identity">
+    <nav class="md-nav" aria-label="1.2 (If not using Marketplace offer?) Create a User Assigned Managed Identity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#121-create-a-user-assigned-managed-identity-and-assign-it" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2.1: Create a User Assigned Managed Identity and assign it:
+      1.2.1 Create a User Assigned Managed Identity and assign it:
     </span>
   </a>
   
@@ -2668,7 +2668,7 @@
           <li class="md-nav__item">
   <a href="#122-assign-microsoft-graph-permissions-to-user-assigned-managed-identity" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2.2: Assign Microsoft Graph permissions to User Assigned Managed Identity
+      1.2.2 Assign Microsoft Graph permissions to User Assigned Managed Identity
     </span>
   </a>
   
@@ -2682,7 +2682,7 @@
           <li class="md-nav__item">
   <a href="#13-create-a-runbook" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3: Create a runbook
+      1.3 Create a runbook
     </span>
   </a>
   
@@ -4252,7 +4252,7 @@
 <li>(Optional) API endpoints for actions to be taken when adding/removing users from groups</li>
 </ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<h3 id="11-create-automation-account-and-import-module">1.1: Create Automation Account and import module<a class="headerlink" href="#11-create-automation-account-and-import-module" title="Permanent link">&para;</a></h3>
+<h3 id="11-create-automation-account-and-import-module">1.1 Create Automation Account and import module<a class="headerlink" href="#11-create-automation-account-and-import-module" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Create an <a href="https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/Microsoft.AutomationAccount/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22Microsoft.AutomationAccount%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2228a4601a-df08-4659-90c5-ad3e4ae01f3b%22%7D/searchTelemetryId/c0ffb27e-c859-42b8-b54e-3ab33d7426d6">Automation Account</a> from the Azure Marketplace and deploy it to your designated subscription/resource group.</li>
 <li>Go to <em>Shared Resources</em> -&gt; <em>Modules</em> -&gt; <em>Add module</em>
@@ -4266,13 +4266,13 @@ Click on <em>"Import"</em>
 </ol>
 <p>The module should now be loaded in your Automation Account.</p>
 <hr />
-<h3 id="12-if-not-using-marketplace-offer-create-a-user-assigned-managed-identity">1.2: (If not using Marketplace offer?) Create a User Assigned Managed Identity<a class="headerlink" href="#12-if-not-using-marketplace-offer-create-a-user-assigned-managed-identity" title="Permanent link">&para;</a></h3>
+<h3 id="12-if-not-using-marketplace-offer-create-a-user-assigned-managed-identity">1.2 (If not using Marketplace offer?) Create a User Assigned Managed Identity<a class="headerlink" href="#12-if-not-using-marketplace-offer-create-a-user-assigned-managed-identity" title="Permanent link">&para;</a></h3>
 <p>❗️ <strong>IMPORTANT:</strong> This step requires an account with <em>Global Administrator</em> </p>
 <p>If you are configuring this yourself, you need to create a <a href="https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp">User Assigned Managed Identity</a> that has the permissions required for the module to run. The permissions are the following:
 - <strong>Owner</strong> permissions on groups that the module will administer
 - User.Read.All OR User.ReadWrite.All
 - (Optional, depending on use) Group.ReadWrite.All</p>
-<h4 id="121-create-a-user-assigned-managed-identity-and-assign-it">1.2.1: Create a User Assigned Managed Identity and assign it:<a class="headerlink" href="#121-create-a-user-assigned-managed-identity-and-assign-it" title="Permanent link">&para;</a></h4>
+<h4 id="121-create-a-user-assigned-managed-identity-and-assign-it">1.2.1 Create a User Assigned Managed Identity and assign it:<a class="headerlink" href="#121-create-a-user-assigned-managed-identity-and-assign-it" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Find <a href="https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/Microsoft.ManagedIdentity/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22Microsoft.ManagedIdentity%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2225bce5e9-0632-47c2-a4d5-dbdcaabdce98%22%7D/searchTelemetryId/348fb932-4e86-4bc4-9ee8-692ce8dd1ebc">User Assigned Managed Identity</a> on the Azure Marketplace.</li>
 <li>Create it in the same Subscription/ResourceGroup where the Automation Account is located<br />
@@ -4282,7 +4282,7 @@ Click on <em>"Import"</em>
 <img alt="" src="../media/uami.png" /></li>
 <li>Assign the Identity as owner on the groups that it needs access to</li>
 </ol>
-<h4 id="122-assign-microsoft-graph-permissions-to-user-assigned-managed-identity">1.2.2: Assign Microsoft Graph permissions to User Assigned Managed Identity<a class="headerlink" href="#122-assign-microsoft-graph-permissions-to-user-assigned-managed-identity" title="Permanent link">&para;</a></h4>
+<h4 id="122-assign-microsoft-graph-permissions-to-user-assigned-managed-identity">1.2.2 Assign Microsoft Graph permissions to User Assigned Managed Identity<a class="headerlink" href="#122-assign-microsoft-graph-permissions-to-user-assigned-managed-identity" title="Permanent link">&para;</a></h4>
 <p>❗️ <strong>IMPORTANT:</strong> This step requires an account with <em>Global Administrator</em><br />
 This step also requires that you do some steps with Powershell on your machine or in the Azure CLI.</p>
 <ol>
@@ -4306,7 +4306,7 @@ This step also requires that you do some steps with Powershell on your machine o
 <li>Run the snippet from VS Code/paste the edited code into Powershell and run it.</li>
 </ol>
 <hr />
-<h3 id="13-create-a-runbook">1.3: Create a runbook<a class="headerlink" href="#13-create-a-runbook" title="Permanent link">&para;</a></h3>
+<h3 id="13-create-a-runbook">1.3 Create a runbook<a class="headerlink" href="#13-create-a-runbook" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Go to <em>Process Automation</em> -&gt; <em>Runbooks</em> -&gt; <em>Create a runbook</em>
 <img alt="" src="../media/create-runbook.png" /></li>
