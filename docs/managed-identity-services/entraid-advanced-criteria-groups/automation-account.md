@@ -10,7 +10,7 @@ By using our dynamic group module with an Azure Automation Account, you can easi
 
 ## Configuration
 
-### 1.1: Create Automation Account and import module
+### 1.1 Create Automation Account and import module
 1. Create an [Automation Account](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/Microsoft.AutomationAccount/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22Microsoft.AutomationAccount%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2228a4601a-df08-4659-90c5-ad3e4ae01f3b%22%7D/searchTelemetryId/c0ffb27e-c859-42b8-b54e-3ab33d7426d6) from the Azure Marketplace and deploy it to your designated subscription/resource group.
 2. Go to *Shared Resources* -> *Modules* -> *Add module*
 ![](media/add-module.png)
@@ -25,7 +25,7 @@ The module should now be loaded in your Automation Account.
 
 ---
 
-### 1.2: (If not using Marketplace offer?) Create a User Assigned Managed Identity
+### 1.2 (If not using Marketplace offer?) Create a User Assigned Managed Identity
 
 ❗️ **IMPORTANT:** This step requires an account with *Global Administrator* 
 
@@ -36,7 +36,7 @@ If you are configuring this yourself, you need to create a [User Assigned Manage
 
 
 
-#### 1.2.1: Create a User Assigned Managed Identity and assign it:
+#### 1.2.1 Create a User Assigned Managed Identity and assign it:
 
 1. Find [User Assigned Managed Identity](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/Microsoft.ManagedIdentity/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22Microsoft.ManagedIdentity%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2225bce5e9-0632-47c2-a4d5-dbdcaabdce98%22%7D/searchTelemetryId/348fb932-4e86-4bc4-9ee8-692ce8dd1ebc) on the Azure Marketplace.
 2. Create it in the same Subscription/ResourceGroup where the Automation Account is located  
@@ -46,7 +46,7 @@ If you are configuring this yourself, you need to create a [User Assigned Manage
 ![](media/uami.png)
 4. Assign the Identity as owner on the groups that it needs access to
 
-#### 1.2.2: Assign Microsoft Graph permissions to User Assigned Managed Identity
+#### 1.2.2 Assign Microsoft Graph permissions to User Assigned Managed Identity
 ❗️ **IMPORTANT:** This step requires an account with *Global Administrator*  
 This step also requires that you do some steps with Powershell on your machine or in the Azure CLI.
 
@@ -73,7 +73,7 @@ New-MicrosoftGraphServicePrincipalApplicationPermission -ObjectId $managedIdenti
 
 ---
 
-### 1.3: Create a runbook
+### 1.3 Create a runbook
 1. Go to *Process Automation* -> *Runbooks* -> *Create a runbook*
 ![](media/create-runbook.png)
 2. Set the following *Basic* information:  
