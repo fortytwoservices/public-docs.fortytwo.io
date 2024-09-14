@@ -39,7 +39,7 @@ theme:
     - content.action.edit
     - content.action.view
     - content.code.copy
-repo_url: https://github.com/amestofortytwo/public-docs.fortytwo.io
+repo_url: https://github.com/fortytwoservices/public-docs.fortytwo.io
 edit_uri: edit/main/docs/
 plugins:
   - git-revision-date-localized:
