@@ -1,5 +1,8 @@
 # Step 1b - Configuring the Virtual Machine Scale Set using Terraform
 
+!!! note "Rename of organization"
+    Due to the renaming of Company, the Github organization has changed name from "amestofortytwo" to "fortytwoservices". Pre-existing Terrafomr code would need to change that in code.
+
 ## Prereqs
 
 - [Terraform installed](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
