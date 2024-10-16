@@ -1,4 +1,6 @@
-# 2 - Populering av applikasjon via API-basert integrasjon
+# API-Basert Integrasjon
+
+**Populering av applikasjon via API-basert integrasjon**
 
 Det finnes mange applikasjoner som har API-baserte grensesnitt for å populere brukere, eller andre objekttyper (organisasjonshierarki, stillinger, osv.), men hvor APIet ikke er basert på SCIM-standarden. Entra ID har ingen native integrasjonsmulighet mot denne typen APIer, men i stedet benyttes en Azure-basert automasjonsløsning som leser fra Microsoft Graph og skriver til applikasjons-APIet.
 
@@ -15,7 +17,7 @@ Fortytwo har god erfaring med å kjøre automasjonsløsninger i alle følgende s
 
 I noen tilfeller vil det være behov for provisjonering av data som av ulike årsaker ikke befinner seg i Entra ID. Dette kan for eksempel være mer sensitive personopplysninger, organisasjonshierarki eller stillingsinformasjon. I disse tilfellene benytte automasjonsløsnigen data fra HR- og Skoleadministrattivt system direkte, og sammenkobler dataene med brukerinformasjon fra Entra ID.
 
-## Som en tjeneste
+**Som en tjeneste**
 
 Vi i Fortytwo tilbyr applikasjonsprovisjonering som en tjeneste, som innebærer av vi sørger for at:
 
