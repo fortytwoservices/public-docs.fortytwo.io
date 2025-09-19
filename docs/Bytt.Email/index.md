@@ -122,28 +122,28 @@ We also allow for extracing the first *n* characters of the placeholders:
 
 A user that is a member of *both* of these groups, will get the following options available to them:
 
-- {firstname1}.{lastname-1}@domain1.com
-- {firstname1}.{firstname2,1}.{lastname-1}@domain1.com
-- {firstname1}.{lastname-1}@domain2.com
-- {firstname1}.{firstname2,1}.{lastname-1}@domain2.com
+- {firstname1}.{lastname-1}@contoso.com
+- {firstname1}.{firstname2,1}.{lastname-1}@contoso.com
+- {firstname1}.{lastname-1}@nwtraders.com
+- {firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com
 
 A user that is a member of only *Example Group 1* will get these options:
 
-- {firstname1}.{lastname-1}@domain1.com
-- {firstname1}.{firstname2,1}.{lastname-1}@domain1.com
+- {firstname1}.{lastname-1}@contoso.com
+- {firstname1}.{firstname2,1}.{lastname-1}@contoso.com
 
 While a user that is member of only *Example Group 2* will get these options:
 
-- {firstname1}.{lastname-1}@domain2.com
-- {firstname1}.{firstname2,1}.{lastname-1}@domain2.com
+- {firstname1}.{lastname-1}@nwtraders.com
+- {firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com
 
 #### Example Group 1
 
 ```JSON
 {
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns": [
-        "{firstname1}.{lastname-1}@domain1.com",
-        "{firstname1}.{firstname2,1}.{lastname-1}@domain1.com"
+        "{firstname1}.{lastname-1}@contoso.com",
+        "{firstname1}.{firstname2,1}.{lastname-1}@contoso.com"
     ]
 }
 ```
@@ -153,8 +153,8 @@ While a user that is member of only *Example Group 2* will get these options:
 ```JSON
 {
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns": [
-        "{firstname1}.{lastname-1}@domain2.com",
-        "{firstname1}.{firstname2,1}.{lastname-1}@domain2.com"
+        "{firstname1}.{lastname-1}@nwtraders.com",
+        "{firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com"
     ]
 }
 ```
