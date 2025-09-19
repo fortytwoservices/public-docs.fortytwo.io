@@ -4885,6 +4885,10 @@
 <p>If you have users in Active Directory synced to Entra ID, you need to <a href="ad-agent/">configure the AD agent</a>.</p>
 <p>If you have cloud users, you need to <a href="au/">create an Administrative Unit</a> and assign Bytt.Email permissions.</p>
 <h2 id="configure-email-patterns">Configure email patterns<a class="headerlink" href="#configure-email-patterns" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default configuration for Bytt.Email is that the values of the first example is available to your users (if the user is assigned the <strong>Bytt.Email - user</strong> role, but not assigned a group with patterns), with the domain being the current UPN suffix of the user. This works for many of our customers.</p>
+</div>
 <p>By consenting to Bytt.Email, you now have a new multivalued string attribute named <code>extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns</code> available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.</p>
 <p>This attribute can be set by using <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> and sending a PATCH request to https://graph.microsoft.com/v1.0/groups/OBJECTID-OF-GROUP</p>
 <div class="language-JSON highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
@@ -5026,9 +5030,6 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Note:</strong> The default configuration for Bytt.Email is that the values of the first example is available to your users (if the user is assigned the <strong>Bytt.Email - user</strong> role, but not assigned a group with patterns), with the domain being the current UPN suffix of the user.</p>
-</blockquote>
 
 
 
@@ -5051,7 +5052,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2025 13:39:33 UTC">September 19, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2025 13:43:54 UTC">September 19, 2025</span>
   </span>
 
     
