@@ -60,6 +60,9 @@ If you have cloud users, you need to [create an Administrative Unit](./au.md) an
 
 ## Configure email patterns
 
+!!! NOTE
+    The default configuration for Bytt.Email is that the values of the first example is available to your users (if the user is assigned the **Bytt.Email - user** role, but not assigned a group with patterns), with the domain being the current UPN suffix of the user. This works for many of our customers.
+
 By consenting to Bytt.Email, you now have a new multivalued string attribute named ```extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns``` available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.
 
 This attribute can be set by using [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) and sending a PATCH request to https://graph.microsoft.com/v1.0/groups/OBJECTID-OF-GROUP
@@ -115,4 +118,3 @@ We also allow for extracing the first *n* characters of the placeholders:
 | {firstname1,1} | First character of first firstname |
 | {lastnamewd-1,3} | First three characters of the last lastname, with dashes included |
 
-> **Note:** The default configuration for Bytt.Email is that the values of the first example is available to your users (if the user is assigned the **Bytt.Email - user** role, but not assigned a group with patterns), with the domain being the current UPN suffix of the user.
