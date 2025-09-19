@@ -4829,26 +4829,27 @@
 <p><img alt="" src="media/20250918122213.png" /></p>
 <p>The service is payed for through Azure Marketplace (Coming soon).</p>
 <h2 id="consenting-access">Consenting access<a class="headerlink" href="#consenting-access" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>The following operations must be done as one of the following roles:</p>
 <ul>
 <li>Global Administrator</li>
 <li>Cloud Application Administrator</li>
-<li>
-<p>Application Administrator</p>
-</li>
+<li>Application Administrator</li>
+</ul>
+</div>
+<ol>
 <li>
 <p>Consent to Fortytwo Universe, our API hub:</p>
+<p><a href="https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408">https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408</a>
+<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=c61cb4dd-35bf-4db9-b152-58e223782c11 --></p>
 </li>
-</ul>
-<p><a href="https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408">https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408</a></p>
-<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=c61cb4dd-35bf-4db9-b152-58e223782c11 -->
-
-<ol>
-<li>Consent to the Bytt.Email application:</li>
+<li>
+<p>Consent to the Bytt.Email application:</p>
+<p><a href="https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f">https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f</a>
+<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=5a0b1107-0774-4bd4-a2fd-cf343ce79c56 --></p>
+</li>
 </ol>
-<p><a href="https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f">https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f</a></p>
-<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=5a0b1107-0774-4bd4-a2fd-cf343ce79c56 -->
-
 <h2 id="grant-users-access">Grant users access<a class="headerlink" href="#grant-users-access" title="Permanent link">&para;</a></h2>
 <p>Locate the <strong>Fortytwo Universe</strong> app under Entra ID and Enterprise Apps:</p>
 <p><img alt="" src="media/20250918122839.png" /></p>
@@ -4865,7 +4866,7 @@
 <p>If you have users in Active Directory synced to Entra ID, you need to <a href="ad-agent/">configure the AD agent</a>.</p>
 <p>If you have cloud users, you need to <a href="au/">create an Administrative Unit</a> and assign Bytt.Email permissions.</p>
 <h2 id="configure-email-patterns">Configure email patterns<a class="headerlink" href="#configure-email-patterns" title="Permanent link">&para;</a></h2>
-<p>By consenting to Bytt.Email, you know have a new multivalued string attribute named <code>extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns</code> available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.</p>
+<p>By consenting to Bytt.Email, you now have a new multivalued string attribute named <code>extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns</code> available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.</p>
 <p>This attribute can be set by using <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> and sending a PATCH request to https://graph.microsoft.com/v1.0/groups/OBJECTID-OF-GROUP</p>
 <div class="language-JSON highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -5031,7 +5032,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 18, 2025 11:29:52 UTC">September 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2025 13:34:04 UTC">September 19, 2025</span>
   </span>
 
     
