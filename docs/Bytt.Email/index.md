@@ -25,6 +25,13 @@ The service is payed for through Azure Marketplace (Coming soon).
     [https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f](https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f)
     <!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=5a0b1107-0774-4bd4-a2fd-cf343ce79c56 -->
 
+### Required graph permissions
+
+| Required permission | Why? |
+|-|-|
+| User.Read.All | The solution needs to get the details of the user account that signs in, such as firstname, lastname, userPrincipalName and proxyAddresses |
+| GroupMember.Read.All | Because we need to find email pattern groups as documented below |
+
 ## Grant users access
 
 Locate the **Fortytwo Universe** app under Entra ID and Enterprise Apps:
