@@ -8,21 +8,22 @@ The service is payed for through Azure Marketplace (Coming soon).
 
 ## Consenting access
 
-The following operations must be done as one of the following roles:
-
-- Global Administrator
-- Cloud Application Administrator
-- Application Administrator
+!!! NOTE
+    The following operations must be done as one of the following roles:
+    
+    - Global Administrator
+    - Cloud Application Administrator
+    - Application Administrator
 
 1. Consent to Fortytwo Universe, our API hub:
 
-[https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408](https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408)
-<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=c61cb4dd-35bf-4db9-b152-58e223782c11 -->
+    [https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408](https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408)
+    <!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=c61cb4dd-35bf-4db9-b152-58e223782c11 -->
 
 2. Consent to the Bytt.Email application:
 
-[https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f](https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f)
-<!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=5a0b1107-0774-4bd4-a2fd-cf343ce79c56 -->
+    [https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f](https://login.microsoftonline.com/common/adminconsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f)
+    <!-- Development: https://login.microsoftonline.com/common/adminconsent?client_id=5a0b1107-0774-4bd4-a2fd-cf343ce79c56 -->
 
 ## Grant users access
 
@@ -52,7 +53,7 @@ If you have cloud users, you need to [create an Administrative Unit](./au.md) an
 
 ## Configure email patterns
 
-By consenting to Bytt.Email, you know have a new multivalued string attribute named ```extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns``` available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.
+By consenting to Bytt.Email, you now have a new multivalued string attribute named ```extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns``` available for groups in your tenant. In order to override the default email patterns available to your users, you can add users as member of group with this attribute set.
 
 This attribute can be set by using [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) and sending a PATCH request to https://graph.microsoft.com/v1.0/groups/OBJECTID-OF-GROUP
 
