@@ -82,7 +82,7 @@ This attribute can be set by using [Graph Explorer](https://developer.microsoft.
 }
 ```
 
-## Example on creation using PowerShell
+## Create email pattern group using PowerShell
 
 ```PowerShell
 connect-mggraph -scopes group.readwrite.all
