@@ -82,6 +82,25 @@ This attribute can be set by using [Graph Explorer](https://developer.microsoft.
 }
 ```
 
+## Example on creation using PowerShell
+
+```PowerShell
+connect-mggraph -scopes group.readwrite.all
+$domain = "yourdomain.com"
+New-MgGroup -DisplayName "Email patterns - $domain" -MailEnabled:$false -SecurityEnabled:$true -MailNickname "$(new-guid)".Substring(0,8) -AdditionalProperties @{
+    "extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns" = @(
+        "{firstname1}.{lastname-1}@$domain"
+        "{firstname1}.{firstname2}.{lastname-1}@$domain"
+        "{firstname1}.{lastname-2}.{lastname-1}@$domain"
+        "{firstnamewd1}.{lastnamewd-1}@$domain"
+        "{firstnamewd1}.{firstnamewd2}.{lastnamewd-1}@$domain"
+        "{firstnamewd1}.{lastnamewd-2}.{lastnamewd-1}@$domain"
+        "{firstname1}.{firstname2,1}.{lastname-1}@$domain"
+        "{firstname1}.{lastname-1}2@$domain"
+    )
+}
+```
+
 ### Placeholders
 
 | Placeholder | Replaced with |
