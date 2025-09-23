@@ -454,6 +454,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 6 - Run the ChangeEmail agent as a scheduled task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-gmsa-for-the-scheduled-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a gMSA for the scheduled task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delegate-the-gmsa-the-reset-password-permission-in-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegate the gMSA the reset password permission in AD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grant-permission-to-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grant permission to certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grant-permission-to-log-on-as-a-batch-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grant permission to Log on as a batch job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-scheduled-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create scheduled task
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5001,16 +5052,36 @@
 </ol>
 <p>At this point, you can test out ChangeEmail and see that requests are received and processed by the agent.</p>
 <h2 id="step-6-run-the-changeemail-agent-as-a-scheduled-task">Step 6 - Run the ChangeEmail agent as a scheduled task<a class="headerlink" href="#step-6-run-the-changeemail-agent-as-a-scheduled-task" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-gmsa-for-the-scheduled-task">Create a gMSA for the scheduled task<a class="headerlink" href="#create-a-gmsa-for-the-scheduled-task" title="Permanent link">&para;</a></h3>
+<p>Run the below PowerShell in order to create a gMSA:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemailagent&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
+</span></code></pre></div>
+<h3 id="delegate-the-gmsa-the-reset-password-permission-in-ad">Delegate the gMSA the reset password permission in AD<a class="headerlink" href="#delegate-the-gmsa-the-reset-password-permission-in-ad" title="Permanent link">&para;</a></h3>
+<p>For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemailagent$:CA;Reset Password&quot;;user&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemailagent$:rpwp;PwdlastSet&quot;;user&#39;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemailagent$:rpwp;lockoutTime&quot;;user&#39;</span>
+</span></code></pre></div>
+<h3 id="grant-permission-to-certificate">Grant permission to certificate<a class="headerlink" href="#grant-permission-to-certificate" title="Permanent link">&para;</a></h3>
+<p>Run <strong>certlm.msc</strong>, locate the <strong>changeemailagent</strong> certificate under <strong>Personal</strong> certificates, and <strong>Manage private keys</strong></p>
+<p><img alt="" src="../media/20250922140138.png" /></p>
+<p>Locate the gMSA you created, and grant <strong>Full control</strong></p>
+<p><img alt="" src="../media/20250922134853.png" /></p>
+<h3 id="grant-permission-to-log-on-as-a-batch-job">Grant permission to Log on as a batch job<a class="headerlink" href="#grant-permission-to-log-on-as-a-batch-job" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/20250922134729.png" /></p>
+<h3 id="create-scheduled-task">Create scheduled task<a class="headerlink" href="#create-scheduled-task" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create a gMSA for the scheduled task</li>
-<li>Delegate the gMSA the ability to update the attributes <strong>userPrincipalName</strong>, <strong>mail</strong> and <strong>proxyAddresses</strong> in AD</li>
 <li>Create a scheduled task running as the gMSA that:<ul>
-<li>Runs the action <code>pwsh -file c:\changeemail\run.ps1</code></li>
-<li>Every 2 minutes (Just in order to restart the task if it fails)</li>
+<li>Runs the action <code>pwsh</code> with the arguments <code>-file c:\changeemail\run.ps1</code></li>
+<li>Run daily, repeat every 2 minutes (Just in order to restart the task if it fails)</li>
 <li>Do not run multiple instances</li>
 </ul>
 </li>
 </ol>
+<p><img alt="" src="../media/20250922132707.png" /></p>
+<p><img alt="" src="../media/20250922132718.png" /></p>
+<p><img alt="" src="../media/20250922132735.png" /></p>
+<p><img alt="" src="../media/20250922135040.png" /></p>
 
 
 
@@ -5033,7 +5104,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 18, 2025 11:26:20 UTC">September 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 23, 2025 09:57:18 UTC">September 23, 2025</span>
   </span>
 
     
