@@ -2,38 +2,51 @@
 
 ## Background
 
-In Fortytwo we have the following principles when labelling documents and data. 
+Fortytwo Technologies principles in regards to information protection and document labelling
 
 This section only focus on **classification** of information based on the informations sensitivity and the intended audience. We will not handle protection of the infomation in this section, protection will build on the label definition, usage guidelines and the systems Fortytwo use. 
 
-## Open / Green
+## Public
 
-Information available to all audience, with no documents specific access restrictions. Information labelled with this classification present no risk to Fortytwo if information is shared outside Fortytwo organisation.
+Information available to all audience, with no specific access restrictions. Information labelled with this classification present no risk if information is shared outside Fortytwo Technologies organisation.
 
-**Examples of information in this class**
+**Examples of information**
 
 * Information published to docs.fortytwo.io
 * Product and services datas sheets
-* Security heads-up and briefings to customers
+* Security
+* General security briefings and heads-up to customers
+* How-tos and guides with no customer specific information
 
-## Internal / Amber
+## Standard
 
-Information intended for members of Fortytwo organization only. Information in this class should not be shared outside of Fortytwo information domain, however - the information in this class would not present financial or legal risk if shared outside of Fortytwo information domain.
+Information intended for members of Fortytwo Technologies organization only. Information in this category should not be shared outside of Fortytwo information domain, however - the information in this class would not present financial or legal risk if shared outside of Fortytwo information domain.
 
-**Examples of information in this class**
+**Examples of information**
 
 * Product documentation
-* All work in progress for employees, except work needing Confidential label
-* Financial information, like billable hours for engineers, monthly summaries and budgets
+* Internal guidelines, code of conduct or employee benefits
 
-## Confidential / Red 
+## Restricted
 
-Information limited to individual recipients, which can be both internal or external to Fortywo. Confidential / Red is to be used if the information needs to secured as instructed by laws or regulations, or if its content could damage Fortytwo either financially or through loss of reputation.
+Information limited to named recipients, which can be both internal or external to Fortywo Technologies. Restricted is to be used when the information needs to be secured as instructed in laws or regulations, or if its content could be damaging Fortytwo technologies, either financially or through loss of reputation.
 
-**Examples of information in this class**
+**Examples of information**
 
 * Business strategic information 
-* New products in development, but not public
 * Security incident handling with customers
+* Customers system documentation
+
+ ## GDPR ##   
+
+Data and information which is subject to protection under GDPR, this includes both basic _basic information like names and addresses, but also more sensitive categories, such as special categories of personal data which reveal racial or ethnic origin, political or religious beliefs, trade union membership, genetic or biometric data, and data concerning health, sex life, or sexual orientation_
+
 * Information containing PII for employees
+    + Name, address, date of birth, and telephone number
+    + + Identification numbers like Social Security Numbers or passport numbers
+    + IP adresses, online cookies, and other online identifiers
+    + Location data
+    + Images and videos
+    + Financial information
+    + School or employment records
 
