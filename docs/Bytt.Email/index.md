@@ -129,6 +129,8 @@ New-MgGroup -DisplayName "Email patterns - $domain" -MailEnabled:$false -Securit
 | {lastnamewd-1} | Last lastname, with dashes included |
 | {lastnamewd-2} | Second last lastname |
 | {lastnamewd-3} | Third last lastname |
+| {onpremisessamaccountname} | The onpremisessamaccountname attribute of the user |
+| {mailnickname} | The mailNickname attribute of the user |
 
 We also allow for extracing the first *n* characters of the placeholders:
 
