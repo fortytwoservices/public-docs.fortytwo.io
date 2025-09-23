@@ -2,7 +2,7 @@
 
 [Bytt.Email](https://bytt.email) is our service for allowing end users to change their own email address and UPN, both in Entra ID and Active Directory.
 
-![](media/20250918122213.png)
+![](media/20250923153114.png)
 
 The service is payed for through Azure Marketplace (Coming soon).
 
