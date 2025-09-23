@@ -43,7 +43,7 @@ Data and information which is subject to protection under GDPR, this includes bo
 
 * Information containing PII for employees
     + Name, address, date of birth, and telephone number
-    + + Identification numbers like Social Security Numbers or passport numbers
+    + Identification numbers like Social Security Numbers or passport numbers
     + IP adresses, online cookies, and other online identifiers
     + Location data
     + Images and videos
