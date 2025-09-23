@@ -78,9 +78,49 @@ At this point, you can test out ChangeEmail and see that requests are received a
 
 ## Step 6 - Run the ChangeEmail agent as a scheduled task
 
-1. Create a gMSA for the scheduled task
-2. Delegate the gMSA the ability to update the attributes **userPrincipalName**, **mail** and **proxyAddresses** in AD
+### Create a gMSA for the scheduled task
+
+Run the below PowerShell in order to create a gMSA:
+
+```PowerShell
+New-ADServiceAccount -Name "changeemailagent" -PrincipalsAllowedToRetrieveManagedPassword "SERVERNAME$" -DNSHostname "bytt.email"
+```
+
+### Delegate the gMSA the reset password permission in AD
+
+For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):
+
+```PowerShell
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:CA;Reset Password";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;PwdlastSet";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;lockoutTime";user'
+```
+
+### Grant permission to certificate
+
+Run **certlm.msc**, locate the **changeemailagent** certificate under **Personal** certificates, and **Manage private keys**
+
+![](media/20250922140138.png)
+
+Locate the gMSA you created, and grant **Full control**
+
+![](media/20250922134853.png)
+
+### Grant permission to Log on as a batch job
+
+![](media/20250922134729.png)
+
+### Create scheduled task
+
 3. Create a scheduled task running as the gMSA that:
-    - Runs the action ```pwsh -file c:\changeemail\run.ps1```
-    - Every 2 minutes (Just in order to restart the task if it fails)
+    - Runs the action ```pwsh``` with the arguments ```-file c:\changeemail\run.ps1```
+    - Run daily, repeat every 2 minutes (Just in order to restart the task if it fails)
     - Do not run multiple instances
+
+![](media/20250922132707.png)
+
+![](media/20250922132718.png)
+
+![](media/20250922132735.png)
+
+![](media/20250922135040.png)
