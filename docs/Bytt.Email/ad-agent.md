@@ -57,7 +57,8 @@ $Certificate = New-SelfSignedCertificate -Subject "ChangeEmailAgent" -NotAfter (
 Create ```C:\changeemail\run.ps1``` with the following contents:
 
 ```PowerShell
-Import-Module EntraIDAccessToken -force
+# Install and auto update the agent module
+Install-Module Fortytwo.ChangeEmail.Agent -Confirm:$false -Force -Verbose -Scope CurrentUser
 Import-Module Fortytwo.ChangeEmail.Agent -force
 
 Add-EntraIDClientCertificateAccessTokenProfile `
