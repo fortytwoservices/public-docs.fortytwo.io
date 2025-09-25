@@ -67,7 +67,7 @@ Add-EntraIDClientCertificateAccessTokenProfile `
     -ClientId "CLIENT_ID_FROM_STEP3" `
     -TenantId "TENANT_ID_FROM_STEP3"
 
-Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose -Debug
+Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose
 ```
 
 ## Step 5 - Try to run the ChangeEmail agent manually
