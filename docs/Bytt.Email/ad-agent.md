@@ -92,9 +92,9 @@ New-ADServiceAccount -Name "changeemailagent" -PrincipalsAllowedToRetrieveManage
 For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):
 
 ```PowerShell
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:CA;Reset Password";user'
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;PwdlastSet";user'
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;lockoutTime";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;mail";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;userPrincipalName";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;proxyAddresses";user'
 ```
 
 ### Grant permission to certificate
