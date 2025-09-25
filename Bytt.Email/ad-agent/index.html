@@ -5042,7 +5042,7 @@
 <p>The ChangeEmail agent module is a simple module made for listening to change requests from Bytt.Email / ChangeEmail by Fortytwo, updating the user account in Active Directory and reporting back the status of the change. There are a few steps required to install the module and run it:</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The agent must be running on a domain joined windows server</li>
+<li>The agent must be running on a domain joined windows server (We recommend running on the Entra ID Connect or Entra ID Cloud sync server)</li>
 <li><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi">PowerShell 7.5 or newer installed</a></li>
 <li>AD PowerShell installed (<code>Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature</code>)</li>
 </ul>
@@ -5104,6 +5104,12 @@
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">Start-changeemailActiveDirectoryListener</span> <span class="n">-Sleep</span> <span class="n">60</span> <span class="n">-Verbose</span>
 </span></code></pre></div>
+<p>If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the <code>RunBlockAfterChange</code> parameter to Start-changeemailActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    start-sleep 5
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    powershell -command &#39;start-adsyncsynccycle&#39;
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>}
+</span></code></pre></div>
 <h2 id="step-5-try-to-run-the-changeemail-agent-manually">Step 5 - Try to run the ChangeEmail agent manually<a class="headerlink" href="#step-5-try-to-run-the-changeemail-agent-manually" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open a PowerShell and run <code>cd c:\changeemail ; . c:\changeemail\run.ps1</code></li>
@@ -5112,13 +5118,13 @@
 <h2 id="step-6-run-the-changeemail-agent-as-a-scheduled-task">Step 6 - Run the ChangeEmail agent as a scheduled task<a class="headerlink" href="#step-6-run-the-changeemail-agent-as-a-scheduled-task" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-gmsa-for-the-scheduled-task">Create a gMSA for the scheduled task<a class="headerlink" href="#create-a-gmsa-for-the-scheduled-task" title="Permanent link">&para;</a></h3>
 <p>Run the below PowerShell in order to create a gMSA:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
 </span></code></pre></div>
 <h3 id="delegate-the-gmsa-the-reset-password-permission-in-ad">Delegate the gMSA the reset password permission in AD<a class="headerlink" href="#delegate-the-gmsa-the-reset-password-permission-in-ad" title="Permanent link">&para;</a></h3>
 <p>For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;mail&quot;;user&#39;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;userPrincipalName&quot;;user&#39;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;proxyAddresses&quot;;user&#39;</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;mail&quot;;user&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;userPrincipalName&quot;;user&#39;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;proxyAddresses&quot;;user&#39;</span>
 </span></code></pre></div>
 <h3 id="grant-permission-to-certificate">Grant permission to certificate<a class="headerlink" href="#grant-permission-to-certificate" title="Permanent link">&para;</a></h3>
 <p>Run <strong>certlm.msc</strong>, locate the <strong>changeemail</strong> certificate under <strong>Personal</strong> certificates, and <strong>Manage private keys</strong></p>
@@ -5162,7 +5168,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 25, 2025 13:23:22 UTC">September 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 25, 2025 14:07:51 UTC">September 25, 2025</span>
   </span>
 
     
