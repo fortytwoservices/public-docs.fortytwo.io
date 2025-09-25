@@ -25,7 +25,7 @@ Run the following as administrator:
 New-EventLog -LogName "Application" -Source "ChangeEmailAgent"
 $Certificate = New-SelfSignedCertificate -Subject "ChangeEmailAgent" -NotAfter (Get-Date).AddYears(100)
 [System.Convert]::ToBase64String($Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert), "InsertLineBreaks") | Set-Content -Path "ChangeEmailAgent-$($env:COMPUTERNAME).cer"
-"","Thumbprint:       $($Certificate.ThumbPrint)", "Certificate file: ChangeEmailAgent-$($env:COMPUTERNAME).cer"","" | Write-Host
+Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: ChangeEmailAgent-$($env:COMPUTERNAME).cer" "" -Separator "`n"
 ```
 
 ## Step 3 - Consent to Fortytwo Universe (Our API) and create app registration for agent
