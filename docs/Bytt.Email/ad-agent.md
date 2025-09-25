@@ -65,8 +65,7 @@ Add-EntraIDClientCertificateAccessTokenProfile `
     -Scope "https://api.fortytwo.io/.default" `
     -Thumbprint "THUMBPRINT_FROM_STEP2" `
     -ClientId "CLIENT_ID_FROM_STEP3" `
-    -TenantId "TENANT_ID_FROM_STEP3" `
-    -V2Token:$true
+    -TenantId "TENANT_ID_FROM_STEP3"
 
 Start-ChangeEmailAgentListener -Sleep 5 -Verbose -Debug
 ```
