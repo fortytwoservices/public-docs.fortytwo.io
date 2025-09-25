@@ -4,7 +4,7 @@ The ChangeEmail agent module is a simple module made for listening to change req
 
 ## Requirements
 
-- The agent must be running on a domain joined windows server
+- The agent must be running on a domain joined windows server (We recommend running on the Entra ID Connect or Entra ID Cloud sync server)
 - [PowerShell 7.5 or newer installed](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi)
 - AD PowerShell installed (```Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature```)
 
@@ -68,6 +68,15 @@ Add-EntraIDClientCertificateAccessTokenProfile `
     -TenantId "TENANT_ID_FROM_STEP3"
 
 Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose
+```
+
+If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the ```RunBlockAfterChange``` parameter to Start-changeemailActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:
+
+```
+Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
+    start-sleep 5
+    powershell -command 'start-adsyncsynccycle'
+}
 ```
 
 ## Step 5 - Try to run the ChangeEmail agent manually
