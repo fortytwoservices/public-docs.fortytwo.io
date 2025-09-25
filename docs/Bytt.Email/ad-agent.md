@@ -17,15 +17,15 @@ Install-Module Fortytwo.ChangeEmail.Agent -Scope AllUsers
 Install-Module EntraIDAccessToken -Scope AllUsers
 ```
 
-## Step 2 - Configure ChangeEmailAgent requirements
+## Step 2 - Configure changeemail requirements
 
 Run the following as administrator:
 
 ```PowerShell
-New-EventLog -LogName "Application" -Source "ChangeEmailAgent"
-$Certificate = New-SelfSignedCertificate -Subject "ChangeEmailAgent" -NotAfter (Get-Date).AddYears(100)
-[System.Convert]::ToBase64String($Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert), "InsertLineBreaks") | Set-Content -Path "ChangeEmailAgent-$($env:COMPUTERNAME).cer"
-Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: ChangeEmailAgent-$($env:COMPUTERNAME).cer" "" -Separator "`n"
+New-EventLog -LogName "Application" -Source "changeemail"
+$Certificate = New-SelfSignedCertificate -Subject "changeemail" -NotAfter (Get-Date).AddYears(100)
+[System.Convert]::ToBase64String($Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert), "InsertLineBreaks") | Set-Content -Path "changeemail-$($env:COMPUTERNAME).cer"
+Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: changeemail-$($env:COMPUTERNAME).cer" "" -Separator "`n"
 ```
 
 ## Step 3 - Consent to Fortytwo Universe (Our API) and create app registration for agent
@@ -67,7 +67,7 @@ Add-EntraIDClientCertificateAccessTokenProfile `
     -ClientId "CLIENT_ID_FROM_STEP3" `
     -TenantId "TENANT_ID_FROM_STEP3"
 
-Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose
+Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose
 ```
 
 ## Step 5 - Try to run the ChangeEmail agent manually
@@ -83,7 +83,7 @@ At this point, you can test out ChangeEmail and see that requests are received a
 Run the below PowerShell in order to create a gMSA:
 
 ```PowerShell
-New-ADServiceAccount -Name "changeemailagent" -PrincipalsAllowedToRetrieveManagedPassword "SERVERNAME$" -DNSHostname "bytt.email"
+New-ADServiceAccount -Name "changeemail" -PrincipalsAllowedToRetrieveManagedPassword "SERVERNAME$" -DNSHostname "bytt.email"
 ```
 
 ### Delegate the gMSA the reset password permission in AD
@@ -91,14 +91,14 @@ New-ADServiceAccount -Name "changeemailagent" -PrincipalsAllowedToRetrieveManage
 For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):
 
 ```PowerShell
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;mail";user'
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;userPrincipalName";user'
-dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemailagent$:rpwp;proxyAddresses";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemail$:rpwp;mail";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemail$:rpwp;userPrincipalName";user'
+dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemail$:rpwp;proxyAddresses";user'
 ```
 
 ### Grant permission to certificate
 
-Run **certlm.msc**, locate the **changeemailagent** certificate under **Personal** certificates, and **Manage private keys**
+Run **certlm.msc**, locate the **changeemail** certificate under **Personal** certificates, and **Manage private keys**
 
 ![](media/20250922140138.png)
 
