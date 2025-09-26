@@ -125,7 +125,7 @@ Locate the gMSA you created, and grant **Full control**
     - Runs the action ```pwsh``` with the arguments ```-file c:\changeemail\run.ps1```
     - Trigger at startup
         - Delay 1 minute
-        - Repeat every 5 minutes indefinitely
+        - Repeat every 5 minutes indefinitely (in order to restart the agent if it fails)
         - Do not stop task if it runs longer than anything
     - Do not run multiple instances
     - Never stop the task if running for a long time
