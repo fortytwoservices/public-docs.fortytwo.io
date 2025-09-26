@@ -119,17 +119,25 @@ Locate the gMSA you created, and grant **Full control**
 
 ![](media/20250922134729.png)
 
-### Create scheduled task
+### Create scheduled task for the agent
 
 3. Create a scheduled task running as the gMSA that:
     - Runs the action ```pwsh``` with the arguments ```-file c:\changeemail\run.ps1```
-    - Run daily, repeat every 2 minutes (Just in order to restart the task if it fails)
+    - Trigger at startup
+        - Delay 1 minute
+        - Repeat every 5 minutes indefinitely
+        - Do not stop task if it runs longer than anything
     - Do not run multiple instances
+    - Never stop the task if running for a long time
 
-![](media/20250922132707.png)
+Typical configuration:
 
-![](media/20250922132718.png)
+![](media/20250926093225.png)
 
-![](media/20250922132735.png)
+![](media/20250926093723.png)
 
-![](media/20250922135040.png)
+![](media/20250926093734.png)
+
+![](media/20250926093754.png)
+
+![](media/20250926093823.png)
