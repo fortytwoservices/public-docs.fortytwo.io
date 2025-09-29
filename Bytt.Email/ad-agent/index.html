@@ -403,58 +403,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-install-powershell-modules" class="md-nav__link">
+  <a href="#step-1-configure-changeemail-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1 - Install PowerShell modules
+      Step 1 - Configure changeemail requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-configure-changeemail-requirements" class="md-nav__link">
+  <a href="#step-2-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2 - Configure changeemail requirements
+      Step 2 - Consent to Fortytwo Universe (Our API) and create app registration for agent
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent" class="md-nav__link">
+  <a href="#step-3-create-the-run-file-for-the-changeemail-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3 - Consent to Fortytwo Universe (Our API) and create app registration for agent
+      Step 3 - Create the run file for the ChangeEmail Agent
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-create-the-run-file-for-the-changeemail-agent" class="md-nav__link">
+  <a href="#step-4-try-to-run-the-changeemail-agent-manually" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4 - Create the run file for the ChangeEmail Agent
+      Step 4 - Try to run the ChangeEmail agent manually
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-try-to-run-the-changeemail-agent-manually" class="md-nav__link">
+  <a href="#step-5-run-the-changeemail-agent-as-a-scheduled-task" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 5 - Try to run the ChangeEmail agent manually
+      Step 5 - Run the ChangeEmail agent as a scheduled task
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-run-the-changeemail-agent-as-a-scheduled-task" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 6 - Run the ChangeEmail agent as a scheduled task
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 6 - Run the ChangeEmail agent as a scheduled task">
+    <nav class="md-nav" aria-label="Step 5 - Run the ChangeEmail agent as a scheduled task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5046,19 +5037,14 @@
 <li><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi">PowerShell 7.5 or newer installed</a></li>
 <li>AD PowerShell installed (<code>Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature</code>)</li>
 </ul>
-<h2 id="step-1-install-powershell-modules">Step 1 - Install PowerShell modules<a class="headerlink" href="#step-1-install-powershell-modules" title="Permanent link">&para;</a></h2>
-<p>Run the below as administrator in order to install the required modules from PowerShell Gallery:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ChangeEmail</span><span class="p">.</span><span class="n">Agent</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">Install-Module</span> <span class="n">EntraIDAccessToken</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
-</span></code></pre></div>
-<h2 id="step-2-configure-changeemail-requirements">Step 2 - Configure changeemail requirements<a class="headerlink" href="#step-2-configure-changeemail-requirements" title="Permanent link">&para;</a></h2>
+<h2 id="step-1-configure-changeemail-requirements">Step 1 - Configure changeemail requirements<a class="headerlink" href="#step-1-configure-changeemail-requirements" title="Permanent link">&para;</a></h2>
 <p>Run the following as administrator:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">New-EventLog</span> <span class="n">-LogName</span> <span class="s2">&quot;Application&quot;</span> <span class="n">-Source</span> <span class="s2">&quot;changeemail&quot;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$Certificate</span> <span class="p">=</span> <span class="nb">New-SelfSignedCertificate</span> <span class="n">-Subject</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-NotAfter</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddYears</span><span class="p">(</span><span class="n">100</span><span class="p">)</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="no">[System.Convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="nv">$Certificate</span><span class="p">.</span><span class="n">Export</span><span class="p">(</span><span class="no">[System.Security.Cryptography.X509Certificates.X509ContentType]</span><span class="p">::</span><span class="n">Cert</span><span class="p">),</span> <span class="s2">&quot;InsertLineBreaks&quot;</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s2">&quot;changeemail-</span><span class="p">$(</span><span class="nv">$env:COMPUTERNAME</span><span class="p">)</span><span class="s2">.cer&quot;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">Write-Host</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;Thumbprint:       </span><span class="p">$(</span><span class="nv">$Certificate</span><span class="p">.</span><span class="n">ThumbPrint</span><span class="p">)</span><span class="s2">&quot;</span> <span class="s2">&quot;Certificate file: changeemail-</span><span class="p">$(</span><span class="nv">$env:COMPUTERNAME</span><span class="p">)</span><span class="s2">.cer&quot;</span> <span class="s2">&quot;&quot;</span> <span class="n">-Separator</span> <span class="s2">&quot;</span><span class="se">`n</span><span class="s2">&quot;</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">New-EventLog</span> <span class="n">-LogName</span> <span class="s2">&quot;Application&quot;</span> <span class="n">-Source</span> <span class="s2">&quot;changeemail&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$Certificate</span> <span class="p">=</span> <span class="nb">New-SelfSignedCertificate</span> <span class="n">-Subject</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-NotAfter</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddYears</span><span class="p">(</span><span class="n">100</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="no">[System.Convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="nv">$Certificate</span><span class="p">.</span><span class="n">Export</span><span class="p">(</span><span class="no">[System.Security.Cryptography.X509Certificates.X509ContentType]</span><span class="p">::</span><span class="n">Cert</span><span class="p">),</span> <span class="s2">&quot;InsertLineBreaks&quot;</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s2">&quot;changeemail-</span><span class="p">$(</span><span class="nv">$env:COMPUTERNAME</span><span class="p">)</span><span class="s2">.cer&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">Write-Host</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;Thumbprint:       </span><span class="p">$(</span><span class="nv">$Certificate</span><span class="p">.</span><span class="n">ThumbPrint</span><span class="p">)</span><span class="s2">&quot;</span> <span class="s2">&quot;Certificate file: changeemail-</span><span class="p">$(</span><span class="nv">$env:COMPUTERNAME</span><span class="p">)</span><span class="s2">.cer&quot;</span> <span class="s2">&quot;&quot;</span> <span class="n">-Separator</span> <span class="s2">&quot;</span><span class="se">`n</span><span class="s2">&quot;</span>
 </span></code></pre></div>
-<h2 id="step-3-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent">Step 3 - Consent to Fortytwo Universe (Our API) and create app registration for agent<a class="headerlink" href="#step-3-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent" title="Permanent link">&para;</a></h2>
+<h2 id="step-2-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent">Step 2 - Consent to Fortytwo Universe (Our API) and create app registration for agent<a class="headerlink" href="#step-2-consent-to-fortytwo-universe-our-api-and-create-app-registration-for-agent" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>As a global administrator, go to: https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408</p>
@@ -5090,41 +5076,41 @@
 <p>Click <strong>Grant admin consent</strong></p>
 </li>
 </ol>
-<h2 id="step-4-create-the-run-file-for-the-changeemail-agent">Step 4 - Create the run file for the ChangeEmail Agent<a class="headerlink" href="#step-4-create-the-run-file-for-the-changeemail-agent" title="Permanent link">&para;</a></h2>
+<h2 id="step-3-create-the-run-file-for-the-changeemail-agent">Step 3 - Create the run file for the ChangeEmail Agent<a class="headerlink" href="#step-3-create-the-run-file-for-the-changeemail-agent" title="Permanent link">&para;</a></h2>
 <p>Create <code>C:\changeemail\run.ps1</code> with the following contents:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Install and auto update the agent module</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">Install-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ChangeEmail</span><span class="p">.</span><span class="n">Agent</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-Force</span> <span class="n">-Verbose</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">Import-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ChangeEmail</span><span class="p">.</span><span class="n">Agent</span> <span class="n">-force</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">Add-EntraIDClientCertificateAccessTokenProfile</span> <span class="p">`</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">-Scope</span> <span class="s2">&quot;https://api.fortytwo.io/.default&quot;</span> <span class="p">`</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">-Thumbprint</span> <span class="s2">&quot;THUMBPRINT_FROM_STEP2&quot;</span> <span class="p">`</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">-ClientId</span> <span class="s2">&quot;CLIENT_ID_FROM_STEP3&quot;</span> <span class="p">`</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">-TenantId</span> <span class="s2">&quot;TENANT_ID_FROM_STEP3&quot;</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">Start-changeemailActiveDirectoryListener</span> <span class="n">-Sleep</span> <span class="n">60</span> <span class="n">-Verbose</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># Install and auto update the agent module</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">Install-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ChangeEmail</span><span class="p">.</span><span class="n">Agent</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-Force</span> <span class="n">-Verbose</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">Import-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ChangeEmail</span><span class="p">.</span><span class="n">Agent</span> <span class="n">-force</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">Add-EntraIDClientCertificateAccessTokenProfile</span> <span class="p">`</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">-Scope</span> <span class="s2">&quot;https://api.fortytwo.io/.default&quot;</span> <span class="p">`</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">-Thumbprint</span> <span class="s2">&quot;THUMBPRINT_FROM_STEP2&quot;</span> <span class="p">`</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">-ClientId</span> <span class="s2">&quot;CLIENT_ID_FROM_STEP3&quot;</span> <span class="p">`</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">-TenantId</span> <span class="s2">&quot;TENANT_ID_FROM_STEP3&quot;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">Start-changeemailActiveDirectoryListener</span> <span class="n">-Sleep</span> <span class="n">60</span> <span class="n">-Verbose</span>
 </span></code></pre></div>
 <p>If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the <code>RunBlockAfterChange</code> parameter to Start-changeemailActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    start-sleep 5
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    powershell -command &#39;start-adsyncsynccycle&#39;
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>}
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    start-sleep 5
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    powershell -command &#39;start-adsyncsynccycle&#39;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>}
 </span></code></pre></div>
-<h2 id="step-5-try-to-run-the-changeemail-agent-manually">Step 5 - Try to run the ChangeEmail agent manually<a class="headerlink" href="#step-5-try-to-run-the-changeemail-agent-manually" title="Permanent link">&para;</a></h2>
+<h2 id="step-4-try-to-run-the-changeemail-agent-manually">Step 4 - Try to run the ChangeEmail agent manually<a class="headerlink" href="#step-4-try-to-run-the-changeemail-agent-manually" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open a PowerShell and run <code>cd c:\changeemail ; . c:\changeemail\run.ps1</code></li>
 </ol>
 <p>At this point, you can test out ChangeEmail and see that requests are received and processed by the agent.</p>
-<h2 id="step-6-run-the-changeemail-agent-as-a-scheduled-task">Step 6 - Run the ChangeEmail agent as a scheduled task<a class="headerlink" href="#step-6-run-the-changeemail-agent-as-a-scheduled-task" title="Permanent link">&para;</a></h2>
+<h2 id="step-5-run-the-changeemail-agent-as-a-scheduled-task">Step 5 - Run the ChangeEmail agent as a scheduled task<a class="headerlink" href="#step-5-run-the-changeemail-agent-as-a-scheduled-task" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-gmsa-for-the-scheduled-task">Create a gMSA for the scheduled task<a class="headerlink" href="#create-a-gmsa-for-the-scheduled-task" title="Permanent link">&para;</a></h3>
 <p>Run the below PowerShell in order to create a gMSA:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
 </span></code></pre></div>
 <h3 id="delegate-the-gmsa-the-reset-password-permission-in-ad">Delegate the gMSA the reset password permission in AD<a class="headerlink" href="#delegate-the-gmsa-the-reset-password-permission-in-ad" title="Permanent link">&para;</a></h3>
 <p>For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;mail&quot;;user&#39;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;userPrincipalName&quot;;user&#39;</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;proxyAddresses&quot;;user&#39;</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;mail&quot;;user&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;userPrincipalName&quot;;user&#39;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;proxyAddresses&quot;;user&#39;</span>
 </span></code></pre></div>
 <h3 id="grant-permission-to-certificate">Grant permission to certificate<a class="headerlink" href="#grant-permission-to-certificate" title="Permanent link">&para;</a></h3>
 <p>Run <strong>certlm.msc</strong>, locate the <strong>changeemail</strong> certificate under <strong>Personal</strong> certificates, and <strong>Manage private keys</strong></p>
@@ -5176,7 +5162,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 26, 2025 07:41:34 UTC">September 26, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 29, 2025 09:35:25 UTC">September 29, 2025</span>
   </span>
 
     
