@@ -8,16 +8,7 @@ The ChangeEmail agent module is a simple module made for listening to change req
 - [PowerShell 7.5 or newer installed](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi)
 - AD PowerShell installed (```Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature```)
 
-## Step 1 - Install PowerShell modules
-
-Run the below as administrator in order to install the required modules from PowerShell Gallery:
-
-```PowerShell
-Install-Module Fortytwo.ChangeEmail.Agent -Scope AllUsers
-Install-Module EntraIDAccessToken -Scope AllUsers
-```
-
-## Step 2 - Configure changeemail requirements
+## Step 1 - Configure changeemail requirements
 
 Run the following as administrator:
 
@@ -28,7 +19,7 @@ $Certificate = New-SelfSignedCertificate -Subject "changeemail" -NotAfter (Get-D
 Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: changeemail-$($env:COMPUTERNAME).cer" "" -Separator "`n"
 ```
 
-## Step 3 - Consent to Fortytwo Universe (Our API) and create app registration for agent
+## Step 2 - Consent to Fortytwo Universe (Our API) and create app registration for agent
 
 1. As a global administrator, go to: https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408
 
@@ -52,7 +43,7 @@ Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: 
 
 8. Click **Grant admin consent**
 
-## Step 4 - Create the run file for the ChangeEmail Agent
+## Step 3 - Create the run file for the ChangeEmail Agent
 
 Create ```C:\changeemail\run.ps1``` with the following contents:
 
@@ -79,13 +70,13 @@ Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange
 }
 ```
 
-## Step 5 - Try to run the ChangeEmail agent manually
+## Step 4 - Try to run the ChangeEmail agent manually
 
 1. Open a PowerShell and run ```cd c:\changeemail ; . c:\changeemail\run.ps1```
 
 At this point, you can test out ChangeEmail and see that requests are received and processed by the agent.
 
-## Step 6 - Run the ChangeEmail agent as a scheduled task
+## Step 5 - Run the ChangeEmail agent as a scheduled task
 
 ### Create a gMSA for the scheduled task
 
