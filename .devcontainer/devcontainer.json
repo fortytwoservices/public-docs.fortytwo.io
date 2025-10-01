@@ -12,7 +12,7 @@
         "terminal.integrated.shell.linux": "/bin/bash"
     }
     },
-    "postCreateCommand": "pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin material-plausible-plugin mkdocs-awesome-pages-plugin",
+    "postCreateCommand": "pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin material-plausible-plugin mkdocs-awesome-pages-plugin mkdocs-redirects",
     "remoteUser": "vscode",
     "forwardPorts": [8000],
     "postStartCommand": "mkdocs serve -a 0.0.0.0:8000"
