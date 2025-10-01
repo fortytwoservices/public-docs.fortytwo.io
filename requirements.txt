@@ -1,3 +1,0 @@
-mkdocs-git-revision-date-localized-plugin
-material-plausible-plugin
-mkdocs-awesome-pages-plugin
