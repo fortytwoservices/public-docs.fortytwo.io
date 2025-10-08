@@ -70,6 +70,15 @@ Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterC
 }
 ```
 
+You can also run the connect sync on another server, if you use Invoke-Command like below, replacing the SERVERNAME with your Entra Connect server. In this configuration, your gMSA must be added to the "Remote Management Users" group locally on your Entra Connect server, as well as the ADSyncAdmins group.
+
+```PowerShell
+Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
+    start-sleep 5
+    Invoke-Command -ScriptBlock {start-adsyncsynccycle} -ComputerName SERVERNAME
+}
+```
+
 ## Step 4 - Try to run the ChangeEmail agent manually
 
 1. Open a PowerShell and run ```cd c:\changeemail ; . c:\changeemail\run.ps1```
