@@ -13,7 +13,7 @@ The ChangeEmail agent module is a simple module made for listening to change req
 Run the following as administrator:
 
 ```PowerShell
-New-EventLog -LogName "Application" -Source "changeemail"
+New-EventLog -LogName "Application" -Source "ChangeEmailAgent"
 $Certificate = New-SelfSignedCertificate -Subject "changeemail" -NotAfter (Get-Date).AddYears(100)
 [System.Convert]::ToBase64String($Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert), "InsertLineBreaks") | Set-Content -Path "changeemail-$($env:COMPUTERNAME).cer"
 Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: changeemail-$($env:COMPUTERNAME).cer" "" -Separator "`n"
@@ -58,13 +58,13 @@ Add-EntraIDClientCertificateAccessTokenProfile `
     -ClientId "CLIENT_ID_FROM_STEP3" `
     -TenantId "TENANT_ID_FROM_STEP3"
 
-Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose
+Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose
 ```
 
-If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the ```RunBlockAfterChange``` parameter to Start-changeemailActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:
+If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the ```RunBlockAfterChange``` parameter to Start-ChangeEmailAgentActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:
 
 ```
-Start-changeemailActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
+Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
     start-sleep 5
     powershell -command 'start-adsyncsynccycle'
 }
