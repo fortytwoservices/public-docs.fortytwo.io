@@ -63,7 +63,7 @@ Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose
 
 If you are running Entra ID Connect Sync and the script is running on this server, we recommend granting the account that will be running the agent the "ADSyncAdmins" role (local group on the server) and adding the ```RunBlockAfterChange``` parameter to Start-ChangeEmailAgentActiveDirectoryListener, in order to allow it to trigger sync whenever there are email address changes:
 
-```
+```PowerShell
 Start-ChangeEmailAgentActiveDirectoryListener -Sleep 60 -Verbose -RunBlockAfterChange {
     start-sleep 5
     powershell -command 'start-adsyncsynccycle'
