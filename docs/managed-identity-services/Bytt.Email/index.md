@@ -195,7 +195,7 @@ A user that is a member of only *Example Group 1* will get these options:
 | {firstname1}.{lastname-1}@contoso.com | ✅ | ✅ |
 | {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | ✅ | ✅ |
 
-A user that is member of only *Example Group 3* will get these options:
+A user that is member of only *Example Group 3* will get these options (will only be able to add aliases):
 
 | Option | Alias | Sign-in name |
 |-|-|-|
