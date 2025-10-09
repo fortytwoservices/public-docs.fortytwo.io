@@ -124,7 +124,7 @@ POST https://graph.microsoft.com/v1.0/groups/
     "securityEnabled": true,
     "mailEnabled": false,
     "mailNickname": "emailpattern1",
-    "extension_5a0b110707744bd4a2fdcf343ce79c56_signinnamepatterns": [
+    "extension_34ee8edbd2ff4ee9bac373b53303e00f_signinnamepatterns": [
         "{firstname1}.{lastname-1}@{currentsuffix}",
         "{firstname1}.{lastname-2}@{currentsuffix}",
         "{firstname1,1}{firstname2,1}.{lastname-1}@{currentsuffix}",
