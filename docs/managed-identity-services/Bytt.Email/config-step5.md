@@ -1,4 +1,6 @@
-# AD agent installation guide
+# Step 5 - Install the Active Directory agent
+
+> **Note:** If you do not have Active Directory users that will be using Bytt.Email, or want to test out the service without granting acces, [simply go to the next step](config-step6.md)
 
 The ChangeEmail agent module is a simple module made for listening to change requests from Bytt.Email / ChangeEmail by Fortytwo, updating the user account in Active Directory and reporting back the status of the change. There are a few steps required to install the module and run it:
 
@@ -141,3 +143,7 @@ Typical configuration:
 ![](media/20250926093754.png)
 
 ![](media/20250926093823.png)
+
+## Next step
+
+[Go to next step](config-step6.md)
