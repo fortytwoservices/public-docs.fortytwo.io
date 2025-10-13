@@ -5106,7 +5106,12 @@
 
 
 <h1 id="automatically-configure-everything">Automatically configure everything<a class="headerlink" href="#automatically-configure-everything" title="Permanent link">&para;</a></h1>
-<p>The following can be run as a global administrator. The script will do the following:</p>
+<p>The following PowerShell can be run as a global administrator: </p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Authentication</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Applications</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Groups</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">SignIns</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">DirectoryManagement</span><span class="p">,</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ByttEmail</span><span class="p">.</span><span class="n">Installation</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">Install-ByttEmail</span>
+</span></code></pre></div>
+<p>The script will do the following:</p>
 <ul>
 <li>Consent to applications as in <a href="../config-step1/">configuration step 1</a></li>
 <li>Create an Entra ID group for email patterns for all domains in the tenant (as per <a href="../config-step2/">configuration step 2</a>)</li>
@@ -5114,11 +5119,14 @@
 <li>Create an administrative unit named <strong>Bytt.email</strong>, with all members of all the email pattern groups as members (as per <a href="../config-step4/">configuration step 4</a>)</li>
 <li>Grant Bytt.Email the user administrator role of the administrative unit</li>
 </ul>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Authentication</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Applications</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Groups</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">SignIns</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">DirectoryManagement</span><span class="p">,</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">ByttEmail</span><span class="p">.</span><span class="n">Installation</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">Install-ByttEmail</span>
-</span></code></pre></div>
-<p>After this, the service should work as intended, except for Active Directory synchronized user. For these users, <a href="../config-step5/">the AD agent must be configured</a>.</p>
+<p>After the script have been completed successfully, there are a few tasks that needs to be completed:</p>
+<h1 id="1-add-users-to-the-groups-that-was-created">1 - Add users to the groups that was created<a class="headerlink" href="#1-add-users-to-the-groups-that-was-created" title="Permanent link">&para;</a></h1>
+<p>The script have created a set of groups, all prefixed with <strong>Bytt.Email pattern</strong>:</p>
+<p><img alt="" src="../media/20251013083100.png" /></p>
+<p>These have all been configured with a set of default email patterns for these domains, and users need to be members of these groups in order to get the different email patterns. Please see details in <a href="../config-step2/">configuration step 2</a>, on how these groups might be configured. </p>
+<p>The groups are by default created as criteria based groups, with all enabled users with that same upn suffix as members. This might not be what you want, but is suitable for many customers.</p>
+<h1 id="2-ad-agent">2 - AD Agent<a class="headerlink" href="#2-ad-agent" title="Permanent link">&para;</a></h1>
+<p>If you have Active Directory synchronized user, <a href="../config-step5/">configure the AD agent</a></p>
 
 
 
@@ -5141,7 +5149,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 12, 2025 23:08:40 UTC">October 12, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 13, 2025 06:34:02 UTC">October 13, 2025</span>
   </span>
 
     
