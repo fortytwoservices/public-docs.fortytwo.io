@@ -97,7 +97,7 @@ Run the below PowerShell in order to create a gMSA:
 New-ADServiceAccount -Name "changeemail" -PrincipalsAllowedToRetrieveManagedPassword "SERVERNAME$" -DNSHostname "bytt.email"
 ```
 
-### Delegate the gMSA the reset password permission in AD
+### Delegate the gMSA permissions to three attributes in AD
 
 For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):
 
