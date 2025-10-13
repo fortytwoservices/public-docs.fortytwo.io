@@ -19,7 +19,7 @@ The script will do the following:
 
 Hopefully, it should look like this after running:
 
-![](media/20251013090016.png)
+![](media/20251013104936.png)
 
 After the script have been completed successfully, there are a few tasks that needs to be completed:
 
