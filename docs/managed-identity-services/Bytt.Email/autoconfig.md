@@ -3,7 +3,8 @@
 The following PowerShell can be run as a global administrator: 
 
 ```PowerShell
-Install-Module Microsoft.Graph.Authentication, Microsoft.Graph.Applications, Microsoft.Graph.Groups, Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Identity.DirectoryManagement, Fortytwo.ByttEmail.Installation -Scope CurrentUser
+Install-Module Microsoft.Graph.Authentication, Microsoft.Graph.Applications, Microsoft.Graph.Groups, Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Identity.DirectoryManagement, Fortytwo.ByttEmail.Installation -Scope CurrentUser -Force
+Import-Module Fortytwo.ByttEmail.Installation
 
 Install-ByttEmail
 ```
