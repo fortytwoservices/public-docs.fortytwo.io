@@ -14,7 +14,7 @@ The user can be show option for changing their sign-in name and adding aliases, 
 
 In order to start using the service, you have two options for installation:
 
-- [Automated configuration using PowerShell](autoconfig.md)
+- [Automated configuration using PowerShell (Recommended)](autoconfig.md)
 - [Configure everything manually](config-step1.md)
 
 After the service is installed, you can test out the service and create a subscription in Azure Marketplace (Coming soon).
