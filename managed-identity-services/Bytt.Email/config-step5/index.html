@@ -3279,9 +3279,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#delegate-the-gmsa-the-reset-password-permission-in-ad" class="md-nav__link">
+  <a href="#delegate-the-gmsa-permissions-to-three-attributes-in-ad" class="md-nav__link">
     <span class="md-ellipsis">
-      Delegate the gMSA the reset password permission in AD
+      Delegate the gMSA permissions to three attributes in AD
     </span>
   </a>
   
@@ -5337,7 +5337,7 @@
 <p>Run the below PowerShell in order to create a gMSA:</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-ADServiceAccount</span> <span class="n">-Name</span> <span class="s2">&quot;changeemail&quot;</span> <span class="n">-PrincipalsAllowedToRetrieveManagedPassword</span> <span class="s2">&quot;SERVERNAME$&quot;</span> <span class="n">-DNSHostname</span> <span class="s2">&quot;bytt.email&quot;</span>
 </span></code></pre></div>
-<h3 id="delegate-the-gmsa-the-reset-password-permission-in-ad">Delegate the gMSA the reset password permission in AD<a class="headerlink" href="#delegate-the-gmsa-the-reset-password-permission-in-ad" title="Permanent link">&para;</a></h3>
+<h3 id="delegate-the-gmsa-permissions-to-three-attributes-in-ad">Delegate the gMSA permissions to three attributes in AD<a class="headerlink" href="#delegate-the-gmsa-permissions-to-three-attributes-in-ad" title="Permanent link">&para;</a></h3>
 <p>For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;mail&quot;;user&#39;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dsacls</span> <span class="s2">&quot;OU=Users,DC=contoso,DC=com&quot;</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s1">&#39;&quot;contoso.com\changeemail$:rpwp;userPrincipalName&quot;;user&#39;</span>
@@ -5395,7 +5395,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 12, 2025 23:08:40 UTC">October 12, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 13, 2025 07:03:46 UTC">October 13, 2025</span>
   </span>
 
     
