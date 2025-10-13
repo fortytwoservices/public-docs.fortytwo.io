@@ -4,11 +4,11 @@
 
 The portal is branded using the tenant branding you have in Entra ID:
 
-![](media/20251009225713.png)
+<img src="media/20251009225713.png" style="max-width: 50%" />
 
 The user can be show option for changing their sign-in name and adding aliases, depending on configuration:
 
-![](media/20251009225656.png)
+<img src="media/20251009225656.png" style="max-width: 50%" />
 
 ## Start using the service
 
