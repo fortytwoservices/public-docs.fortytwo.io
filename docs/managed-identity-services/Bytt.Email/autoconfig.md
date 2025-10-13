@@ -17,6 +17,10 @@ The script will do the following:
 - Create an administrative unit named **Bytt.email**, with all members of all the email pattern groups as members (as per [configuration step 4](config-step4.md))
 - Grant Bytt.Email the user administrator role of the administrative unit
 
+Hopefully, it should look like this after running:
+
+![](media/20251013090016.png)
+
 After the script have been completed successfully, there are a few tasks that needs to be completed:
 
 # 1 - Add users to the groups that was created
