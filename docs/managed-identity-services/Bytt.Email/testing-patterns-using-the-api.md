@@ -13,7 +13,7 @@ Add-EntraIDInteractiveUserAccessTokenProfile -Scope "https://api.fortytwo.io/.de
 Write-Host "Has required role: " (Get-EntraIDAccessToken | Get-EntraIDAccessTokenHasRoles -Roles "changeemail-administrator")
 ```
 
-Now, you can call the API endspoints as follows:
+Now, you can call the API endpoints as follows:
 
 ```PowerShell
 $body = @{
