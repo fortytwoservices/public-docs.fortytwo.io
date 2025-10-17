@@ -134,7 +134,7 @@ A user that is member of *Example Group 1* and *Example Group 3* will get these 
 | {firstname1}.{lastname-1}@contoso.com | ✅ | ✅ |
 | {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | ✅ | ✅ |
 | {firstname1}.{lastname-1}@test.com | ✅ | |
-| {firstname1}.{firstname2,1}.{lastname-1}@test.com | ✅ | |
+| {firstname1}.{firstname2,1}.{lastname-1}@test.com | ✅ |  |
 
 ### Example Group 1
 
