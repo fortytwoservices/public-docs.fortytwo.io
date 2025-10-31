@@ -40,8 +40,8 @@ Information limited to named recipients, which can be both internal or external 
 * Security incident handling with customers
 * Customers system documentation
 
- ## GDPR (Charcoal / Black)  
-
+## GDPR (Charcoal / Black)
+ 
 Data and information which is subject to protection under GDPR, this includes both basic _basic information like names and addresses, but also more sensitive categories, such as special categories of personal data which reveal racial or ethnic origin, political or religious beliefs, trade union membership, genetic or biometric data, and data concerning health, sex life, or sexual orientation_
 
 * Information containing PII for employees
