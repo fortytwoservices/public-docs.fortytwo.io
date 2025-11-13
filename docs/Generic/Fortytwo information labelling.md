@@ -6,6 +6,11 @@ Fortytwo Technologies principles in regards to information protection and docume
 
 This section only focus on **classification** of information based on the informations sensitivity and the intended audience. We will not handle protection of the infomation in this section, protection will build on the label definition, usage guidelines and the systems Fortytwo use. 
 
+## Personal (Purple)
+
+Most of us live, breath and sleep Fortytwo, so the computers we use for work is often the same as we use for personal stuff - wether it is a PowerPoint for an upcoming grand birthday or notes and preparations for exams or presentations. What separates _Personal_ from _Fortytwo_ or _Public_ is we don't track usage of _Personal_ but this should be stored outside of SharePoint Online, like in OneDrive or any 3rd party storage services (or locally). It is also not covered by any retention policies or data loss prevention policies.
+There might be a thin line between _Personal_ and _Fortytwo_ - when in doubt, reach out. Also, we trust our employees and coworkers not to use this to exfiltrate company data.
+
 ## Public (Green)
 
 Information available to all audience, with no specific access restrictions. Information labelled with this classification present no risk if information is shared outside Fortytwo Technologies organisation.
