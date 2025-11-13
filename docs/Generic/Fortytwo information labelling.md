@@ -8,8 +8,10 @@ This section only focus on **classification** of information based on the inform
 
 ## Personal (Purple)
 
-Most of us live, breath and sleep Fortytwo, so the computers we use for work is often the same as we use for personal stuff - wether it is a PowerPoint for an upcoming grand birthday or notes and preparations for exams or presentations. What separates _Personal_ from _Fortytwo_ or _Public_ is we don't track usage of _Personal_ but this should be stored outside of SharePoint Online, like in OneDrive or any 3rd party storage services (or locally). It is also not covered by any retention policies or data loss prevention policies.
-There might be a thin line between _Personal_ and _Fortytwo_ - when in doubt, reach out. Also, we trust our employees and coworkers not to use this to exfiltrate company data.
+If you - **in special circumstances** - need to use your Fortytwo computer for personal non-related stuff, this label is what you **shall** use
+Intended for personal documents and files - wether it is a PowerPoint for an upcoming grand birthday or notes and preparations for exams or presentations. 
+What separates Personal from _Fortytwo_ or _Public_ is that we don't track usage of _Personal_ but this should be stored outside of SharePoint Online, like OneDrive or any 3rd party storage services (or locally). 
+It is also not covered by any retention policies or data loss prevention policies. There might be a thin line between Personal and Fortytwo - when in doubt, reach out.
 
 ## Public (Green)
 
