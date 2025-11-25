@@ -25,7 +25,7 @@
     
     
       
-        <title>Fortytwo Managed Microsoft Entra Verified ID - Documentation for Fortytwo</title>
+        <title>Microsoft Entra Verified ID Services by Fortytwo - Documentation for Fortytwo</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fortytwo-managed-microsoft-entra-verified-id" class="md-skip">
+        <a href="#microsoft-entra-verified-id-services-by-fortytwo" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fortytwo Managed Microsoft Entra Verified ID
+              Microsoft Entra Verified ID Services by Fortytwo
             
           </span>
         </div>
@@ -6026,346 +6026,278 @@
   
 
 
-<h1 id="fortytwo-managed-microsoft-entra-verified-id">Fortytwo Managed Microsoft Entra Verified ID<a class="headerlink" href="#fortytwo-managed-microsoft-entra-verified-id" title="Permanent link">&para;</a></h1>
-<p>Fortytwo's Managed Verified ID service provides a production-ready, enterprise-grade implementation of Microsoft Entra Verified ID, delivered as a managed proxy service. This eliminates the complexity of direct Microsoft integration while providing enhanced functionality and professional support.</p>
-<h2 id="prerequisites">Prerequisites:<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h1 id="microsoft-entra-verified-id-services-by-fortytwo">Microsoft Entra Verified ID Services by Fortytwo<a class="headerlink" href="#microsoft-entra-verified-id-services-by-fortytwo" title="Permanent link">&para;</a></h1>
+<p>Fortytwo is a Microsoft partner specializing in Microsoft Entra Verified ID implementation and consulting services. We help organizations design, implement, and optimize their verifiable credentials infrastructure—transforming how they establish trust, verify identities, and streamline secure access.</p>
+<h2 id="microsoft-partnership">Microsoft Partnership<a class="headerlink" href="#microsoft-partnership" title="Permanent link">&para;</a></h2>
+<p>Learn more about Microsoft's Verified ID partner ecosystem:</p>
 <ul>
-<li>Microsoft Entra ID tenant (for ID Token credentials)</li>
-<li>HTTPS-enabled client application (if not using CheckID frontend)</li>
-<li>Webhook endpoint capability</li>
-<li>API key management system</li>
-<li>Brand assets (for white-label options)</li>
+<li><strong><a href="https://learn.microsoft.com/en-us/entra/verified-id/services-partners">Microsoft Entra Verified ID Services Partners</a></strong> - Explore the partner network and available services</li>
 </ul>
-<h2 id="service-overview">Service Overview<a class="headerlink" href="#service-overview" title="Permanent link">&para;</a></h2>
-<h3 id="what-we-provide">What We Provide<a class="headerlink" href="#what-we-provide" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Standalone Verified ID Provider</strong>: Direct Microsoft Entra Verified ID integration service</li>
-<li><strong>Multiple Credential Types</strong>: Government ID, Mobile Driver's License, Employee credentials, ID Token, and ID Token Hint</li>
-<li><strong>Production-Ready Infrastructure</strong>: Kubernetes-hosted, auto-scaling, enterprise-grade</li>
-<li><strong>Simplified APIs</strong>: Unified endpoints for issuance and verification</li>
-<li><strong>CheckID Frontend Integration</strong>: Optional web-based identity verification frontend</li>
-<li><strong>White-Label Solutions</strong>: Fully customizable branding and user experience</li>
-<li><strong>Professional Support</strong>: Implementation guidance and ongoing technical support</li>
-<li><strong>Compliance Ready</strong>: Built with enterprise security and audit requirements</li>
-</ul>
-<h3 id="business-benefits">Business Benefits<a class="headerlink" href="#business-benefits" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="what-is-microsoft-entra-verified-id">What is Microsoft Entra Verified ID?<a class="headerlink" href="#what-is-microsoft-entra-verified-id" title="Permanent link">&para;</a></h2>
+<p>Microsoft Entra Verified ID is a cloud-native platform for issuing, storing, and verifying Verifiable Credentials (VCs) backed by Decentralized Identifiers (DIDs). Built on open standards including W3C DID, Verifiable Credentials, OpenID Connect, and JWT, it delivers interoperability with other wallets, issuers, and verifiers—ensuring you're not locked into a single vendor or ecosystem.</p>
+<h3 id="why-verified-id-matters">Why Verified ID Matters<a class="headerlink" href="#why-verified-id-matters" title="Permanent link">&para;</a></h3>
+<p>In a world where trust is the new currency, identity is your exchange rate. Whether you're onboarding employees, authenticating customers, or granting access to sensitive systems, identity proofing must be fast, secure, and privacy-preserving. Microsoft Entra Verified ID delivers exactly that: a decentralized, standards-based way to issue, hold, and verify digital credentials that users control—and organizations can rely on.</p>
+<h3 id="key-advantages">Key Advantages<a class="headerlink" href="#key-advantages" title="Permanent link">&para;</a></h3>
+<p><strong>Versatile Trust Systems</strong><br />
+Verified ID supports leading DID methods—<code>did:ion</code> (built on Bitcoin anchoring) and <code>did:web</code> (PKI-backed)—giving architects freedom to align cryptographic trust with their risk profiles and regulatory environments.</p>
+<p><strong>Designed for Azure, Built for Interoperability</strong><br />
+Works seamlessly with the broader Azure ecosystem, including Entitlement Management and passwordless authentication patterns, while remaining standards-based so credentials can be used beyond Microsoft boundaries.</p>
+<p><strong>User-Controlled and Portable</strong><br />
+Users can export credentials and protect them with a recovery phrase, storing them wherever they choose. If a device is replaced, the user doesn't lose their identity—privacy by design and portability in practice.</p>
+<p><strong>Developer-First Integration</strong><br />
+Because Issuer and Verifier are API services, you can integrate Verified ID into web or mobile apps, use QR flows for issuance and presentation, and orchestrate everything through CI/CD like any modern service.</p>
+<hr />
+<h2 id="business-benefits">Business Benefits<a class="headerlink" href="#business-benefits" title="Permanent link">&para;</a></h2>
+<p>Organizations implementing Microsoft Entra Verified ID realize tangible benefits:</p>
+<h3 id="enhanced-security-posture">Enhanced Security Posture<a class="headerlink" href="#enhanced-security-posture" title="Permanent link">&para;</a></h3>
+<p>Reduce phishing, account takeover, and unauthorized access by moving from static secrets to cryptographic credentials with optional biometric verification.</p>
+<h3 id="streamlined-processes">Streamlined Processes<a class="headerlink" href="#streamlined-processes" title="Permanent link">&para;</a></h3>
+<p>Automate verification and onboarding workflows, eliminating manual document collection and error-prone checks.</p>
+<h3 id="better-user-experience">Better User Experience<a class="headerlink" href="#better-user-experience" title="Permanent link">&para;</a></h3>
+<p>Fast, reusable, privacy-preserving credentials that just work—no paper, fewer passwords, less friction.</p>
+<h3 id="quantifiable-impact">Quantifiable Impact<a class="headerlink" href="#quantifiable-impact" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Benefit</th>
 <th>Traditional Approach</th>
-<th>Fortytwo Managed Service</th>
+<th>With Verified ID</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Time to Production</strong></td>
 <td>3-6 months</td>
-<td>6 weeks</td>
+<td>6-8 weeks</td>
 </tr>
 <tr>
-<td><strong>Integration Complexity</strong></td>
-<td>High - Direct MS APIs</td>
-<td>Low - Simplified proxy</td>
+<td><strong>Onboarding Time</strong></td>
+<td>Hours to days</td>
+<td>Minutes</td>
 </tr>
 <tr>
-<td><strong>Infrastructure Management</strong></td>
-<td>Self-managed</td>
-<td>Fully managed</td>
+<td><strong>Security Risk</strong></td>
+<td>High (passwords, phishing)</td>
+<td>Low (cryptographic proof)</td>
 </tr>
 <tr>
-<td><strong>Support Model</strong></td>
-<td>Community + MS Support</td>
-<td>Professional Fortytwo support</td>
+<td><strong>User Friction</strong></td>
+<td>Document submission, re-verification</td>
+<td>One-time credential, reusable</td>
 </tr>
 <tr>
-<td><strong>Credential Branding</strong></td>
-<td>Microsoft-branded</td>
-<td>Fortytwo or White-labeled</td>
-</tr>
-<tr>
-<td><strong>Multi-tenant Ready</strong></td>
-<td>Custom implementation</td>
-<td>Built-in</td>
-</tr>
-<tr>
-<td><strong>Frontend Included</strong></td>
-<td>Build your own</td>
-<td>Optional CheckID frontend</td>
+<td><strong>Privacy</strong></td>
+<td>Centralized data storage</td>
+<td>User-controlled, selective disclosure</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<h3 id="standalone-verified-id-provider">Standalone Verified ID Provider<a class="headerlink" href="#standalone-verified-id-provider" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Client Applications
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        │ API Calls
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ▼
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>┌───────────────────────────┐
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  Fortytwo Verified ID     │ ◄── Standalone Service
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│     Provider Service      │ ◄── No User Data Storage
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  (.NET 8 Minimal APIs)    │ ◄── Enterprise Security
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└───────────┬───────────────┘
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            │ Forward Requests
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            ▼
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>┌───────────────────────────┐
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   Microsoft Entra        │
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   Verified ID Service     │
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>└───────────────────────────┘
-</span></code></pre></div>
-<h3 id="optional-checkid-frontend-integration">Optional CheckID Frontend Integration<a class="headerlink" href="#optional-checkid-frontend-integration" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>End Users
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    │
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    │ Web Interface
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ▼
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>┌───────────────────────────┐
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│      CheckID Frontend     │ ◄── Optional Web UI
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   (Identity Verification) │ ◄── User Experience Layer
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>└───────────┬───────────────┘
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            │ API Calls
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            ▼
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>┌───────────────────────────┐
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  Fortytwo Verified ID     │ ◄── Core Provider Service
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│     Provider Service      │ ◄── Credential Management
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└───────────┬───────────────┘
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            │
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            ▼
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>┌───────────────────────────┐
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   Microsoft Entra        │
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   Verified ID Service     │
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>└───────────────────────────┘
-</span></code></pre></div>
-<h3 id="core-services">Core Services<a class="headerlink" href="#core-services" title="Permanent link">&para;</a></h3>
+<h2 id="cross-industry-use-cases">Cross-Industry Use Cases<a class="headerlink" href="#cross-industry-use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="recruitment-onboarding">Recruitment &amp; Onboarding<a class="headerlink" href="#recruitment-onboarding" title="Permanent link">&para;</a></h3>
+<p><strong>Digital CV &amp; Background Checks</strong><br />
+Candidates present degree and background credentials issued by universities and third-party verifiers.</p>
+<p><strong>Remote Identity Proofing</strong><br />
+Biometric matching combined with credential issuance enables seamless day-one access.</p>
+<p><strong>Outcome</strong>: Faster hiring, reduced fraud, streamlined onboarding.</p>
+<h3 id="workplace-access">Workplace Access<a class="headerlink" href="#workplace-access" title="Permanent link">&para;</a></h3>
+<p><strong>Passwordless Login</strong><br />
+Cryptographic credentials with role/clearance assertions for restricted areas and systems.</p>
+<p><strong>Outcome</strong>: Stronger physical and logical access controls without badge and password sprawl.</p>
+<h3 id="helpdesk-verification">Helpdesk Verification<a class="headerlink" href="#helpdesk-verification" title="Permanent link">&para;</a></h3>
+<p><strong>Secure Caller Verification</strong><br />
+Verified ID combined with biometrics before sensitive actions like password resets or MFA changes.</p>
+<p><strong>Outcome</strong>: Material reduction in social engineering risk.</p>
+<h3 id="temporary-external-access">Temporary &amp; External Access<a class="headerlink" href="#temporary-external-access" title="Permanent link">&para;</a></h3>
+<p><strong>Contractors and Suppliers</strong><br />
+Pre-issued verifiable credentials grant time-bound access to collaboration spaces and tools—no username or password needed.</p>
+<p><strong>Outcome</strong>: Enhanced security and speed for high-churn, multi-organization workflows.</p>
+<h3 id="training-credentials">Training &amp; Credentials<a class="headerlink" href="#training-credentials" title="Permanent link">&para;</a></h3>
+<p><strong>Portable Qualifications</strong><br />
+External training providers issue qualifications as VCs. Employees share proofs with HR; HR integrates them into competency systems.</p>
+<p><strong>Outcome</strong>: Reusable, portable qualifications and simplified compliance evidence.</p>
+<hr />
+<h2 id="industry-applications">Industry Applications<a class="headerlink" href="#industry-applications" title="Permanent link">&para;</a></h2>
+<h3 id="financial-services">Financial Services<a class="headerlink" href="#financial-services" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Verified ID Provider</strong>: Core credential issuance and verification service</li>
-<li><strong>API Gateway</strong>: Request routing, authentication, and rate limiting</li>
-<li><strong>Request Transformer</strong>: API mapping and validation</li>
-<li><strong>Response Formatter</strong>: Standardized response formatting</li>
-<li><strong>Webhook Forwarder</strong>: Event relay to client systems</li>
-<li><strong>Monitoring &amp; Audit</strong>: Comprehensive logging and metrics</li>
+<li>KYC/AML workflows</li>
+<li>Account recovery backed by verified credentials</li>
+<li>Credit scores as verifiable credentials</li>
+<li>Proof of funds and payment verification</li>
+</ul>
+<h3 id="government-public-sector">Government &amp; Public Sector<a class="headerlink" href="#government-public-sector" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Citizen identity cards</li>
+<li>Digital signatures</li>
+<li>Residency and entitlement verification</li>
+<li>E-visas and civil documents</li>
+</ul>
+<h3 id="healthcare-life-sciences">Healthcare &amp; Life Sciences<a class="headerlink" href="#healthcare-life-sciences" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Patient and clinician identity</li>
+<li>Foreign qualification verification</li>
+<li>Digital prescriptions and referrals</li>
+<li>Records exchange across providers</li>
+</ul>
+<h3 id="manufacturing">Manufacturing<a class="headerlink" href="#manufacturing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Zone-based access control</li>
+<li>Supplier onboarding</li>
+<li>Temporary worker qualifications</li>
+<li>Secure account recovery flows</li>
+</ul>
+<h3 id="retail">Retail<a class="headerlink" href="#retail" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Age verification with minimal PII</li>
+<li>Loyalty programs</li>
+<li>High-trust transactions (car sales, rentals, event tickets)</li>
+</ul>
+<h3 id="nonprofit">Nonprofit<a class="headerlink" href="#nonprofit" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Beneficiary identity verification</li>
+<li>Volunteer vetting</li>
+<li>Decentralized data for safety in hostile environments</li>
+<li>Guest access without vulnerable central databases</li>
 </ul>
 <hr />
-<h2 id="supported-credential-types">Supported Credential Types<a class="headerlink" href="#supported-credential-types" title="Permanent link">&para;</a></h2>
-<h3 id="1-employee-credential">1. Employee Credential<a class="headerlink" href="#1-employee-credential" title="Permanent link">&para;</a></h3>
-<p>Professional employee verification with customizable claims.</p>
-<p><strong>Claims Included:</strong>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<h3 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h3>
+<p>Microsoft Entra Verified ID operates through three key components:</p>
+<p><strong>Issuance Flow</strong>
+1. Web application collects or derives user attributes
+2. Verified ID API creates issuance request
+3. User scans QR code with their digital wallet (e.g., Microsoft Authenticator)
+4. API signs and delivers verifiable credential to the wallet</p>
+<p><strong>Verification Flow</strong>
+1. Web application requests proof of specific credentials
+2. Wallet presents verifiable credential
+3. API resolves issuer DID and validates cryptographic signature
+4. Verified data returned to consuming services</p>
+<p><strong>Trust Systems</strong>
+- <strong>did:ion</strong>: Fully decentralized anchoring on Bitcoin blockchain
+- <strong>did:web</strong>: PKI-aligned trust for enterprise scenarios
+- Both methods supported for flexibility in deployment</p>
+<hr />
+<h2 id="our-services">Our Services<a class="headerlink" href="#our-services" title="Permanent link">&para;</a></h2>
+<h3 id="consulting-advisory">Consulting &amp; Advisory<a class="headerlink" href="#consulting-advisory" title="Permanent link">&para;</a></h3>
+<p><strong>Strategy &amp; Planning</strong><br />
+Define your verifiable credentials use cases and implementation roadmap aligned with business objectives.</p>
+<p><strong>Architecture Design</strong><br />
+Design secure, scalable Verified ID solutions tailored to your organization's technical environment and security requirements.</p>
+<p><strong>Use Case Assessment</strong><br />
+Evaluate and prioritize credential scenarios for maximum business value and ROI.</p>
+<p><strong>Compliance Guidance</strong><br />
+Navigate regulatory requirements, data privacy considerations, and industry-specific mandates.</p>
+<h3 id="implementation-services">Implementation Services<a class="headerlink" href="#implementation-services" title="Permanent link">&para;</a></h3>
+<p><strong>Microsoft Entra Verified ID Setup</strong><br />
+Configure and deploy Verified ID in your Microsoft Entra tenant with best practices.</p>
+<p><strong>Credential Definition Design</strong><br />
+Create custom credential schemas aligned with your business needs and data governance policies.</p>
+<p><strong>Application Integration</strong><br />
+Integrate Verified ID issuance and verification capabilities into your web and mobile applications.</p>
+<p><strong>Security Configuration</strong><br />
+Implement security best practices, conditional access policies, and compliance controls.</p>
+<h3 id="technical-enablement">Technical Enablement<a class="headerlink" href="#technical-enablement" title="Permanent link">&para;</a></h3>
+<p><strong>Developer Training</strong><br />
+Hands-on workshops for your development teams covering API integration, wallet flows, and troubleshooting.</p>
+<p><strong>Integration Support</strong><br />
+Technical guidance during implementation phases with code reviews and architecture validation.</p>
+<p><strong>Best Practices</strong><br />
+Share proven patterns and approaches from real-world deployments across industries.</p>
+<p><strong>Troubleshooting &amp; Optimization</strong><br />
+Expert assistance resolving technical challenges and optimizing performance.</p>
+<hr />
+<h2 id="credential-scenarios-we-support">Credential Scenarios We Support<a class="headerlink" href="#credential-scenarios-we-support" title="Permanent link">&para;</a></h2>
+<h3 id="employee-credentials">Employee Credentials<a class="headerlink" href="#employee-credentials" title="Permanent link">&para;</a></h3>
+<p>Digital employee credentials for secure access and verification.</p>
+<p><strong>Typical Claims:</strong>
 - Employee ID, Display Name, Email
-- Department, Job Title, Country Code
-- Identity Provider, Verification Level
-- Onboarding Date</p>
-<p><strong>Use Cases:</strong>
-- Employee verification for system access
+- Department, Job Title, Location
+- Employment status and dates
+- Role and clearance levels</p>
+<p><strong>Common Use Cases:</strong>
+- System access and authentication
 - Cross-organizational collaboration
-- Temporary worker verification</p>
-<h3 id="2-government-id-credential">2. Government ID Credential<a class="headerlink" href="#2-government-id-credential" title="Permanent link">&para;</a></h3>
-<p>Government-issued identity document verification.</p>
-<p><strong>Claims Included:</strong>
-- Document type and issuing authority
-- Personal identification data
-- Document validity status</p>
-<h3 id="3-mobile-drivers-license-mdl">3. Mobile Driver's License (mDL)<a class="headerlink" href="#3-mobile-drivers-license-mdl" title="Permanent link">&para;</a></h3>
-<p>Digital driver's license verification compliant with ISO 18013-5 standards.</p>
-<h3 id="4-id-token-credential">4. ID Token Credential<a class="headerlink" href="#4-id-token-credential" title="Permanent link">&para;</a></h3>
-<p>Entra ID-based identity credential for existing enterprise users.</p>
-<h3 id="5-id-token-hint-credential">5. ID Token Hint Credential<a class="headerlink" href="#5-id-token-hint-credential" title="Permanent link">&para;</a></h3>
-<p>Direct claims-based credential issuance for custom scenarios.</p>
+- Temporary worker verification
+- Onboarding and offboarding workflows</p>
+<h3 id="id-token-credentials">ID Token Credentials<a class="headerlink" href="#id-token-credentials" title="Permanent link">&para;</a></h3>
+<p>Leverage existing Entra ID identities for credential issuance.</p>
+<p><strong>Use Cases:</strong>
+- Internal enterprise applications
+- Partner access scenarios
+- Federated identity workflows
+- Passwordless authentication</p>
+<h3 id="custom-credentials">Custom Credentials<a class="headerlink" href="#custom-credentials" title="Permanent link">&para;</a></h3>
+<p>Design credentials specific to your organization's unique requirements.</p>
+<p><strong>Examples:</strong>
+- Training certifications and qualifications
+- Access privileges and clearances
+- Membership credentials
+- Professional licenses
+- Project-specific access tokens</p>
 <hr />
-<h2 id="frontend-solutions">Frontend Solutions<a class="headerlink" href="#frontend-solutions" title="Permanent link">&para;</a></h2>
-<h3 id="checkid-as-frontend-option">CheckID as Frontend Option<a class="headerlink" href="#checkid-as-frontend-option" title="Permanent link">&para;</a></h3>
-<p>CheckID serves as an optional web-based frontend that provides a complete user experience for identity verification and credential management:</p>
-<p><strong>CheckID Frontend Features:</strong>
-- <strong>Web-based Identity Verification</strong>: User-friendly interface for credential requests
-- <strong>QR Code Display</strong>: Seamless mobile wallet integration
-- <strong>Real-time Status Updates</strong>: Live progress tracking for users
-- <strong>Multi-language Support</strong>: Localized user experience
-- <strong>Responsive Design</strong>: Works across desktop and mobile browsers</p>
-<h3 id="integration-options">Integration Options<a class="headerlink" href="#integration-options" title="Permanent link">&para;</a></h3>
-<p><strong>Option 1: Verified ID Provider Only</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Your Application → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-</span></code></pre></div>
-- Direct API integration
-- Build your own user interface
-- Full control over user experience</p>
-<p><strong>Option 2: CheckID Frontend + Verified ID Provider</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Users → CheckID Frontend → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-</span></code></pre></div>
-- Ready-to-use web interface
-- Faster implementation
-- Professional user experience included</p>
-<p><strong>Option 3: White-Label Solution</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Users → Your Branded Frontend → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-</span></code></pre></div>
-- Fully customized branding
-- Your domain and certificates
-- Complete white-label experience</p>
-<h3 id="checkid-frontend-workflow">CheckID Frontend Workflow<a class="headerlink" href="#checkid-frontend-workflow" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>User Access</strong>: User visits CheckID web application</li>
-<li><strong>Identity Selection</strong>: Choose verification method (Gov ID, Employee, etc.)</li>
-<li><strong>Credential Request</strong>: CheckID calls Fortytwo Verified ID Provider</li>
-<li><strong>QR Code Display</strong>: User scans QR with Microsoft Authenticator</li>
-<li><strong>Real-time Updates</strong>: CheckID shows progress and completion status</li>
-<li><strong>Integration</strong>: Results forwarded to your backend systems</li>
-</ol>
-<hr />
-<h2 id="white-label-options">White-Label Options<a class="headerlink" href="#white-label-options" title="Permanent link">&para;</a></h2>
-<h3 id="complete-branding-customization">Complete Branding Customization<a class="headerlink" href="#complete-branding-customization" title="Permanent link">&para;</a></h3>
-<p>Transform the service to match your organization's brand and requirements:</p>
-<p><strong>Frontend Customization:</strong>
-- <strong>Custom Domain</strong>: Use your own domain name (e.g., <code>credentials.yourcompany.com</code>)
-- <strong>Brand Assets</strong>: Your logos, colors, fonts, and styling
-- <strong>Custom Messaging</strong>: Tailored user instructions and help text
-- <strong>Localization</strong>: Support for your preferred languages
-- <strong>SSL Certificates</strong>: Your own SSL certificates and security policies</p>
-<p><strong>Credential Branding:</strong>
-- <strong>Issuer Identity</strong>: Credentials issued under your organization's name
-- <strong>Custom Logos</strong>: Your organization's logo on digital credentials
-- <strong>Brand Colors</strong>: Credential cards match your brand palette
-- <strong>Custom Claims</strong>: Organization-specific data fields and validation</p>
-<p><strong>API Customization:</strong>
-- <strong>Custom Endpoints</strong>: API paths that match your naming conventions
-- <strong>Response Format</strong>: Customize JSON structures to match your systems
-- <strong>Webhook Integration</strong>: Events delivered with your preferred payload format
-- <strong>Rate Limiting</strong>: Custom limits based on your usage patterns</p>
-<h3 id="white-label-deployment-models">White-Label Deployment Models<a class="headerlink" href="#white-label-deployment-models" title="Permanent link">&para;</a></h3>
-<p><strong>Shared Infrastructure (Standard)</strong>
-- Your branding on shared Fortytwo infrastructure
-- Cost-effective for most organizations
-- Standard SLAs and support</p>
-<p><strong>Dedicated Instance (Enterprise)</strong>
-- Dedicated infrastructure for your organization
-- Enhanced security and isolation
-- Custom SLAs and compliance requirements
-- Premium support and monitoring</p>
-<p><strong>Hybrid Model (Custom)</strong>
-- Mix of shared and dedicated components
-- Tailored to specific security or compliance needs
-- Custom pricing and support agreements</p>
-<h3 id="white-label-implementation-process">White-Label Implementation Process<a class="headerlink" href="#white-label-implementation-process" title="Permanent link">&para;</a></h3>
-<p><strong>Week 1-2: Brand Configuration</strong>
-- Brand asset collection and integration
-- Domain setup and SSL configuration
-- Custom styling and UI adjustments</p>
-<p><strong>Week 3-4: Service Customization</strong>
-- API endpoint customization
-- Credential definition branding
-- Webhook payload formatting</p>
-<p><strong>Week 5-6: Testing &amp; Deployment</strong>
-- End-to-end white-label testing
-- Domain verification and go-live
-- Documentation and training delivery</p>
-<hr />
-<h2 id="implementation-guide">Implementation Guide<a class="headerlink" href="#implementation-guide" title="Permanent link">&para;</a></h2>
-<h3 id="6-week-quick-start-program">6-Week Quick-Start Program<a class="headerlink" href="#6-week-quick-start-program" title="Permanent link">&para;</a></h3>
-<p><strong>Week 1 - Planning &amp; Analysis</strong>
-- Requirements gathering and use case selection
-- Integration architecture design
-- White-label requirements assessment
-- Security and compliance review</p>
-<p><strong>Weeks 2-3 - Service Enablement</strong>
-- Fortytwo service configuration
-- Credential definition setup
-- CheckID frontend configuration (if selected)
-- Test environment provisioning</p>
-<p><strong>Weeks 4-5 - Integration &amp; Development</strong>
-- API integration development
-- User journey implementation
-- Webhook endpoint setup
-- Brand customization (white-label)</p>
-<p><strong>Week 6 - Testing &amp; Production Deployment</strong>
-- End-to-end testing
-- Production deployment
-- Documentation handover and training</p>
-<hr />
-<h2 id="security-compliance">Security &amp; Compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h2>
-<h3 id="security-model">Security Model<a class="headerlink" href="#security-model" title="Permanent link">&para;</a></h3>
+<h2 id="implementation-approach-6-week-quick-start">Implementation Approach: 6-Week Quick-Start<a class="headerlink" href="#implementation-approach-6-week-quick-start" title="Permanent link">&para;</a></h2>
+<h3 id="week-1-planning-analysis">Week 1 – Planning &amp; Analysis<a class="headerlink" href="#week-1-planning-analysis" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Client API Key Authentication</strong>: Secure client identification</li>
-<li><strong>Rate Limiting</strong>: Per-client request throttling</li>
-<li><strong>Audit Logging</strong>: Comprehensive request/response logging</li>
-<li><strong>No User Data Storage</strong>: Stateless provider architecture</li>
-<li><strong>Encrypted Transport</strong>: TLS 1.3 for all communications</li>
-<li><strong>Domain Isolation</strong>: White-label domains with dedicated security policies</li>
+<li>Requirements gathering and use case workshops</li>
+<li>Current state assessment and gap analysis</li>
+<li>Architecture design and integration planning</li>
+<li>Security and compliance review</li>
 </ul>
-<h3 id="data-handling">Data Handling<a class="headerlink" href="#data-handling" title="Permanent link">&para;</a></h3>
-<p><strong>What We Store:</strong>
-- Client configuration and API keys
-- Request audit logs (no PII)
-- Operational metrics
-- Webhook URLs and configurations
-- Brand assets and customization settings</p>
-<p><strong>What We DON'T Store:</strong>
-- User credentials or personal data
-- Session information
-- Authentication state
-- Issued credential content</p>
-<h3 id="compliance">Compliance<a class="headerlink" href="#compliance" title="Permanent link">&para;</a></h3>
+<h3 id="weeks-2-3-service-enablement">Weeks 2-3 – Service Enablement<a class="headerlink" href="#weeks-2-3-service-enablement" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>GDPR Compliant</strong>: No personal data retention</li>
-<li><strong>SOC 2 Type II</strong>: Annual compliance audits</li>
-<li><strong>ISO 27001</strong>: Information security management</li>
-<li><strong>Azure Security</strong>: Leverages Microsoft's enterprise security</li>
-<li><strong>Custom Compliance</strong>: White-label options support additional compliance requirements</li>
+<li>Enable Microsoft Entra Verified ID in your tenant</li>
+<li>Configure issuance and verification flows</li>
+<li>Set up credential definitions and schemas</li>
+<li>Admin configuration and access policies</li>
+<li>Test environment provisioning</li>
 </ul>
+<h3 id="weeks-4-5-integration-development">Weeks 4-5 – Integration &amp; Development<a class="headerlink" href="#weeks-4-5-integration-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Connect Verified ID APIs to your applications</li>
+<li>Implement user journeys and workflows</li>
+<li>Configure webhook endpoints for events</li>
+<li>Develop custom policies and rules</li>
+<li>Integration testing and validation</li>
+</ul>
+<h3 id="week-6-testing-deployment-documentation">Week 6 – Testing, Deployment &amp; Documentation<a class="headerlink" href="#week-6-testing-deployment-documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>End-to-end testing across scenarios</li>
+<li>Production deployment and go-live</li>
+<li>User acceptance testing</li>
+<li>Team training and knowledge transfer</li>
+<li>Documentation handover</li>
+</ul>
+<p><strong>Key Outcomes:</strong>
+- Improved security posture
+- Streamlined processes
+- Enhanced user experience
+- Measurable ROI and business value</p>
 <hr />
-<h2 id="support-sla">Support &amp; SLA<a class="headerlink" href="#support-sla" title="Permanent link">&para;</a></h2>
-<h3 id="service-level-agreement">Service Level Agreement<a class="headerlink" href="#service-level-agreement" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Standard</th>
-<th>White-Label Enterprise</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Uptime</strong></td>
-<td>99.9%</td>
-<td>99.95%</td>
-</tr>
-<tr>
-<td><strong>Response Time</strong></td>
-<td>&lt; 200ms (95th percentile)</td>
-<td>&lt; 100ms (95th percentile)</td>
-</tr>
-<tr>
-<td><strong>Support Response</strong></td>
-<td>&lt; 4 hours (business hours)</td>
-<td>&lt; 2 hours (24/7)</td>
-</tr>
-<tr>
-<td><strong>Resolution Time</strong></td>
-<td>&lt; 24 hours (P1 issues)</td>
-<td>&lt; 12 hours (P1 issues)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="support-tiers">Support Tiers<a class="headerlink" href="#support-tiers" title="Permanent link">&para;</a></h3>
-<p><strong>Professional Support (Included):</strong>
-- Email support (business hours)
-- Integration documentation
-- Basic troubleshooting
-- CheckID frontend support</p>
-<p><strong>Enterprise Support (White-Label):</strong>
-- 24/7 support availability
-- Dedicated technical account manager
-- Custom integration consulting
-- Priority feature requests
-- Brand customization support
-- Custom compliance assistance</p>
-<h3 id="pricing-model">Pricing Model<a class="headerlink" href="#pricing-model" title="Permanent link">&para;</a></h3>
-<p><strong>Standard Service:</strong>
-- API Call Volume: Tiered pricing based on monthly calls
-- CheckID Frontend: Included at no additional cost
-- Setup Fee: One-time configuration and onboarding</p>
-<p><strong>White-Label Options:</strong>
-- Custom Branding: One-time setup fee + monthly branding license
-- Dedicated Instance: Monthly infrastructure cost
-- Premium Support: Annual support contract
-- Custom Development: Professional services hourly rate</p>
+<h2 id="why-work-with-fortytwo">Why Work With Fortytwo<a class="headerlink" href="#why-work-with-fortytwo" title="Permanent link">&para;</a></h2>
+<p><strong>Microsoft Certified Partner</strong><br />
+Deep expertise in Microsoft identity solutions with proven track record in Entra ID ecosystem.</p>
+<p><strong>Proven Experience</strong><br />
+Successful Verified ID implementations across multiple industries and use cases.</p>
+<p><strong>End-to-End Support</strong><br />
+From initial strategy through deployment, optimization, and ongoing enhancement.</p>
+<p><strong>Best Practices</strong><br />
+Apply lessons learned from real-world customer engagements to accelerate your success.</p>
+<p><strong>Local Expertise</strong><br />
+Understanding of regional requirements, regulations, and compliance frameworks.</p>
+<p><strong>Standards-Based Approach</strong><br />
+Focus on open standards and interoperability to future-proof your investment.</p>
+<hr />
+<h2 id="get-started">Get Started<a class="headerlink" href="#get-started" title="Permanent link">&para;</a></h2>
+<p>Ready to explore Microsoft Entra Verified ID for your organization? Contact our team to discuss your requirements and learn how we can help transform your trust and identity infrastructure.</p>
 <p><strong>Contact</strong>: <a href="mailto:verified-id@fortytwo.io">verified-id@fortytwo.io</a></p>
+<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/entra/verified-id/services-partners">Microsoft Entra Verified ID Services Partners</a></li>
+<li><a href="https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview">Decentralized Identifier Overview</a></li>
+<li><a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Standards</a></li>
+</ul>
 
 
 
@@ -6388,7 +6320,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 24, 2025 12:53:00 UTC">September 24, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 25, 2025 13:42:11 UTC">November 25, 2025</span>
   </span>
 
     
