@@ -144,6 +144,19 @@ Typical configuration:
 
 ![](media/20250926093823.png)
 
+Having trouble with adding the task as a gMSA? 
+
+Create the task running as your own user acocunt first, and update the task using PowerShell:
+
+```PowerShell
+$task = Get-ScheduledTask -TaskName "Bytt.Email Agent"
+ 
+$principal = New-ScheduledTaskPrincipal -UserId "contoso.com\changeemail$" -LogonType ServiceAccount
+ 
+$task.Principal = $principal
+Set-ScheduledTask -InputObject $task
+```
+
 ## Next step
 
 [Go to next step](config-step6.md)
