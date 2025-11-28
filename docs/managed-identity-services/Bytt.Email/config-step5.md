@@ -144,9 +144,7 @@ Typical configuration:
 
 ![](media/20250926093823.png)
 
-Having trouble with adding the task as a gMSA? 
-
-Create the task running as your own user acocunt first, and update the task using PowerShell:
+Having trouble with adding the task as a gMSA? Create the task running as your own user acocunt first, and update the task using PowerShell:
 
 ```PowerShell
 $task = Get-ScheduledTask -TaskName "Bytt.Email Agent"
