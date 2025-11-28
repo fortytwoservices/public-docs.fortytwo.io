@@ -1,354 +1,324 @@
-# Fortytwo Managed Microsoft Entra Verified ID
+# Microsoft Entra Verified ID Services by Fortytwo
 
-Fortytwo's Managed Verified ID service provides a production-ready, enterprise-grade implementation of Microsoft Entra Verified ID, delivered as a managed proxy service. This eliminates the complexity of direct Microsoft integration while providing enhanced functionality and professional support.
+Fortytwo is a Microsoft partner specializing in Microsoft Entra Verified ID implementation and consulting services. We help organizations design, implement, and optimize their verifiable credentials infrastructure—transforming how they establish trust, verify identities, and streamline secure access.
 
-## Prerequisites:
-- Microsoft Entra ID tenant (for ID Token credentials)
-- HTTPS-enabled client application (if not using CheckID frontend)
-- Webhook endpoint capability
-- API key management system
-- Brand assets (for white-label options)
+## Microsoft Partnership
 
-## Service Overview
+Learn more about Microsoft's Verified ID partner ecosystem:
 
-### What We Provide
-
-- **Standalone Verified ID Provider**: Direct Microsoft Entra Verified ID integration service
-- **Multiple Credential Types**: Government ID, Mobile Driver's License, Employee credentials, ID Token, and ID Token Hint
-- **Production-Ready Infrastructure**: Kubernetes-hosted, auto-scaling, enterprise-grade
-- **Simplified APIs**: Unified endpoints for issuance and verification
-- **CheckID Frontend Integration**: Optional web-based identity verification frontend
-- **White-Label Solutions**: Fully customizable branding and user experience
-- **Professional Support**: Implementation guidance and ongoing technical support
-- **Compliance Ready**: Built with enterprise security and audit requirements
-
-### Business Benefits
-
-| Benefit | Traditional Approach | Fortytwo Managed Service |
-| - | - | - |
-| **Time to Production** | 3-6 months | 6 weeks |
-| **Integration Complexity** | High - Direct MS APIs | Low - Simplified proxy |
-| **Infrastructure Management** | Self-managed | Fully managed |
-| **Support Model** | Community + MS Support | Professional Fortytwo support |
-| **Credential Branding** | Microsoft-branded | Fortytwo or White-labeled |
-| **Multi-tenant Ready** | Custom implementation | Built-in |
-| **Frontend Included** | Build your own | Optional CheckID frontend |
+- **[Microsoft Entra Verified ID Services Partners](https://learn.microsoft.com/en-us/entra/verified-id/services-partners)** - Explore the partner network and available services
 
 ---
 
-## Architecture
+## What is Microsoft Entra Verified ID?
 
-### Standalone Verified ID Provider
+Microsoft Entra Verified ID is a cloud-native platform for issuing, storing, and verifying Verifiable Credentials (VCs) backed by Decentralized Identifiers (DIDs). Built on open standards including W3C DID, Verifiable Credentials, OpenID Connect, and JWT, it delivers interoperability with other wallets, issuers, and verifiers—ensuring you're not locked into a single vendor or ecosystem.
 
-```
-Client Applications
-        │
-        │ API Calls
-        ▼
-┌───────────────────────────┐
-│  Fortytwo Verified ID     │ ◄── Standalone Service
-│     Provider Service      │ ◄── No User Data Storage
-│  (.NET 8 Minimal APIs)    │ ◄── Enterprise Security
-└───────────┬───────────────┘
-            │ Forward Requests
-            ▼
-┌───────────────────────────┐
-│   Microsoft Entra        │
-│   Verified ID Service     │
-└───────────────────────────┘
-```
+### Why Verified ID Matters
 
-### Optional CheckID Frontend Integration
+In a world where trust is the new currency, identity is your exchange rate. Whether you're onboarding employees, authenticating customers, or granting access to sensitive systems, identity proofing must be fast, secure, and privacy-preserving. Microsoft Entra Verified ID delivers exactly that: a decentralized, standards-based way to issue, hold, and verify digital credentials that users control—and organizations can rely on.
 
-```
-End Users
-    │
-    │ Web Interface
-    ▼
-┌───────────────────────────┐
-│      CheckID Frontend     │ ◄── Optional Web UI
-│   (Identity Verification) │ ◄── User Experience Layer
-└───────────┬───────────────┘
-            │ API Calls
-            ▼
-┌───────────────────────────┐
-│  Fortytwo Verified ID     │ ◄── Core Provider Service
-│     Provider Service      │ ◄── Credential Management
-└───────────┬───────────────┘
-            │
-            ▼
-┌───────────────────────────┐
-│   Microsoft Entra        │
-│   Verified ID Service     │
-└───────────────────────────┘
-```
+### Key Advantages
 
-### Core Services
+**Versatile Trust Systems**  
+Verified ID supports leading DID methods—`did:ion` (built on Bitcoin anchoring) and `did:web` (PKI-backed)—giving architects freedom to align cryptographic trust with their risk profiles and regulatory environments.
 
-- **Verified ID Provider**: Core credential issuance and verification service
-- **API Gateway**: Request routing, authentication, and rate limiting
-- **Request Transformer**: API mapping and validation
-- **Response Formatter**: Standardized response formatting
-- **Webhook Forwarder**: Event relay to client systems
-- **Monitoring & Audit**: Comprehensive logging and metrics
+**Designed for Azure, Built for Interoperability**  
+Works seamlessly with the broader Azure ecosystem, including Entitlement Management and passwordless authentication patterns, while remaining standards-based so credentials can be used beyond Microsoft boundaries.
+
+**User-Controlled and Portable**  
+Users can export credentials and protect them with a recovery phrase, storing them wherever they choose. If a device is replaced, the user doesn't lose their identity—privacy by design and portability in practice.
+
+**Developer-First Integration**  
+Because Issuer and Verifier are API services, you can integrate Verified ID into web or mobile apps, use QR flows for issuance and presentation, and orchestrate everything through CI/CD like any modern service.
 
 ---
 
-## Supported Credential Types
+## Business Benefits
 
-### 1. Employee Credential
+Organizations implementing Microsoft Entra Verified ID realize tangible benefits:
 
-Professional employee verification with customizable claims.
+### Enhanced Security Posture
+Reduce phishing, account takeover, and unauthorized access by moving from static secrets to cryptographic credentials with optional biometric verification.
 
-**Claims Included:**
+### Streamlined Processes
+Automate verification and onboarding workflows, eliminating manual document collection and error-prone checks.
+
+### Better User Experience
+Fast, reusable, privacy-preserving credentials that just work—no paper, fewer passwords, less friction.
+
+### Quantifiable Impact
+
+| Benefit | Traditional Approach | With Verified ID |
+|---------|---------------------|-----------------|
+| **Time to Production** | 3-6 months | 6-8 weeks |
+| **Onboarding Time** | Hours to days | Minutes |
+| **Security Risk** | High (passwords, phishing) | Low (cryptographic proof) |
+| **User Friction** | Document submission, re-verification | One-time credential, reusable |
+| **Privacy** | Centralized data storage | User-controlled, selective disclosure |
+
+---
+
+## Cross-Industry Use Cases
+
+### Recruitment & Onboarding
+
+**Digital CV & Background Checks**  
+Candidates present degree and background credentials issued by universities and third-party verifiers.
+
+**Remote Identity Proofing**  
+Biometric matching combined with credential issuance enables seamless day-one access.
+
+**Outcome**: Faster hiring, reduced fraud, streamlined onboarding.
+
+### Workplace Access
+
+**Passwordless Login**  
+Cryptographic credentials with role/clearance assertions for restricted areas and systems.
+
+**Outcome**: Stronger physical and logical access controls without badge and password sprawl.
+
+### Helpdesk Verification
+
+**Secure Caller Verification**  
+Verified ID combined with biometrics before sensitive actions like password resets or MFA changes.
+
+**Outcome**: Material reduction in social engineering risk.
+
+### Temporary & External Access
+
+**Contractors and Suppliers**  
+Pre-issued verifiable credentials grant time-bound access to collaboration spaces and tools—no username or password needed.
+
+**Outcome**: Enhanced security and speed for high-churn, multi-organization workflows.
+
+### Training & Credentials
+
+**Portable Qualifications**  
+External training providers issue qualifications as VCs. Employees share proofs with HR; HR integrates them into competency systems.
+
+**Outcome**: Reusable, portable qualifications and simplified compliance evidence.
+
+---
+
+## Industry Applications
+
+### Financial Services
+- KYC/AML workflows
+- Account recovery backed by verified credentials
+- Credit scores as verifiable credentials
+- Proof of funds and payment verification
+
+### Government & Public Sector
+- Citizen identity cards
+- Digital signatures
+- Residency and entitlement verification
+- E-visas and civil documents
+
+### Healthcare & Life Sciences
+- Patient and clinician identity
+- Foreign qualification verification
+- Digital prescriptions and referrals
+- Records exchange across providers
+
+### Manufacturing
+- Zone-based access control
+- Supplier onboarding
+- Temporary worker qualifications
+- Secure account recovery flows
+
+### Retail
+- Age verification with minimal PII
+- Loyalty programs
+- High-trust transactions (car sales, rentals, event tickets)
+
+### Nonprofit
+- Beneficiary identity verification
+- Volunteer vetting
+- Decentralized data for safety in hostile environments
+- Guest access without vulnerable central databases
+
+---
+
+## How It Works
+
+### Architecture Overview
+
+Microsoft Entra Verified ID operates through three key components:
+
+**Issuance Flow**
+1. Web application collects or derives user attributes
+2. Verified ID API creates issuance request
+3. User scans QR code with their digital wallet (e.g., Microsoft Authenticator)
+4. API signs and delivers verifiable credential to the wallet
+
+**Verification Flow**
+1. Web application requests proof of specific credentials
+2. Wallet presents verifiable credential
+3. API resolves issuer DID and validates cryptographic signature
+4. Verified data returned to consuming services
+
+**Trust Systems**
+- **did:ion**: Fully decentralized anchoring on Bitcoin blockchain
+- **did:web**: PKI-aligned trust for enterprise scenarios
+- Both methods supported for flexibility in deployment
+
+---
+
+## Our Services
+
+### Consulting & Advisory
+
+**Strategy & Planning**  
+Define your verifiable credentials use cases and implementation roadmap aligned with business objectives.
+
+**Architecture Design**  
+Design secure, scalable Verified ID solutions tailored to your organization's technical environment and security requirements.
+
+**Use Case Assessment**  
+Evaluate and prioritize credential scenarios for maximum business value and ROI.
+
+**Compliance Guidance**  
+Navigate regulatory requirements, data privacy considerations, and industry-specific mandates.
+
+### Implementation Services
+
+**Microsoft Entra Verified ID Setup**  
+Configure and deploy Verified ID in your Microsoft Entra tenant with best practices.
+
+**Credential Definition Design**  
+Create custom credential schemas aligned with your business needs and data governance policies.
+
+**Application Integration**  
+Integrate Verified ID issuance and verification capabilities into your web and mobile applications.
+
+**Security Configuration**  
+Implement security best practices, conditional access policies, and compliance controls.
+
+### Technical Enablement
+
+**Developer Training**  
+Hands-on workshops for your development teams covering API integration, wallet flows, and troubleshooting.
+
+**Integration Support**  
+Technical guidance during implementation phases with code reviews and architecture validation.
+
+**Best Practices**  
+Share proven patterns and approaches from real-world deployments across industries.
+
+**Troubleshooting & Optimization**  
+Expert assistance resolving technical challenges and optimizing performance.
+
+---
+
+## Credential Scenarios We Support
+
+### Employee Credentials
+
+Digital employee credentials for secure access and verification.
+
+**Typical Claims:**
 - Employee ID, Display Name, Email
-- Department, Job Title, Country Code
-- Identity Provider, Verification Level
-- Onboarding Date
+- Department, Job Title, Location
+- Employment status and dates
+- Role and clearance levels
 
-**Use Cases:**
-- Employee verification for system access
+**Common Use Cases:**
+- System access and authentication
 - Cross-organizational collaboration
 - Temporary worker verification
+- Onboarding and offboarding workflows
 
-### 2. Government ID Credential
+### ID Token Credentials
 
-Government-issued identity document verification.
+Leverage existing Entra ID identities for credential issuance.
 
-**Claims Included:**
-- Document type and issuing authority
-- Personal identification data
-- Document validity status
+**Use Cases:**
+- Internal enterprise applications
+- Partner access scenarios
+- Federated identity workflows
+- Passwordless authentication
 
-### 3. Mobile Driver's License (mDL)
+### Custom Credentials
 
-Digital driver's license verification compliant with ISO 18013-5 standards.
+Design credentials specific to your organization's unique requirements.
 
-### 4. ID Token Credential
-
-Entra ID-based identity credential for existing enterprise users.
-
-### 5. ID Token Hint Credential
-
-Direct claims-based credential issuance for custom scenarios.
-
----
-
-## Frontend Solutions
-
-### CheckID as Frontend Option
-
-CheckID serves as an optional web-based frontend that provides a complete user experience for identity verification and credential management:
-
-**CheckID Frontend Features:**
-- **Web-based Identity Verification**: User-friendly interface for credential requests
-- **QR Code Display**: Seamless mobile wallet integration
-- **Real-time Status Updates**: Live progress tracking for users
-- **Multi-language Support**: Localized user experience
-- **Responsive Design**: Works across desktop and mobile browsers
-
-### Integration Options
-
-**Option 1: Verified ID Provider Only**
-```
-Your Application → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-```
-- Direct API integration
-- Build your own user interface
-- Full control over user experience
-
-**Option 2: CheckID Frontend + Verified ID Provider**
-```
-Users → CheckID Frontend → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-```
-- Ready-to-use web interface
-- Faster implementation
-- Professional user experience included
-
-**Option 3: White-Label Solution**
-```
-Users → Your Branded Frontend → Fortytwo Verified ID Provider → Microsoft Entra Verified ID
-```
-- Fully customized branding
-- Your domain and certificates
-- Complete white-label experience
-
-### CheckID Frontend Workflow
-
-1. **User Access**: User visits CheckID web application
-2. **Identity Selection**: Choose verification method (Gov ID, Employee, etc.)
-3. **Credential Request**: CheckID calls Fortytwo Verified ID Provider
-4. **QR Code Display**: User scans QR with Microsoft Authenticator
-5. **Real-time Updates**: CheckID shows progress and completion status
-6. **Integration**: Results forwarded to your backend systems
+**Examples:**
+- Training certifications and qualifications
+- Access privileges and clearances
+- Membership credentials
+- Professional licenses
+- Project-specific access tokens
 
 ---
 
-## White-Label Options
+## Implementation Approach: 6-Week Quick-Start
 
-### Complete Branding Customization
-
-Transform the service to match your organization's brand and requirements:
-
-**Frontend Customization:**
-- **Custom Domain**: Use your own domain name (e.g., `credentials.yourcompany.com`)
-- **Brand Assets**: Your logos, colors, fonts, and styling
-- **Custom Messaging**: Tailored user instructions and help text
-- **Localization**: Support for your preferred languages
-- **SSL Certificates**: Your own SSL certificates and security policies
-
-**Credential Branding:**
-- **Issuer Identity**: Credentials issued under your organization's name
-- **Custom Logos**: Your organization's logo on digital credentials
-- **Brand Colors**: Credential cards match your brand palette
-- **Custom Claims**: Organization-specific data fields and validation
-
-**API Customization:**
-- **Custom Endpoints**: API paths that match your naming conventions
-- **Response Format**: Customize JSON structures to match your systems
-- **Webhook Integration**: Events delivered with your preferred payload format
-- **Rate Limiting**: Custom limits based on your usage patterns
-
-### White-Label Deployment Models
-
-**Shared Infrastructure (Standard)**
-- Your branding on shared Fortytwo infrastructure
-- Cost-effective for most organizations
-- Standard SLAs and support
-
-**Dedicated Instance (Enterprise)**
-- Dedicated infrastructure for your organization
-- Enhanced security and isolation
-- Custom SLAs and compliance requirements
-- Premium support and monitoring
-
-**Hybrid Model (Custom)**
-- Mix of shared and dedicated components
-- Tailored to specific security or compliance needs
-- Custom pricing and support agreements
-
-### White-Label Implementation Process
-
-**Week 1-2: Brand Configuration**
-- Brand asset collection and integration
-- Domain setup and SSL configuration
-- Custom styling and UI adjustments
-
-**Week 3-4: Service Customization**
-- API endpoint customization
-- Credential definition branding
-- Webhook payload formatting
-
-**Week 5-6: Testing & Deployment**
-- End-to-end white-label testing
-- Domain verification and go-live
-- Documentation and training delivery
-
----
-
-## Implementation Guide
-
-### 6-Week Quick-Start Program
-
-**Week 1 - Planning & Analysis**
-- Requirements gathering and use case selection
-- Integration architecture design
-- White-label requirements assessment
+### Week 1 – Planning & Analysis
+- Requirements gathering and use case workshops
+- Current state assessment and gap analysis
+- Architecture design and integration planning
 - Security and compliance review
 
-**Weeks 2-3 - Service Enablement**
-- Fortytwo service configuration
-- Credential definition setup
-- CheckID frontend configuration (if selected)
+### Weeks 2-3 – Service Enablement
+- Enable Microsoft Entra Verified ID in your tenant
+- Configure issuance and verification flows
+- Set up credential definitions and schemas
+- Admin configuration and access policies
 - Test environment provisioning
 
-**Weeks 4-5 - Integration & Development**
-- API integration development
-- User journey implementation
-- Webhook endpoint setup
-- Brand customization (white-label)
+### Weeks 4-5 – Integration & Development
+- Connect Verified ID APIs to your applications
+- Implement user journeys and workflows
+- Configure webhook endpoints for events
+- Develop custom policies and rules
+- Integration testing and validation
 
-**Week 6 - Testing & Production Deployment**
-- End-to-end testing
-- Production deployment
-- Documentation handover and training
+### Week 6 – Testing, Deployment & Documentation
+- End-to-end testing across scenarios
+- Production deployment and go-live
+- User acceptance testing
+- Team training and knowledge transfer
+- Documentation handover
 
----
-
-## Security & Compliance
-
-### Security Model
-
-- **Client API Key Authentication**: Secure client identification
-- **Rate Limiting**: Per-client request throttling
-- **Audit Logging**: Comprehensive request/response logging
-- **No User Data Storage**: Stateless provider architecture
-- **Encrypted Transport**: TLS 1.3 for all communications
-- **Domain Isolation**: White-label domains with dedicated security policies
-
-### Data Handling
-
-**What We Store:**
-- Client configuration and API keys
-- Request audit logs (no PII)
-- Operational metrics
-- Webhook URLs and configurations
-- Brand assets and customization settings
-
-**What We DON'T Store:**
-- User credentials or personal data
-- Session information
-- Authentication state
-- Issued credential content
-
-### Compliance
-
-- **GDPR Compliant**: No personal data retention
-- **SOC 2 Type II**: Annual compliance audits
-- **ISO 27001**: Information security management
-- **Azure Security**: Leverages Microsoft's enterprise security
-- **Custom Compliance**: White-label options support additional compliance requirements
+**Key Outcomes:**
+- Improved security posture
+- Streamlined processes
+- Enhanced user experience
+- Measurable ROI and business value
 
 ---
 
-## Support & SLA
+## Why Work With Fortytwo
 
-### Service Level Agreement
+**Microsoft Certified Partner**  
+Deep expertise in Microsoft identity solutions with proven track record in Entra ID ecosystem.
 
-| Metric | Standard | White-Label Enterprise |
-| - | - | - |
-| **Uptime** | 99.9% | 99.95% |
-| **Response Time** | < 200ms (95th percentile) | < 100ms (95th percentile) |
-| **Support Response** | < 4 hours (business hours) | < 2 hours (24/7) |
-| **Resolution Time** | < 24 hours (P1 issues) | < 12 hours (P1 issues) |
+**Proven Experience**  
+Successful Verified ID implementations across multiple industries and use cases.
 
-### Support Tiers
+**End-to-End Support**  
+From initial strategy through deployment, optimization, and ongoing enhancement.
 
-**Professional Support (Included):**
-- Email support (business hours)
-- Integration documentation
-- Basic troubleshooting
-- CheckID frontend support
+**Best Practices**  
+Apply lessons learned from real-world customer engagements to accelerate your success.
 
-**Enterprise Support (White-Label):**
-- 24/7 support availability
-- Dedicated technical account manager
-- Custom integration consulting
-- Priority feature requests
-- Brand customization support
-- Custom compliance assistance
+**Local Expertise**  
+Understanding of regional requirements, regulations, and compliance frameworks.
 
-### Pricing Model
+**Standards-Based Approach**  
+Focus on open standards and interoperability to future-proof your investment.
 
-**Standard Service:**
-- API Call Volume: Tiered pricing based on monthly calls
-- CheckID Frontend: Included at no additional cost
-- Setup Fee: One-time configuration and onboarding
+---
 
-**White-Label Options:**
-- Custom Branding: One-time setup fee + monthly branding license
-- Dedicated Instance: Monthly infrastructure cost
-- Premium Support: Annual support contract
-- Custom Development: Professional services hourly rate
+## Get Started
+
+Ready to explore Microsoft Entra Verified ID for your organization? Contact our team to discuss your requirements and learn how we can help transform your trust and identity infrastructure.
 
 **Contact**: [verified-id@fortytwo.io](mailto:verified-id@fortytwo.io)
+
+### Additional Resources
+
+- [Microsoft Entra Verified ID Services Partners](https://learn.microsoft.com/en-us/entra/verified-id/services-partners)
+- [Decentralized Identifier Overview](https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview)
+- [Verifiable Credentials Standards](https://www.w3.org/TR/vc-data-model/)
