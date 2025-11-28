@@ -99,7 +99,7 @@ New-ADServiceAccount -Name "changeemail" -PrincipalsAllowedToRetrieveManagedPass
 
 ### Delegate the gMSA permissions to three attributes in AD
 
-For each OU where the agent should be able to reset passwords, run the following three PowerShell lines (with the correct OU path and domain name):
+For each OU where the agent should be able to handle email addreses, run the following three PowerShell lines (with the correct OU path and domain name):
 
 ```PowerShell
 dsacls "OU=Users,DC=contoso,DC=com" /I:S /G '"contoso.com\changeemail$:rpwp;mail";user'
