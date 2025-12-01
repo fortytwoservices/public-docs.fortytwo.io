@@ -37,6 +37,10 @@ The Fortywo version of _Internal_ Information intended for members of Fortytwo T
 
 Information we create for sharing with our customers, which is not internal to Fortytwo.  Note: Special care needs to be taken to the nature of the information, if it needs protection the classification should be **Restricted**
 
+**Examples of information**
+* Customers system documentation
+* Customers system state / technical reports, unless this contains sensitive information
+
 ## Restricted (Red) 
 
 Information limited to named recipients, which can be both internal or external to Fortywo Technologies. Restricted is to be used when the information needs to be secured as instructed in laws or regulations, or if its content could be damaging Fortytwo technologies, either financially or through loss of reputation.
@@ -45,7 +49,6 @@ Information limited to named recipients, which can be both internal or external 
 
 * Business strategic information 
 * Security incident handling with customers
-* Customers system documentation
 
 ## GDPR (Charcoal / Black)
  
