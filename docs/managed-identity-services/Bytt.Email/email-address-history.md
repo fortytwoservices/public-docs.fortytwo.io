@@ -4,7 +4,7 @@ The service has a feature for keeping track of previously used email addresses, 
 
 Let's say John Doe works in Contoso, and has the email address john.doe@contoso.com, and leaves the company December 31st. The user is deleted March 31st. In May, a new John Doe starts. 
 
-If the email address history feature is not enabled, the new John Doe will be able to get john.doe@contoso.com. By configuring the email history feature at https://bytt.email/admin.html, we can avoid this:
+If the email address history feature is not enabled, the new John Doe will be able to get john.doe@contoso.com. By configuring the email history feature in the [admin panel](https://bytt.email/admin.html), we can avoid this:
 
 ![](media/20251216124406.png)
 

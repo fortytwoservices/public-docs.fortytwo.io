@@ -53,7 +53,7 @@ Example result:
     "alma.secondfirst.nakken@dev.goodworkaround.com",
     "alma.nakken2@dev.goodworkaround.com"
   ]
-
+}
 ```
 
 ## Example - Get all email addresses a person can get, providing a set of groups, useful for testing
