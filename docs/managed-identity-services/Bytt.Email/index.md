@@ -1,6 +1,6 @@
 # Bytt.Email
 
-[Bytt.Email](https://bytt.email) is our service for allowing end users to change their own email address and UPN, both in Entra ID and Active Directory.
+[Bytt.Email](https://bytt.email) is a service that allows end users to change their own email address and UPN, both in Entra ID and Active Directory, based on [predefined patterns](./config-step2.md). The service also has [an API](https://api.fortytwo.io/changeemail/swagger/index.html), that can be used for generating email addresses for your IAM solution.
 
 The portal is branded using the tenant branding you have in Entra ID:
 
