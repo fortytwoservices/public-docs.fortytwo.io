@@ -1,8 +1,6 @@
 # Testing patterns using the API
 
-In order to test your pattern groups using the Bytt.Email service, you need a user account that is assigned the **Bytt.Email - administrator** role on the **Fortytwo Universe** enterprise application:
-
-![](media/20251016151401.png)
+In order to test your pattern groups using the Bytt.Email service, you need a user account that is assigned the **Bytt.Email - administrator** role on the **Fortytwo Universe** enterprise application. Please see the [roles documentation](roles.md) for details.
 
 Next, you need to get yourself an access token to access our API. This can be done very easily like this, using PowerShell:
 
