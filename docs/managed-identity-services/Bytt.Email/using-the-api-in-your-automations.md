@@ -50,26 +50,16 @@ After running this, you should get an access token with the correct roles:
 
 ![](media/20251217091639.png)
 
-**Request the API to generate email addresses:**
+**Request Bytt.Email to generate email addresses:**
 
 In order to generate email addresses for a new user, only by providing firstname and lastname, we also need to provide which group memberships will be used for the pattern groups, as described [here](./config-step2.md). This is because the service relies on groups in Entra ID, and the user is not yet a member of a group. In practice, if you have multiple companies or other reasons to have multiple email pattern groups, you will need to do some calculation on which group memberships should be used before requesting the API to generate.
 
 ```PowerShell
-$body = @{
-  firstname = "John Franklin"
-  lastname = "Doe"
-  groupMemberships = @(
-    "4cb1364b-d153-495e-8bb5-2d7108fd1415"
-  )
-} | convertto-json
-
-$uri = "https://api.fortytwo.io/changeemail/emailaddresses/generatenewuser"
-$result = Invoke-RestMethod $uri -Method Post -ContentType "application/json" -Body $body -Headers (Get-EntraIDAccessTokenHeader)
-
+$result = Get-ByttEmailGeneratedAddressForNewUser -FirstName "John Franklin" -Lastname "Doe" -Groups "4cb1364b-d153-495e-8bb5-2d7108fd1415"
 $result.emailAddresses
 ```
 
-![](media/20251217092809.png)
+![](media/20260123145445.png)
 
 ## Example 2 - Raw HTTP requests
 
