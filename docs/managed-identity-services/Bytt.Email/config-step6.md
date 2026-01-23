@@ -1,4 +1,4 @@
-# Step 6 - Licensing
+# Step 6 - Licensing and final steps
 
 After you have used one of the guides [automated configuration using PowerShell](autoconfig.md) or [configure everything manually](config-step1.md), Bytt.Email should be fully operational 🚀 
 
