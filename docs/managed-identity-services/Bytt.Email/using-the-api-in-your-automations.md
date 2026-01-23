@@ -1,8 +1,8 @@
 # Using the API in your automations
 
-You can easily use the [API](https://api.fortytwo.io/changeemail/swagger/index.html) in your automations, such as for user provisioning of new employee accounts. For this purpose, we have the endpoint ```https://api.fortytwo.io/changeemail/emailaddresses/generatenewuser```.
+You can easily use the [API](https://api.fortytwo.io/changeemail/swagger/index.html) in your automations, such as for user provisioning of new employee accounts. For this purpose, we have the endpoint ```https://api.fortytwo.io/changeemail/emailaddresses/generatenewuser``` and the PowerShell cmdlet ```Get-ByttEmailGeneratedAddressForNewUser```.
 
-This endpoint can be used by applications assigned a scope in Entra ID, or by users with the [Bytt.Email - Administrator role](./roles.md).
+These can be used by applications assigned a scope in Entra ID, or by users with the [Bytt.Email - Administrator role](./roles.md).
 
 This example will use PowerShell, and authentication using an Entra ID app, but can easily be used by other systems.
 
