@@ -6273,8 +6273,9 @@
 <p><img alt="" src="../media/20251217091639.png" /></p>
 <p><strong>Request Bytt.Email to generate email addresses:</strong></p>
 <p>In order to generate email addresses for a new user, only by providing firstname and lastname, we also need to provide which group memberships will be used for the pattern groups, as described <a href="../config-step2/">here</a>. This is because the service relies on groups in Entra ID, and the user is not yet a member of a group. In practice, if you have multiple companies or other reasons to have multiple email pattern groups, you will need to do some calculation on which group memberships should be used before requesting the API to generate.</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$result</span> <span class="p">=</span> <span class="nb">Get-ByttEmailGeneratedAddressForNewUser</span> <span class="n">-FirstName</span> <span class="s2">&quot;John Franklin&quot;</span> <span class="n">-Lastname</span> <span class="s2">&quot;Doe&quot;</span> <span class="n">-Groups</span> <span class="s2">&quot;4cb1364b-d153-495e-8bb5-2d7108fd1415&quot;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$result</span><span class="p">.</span><span class="n">emailAddresses</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Connect-ByttEmail</span> <span class="n">-EntraIDAccessTokenProfile</span> <span class="k">Default</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$result</span> <span class="p">=</span> <span class="nb">Get-ByttEmailGeneratedAddressForNewUser</span> <span class="n">-FirstName</span> <span class="s2">&quot;John Franklin&quot;</span> <span class="n">-Lastname</span> <span class="s2">&quot;Doe&quot;</span> <span class="n">-Groups</span> <span class="s2">&quot;4cb1364b-d153-495e-8bb5-2d7108fd1415&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$result</span><span class="p">.</span><span class="n">emailAddresses</span>
 </span></code></pre></div>
 <p><img alt="" src="../media/20260123145445.png" /></p>
 <h2 id="example-2-raw-http-requests">Example 2 - Raw HTTP requests<a class="headerlink" href="#example-2-raw-http-requests" title="Permanent link">&para;</a></h2>
@@ -6320,7 +6321,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 13:56:07 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 13:58:17 UTC">January 23, 2026</span>
   </span>
 
     
