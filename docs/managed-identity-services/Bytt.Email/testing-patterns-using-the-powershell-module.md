@@ -1,4 +1,4 @@
-# Testing patterns using the API
+# Testing patterns using the PowerShell Module
 
 In order to test your pattern groups using the Bytt.Email service, you need a user account that is assigned the **Bytt.Email - administrator** role on the **Fortytwo Universe** enterprise application. Please see the [roles documentation](roles.md) for details.
 
@@ -18,6 +18,10 @@ Connect-ByttEmail
 $Result = Get-ByttEmailGeneratedAddressForExistingUser -ObjectId "ce3d945f-fc56-4b19-9891-665ca05a998d"
 
 $Result.emailAddresses
+
+$Result = Get-ByttEmailGeneratedAddressForExistingUser -UserPrincipalName "marius.solbakken@fortytwo.io"
+
+$Result.emailAddresses
 ```
 
 Example result:
@@ -30,7 +34,7 @@ Example result:
     The API will return a list of email addresses in prioritized order
 
 ```PowerShell
-$Result = Get-ByttEmailGeneratedAddressForExistingUser -ObjectId "ce3d945f-fc56-4b19-9891-665ca05a998d" -Groups "23e5eefb-ef8e-443b-8d3a-95d40ffa807e"
+$Result = Get-ByttEmailGeneratedAddressForExistingUser "marius.solbakken@fortytwo.io" -Groups "23e5eefb-ef8e-443b-8d3a-95d40ffa807e"
 
 $Result.emailAddresses
 ```
