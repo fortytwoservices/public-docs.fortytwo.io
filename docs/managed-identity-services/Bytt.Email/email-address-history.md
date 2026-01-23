@@ -22,29 +22,26 @@ Because Carrie Porter was rehired with the same employeeId, Bytt.Email understan
 
 ## Migrating historical email addresses into Bytt.Email
 
-Let's say you have a list of email addresses that users once have had, and that you want to avoid the reuse of these. Using the endpoint **https://api.fortytwo.io/changeemail/history** found in [swagger](https://api.fortytwo.io/changeemail/swagger/index.html), we can populate old history data using PowerShell:
+Let's say you have a list of email addresses that users once have had, and that you want to avoid the reuse of these. Using the endpoint **https://api.fortytwo.io/changeemail/history** found in [the API swagger](https://api.fortytwo.io/changeemail/swagger/index.html) or [the PowerShell module](https://www.powershellgallery.com/packages/Fortytwo.ByttEmail.Client), we can populate old historical email addresses.
+
+Example PowerShell:
 
 ```PowerShell
-Install-Module EntraIDAccessToken -Scope CurrentUser -Force
+Install-Module -Name Fortytwo.ByttEmail.Client -Force -Scope CurrentUser
+Connect-ByttEmail
 
-# Sign in
-Add-EntraIDInteractiveUserAccessTokenProfile -ClientId "68bf2f1d-b9e1-4477-8b90-81314861f05f" -Scope "https://api.fortytwo.io/.default"
-
-# Get all history:
-$all = Invoke-RestMethod "https://api.fortytwo.io/changeemail/history" -Headers (GH) -Method Get
-$all | Format-List
+# Get all email history
+Get-ByttEmailHistory | Format-List
 
 # Create entry with email, anchor and lastseen:
-$body = @{
-    email  = "example.user1@dev.goodworkaround.com"
-    anchor = "698495"
-    lastseen = "2024-01-15T10:00:00Z"
-} | ConvertTo-Json
-Invoke-RestMethod "https://api.fortytwo.io/changeemail/history" -Headers (GH) -Method Post -Body $body -ContentType "application/json"
+New-ByttEmailHistory -Email "example.user1@dev.goodworkaround.com" -Anchor "698495" -LastSeen "2024-01-15T10:00:00Z"
 
 # Create entry with email only (lastseen will be "now")
-$body = @{
-    email  = "example.user2@dev.goodworkaround.com"
-} | ConvertTo-Json
-Invoke-RestMethod "https://api.fortytwo.io/changeemail/history" -Headers (GH) -Method Post -Body $body -ContentType "application/json"
+New-ByttEmailHistory -Email "example.user2@dev.goodworkaround.com"
+
+# Remove an email history entry (Id found in the result of Get-ByttEmailHistory)
+Remove-ByttEmailHistory -Id 71f19aa3-16aa-4463-9f25-26063ded29e0
+
+# Remove all email history entries matching a certain domain name:
+Get-ByttEmailHistory | ? email -like "*@old.domain.com" | Remove-ByttEmailHistory
 ```

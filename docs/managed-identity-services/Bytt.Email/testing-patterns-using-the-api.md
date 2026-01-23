@@ -4,6 +4,8 @@ In order to test your pattern groups using the Bytt.Email service, you need a us
 
 Next, you need to get yourself an access token to access our API. This can be done very easily like this, using PowerShell:
 
+> NOTE: You can also use the even simpler [PowerShell module](./testing-patterns-using-the-powershell-module.md) for this
+
 ```PowerShell
 Install-Module EntraIDAccessToken -Force -Scope CurrentUser
 Add-EntraIDInteractiveUserAccessTokenProfile -Scope "https://api.fortytwo.io/.default" -ClientId "68bf2f1d-b9e1-4477-8b90-81314861f05f"
