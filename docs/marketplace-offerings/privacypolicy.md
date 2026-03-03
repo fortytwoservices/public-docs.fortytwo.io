@@ -55,4 +55,3 @@ If you have any questions, comments, or requests regarding this Privacy Policy, 
 
 - **Website:** [https://fortytwo.io](https://fortytwo.io)
 - **Support Website:** [https://support.fortytwo.io](https://support.fortytwo.io)
-- **License Agreement:** [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)
