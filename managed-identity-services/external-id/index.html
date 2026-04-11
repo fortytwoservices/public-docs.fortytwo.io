@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -6342,73 +6342,71 @@
 </table>
 <h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <h3 id="managed-external-id-deployment">Managed External ID Deployment<a class="headerlink" href="#managed-external-id-deployment" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Customer Applications
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│ OAuth/OIDC
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>▼
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>┌────────────────────────────────┐
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│ Fortytwo Managed │ ◄── Fully Managed
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│ External ID Tenant │ ◄── Security Monitored
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│ (Customer CIAM) │ ◄── 99.9% SLA
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└───────────┬────────────────────┘
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├─► Custom Branding
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├─► Conditional Access
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├─► Identity Providers
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├─► CheckID Module (Optional)
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├─► User Flows
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└─► Security Monitoring
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>▼
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>┌────────────────────────────────┐
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│ Microsoft Entra External ID │
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│ Platform │
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>└────────────────────────────────┘
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    A["Customer Applications"] --&gt;|"OAuth/OIDC"| B
+
+    subgraph B["Fortytwo Managed External ID Tenant - Fully Managed, Security Monitored, 99.9% SLA"]
+        direction LR
+        B1["Custom Branding"]
+        B2["Conditional Access"]
+        B3["Identity Providers"]
+        B4["CheckID Module (Optional)"]
+        B5["User Flows"]
+        B6["Security Monitoring"]
+    end
+
+    B --&gt; C["Microsoft Entra External ID Platform"]</code></pre>
 <h3 id="checkid-integration-architecture">CheckID Integration Architecture<a class="headerlink" href="#checkid-integration-architecture" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>End Users (Global Coverage)
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├─► Nordic/European: BankID/Vipps/MobilePay/National eIDs
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├─► Americas: Custom API integrations
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├─► Asia-Pacific: Custom API integrations
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>└─► Middle East/Africa: Custom API integrations
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>▼
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>┌────────────────────────────────┐
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│ CheckID.no Module │ ◄── Optional Add-on
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│ (Passwordless Auth) │ ◄── Trusted eID Verification
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>└───────────┬────────────────────┘
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│ OIDC Federation
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>▼
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>┌────────────────────────────────┐
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│ Fortytwo External ID │
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│ Management Layer │
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>└───────────┬────────────────────┘
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>├─► Configuration Management
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>├─► Security Monitoring (Sentinel)
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>├─► User Analytics
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>└─► Incident Response
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    subgraph EU["End Users - Global Coverage"]
+        direction LR
+        E1["Nordic / European: BankID, Vipps, MobilePay, National eIDs"]
+        E2["Americas: Custom API integrations"]
+        E3["Asia-Pacific: Custom API integrations"]
+        E4["Middle East &amp; Africa: Custom API integrations"]
+    end
+
+    EU --&gt; CK
+
+    subgraph CK["CheckID.no Module (Optional Add-on)"]
+        direction LR
+        CK1["Passwordless Authentication"]
+        CK2["Trusted eID Verification"]
+    end
+
+    CK --&gt;|"OIDC Federation"| ML
+
+    subgraph ML["Fortytwo External ID Management Layer"]
+        direction LR
+        ML1["Configuration Management"]
+        ML2["Security Monitoring (Sentinel)"]
+        ML3["User Analytics"]
+        ML4["Incident Response"]
+    end</code></pre>
 <h2 id="core-services">Core Services<a class="headerlink" href="#core-services" title="Permanent link">&para;</a></h2>
 <h3 id="identity-management">Identity Management<a class="headerlink" href="#identity-management" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>User Registration</strong>: Self-service sign-up with email verification</li>
 <li><strong>Profile Management</strong>: Customer self-service account management</li>
-<li><strong>Password Policies</strong>: Enterprise-grade password requirements</li>
+<li><strong>Password Policies</strong>: Enterprise-grade password requirements with custom banned password lists to block organization-specific strings during password creation and reset</li>
 <li><strong>Account Recovery</strong>: Secure password reset flows</li>
+<li><strong>Just-in-Time Password Migration</strong>: Migrate users from legacy systems on first sign-in without bulk data migration (Preview)</li>
 </ul>
 <h3 id="authentication-services">Authentication Services<a class="headerlink" href="#authentication-services" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Multi-Factor Authentication</strong>: SMS, email OTP, authenticator apps</li>
 <li><strong>Social Login</strong>: Google, Facebook, Apple, LinkedIn</li>
 <li><strong>Passwordless</strong>: Email magic links, FIDO2 support</li>
+<li><strong>Username &amp; Alias Sign-in</strong>: Users can sign in with a custom alias (customer ID, loyalty number, etc.) in addition to their email address, assignable via Graph API or admin center</li>
+<li><strong>Device Authorization Grant</strong>: OAuth 2.0 device code flow for input-constrained devices such as smart TVs, IoT devices, and printers</li>
 <li><strong>CheckID Integration</strong>: Nordic/European national eID verification + global trusted identity verification (optional)</li>
 <li><strong>SSO</strong>: Single sign-on across your application portfolio</li>
 </ul>
 <h3 id="security-risk-management">Security &amp; Risk Management<a class="headerlink" href="#security-risk-management" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Conditional Access</strong>: Risk-based authentication policies</li>
+<li><strong>Session Control</strong>: Configurable sign-in frequency and persistent browser session policies via Conditional Access</li>
+<li><strong>WAF Integration</strong>: Native protection via Akamai and Cloudflare Web Application Firewall integrations</li>
 <li><strong>Fraud Detection</strong>: AI-powered anomaly detection</li>
 <li><strong>Identity Protection</strong>: Real-time threat monitoring</li>
 <li><strong>Audit Logging</strong>: Comprehensive security event logging</li>
@@ -6417,6 +6415,7 @@
 <ul>
 <li><strong>API Partner Onboarding</strong>: Self-service developer portal</li>
 <li><strong>OAuth 2.0 / OIDC</strong>: Standard protocol support</li>
+<li><strong>Client Credentials (M2M)</strong>: OAuth 2.0 client credentials flow for service-to-service integrations; requires M2M Premium add-on</li>
 <li><strong>Webhook Integration</strong>: Real-time event notifications</li>
 <li><strong>Custom Claims</strong>: Application-specific user attributes</li>
 </ul>
@@ -6614,6 +6613,7 @@ Passwordless workforce authentication for operations in any country where you ha
 <li><strong>Custom Domain</strong>: login.yourcompany.com</li>
 <li><strong>Full CSS Control</strong>: Complete UI customization</li>
 <li><strong>Custom Layouts</strong>: Unique page designs</li>
+<li><strong>Per-App Branding Themes</strong>: Create distinct branding experiences per application with Live Preview in the admin center</li>
 <li><strong>Multi-language</strong>: Support for 20+ languages</li>
 <li><strong>White-Label</strong>: Complete brand immersion</li>
 </ul>
@@ -6678,6 +6678,96 @@ Passwordless workforce authentication for operations in any country where you ha
 <li>Optimization recommendations</li>
 <li>New market integration planning</li>
 </ul>
+<h2 id="migrating-from-azure-ad-b2c">Migrating from Azure AD B2C<a class="headerlink" href="#migrating-from-azure-ad-b2c" title="Permanent link">&para;</a></h2>
+<p>Azure AD B2C became unavailable for new customers in May 2025 and is on a path toward end-of-life. If your organization is running customer identity on B2C, migrating to Microsoft Entra External ID is the natural next step, and Fortytwo handles the full migration as a managed engagement.</p>
+<h3 id="migration-readiness-assessment">Migration Readiness Assessment<a class="headerlink" href="#migration-readiness-assessment" title="Permanent link">&para;</a></h3>
+<p>Before scoping a migration, Fortytwo runs the <strong>Fortytwo B2C Migration Readiness Tool</strong> against your existing B2C tenant. The tool is available as a CLI, a web UI, and a GitHub Actions workflow, so it fits into your existing processes without requiring manual access to be handed over.</p>
+<p>It connects read-only to your B2C tenant and produces a structured readiness report covering:</p>
+<ul>
+<li>Custom policy (IEF) complexity and any constructs with no direct External ID equivalent</li>
+<li>User flows inventory and mapping to External ID counterparts</li>
+<li>Registered applications and their redirect/auth configurations</li>
+<li>Identity providers (social, SAML, OIDC federations)</li>
+<li>Custom claims and REST API connectors</li>
+<li>User volume and attribute schema</li>
+<li>Estimated migration complexity tier (simple / standard / complex / enterprise)</li>
+</ul>
+<p>The report is the starting point for the scoped proposal and defines the migration phases, timeline, and whether JIT password migration is required.</p>
+<h3 id="what-fortytwo-handles">What Fortytwo Handles<a class="headerlink" href="#what-fortytwo-handles" title="Permanent link">&para;</a></h3>
+<p>We own the end-to-end migration: assessment, configuration of the new External ID tenant, user and credential migration, application re-integration, and post-cutover support. Your team is not expected to operate the migration tooling or manage the Microsoft Graph scripting involved.</p>
+<h3 id="migration-phases">Migration Phases<a class="headerlink" href="#migration-phases" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>What We Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assessment &amp; inventory</td>
+<td>Map existing B2C tenant: user flows, custom policies (IEF), identity providers, apps, claims, branding, compliance requirements</td>
+</tr>
+<tr>
+<td>External ID tenant setup</td>
+<td>Provision and harden the External ID tenant, configure identity providers, user flows, Conditional Access, and branding</td>
+</tr>
+<tr>
+<td>User data migration</td>
+<td>Bulk-export users from B2C via Microsoft Graph and re-import into External ID with all relevant attributes and custom extension properties</td>
+</tr>
+<tr>
+<td>Password migration</td>
+<td>Choose the right strategy for your situation (see below) and implement it; we build and operate the migration infrastructure</td>
+</tr>
+<tr>
+<td>Application re-integration</td>
+<td>Update app registrations and OAuth/OIDC endpoints; test all authentication flows against the new tenant</td>
+</tr>
+<tr>
+<td>Cutover &amp; decommission</td>
+<td>Route live traffic to External ID, monitor authentication logs and error rates, then decommission the B2C tenant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="password-migration-strategy">Password Migration Strategy<a class="headerlink" href="#password-migration-strategy" title="Permanent link">&para;</a></h3>
+<p>The right approach depends on whether your B2C configuration stores passwords in a way that is accessible at runtime.</p>
+<p><strong>Just-in-Time (JIT) migration</strong> — recommended for most B2C migrations</p>
+<p>Users continue signing in with their existing credentials without any interruption. On first sign-in after cutover, Fortytwo's custom authentication extension validates the entered password against the legacy system, migrates it into External ID, and clears the migration flag. Subsequent sign-ins go directly to External ID. Users never notice the migration.</p>
+<p>This approach requires Fortytwo to build and host an Azure Function that connects to the legacy credential store, secured via Azure Key Vault and managed identity. It is the default recommendation because it requires no user action and no forced password reset.</p>
+<p><strong>Self-service password reset (SSPR)</strong> — simpler, user-facing</p>
+<p>Users are prompted to reset their password on first sign-in after cutover. Suitable for smaller user bases or where the legacy password store is not accessible at runtime. Requires user communication before cutover.</p>
+<h3 id="work-estimates">Work Estimates<a class="headerlink" href="#work-estimates" title="Permanent link">&para;</a></h3>
+<p>Estimates are for the migration engagement on top of standard onboarding. Actual effort depends on the complexity of existing B2C custom policies and number of applications.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Estimated Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple B2C tenant: email/password + 1-2 apps, no IEF custom policies</td>
+<td>2-3 weeks</td>
+</tr>
+<tr>
+<td>Standard B2C tenant: social providers + 3-5 apps, limited IEF customization</td>
+<td>4-6 weeks</td>
+</tr>
+<tr>
+<td>Complex B2C tenant: IEF custom policies, multiple user journeys, 5+ apps, custom claims</td>
+<td>8-12 weeks</td>
+</tr>
+<tr>
+<td>Enterprise B2C tenant: IEF, SAML integrations, custom REST APIs, compliance requirements</td>
+<td>12+ weeks, scoped separately</td>
+</tr>
+</tbody>
+</table>
+<p>JIT password migration adds approximately 1-2 weeks to any tier above, covering Azure Function development, Key Vault setup, testing, and cutover validation.</p>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<p>Contact us at <a href="mailto:external-id@fortytwo.io">external-id@fortytwo.io</a> to schedule a B2C migration assessment. We will review your existing tenant, identify any feature gaps or custom policy complexity, and provide a scoped proposal.</p>
 <h2 id="security-compliance">Security &amp; Compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h2>
 <h3 id="security-features">Security Features<a class="headerlink" href="#security-features" title="Permanent link">&para;</a></h3>
 <p><strong>Identity Protection</strong>:
@@ -6712,7 +6802,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - EU data centers available
 - Nordic data centers available (Norway)
 - US data centers available
-- Asia-Pacific data centers available
+- Asia-Pacific data centers available (including Australia and Japan Go-Local options)
 - Middle East data centers available
 - Custom geographic requirements supported</p>
 <h3 id="audit-logging">Audit &amp; Logging<a class="headerlink" href="#audit-logging" title="Permanent link">&para;</a></h3>
@@ -6927,12 +7017,12 @@ Passwordless workforce authentication for operations in any country where you ha
   - 15 custom API integrations for key markets
 - <strong>Total Monthly</strong>: ~€16,840 (176,820 NOK)</p>
 <hr />
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h2 id="getting-started_1">Getting Started<a class="headerlink" href="#getting-started_1" title="Permanent link">&para;</a></h2>
 <p><strong>Ready to simplify your customer identity management globally?</strong></p>
-<p>📧 Contact: <a href="mailto:external-id@fortytwo.io">external-id@fortytwo.io</a><br />
-📞 Schedule a demo: <a href="https://www.fortytwo.io/book-a-demo">fortytwo.io/book-a-demo</a><br />
-📚 Technical documentation: <a href="https://docs.fortytwo.io/external-id">docs.fortytwo.io/external-id</a><br />
-🔐 CheckID module info: <a href="https://docs.checkid.no">docs.checkid.no</a></p>
+<p>Contact: <a href="mailto:external-id@fortytwo.io">external-id@fortytwo.io</a><br />
+Schedule a demo: <a href="https://www.fortytwo.io/book-a-demo">fortytwo.io/book-a-demo</a><br />
+Technical documentation: <a href="https://docs.fortytwo.io/external-id">docs.fortytwo.io/external-id</a><br />
+CheckID module info: <a href="https://docs.checkid.no">docs.checkid.no</a></p>
 <p><strong>Next Steps</strong>:
 1. Schedule discovery call
 2. Identify required geographic markets and providers
@@ -6965,7 +7055,7 @@ Passwordless workforce authentication for operations in any country where you ha
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 23, 2025 05:37:46 UTC">October 23, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 11, 2026 07:34:36 UTC">April 11, 2026</span>
   </span>
 
     
