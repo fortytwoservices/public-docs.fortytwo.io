@@ -41,57 +41,52 @@ Fortytwo's Managed External ID service provides a production-ready, enterprise-g
 
 ### Managed External ID Deployment
 
-```
-Customer Applications
-│
-│ OAuth/OIDC
-▼
-┌────────────────────────────────┐
-│ Fortytwo Managed │ ◄── Fully Managed
-│ External ID Tenant │ ◄── Security Monitored
-│ (Customer CIAM) │ ◄── 99.9% SLA
-└───────────┬────────────────────┘
-│
-├─► Custom Branding
-├─► Conditional Access
-├─► Identity Providers
-├─► CheckID Module (Optional)
-├─► User Flows
-└─► Security Monitoring
-│
-▼
-┌────────────────────────────────┐
-│ Microsoft Entra External ID │
-│ Platform │
-└────────────────────────────────┘
+```mermaid
+flowchart TD
+    A["Customer Applications"] -->|"OAuth/OIDC"| B
+
+    subgraph B["Fortytwo Managed External ID Tenant - Fully Managed, Security Monitored, 99.9% SLA"]
+        direction LR
+        B1["Custom Branding"]
+        B2["Conditional Access"]
+        B3["Identity Providers"]
+        B4["CheckID Module (Optional)"]
+        B5["User Flows"]
+        B6["Security Monitoring"]
+    end
+
+    B --> C["Microsoft Entra External ID Platform"]
 ```
 
 ### CheckID Integration Architecture
 
-```
-End Users (Global Coverage)
-│
-├─► Nordic/European: BankID/Vipps/MobilePay/National eIDs
-├─► Americas: Custom API integrations
-├─► Asia-Pacific: Custom API integrations
-└─► Middle East/Africa: Custom API integrations
-│
-▼
-┌────────────────────────────────┐
-│ CheckID.no Module │ ◄── Optional Add-on
-│ (Passwordless Auth) │ ◄── Trusted eID Verification
-└───────────┬────────────────────┘
-│ OIDC Federation
-▼
-┌────────────────────────────────┐
-│ Fortytwo External ID │
-│ Management Layer │
-└───────────┬────────────────────┘
-│
-├─► Configuration Management
-├─► Security Monitoring (Sentinel)
-├─► User Analytics
-└─► Incident Response
+```mermaid
+flowchart TD
+    subgraph EU["End Users - Global Coverage"]
+        direction LR
+        E1["Nordic / European: BankID, Vipps, MobilePay, National eIDs"]
+        E2["Americas: Custom API integrations"]
+        E3["Asia-Pacific: Custom API integrations"]
+        E4["Middle East & Africa: Custom API integrations"]
+    end
+
+    EU --> CK
+
+    subgraph CK["CheckID.no Module (Optional Add-on)"]
+        direction LR
+        CK1["Passwordless Authentication"]
+        CK2["Trusted eID Verification"]
+    end
+
+    CK -->|"OIDC Federation"| ML
+
+    subgraph ML["Fortytwo External ID Management Layer"]
+        direction LR
+        ML1["Configuration Management"]
+        ML2["Security Monitoring (Sentinel)"]
+        ML3["User Analytics"]
+        ML4["Incident Response"]
+    end
 ```
 
 ## Core Services
@@ -99,18 +94,23 @@ End Users (Global Coverage)
 ### Identity Management
 - **User Registration**: Self-service sign-up with email verification
 - **Profile Management**: Customer self-service account management
-- **Password Policies**: Enterprise-grade password requirements
+- **Password Policies**: Enterprise-grade password requirements with custom banned password lists to block organization-specific strings during password creation and reset
 - **Account Recovery**: Secure password reset flows
+- **Just-in-Time Password Migration**: Migrate users from legacy systems on first sign-in without bulk data migration (Preview)
 
 ### Authentication Services
 - **Multi-Factor Authentication**: SMS, email OTP, authenticator apps
 - **Social Login**: Google, Facebook, Apple, LinkedIn
 - **Passwordless**: Email magic links, FIDO2 support
+- **Username & Alias Sign-in**: Users can sign in with a custom alias (customer ID, loyalty number, etc.) in addition to their email address, assignable via Graph API or admin center
+- **Device Authorization Grant**: OAuth 2.0 device code flow for input-constrained devices such as smart TVs, IoT devices, and printers
 - **CheckID Integration**: Nordic/European national eID verification + global trusted identity verification (optional)
 - **SSO**: Single sign-on across your application portfolio
 
 ### Security & Risk Management
 - **Conditional Access**: Risk-based authentication policies
+- **Session Control**: Configurable sign-in frequency and persistent browser session policies via Conditional Access
+- **WAF Integration**: Native protection via Akamai and Cloudflare Web Application Firewall integrations
 - **Fraud Detection**: AI-powered anomaly detection
 - **Identity Protection**: Real-time threat monitoring
 - **Audit Logging**: Comprehensive security event logging
@@ -118,6 +118,7 @@ End Users (Global Coverage)
 ### Developer Experience
 - **API Partner Onboarding**: Self-service developer portal
 - **OAuth 2.0 / OIDC**: Standard protocol support
+- **Client Credentials (M2M)**: OAuth 2.0 client credentials flow for service-to-service integrations; requires M2M Premium add-on
 - **Webhook Integration**: Real-time event notifications
 - **Custom Claims**: Application-specific user attributes
 
@@ -354,6 +355,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - **Custom Domain**: login.yourcompany.com
 - **Full CSS Control**: Complete UI customization
 - **Custom Layouts**: Unique page designs
+- **Per-App Branding Themes**: Create distinct branding experiences per application with Live Preview in the admin center
 - **Multi-language**: Support for 20+ languages
 - **White-Label**: Complete brand immersion
 
@@ -427,6 +429,72 @@ Passwordless workforce authentication for operations in any country where you ha
 - Optimization recommendations
 - New market integration planning
 
+## Migrating from Azure AD B2C
+
+Azure AD B2C became unavailable for new customers in May 2025 and is on a path toward end-of-life. If your organization is running customer identity on B2C, migrating to Microsoft Entra External ID is the natural next step, and Fortytwo handles the full migration as a managed engagement.
+
+### Migration Readiness Assessment
+
+Before scoping a migration, Fortytwo runs the **Fortytwo B2C Migration Readiness Tool** against your existing B2C tenant. The tool is available as a CLI, a web UI, and a GitHub Actions workflow, so it fits into your existing processes without requiring manual access to be handed over.
+
+It connects read-only to your B2C tenant and produces a structured readiness report covering:
+
+- Custom policy (IEF) complexity and any constructs with no direct External ID equivalent
+- User flows inventory and mapping to External ID counterparts
+- Registered applications and their redirect/auth configurations
+- Identity providers (social, SAML, OIDC federations)
+- Custom claims and REST API connectors
+- User volume and attribute schema
+- Estimated migration complexity tier (simple / standard / complex / enterprise)
+
+The report is the starting point for the scoped proposal and defines the migration phases, timeline, and whether JIT password migration is required.
+
+### What Fortytwo Handles
+
+We own the end-to-end migration: assessment, configuration of the new External ID tenant, user and credential migration, application re-integration, and post-cutover support. Your team is not expected to operate the migration tooling or manage the Microsoft Graph scripting involved.
+
+### Migration Phases
+
+| Phase | What We Do |
+|-------|------------|
+| Assessment & inventory | Map existing B2C tenant: user flows, custom policies (IEF), identity providers, apps, claims, branding, compliance requirements |
+| External ID tenant setup | Provision and harden the External ID tenant, configure identity providers, user flows, Conditional Access, and branding |
+| User data migration | Bulk-export users from B2C via Microsoft Graph and re-import into External ID with all relevant attributes and custom extension properties |
+| Password migration | Choose the right strategy for your situation (see below) and implement it; we build and operate the migration infrastructure |
+| Application re-integration | Update app registrations and OAuth/OIDC endpoints; test all authentication flows against the new tenant |
+| Cutover & decommission | Route live traffic to External ID, monitor authentication logs and error rates, then decommission the B2C tenant |
+
+### Password Migration Strategy
+
+The right approach depends on whether your B2C configuration stores passwords in a way that is accessible at runtime.
+
+**Just-in-Time (JIT) migration** — recommended for most B2C migrations
+
+Users continue signing in with their existing credentials without any interruption. On first sign-in after cutover, Fortytwo's custom authentication extension validates the entered password against the legacy system, migrates it into External ID, and clears the migration flag. Subsequent sign-ins go directly to External ID. Users never notice the migration.
+
+This approach requires Fortytwo to build and host an Azure Function that connects to the legacy credential store, secured via Azure Key Vault and managed identity. It is the default recommendation because it requires no user action and no forced password reset.
+
+**Self-service password reset (SSPR)** — simpler, user-facing
+
+Users are prompted to reset their password on first sign-in after cutover. Suitable for smaller user bases or where the legacy password store is not accessible at runtime. Requires user communication before cutover.
+
+### Work Estimates
+
+Estimates are for the migration engagement on top of standard onboarding. Actual effort depends on the complexity of existing B2C custom policies and number of applications.
+
+| Scenario | Estimated Effort |
+|----------|-----------------|
+| Simple B2C tenant: email/password + 1-2 apps, no IEF custom policies | 2-3 weeks |
+| Standard B2C tenant: social providers + 3-5 apps, limited IEF customization | 4-6 weeks |
+| Complex B2C tenant: IEF custom policies, multiple user journeys, 5+ apps, custom claims | 8-12 weeks |
+| Enterprise B2C tenant: IEF, SAML integrations, custom REST APIs, compliance requirements | 12+ weeks, scoped separately |
+
+JIT password migration adds approximately 1-2 weeks to any tier above, covering Azure Function development, Key Vault setup, testing, and cutover validation.
+
+### Getting Started
+
+Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to schedule a B2C migration assessment. We will review your existing tenant, identify any feature gaps or custom policy complexity, and provide a scoped proposal.
+
 ## Security & Compliance
 
 ### Security Features
@@ -468,7 +536,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - EU data centers available
 - Nordic data centers available (Norway)
 - US data centers available
-- Asia-Pacific data centers available
+- Asia-Pacific data centers available (including Australia and Japan Go-Local options)
 - Middle East data centers available
 - Custom geographic requirements supported
 
@@ -685,10 +753,10 @@ Passwordless workforce authentication for operations in any country where you ha
 
 **Ready to simplify your customer identity management globally?**
 
-📧 Contact: [external-id@fortytwo.io](mailto:external-id@fortytwo.io)  
-📞 Schedule a demo: [fortytwo.io/book-a-demo](https://www.fortytwo.io/book-a-demo)  
-📚 Technical documentation: [docs.fortytwo.io/external-id](https://docs.fortytwo.io/external-id)  
-🔐 CheckID module info: [docs.checkid.no](https://docs.checkid.no)
+Contact: [external-id@fortytwo.io](mailto:external-id@fortytwo.io)  
+Schedule a demo: [fortytwo.io/book-a-demo](https://www.fortytwo.io/book-a-demo)  
+Technical documentation: [docs.fortytwo.io/external-id](https://docs.fortytwo.io/external-id)  
+CheckID module info: [docs.checkid.no](https://docs.checkid.no)
 
 **Next Steps**:
 1. Schedule discovery call
