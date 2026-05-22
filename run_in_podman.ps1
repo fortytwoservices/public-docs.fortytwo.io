@@ -1,0 +1,2 @@
+# Start a podman container with mkdocs, mounted to the current directory, and run mkdocs serve
+podman run --rm -p 8000:8000 -v "$(Get-Location):/docs" -w /docs squidfunk/mkdocs-material:latest mkdocs serve -a
