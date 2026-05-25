@@ -10,3 +10,6 @@ In the IAM Core, there are three different types of objects, which is used to mo
 | [CoreRelationship](objecttypes/corerelationship.md) | A relationship between an identity and an org unit. |
 | [CoreOrgUnit](objecttypes/coreorgunit.md) | An organizational unit |
 
+## Working with the solution
+
+You can work with the [Synchronization admin interface](https://universe.fortytwo.io), the [PowerShell module](./powershell-module.md) or, if you are advanced, [the API](./api.md). 
