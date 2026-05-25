@@ -12,8 +12,7 @@ After a first party connector is created, it has the state "Created", until the 
 
 ### API based connector
 
-AN API based connector, is a connector where you as the customer can populate data from any system, using our [Connector API](../connector-api.md) or our [Connector PowerShell Module](../connector-powershell-module.md).
-
+An API based connector is a connector where you as the customer can populate data from any system, using our [Connector API](../connector-api.md) or our [Connector PowerShell Module](../connector-powershell-module.md) (Which uses the API...).
 
 ### Entra ID SCIM connector
 
