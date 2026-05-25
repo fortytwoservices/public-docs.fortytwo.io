@@ -23,3 +23,25 @@ Invoke-RestMethod "https://api.fortytwo.io/iamcore/sync/connectors" -Headers (Ge
 
 ## Authorization
 
+All API endpoints requires some kind of authorization, which should be listed on the swagger.
+
+### Users
+
+Can be assigned only to users:
+
+| Role | Grants access to |
+|-|-|
+| User | Get the delegated access to org units, see him/herself and his/her data |
+| Administrator | Full access to everything: Read all data, configure connectors and sync rules, invoke syncs, etc. |
+
+### Applications
+
+Can be assigned only to applications:
+
+| Role                                                     | Grants access to |
+|----------------------------------------------------------|-|
+| iam-core.connector-configuration.read.all                | Grants the ability to read connectors |
+| iam-core.connector-configuration.readwrite.all           | Grants the ability to manage connectors |
+| iam-core.connector-data.readwrite.self                   | Grants access to a connector's connector space, required to act as a connector |
+| iam-core.synchronization-configuration.read.all          | Grants the ability to read sync rules |
+| iam-core.synchronization-configuration.readwrite.all     | Grants the ability to manage sync rules |
