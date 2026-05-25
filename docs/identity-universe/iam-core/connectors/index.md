@@ -12,7 +12,11 @@ After a first party connector is created, it has the state "Created", until the 
 
 ### API based connector
 
-An API based connector is a connector where you as the customer can populate data from any system, using our [Connector API](../connector-api.md) or our [Connector PowerShell Module](../connector-powershell-module.md) (Which uses the API...).
+An API based connector is a connector where you as the customer can populate data from any system, using our [Connector API](../connector-api.md) or our [Connector PowerShell Module](../connector-powershell-module.md) (Which uses the API...). From a [syncrule](../syncrules.md) standpoint, these connectors work as any first party connector. It is only the way the connector space is actually populated that differs from the first party connectors.
 
 ### Entra ID SCIM connector
+
+An [Entra ID SCIM connector](./entraidscim.md) is a connector where Entra ID can send data about users, in order to populate certain attributes on [CoreIdentities](../objecttypes/coreidentity.md), such as ```EntraObjectId```, which is required for users to access most features (used to identity the link between a signed in session and the [CoreIdentity](../objecttypes/coreidentity.md)).
+
+From a [syncrule](../syncrules.md) standpoint, these connectors work as any other connector.
 
