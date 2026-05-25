@@ -1,8 +1,16 @@
 # Connectors
 
+Connectors are one of the most essential part of IAM Core, as it is the only way for data to flow into it. There is no way to modify a [core object](../objecttypes/common.md) without the information being flown through a [sync rule](../syncrules.md) from a connector.
+
+Each connector has its own space for data, where no other connector can touch. This space is called the _connector space_. One connector does not know about other connectors.
+
+In order to make the [sync rules](../syncrules.md) as powerfull as possible, while also providing you as the IAM Admin insight into connector data, changes that have happened, etc. the goal of connectors is that the connector space is as similar to the originating data as possible. This means that if the first name of a person record in the HR system is named _given_, it should also be named _given_ in that connector's connector space. This way it is much easier to understand what was actually changed in the HR system, and it is up to the [sync rules](../syncrules.md) to map the information from _given_ in the connector space to the _firstName_ attribute of a [CoreIdentity](../objecttypes/coreidentity.md).
+
+For organizations with multiple source systems, [sync rules](../syncrules.md) have join functionality to ensure that certain objects, such as the [CoreIdentity](../objecttypes/coreidentity.md) of an employee exists only once, even though that employee is registered in multiple HR systems, with multiple part time positions. 
+
 ## Connector types
 
-Connectors are the one and only way to get data into the IAM Core. There are a few general types of connectors:
+There are a few general types of connectors:
 
 ### First party connector
 
