@@ -8,7 +8,7 @@ All API endpoints are authenticated with the customer's own Entra ID, through ou
 
 **Ok, so how do I get an access token?**
 
-In order to document that, we would have a lot of content with overlap with Microsoft's own documetnation, but we strongly recommend using our PowerShell module named [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken), which makes this super easy! We have a multi tenant client app client id ```68bf2f1d-b9e1-4477-8b90-81314861f05f```, that allows redirect to localhost for simple and interactive sign-ins.
+In order to document that, we would have a lot of content with overlap with Microsoft's own documentation, but we strongly recommend using our PowerShell module named [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken), which makes this super easy! We have a multi tenant client app client id ```68bf2f1d-b9e1-4477-8b90-81314861f05f```, that allows redirect to localhost for simple and interactive sign-ins.
 
 ```PowerShell
 # Invoke interactive sign in
