@@ -34,3 +34,30 @@ Add-EntraIDAzureArcManagedMSITokenProfile -Resource "https://api.fortytwo.io" -T
 
 ### Certificate based authentication
 
+In order to use certificate based authentication, the following steps must be completed:
+
+- On the server you want to run your automation on, run PowerShell as an Administrator and create a new self signed certificate using the PowerShell cmdlet ```New-SelfSignedCertificate```:
+
+```PowerShell
+$Certificate = New-SelfSignedCertificate -Subject "connector" -NotAfter (Get-Date).AddYears(100)
+[System.Convert]::ToBase64String($Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert), "InsertLineBreaks") | Set-Content -Path "connector-$($env:COMPUTERNAME).cer"
+Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: connector-$($env:COMPUTERNAME).cer" "" -Separator "`n"
+```
+
+- Note down the thumbprint and keep the certificate file created available for the next steps
+- Go to the Entra ID portal as an **Global Admin**, **Application admin**, **Cloud application admin**
+- Create a new **App registration** with a name that suits your naming convention:
+
+![](media/image-3.png)
+
+- Note down the **Client ID** and **Tenant ID** on the first page you get to after creating the app registration
+- Go to **Certificates & secrets**, select **Certificates** and click **Upload certificate**
+- Upload the exported .CER file from the PowerShell above
+
+![](media/image-4.png)
+
+You have now configured authentication, and can authenticate to Fortytwo Universe as follows:
+
+```PowerShell
+Add-EntraIDClientCertificateAccessTokenProfile -TenantId "TENANTID" -ClientId "CLIENTID" -Thumbprint "THUMBPRINT" -Scope "https://api.fortytwo.io/.default"
+```
