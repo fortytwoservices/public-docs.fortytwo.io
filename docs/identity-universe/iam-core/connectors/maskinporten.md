@@ -1,0 +1,24 @@
+# Maskinporten
+
+!!! note "To be completed"
+
+[Maskinporten](https://samarbeid.digdir.no/maskinporten/dette-er-maskinporten/96) is a common OpenID Connect provider in Norwegian public sektor, used for machine to machine authentication to services like Altinn, Helsepersonellregisteret, SAP from DFØ and others. To allow Fortytwo access, you need to register an application in Maskinporten using the below steps.
+
+
+
+## JWKS
+
+To get your JWKS, submit the below form with your Entra tenant ID, which you can find at [whatismytenantid.com](https://www.whatismytenantid.com/)
+
+<form action="https://prod-22.norwayeast.logic.azure.com:443/workflows/99f74391cd854a02b5446d804f273759/triggers/When_an_HTTP_request_is_received/paths/invoke" method="GET" target="_blank">
+    <input type="hidden" name="api-version" name="2016-10-01">
+    <input type="hidden" name="sp" name="/triggers/When_an_HTTP_request_is_received/run">
+    <input type="hidden" name="sv" name="1.0">
+    <input type="hidden" name="sig" name="pRP7v2iwaK10BGBQAyYL2G_xoANzMRbQYc8vTKq9ci0">
+    <input type="text" name="tenantid" name="" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
+    <input type="submit" value="Get JWKS">
+</form>
+
+## Maintenance
+
+Maskinporten only accepts certificate validity for 1 year. To ensure availability of the service, we generate a new certificate every 6 months, but continue to use the 'oldest' certificate until it is no longer valid. As a customer, **you need to update the JWKS every 6 months**, by submitting the above form.
