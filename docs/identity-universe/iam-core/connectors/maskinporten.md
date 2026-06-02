@@ -1,10 +1,10 @@
 # Maskinporten
 
-!!! note "To be completed"
+!!! note "Not complete yet"
+
+This is not a connector, but is used as authentication by several integrations.
 
 [Maskinporten](https://samarbeid.digdir.no/maskinporten/dette-er-maskinporten/96) is a common OpenID Connect provider in Norwegian public sektor, used for machine to machine authentication to services like Altinn, Helsepersonellregisteret, SAP from DFØ and others. To allow Fortytwo access, you need to register an application in Maskinporten using the below steps.
-
-
 
 ## JWKS
 

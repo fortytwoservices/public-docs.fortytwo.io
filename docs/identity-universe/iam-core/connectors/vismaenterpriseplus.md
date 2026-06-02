@@ -11,6 +11,27 @@ Visma has a very old fashioned approach to APIs, where they need to _install_ th
 | fqdn | The hostname of the API | x-kommune.enterprise.visma.no |
 | companyid | The company in Visma Enterprise that the connector will get data for. If you have multiple companies, add multiple connectors. | 1 |
 
+## Creating a connector using PowerShell
+
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+
+```PowerShell
+$Credential = Get-Credential -Message "Input Visma clientid and clientsecret"
+$Connector = New-IAMCoreConnector `
+    -Name "Visma - 1" `
+    -TemplateId vismaenterpriseplus  `
+    -Configuration @{
+        clientid = "PlaceholderKommune_Fortytwo"
+        fqdn = "test-kommune.enterprise.visma.no"
+        companyid = "1"
+    } `
+    -Secrets @{
+        clientsecret = "secret123"
+    }
+
+Write-Host "Created with id $($Connector.id)"
+```
+
 ## Example sync rules
 
 ### Unit to CoreOrgUnit
@@ -84,7 +105,7 @@ $InboundAttributeFlows = @(
 
 New-IAMCoreSyncRule `
     -Name "HR - Unit" `
-    -ConnectorId "00000000-0000-0000-0000-000000000000" `
+    -ConnectorId $Connector.id `
     -ConnectorObjectType "unit" `
     -CoreObjectType "OrgUnit" `
     -ProvisioningEnabled:$true `
@@ -185,7 +206,7 @@ $InboundAttributeFlows = @(
 
 New-IAMCoreSyncRule `
     -Name "HR - Person" `
-    -ConnectorId "00000000-0000-0000-0000-000000000000" `
+    -ConnectorId $Connector.id `
     -ConnectorObjectType "person" `
     -CoreObjectType "Identity" `
     -ProvisioningEnabled:$true `
@@ -279,7 +300,7 @@ $InboundAttributeFlows = @(
 
 New-IAMCoreSyncRule `
     -Name "HR - Position" `
-    -ConnectorId "00000000-0000-0000-0000-000000000000" `
+    -ConnectorId $Connector.id `
     -ConnectorObjectType "position" `
     -CoreObjectType "Relationship" `
     -ProvisioningEnabled:$true `

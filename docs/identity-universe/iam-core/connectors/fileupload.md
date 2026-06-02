@@ -15,7 +15,7 @@ After completing the authentication documentation, add permissions as follows:
 
 ## Example run.ps1
 
-!!! info The below steps, requires that you have completed the [authentication documentation](../authentication-powershell.md) and the above steps for adding permissions.
+!!! note "The below steps, requires that you have completed the [authentication documentation](../authentication-powershell.md) and the above steps for adding permissions."
 
 Create the following run.ps1 file on your server, and update the placeholders:
 
