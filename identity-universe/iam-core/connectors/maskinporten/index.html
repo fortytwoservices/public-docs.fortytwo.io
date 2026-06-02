@@ -4031,17 +4031,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#jwks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JWKS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7219,7 +7208,45 @@
 </div>
 <p>This is not a connector, but is used as authentication by several integrations.</p>
 <p><a href="https://samarbeid.digdir.no/maskinporten/dette-er-maskinporten/96">Maskinporten</a> is a common OpenID Connect provider in Norwegian public sektor, used for machine to machine authentication to services like Altinn, Helsepersonellregisteret, SAP from DFØ and others. To allow Fortytwo access, you need to register an application in Maskinporten using the below steps.</p>
-<h2 id="jwks">JWKS<a class="headerlink" href="#jwks" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Sign into <a href="https://samarbeid.digdir.no/">Samarbeidsportalen</a> and find <strong>Integrations ("Integrasjoner")</strong> </li>
+</ol>
+<p><img alt="New integrations button" src="../media/image.png" /></p>
+<ol>
+<li>On the <strong>New integration ("Ny integrasjon")</strong> experience, select the scopes you need to provide Fortytwo access to. This varies with the connector.</li>
+</ol>
+<p><img alt="Select scopes" src="../media/image-1.png" /></p>
+<p>This is an example for accessing DFØ SAP:</p>
+<p><img alt="SAP DFØ Example" src="../media/image-2.png" /></p>
+<ol>
+<li>Use the following information:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application type / Applikasjonstype</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>Allowed grant types / Tillatte grant types</td>
+<td>urf:ietf:params:oauth:grant-type:jwt-bearer</td>
+</tr>
+<tr>
+<td>Client auth method / Klientautentiseringsmetode</td>
+<td>private_key_jwt</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="alt text" src="../media/image-3.png" /></p>
+<ol>
+<li>After adding the application, use <strong>add your own public keys ("Egne public nøkler")</strong>. </li>
+</ol>
 <p>To get your JWKS, submit the below form with your Entra tenant ID, which you can find at <a href="https://www.whatismytenantid.com/">whatismytenantid.com</a></p>
 <form action="https://prod-22.norwayeast.logic.azure.com:443/workflows/99f74391cd854a02b5446d804f273759/triggers/When_an_HTTP_request_is_received/paths/invoke" method="GET" target="_blank">
     <input type="hidden" name="api-version" value="2016-10-01">
@@ -7227,9 +7254,13 @@
     <input type="hidden" name="sv" value="1.0">
     <input type="hidden" name="sig" value="pRP7v2iwaK10BGBQAyYL2G_xoANzMRbQYc8vTKq9ci0">
     <input type="text" style='border: 1px solid #000000;' name="tenantid" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
-    <input type="submit" value="Get JWKS" >
+    <input type="submit" value="Get JWKS">
 </form>
 
+<p><img alt="alt text" src="../media/image-4.png" /></p>
+<p>It should now look something like this:</p>
+<p><img alt="alt text" src="../media/image-5.png" /></p>
+<p>The <strong>Client ID</strong> of the application must be provided in the connector configuration.</p>
 <h2 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h2>
 <p>Maskinporten only accepts certificate validity for 1 year. To ensure availability of the service, we generate a new certificate every 6 months, but continue to use the 'oldest' certificate until it is no longer valid. As a customer, <strong>you need to update the JWKS every 6 months</strong>, by submitting the above form to get the latest certificate(s) and saving them in the Maskinporten user interface.</p>
 
@@ -7254,7 +7285,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 08:53:32 UTC">June 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 09:06:27 UTC">June 2, 2026</span>
   </span>
 
     
