@@ -11,12 +11,12 @@
 To get your JWKS, submit the below form with your Entra tenant ID, which you can find at [whatismytenantid.com](https://www.whatismytenantid.com/)
 
 <form action="https://prod-22.norwayeast.logic.azure.com:443/workflows/99f74391cd854a02b5446d804f273759/triggers/When_an_HTTP_request_is_received/paths/invoke" method="GET" target="_blank">
-    <input type="hidden" name="api-version" name="2016-10-01">
-    <input type="hidden" name="sp" name="/triggers/When_an_HTTP_request_is_received/run">
-    <input type="hidden" name="sv" name="1.0">
-    <input type="hidden" name="sig" name="pRP7v2iwaK10BGBQAyYL2G_xoANzMRbQYc8vTKq9ci0">
-    <input type="text" name="tenantid" name="" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
-    <input type="submit" value="Get JWKS">
+    <input type="hidden" name="api-version" value="2016-10-01">
+    <input type="hidden" name="sp" value="/triggers/When_an_HTTP_request_is_received/run">
+    <input type="hidden" name="sv" value="1.0">
+    <input type="hidden" name="sig" value="pRP7v2iwaK10BGBQAyYL2G_xoANzMRbQYc8vTKq9ci0">
+    <input type="text" name="tenantid" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
+    <input type="submit" value="Get JWKS" style='border: 1px solid #000000;'>
 </form>
 
 ## Maintenance
