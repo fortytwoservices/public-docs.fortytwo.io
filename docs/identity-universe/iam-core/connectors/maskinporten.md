@@ -21,4 +21,4 @@ To get your JWKS, submit the below form with your Entra tenant ID, which you can
 
 ## Maintenance
 
-Maskinporten only accepts certificate validity for 1 year. To ensure availability of the service, we generate a new certificate every 6 months, but continue to use the 'oldest' certificate until it is no longer valid. As a customer, **you need to update the JWKS every 6 months**, by submitting the above form.
+Maskinporten only accepts certificate validity for 1 year. To ensure availability of the service, we generate a new certificate every 6 months, but continue to use the 'oldest' certificate until it is no longer valid. As a customer, **you need to update the JWKS every 6 months**, by submitting the above form to get the latest certificate(s) and saving them in the Maskinporten user interface.
