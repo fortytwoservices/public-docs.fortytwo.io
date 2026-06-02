@@ -6,11 +6,15 @@ This is not a connector, but is used as authentication by several integrations.
 
 [Maskinporten](https://samarbeid.digdir.no/maskinporten/dette-er-maskinporten/96) is a common OpenID Connect provider in Norwegian public sektor, used for machine to machine authentication to services like Altinn, Helsepersonellregisteret, SAP from DFØ and others. To allow Fortytwo access, you need to register an application in Maskinporten using the below steps.
 
-1. Sign into [Samarbeidsportalen](https://samarbeid.digdir.no/) and find **Integrations ("Integrasjoner")** 
+## Steps
+
+Sign into [Samarbeidsportalen](https://samarbeid.digdir.no/) and find **Integrations ("Integrasjoner")** 
 
 ![New integrations button](media/image.png)
 
-2. On the **New integration ("Ny integrasjon")** experience, select the scopes you need to provide Fortytwo access to. This varies with the connector.
+<hr />
+
+On the **New integration ("Ny integrasjon")** experience, select the scopes you need to provide Fortytwo access to. This varies with the connector.
 
 ![Select scopes](media/image-1.png)
 
@@ -18,7 +22,9 @@ This is an example for accessing DFØ SAP:
 
 ![SAP DFØ Example](media/image-2.png)
 
-3. Use the following information:
+<hr />
+
+Use the following information:
 
 | Setting | Value | 
 |-|-|
@@ -28,8 +34,9 @@ This is an example for accessing DFØ SAP:
 
 ![alt text](media/image-3.png)
 
+<hr />
 
-4. After adding the application, use **add your own public keys ("Egne public nøkler")**. 
+After adding the application, use **add your own public keys ("Egne public nøkler")**. 
 
 To get your JWKS, submit the below form with your Entra tenant ID, which you can find at [whatismytenantid.com](https://www.whatismytenantid.com/)
 
@@ -47,6 +54,8 @@ To get your JWKS, submit the below form with your Entra tenant ID, which you can
 It should now look something like this:
 
 ![alt text](media/image-5.png)
+
+<hr />
 
 The **Client ID** of the application must be provided in the connector configuration.
 
