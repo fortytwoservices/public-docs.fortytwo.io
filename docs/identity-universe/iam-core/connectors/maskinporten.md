@@ -15,8 +15,8 @@ To get your JWKS, submit the below form with your Entra tenant ID, which you can
     <input type="hidden" name="sp" value="/triggers/When_an_HTTP_request_is_received/run">
     <input type="hidden" name="sv" value="1.0">
     <input type="hidden" name="sig" value="pRP7v2iwaK10BGBQAyYL2G_xoANzMRbQYc8vTKq9ci0">
-    <input type="text" name="tenantid" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
-    <input type="submit" value="Get JWKS" style='border: 1px solid #000000;'>
+    <input type="text" style='border: 1px solid #000000;' name="tenantid" placeholder="Entra tenant ID" required pattern="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}" title="Input a valid guid">
+    <input type="submit" value="Get JWKS" >
 </form>
 
 ## Maintenance
