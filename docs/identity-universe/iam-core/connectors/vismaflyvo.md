@@ -111,7 +111,6 @@ New-IAMCoreSyncRule `
     -JoinScope "student" `
     -InboundAttributeFlows $InboundAttributeFlows `
     -ProvisioningEnabled $true `
-    -ScheduleEnabled:$true `
     -CoreObjectType Identity `
     -ConnectorObjectType student `
     -Priority 2100
@@ -138,7 +137,6 @@ New-IAMCoreSyncRule `
     -JoinScope "teacher" `
     -InboundAttributeFlows $InboundAttributeFlows `
     -ProvisioningEnabled $false `
-    -ScheduleEnabled:$true `
     -CoreObjectType Identity `
     -ConnectorObjectType teacher `
     -Priority 2200
@@ -198,7 +196,6 @@ New-IAMCoreSyncRule `
     -Name "$($Connector.Name) - group" `
     -InboundAttributeFlows $InboundAttributeFlows `
     -ProvisioningEnabled $true `
-    -ScheduleEnabled:$true `
     -CoreObjectType OrgUnit `
     -ConnectorObjectType group `
     -Priority 2300
@@ -270,7 +267,6 @@ New-IAMCoreSyncRule `
     -InboundAttributeFlows $InboundAttributeFlows `
     -ProvisioningEnabled $true `
     -JoinScope $Connector.Name `
-    -ScheduleEnabled:$true `
     -CoreObjectType Relationship `
     -ConnectorObjectType membership `
     -Scope @{
@@ -353,7 +349,6 @@ New-IAMCoreSyncRule `
     -InboundAttributeFlows $InboundAttributeFlows `
     -ProvisioningEnabled $true `
     -JoinScope $Connector.Name `
-    -ScheduleEnabled:$true `
     -CoreObjectType Relationship `
     -ConnectorObjectType membership `
     -Scope @{
