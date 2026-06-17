@@ -7217,11 +7217,11 @@
 <ul>
 <li><strong>Fully Managed External Tenant</strong>: Complete External ID tenant setup and configuration</li>
 <li><strong>Multiple Authentication Methods</strong>: Email/password, one-time passcodes, social providers (Google, Facebook, Apple), custom OIDC/SAML</li>
-<li><strong>CheckID Passwordless Module</strong>: Optional integration with trusted Nordic/European eIDs (BankID, Vipps, MobilePay, ID-porten, Signicat) + global API integrations</li>
+<li><strong>CheckID Passwordless Module</strong>: Optional integration with trusted Nordic/European eIDs and payment identity providers, plus provider-specific API integrations where available</li>
 <li><strong>Production-Ready Infrastructure</strong>: Security-hardened, monitored, enterprise-grade configuration</li>
 <li><strong>Custom Branding</strong>: Tailored sign-up/sign-in experiences matching your brand</li>
 <li><strong>API &amp; Partner Portal</strong>: Support for B2B API partners and developer ecosystem</li>
-<li><strong>Conditional Access Policies</strong>: AI-powered risk detection and adaptive authentication</li>
+<li><strong>Conditional Access Policies</strong>: Adaptive access controls for MFA, location-aware access, and session management</li>
 <li><strong>Professional Support</strong>: Implementation guidance, ongoing management, and 24/7 monitoring</li>
 <li><strong>Compliance Ready</strong>: GDPR, SOC 2, ISO 27001 aligned configurations</li>
 </ul>
@@ -7274,47 +7274,59 @@
 </table>
 <h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <h3 id="managed-external-id-deployment">Managed External ID Deployment<a class="headerlink" href="#managed-external-id-deployment" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A["Customer Applications"] --&gt;|"OAuth/OIDC"| B
+<pre class="mermaid"><code>flowchart TB
+    App["Customer applications"]
+    Platform["Microsoft Entra&lt;br/&gt;External ID platform"]
 
-    subgraph B["Fortytwo Managed External ID Tenant - Fully Managed, Security Monitored, 99.9% SLA"]
-        direction LR
-        B1["Custom Branding"]
-        B2["Conditional Access"]
-        B3["Identity Providers"]
-        B4["CheckID Module (Optional)"]
-        B5["User Flows"]
-        B6["Security Monitoring"]
+    subgraph Tenant["Fortytwo managed External ID tenant"]
+        direction TB
+        Flows["Sign-up and sign-in&lt;br/&gt;user flows"]
+        Branding["Custom branding"]
+        Access["Conditional Access&lt;br/&gt;and MFA policy"]
+        Providers["Identity providers&lt;br/&gt;Social, OIDC, SAML"]
+        CheckID["CheckID module&lt;br/&gt;(optional)"]
+        Ops["Security monitoring&lt;br/&gt;and managed operations"]
     end
 
-    B --&gt; C["Microsoft Entra External ID Platform"]</code></pre>
+    App --&gt;|"OAuth 2.0 / OIDC"| Flows
+    Flows --&gt; Branding
+    Flows --&gt; Access
+    Flows --&gt; Providers
+    Flows --&gt; CheckID
+    Ops -. monitors .-&gt; Flows
+    Flows --&gt; Platform</code></pre>
 <h3 id="checkid-integration-architecture">CheckID Integration Architecture<a class="headerlink" href="#checkid-integration-architecture" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    subgraph EU["End Users - Global Coverage"]
-        direction LR
-        E1["Nordic / European: BankID, Vipps, MobilePay, National eIDs"]
-        E2["Americas: Custom API integrations"]
-        E3["Asia-Pacific: Custom API integrations"]
-        E4["Middle East &amp; Africa: Custom API integrations"]
+<pre class="mermaid"><code>flowchart TB
+    subgraph Users["End users"]
+        direction TB
+        Nordics["Nordic and European eIDs&lt;br/&gt;BankID, MitID, ID-porten, Signicat"]
+        Americas["Americas&lt;br/&gt;provider-specific API integrations"]
+        APAC["Asia-Pacific&lt;br/&gt;provider-specific API integrations"]
+        MEA["Middle East and Africa&lt;br/&gt;provider-specific API integrations"]
     end
 
-    EU --&gt; CK
-
-    subgraph CK["CheckID.no Module (Optional Add-on)"]
-        direction LR
-        CK1["Passwordless Authentication"]
-        CK2["Trusted eID Verification"]
+    subgraph CheckID["CheckID module&lt;br/&gt;(optional add-on)"]
+        direction TB
+        Passwordless["Passwordless authentication"]
+        Verification["Trusted identity verification"]
+        Mapping["Normalized claims mapping"]
     end
 
-    CK --&gt;|"OIDC Federation"| ML
+    subgraph ExternalID["Fortytwo External ID management layer"]
+        direction TB
+        Config["Configuration management"]
+        Monitoring["Security monitoring"]
+        Analytics["User analytics"]
+        Response["Incident response"]
+    end
 
-    subgraph ML["Fortytwo External ID Management Layer"]
-        direction LR
-        ML1["Configuration Management"]
-        ML2["Security Monitoring (Sentinel)"]
-        ML3["User Analytics"]
-        ML4["Incident Response"]
-    end</code></pre>
+    Nordics --&gt; Passwordless
+    Americas --&gt; Passwordless
+    APAC --&gt; Passwordless
+    MEA --&gt; Passwordless
+    Passwordless --&gt; Verification
+    Verification --&gt; Mapping
+    Mapping --&gt;|"OIDC federation"| Config</code></pre>
 <h2 id="core-services">Core Services<a class="headerlink" href="#core-services" title="Permanent link">&para;</a></h2>
 <h3 id="identity-management">Identity Management<a class="headerlink" href="#identity-management" title="Permanent link">&para;</a></h3>
 <ul>
@@ -7326,12 +7338,12 @@
 </ul>
 <h3 id="authentication-services">Authentication Services<a class="headerlink" href="#authentication-services" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Multi-Factor Authentication</strong>: SMS, email OTP, authenticator apps</li>
-<li><strong>Social Login</strong>: Google, Facebook, Apple, LinkedIn</li>
-<li><strong>Passwordless</strong>: Email magic links, FIDO2 support</li>
+<li><strong>Multi-Factor Authentication</strong>: Email one-time passcode, SMS, and passkeys/FIDO2 where supported by the selected flow</li>
+<li><strong>Social Login</strong>: Google, Facebook, Apple, and additional providers through supported federation</li>
+<li><strong>Passwordless</strong>: Email one-time passcodes and passkeys/FIDO2 where supported by the selected flow</li>
 <li><strong>Username &amp; Alias Sign-in</strong>: Users can sign in with a custom alias (customer ID, loyalty number, etc.) in addition to their email address, assignable via Graph API or admin center</li>
 <li><strong>Device Authorization Grant</strong>: OAuth 2.0 device code flow for input-constrained devices such as smart TVs, IoT devices, and printers</li>
-<li><strong>CheckID Integration</strong>: Nordic/European national eID verification + global trusted identity verification (optional)</li>
+<li><strong>CheckID Integration</strong>: Nordic/European national eID verification plus provider-specific trusted identity verification where available (optional)</li>
 <li><strong>SSO</strong>: Single sign-on across your application portfolio</li>
 </ul>
 <h3 id="security-risk-management">Security &amp; Risk Management<a class="headerlink" href="#security-risk-management" title="Permanent link">&para;</a></h3>
@@ -7339,8 +7351,8 @@
 <li><strong>Conditional Access</strong>: Risk-based authentication policies</li>
 <li><strong>Session Control</strong>: Configurable sign-in frequency and persistent browser session policies via Conditional Access</li>
 <li><strong>WAF Integration</strong>: Native protection via Akamai and Cloudflare Web Application Firewall integrations</li>
-<li><strong>Fraud Detection</strong>: AI-powered anomaly detection</li>
-<li><strong>Identity Protection</strong>: Real-time threat monitoring</li>
+<li><strong>Fraud Detection</strong>: Bot and account-takeover protection through supported WAF and partner integrations</li>
+<li><strong>Threat Monitoring</strong>: Authentication, audit, and provider telemetry monitoring with operational alerting</li>
 <li><strong>Audit Logging</strong>: Comprehensive security event logging</li>
 </ul>
 <h3 id="developer-experience">Developer Experience<a class="headerlink" href="#developer-experience" title="Permanent link">&para;</a></h3>
@@ -7353,7 +7365,7 @@
 </ul>
 <h2 id="checkid-passwordless-module">CheckID Passwordless Module<a class="headerlink" href="#checkid-passwordless-module" title="Permanent link">&para;</a></h2>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>The CheckID module adds trusted, government-grade and payment-provider identity verification for customers worldwide through integration with national electronic IDs, banking credentials, mobile payment systems, and custom API integrations for any market globally.</p>
+<p>The CheckID module adds trusted, government-grade and payment-provider identity verification through integration with national electronic IDs, banking credentials, mobile payment systems, and custom API integrations in markets where provider APIs and local requirements support it.</p>
 <h3 id="supported-identity-providers">Supported Identity Providers<a class="headerlink" href="#supported-identity-providers" title="Permanent link">&para;</a></h3>
 <p><strong>Nordic Countries</strong>:
 - Norway: BankID, Vipps, ID-porten, MobilePay
@@ -7381,7 +7393,7 @@
   - India: Aadhaar (compliance-dependent)
   - Hong Kong: iAM Smart
   - Thailand: NDID
-  - Custom integrations for any market</p>
+  - Custom integrations where provider APIs and local requirements support them</p>
 <ul>
 <li><strong>Americas</strong>:</li>
 <li>Canada: Government sign-in services</li>
@@ -7389,7 +7401,7 @@
 <li>Brazil: Gov.br</li>
 <li>Mexico: e.firma</li>
 <li>
-<p>Custom integrations for any market</p>
+<p>Custom integrations where provider APIs and local requirements support them</p>
 </li>
 <li>
 <p><strong>Middle East &amp; Africa</strong>:</p>
@@ -7398,7 +7410,7 @@
 <li>Saudi Arabia: Absher, NAFATH</li>
 <li>South Africa: Smart ID</li>
 <li>Kenya: Huduma Namba</li>
-<li>Custom integrations for any market</li>
+<li>Custom integrations where provider APIs and local requirements support them</li>
 </ul>
 <p><strong>Payment &amp; Fintech Providers</strong>:
 - MobilePay (Nordic)
@@ -7417,7 +7429,7 @@
 - No manual document checks
 - Automatic account provisioning
 - Compliance-ready verification
-- Works in any market where you operate</p>
+- Works in supported markets where the required provider integration is available</p>
 <p><strong>Account Recovery</strong>:
 - Re-verify with trusted eID or payment provider
 - No helpdesk involvement
@@ -7435,11 +7447,11 @@ Enable Norwegian, Swedish, Danish, and Finnish customers to sign in with BankID,
 <p><strong>2. European Market Expansion</strong>
 Support customers across 44 European countries with their national eID schemes and payment verification.</p>
 <p><strong>3. Global Customer Base</strong>
-Serve customers worldwide with locally-trusted identity methods through Fortytwo's custom API integrations (Asia, Americas, Middle East, Africa).</p>
+Serve customers across selected global markets with locally trusted identity methods through Fortytwo's custom API integrations.</p>
 <p><strong>4. High-Value Transactions</strong>
 Step-up authentication for sensitive operations using verified government IDs or payment provider credentials.</p>
 <p><strong>5. Regulatory Compliance</strong>
-Meet AML/KYC requirements globally with bank-grade identity verification and payment provider authentication.</p>
+Support AML/KYC workflows with bank-grade identity verification and payment provider authentication where the selected provider and jurisdiction allow it.</p>
 <p><strong>6. Employee/Contractor Onboarding</strong>
 Passwordless workforce authentication for operations in any country where you have staff.</p>
 <h3 id="checkid-integration-options">CheckID Integration Options<a class="headerlink" href="#checkid-integration-options" title="Permanent link">&para;</a></h3>
@@ -7457,9 +7469,9 @@ Passwordless workforce authentication for operations in any country where you ha
 - White-label frontend
 - Up to 10 European countries</p>
 <p><strong>Enterprise Integration</strong>:
-- <strong>Unlimited global custom API integrations</strong>
+- <strong>Custom API integration portfolio</strong>
 - Fortytwo builds and maintains all integrations
-- Any identity provider in any market
+- Identity providers in supported markets
 - Dedicated CheckID instance
 - Custom compliance configurations
 - Priority support
@@ -7611,7 +7623,7 @@ Passwordless workforce authentication for operations in any country where you ha
 <li>New market integration planning</li>
 </ul>
 <h2 id="migrating-from-azure-ad-b2c">Migrating from Azure AD B2C<a class="headerlink" href="#migrating-from-azure-ad-b2c" title="Permanent link">&para;</a></h2>
-<p>Azure AD B2C became unavailable for new customers in May 2025 and is on a path toward end-of-life. If your organization is running customer identity on B2C, migrating to Microsoft Entra External ID is the natural next step, and Fortytwo handles the full migration as a managed engagement.</p>
+<p>Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, but Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.</p>
 <h3 id="migration-readiness-assessment">Migration Readiness Assessment<a class="headerlink" href="#migration-readiness-assessment" title="Permanent link">&para;</a></h3>
 <p>Before scoping a migration, Fortytwo runs the <strong>Fortytwo B2C Migration Readiness Tool</strong> against your existing B2C tenant. The tool is available as a CLI, a web UI, and a GitHub Actions workflow, so it fits into your existing processes without requiring manual access to be handed over.</p>
 <p>It connects read-only to your B2C tenant and produces a structured readiness report covering:</p>
@@ -7702,19 +7714,19 @@ Passwordless workforce authentication for operations in any country where you ha
 <p>Contact us at <a href="mailto:external-id@fortytwo.io">external-id@fortytwo.io</a> to schedule a B2C migration assessment. We will review your existing tenant, identify any feature gaps or custom policy complexity, and provide a scoped proposal.</p>
 <h2 id="security-compliance">Security &amp; Compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h2>
 <h3 id="security-features">Security Features<a class="headerlink" href="#security-features" title="Permanent link">&para;</a></h3>
-<p><strong>Identity Protection</strong>:
-- Real-time risk detection
-- Anomalous sign-in detection
-- Leaked credential monitoring
+<p><strong>Security Monitoring</strong>:
+- Authentication and audit telemetry monitoring
 - Suspicious activity alerts
-- CheckID verified identity assurance globally (optional)</p>
+- Provider health and error-rate monitoring
+- Incident response runbooks
+- CheckID verified identity assurance in supported markets (optional)</p>
 <p><strong>Access Controls</strong>:
 - Conditional Access policies
 - Location-based restrictions
-- Device compliance requirements
 - MFA enforcement
 - Step-up authentication with CheckID (optional)
-- Geographic policy enforcement</p>
+- Geographic policy enforcement
+- Session controls for sign-in frequency and persistent browser sessions</p>
 <p><strong>Data Protection</strong>:
 - Encryption at rest and in transit
 - PII data minimization
@@ -7722,13 +7734,13 @@ Passwordless workforce authentication for operations in any country where you ha
 - Right to be forgotten support
 - Regional data residency options</p>
 <h3 id="compliance-standards">Compliance Standards<a class="headerlink" href="#compliance-standards" title="Permanent link">&para;</a></h3>
-<p><strong>Certifications</strong>:
-- SOC 2 Type II
-- ISO 27001
-- GDPR compliant
-- HIPAA eligible (with BAA)
-- PCI DSS Level 1 (for payment flows)
-- eIDAS compliant (with CheckID module)
+<p><strong>Compliance Alignment</strong>:
+- SOC 2-aligned controls
+- ISO 27001-aligned controls
+- GDPR-compliant data handling patterns
+- HIPAA-supporting architecture where a BAA is in place
+- PCI-conscious payment flow design
+- eIDAS-supporting identity verification with eligible CheckID providers
 - Regional compliance support (PDPA, LGPD, etc.)</p>
 <p><strong>Data Residency</strong>:
 - EU data centers available
@@ -7987,7 +7999,7 @@ CheckID module info: <a href="https://docs.checkid.no">docs.checkid.no</a></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 11, 2026 07:34:36 UTC">April 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 17, 2026 19:29:26 UTC">June 17, 2026</span>
   </span>
 
     
