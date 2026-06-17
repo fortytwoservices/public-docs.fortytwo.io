@@ -17,11 +17,11 @@ Fortytwo's Managed External ID service provides a production-ready, enterprise-g
 
 - **Fully Managed External Tenant**: Complete External ID tenant setup and configuration
 - **Multiple Authentication Methods**: Email/password, one-time passcodes, social providers (Google, Facebook, Apple), custom OIDC/SAML
-- **CheckID Passwordless Module**: Optional integration with trusted Nordic/European eIDs (BankID, Vipps, MobilePay, ID-porten, Signicat) + global API integrations
+- **CheckID Passwordless Module**: Optional integration with trusted Nordic/European eIDs and payment identity providers, plus provider-specific API integrations where available
 - **Production-Ready Infrastructure**: Security-hardened, monitored, enterprise-grade configuration
 - **Custom Branding**: Tailored sign-up/sign-in experiences matching your brand
 - **API & Partner Portal**: Support for B2B API partners and developer ecosystem
-- **Conditional Access Policies**: AI-powered risk detection and adaptive authentication
+- **Conditional Access Policies**: Adaptive access controls for MFA, location-aware access, and session management
 - **Professional Support**: Implementation guidance, ongoing management, and 24/7 monitoring
 - **Compliance Ready**: GDPR, SOC 2, ISO 27001 aligned configurations
 
@@ -42,51 +42,63 @@ Fortytwo's Managed External ID service provides a production-ready, enterprise-g
 ### Managed External ID Deployment
 
 ```mermaid
-flowchart TD
-    A["Customer Applications"] -->|"OAuth/OIDC"| B
+flowchart TB
+    App["Customer applications"]
+    Platform["Microsoft Entra<br/>External ID platform"]
 
-    subgraph B["Fortytwo Managed External ID Tenant - Fully Managed, Security Monitored, 99.9% SLA"]
-        direction LR
-        B1["Custom Branding"]
-        B2["Conditional Access"]
-        B3["Identity Providers"]
-        B4["CheckID Module (Optional)"]
-        B5["User Flows"]
-        B6["Security Monitoring"]
+    subgraph Tenant["Fortytwo managed External ID tenant"]
+        direction TB
+        Flows["Sign-up and sign-in<br/>user flows"]
+        Branding["Custom branding"]
+        Access["Conditional Access<br/>and MFA policy"]
+        Providers["Identity providers<br/>Social, OIDC, SAML"]
+        CheckID["CheckID module<br/>(optional)"]
+        Ops["Security monitoring<br/>and managed operations"]
     end
 
-    B --> C["Microsoft Entra External ID Platform"]
+    App -->|"OAuth 2.0 / OIDC"| Flows
+    Flows --> Branding
+    Flows --> Access
+    Flows --> Providers
+    Flows --> CheckID
+    Ops -. monitors .-> Flows
+    Flows --> Platform
 ```
 
 ### CheckID Integration Architecture
 
 ```mermaid
-flowchart TD
-    subgraph EU["End Users - Global Coverage"]
-        direction LR
-        E1["Nordic / European: BankID, Vipps, MobilePay, National eIDs"]
-        E2["Americas: Custom API integrations"]
-        E3["Asia-Pacific: Custom API integrations"]
-        E4["Middle East & Africa: Custom API integrations"]
+flowchart TB
+    subgraph Users["End users"]
+        direction TB
+        Nordics["Nordic and European eIDs<br/>BankID, MitID, ID-porten, Signicat"]
+        Americas["Americas<br/>provider-specific API integrations"]
+        APAC["Asia-Pacific<br/>provider-specific API integrations"]
+        MEA["Middle East and Africa<br/>provider-specific API integrations"]
     end
 
-    EU --> CK
-
-    subgraph CK["CheckID.no Module (Optional Add-on)"]
-        direction LR
-        CK1["Passwordless Authentication"]
-        CK2["Trusted eID Verification"]
+    subgraph CheckID["CheckID module<br/>(optional add-on)"]
+        direction TB
+        Passwordless["Passwordless authentication"]
+        Verification["Trusted identity verification"]
+        Mapping["Normalized claims mapping"]
     end
 
-    CK -->|"OIDC Federation"| ML
-
-    subgraph ML["Fortytwo External ID Management Layer"]
-        direction LR
-        ML1["Configuration Management"]
-        ML2["Security Monitoring (Sentinel)"]
-        ML3["User Analytics"]
-        ML4["Incident Response"]
+    subgraph ExternalID["Fortytwo External ID management layer"]
+        direction TB
+        Config["Configuration management"]
+        Monitoring["Security monitoring"]
+        Analytics["User analytics"]
+        Response["Incident response"]
     end
+
+    Nordics --> Passwordless
+    Americas --> Passwordless
+    APAC --> Passwordless
+    MEA --> Passwordless
+    Passwordless --> Verification
+    Verification --> Mapping
+    Mapping -->|"OIDC federation"| Config
 ```
 
 ## Core Services
@@ -99,20 +111,20 @@ flowchart TD
 - **Just-in-Time Password Migration**: Migrate users from legacy systems on first sign-in without bulk data migration (Preview)
 
 ### Authentication Services
-- **Multi-Factor Authentication**: SMS, email OTP, authenticator apps
-- **Social Login**: Google, Facebook, Apple, LinkedIn
-- **Passwordless**: Email magic links, FIDO2 support
+- **Multi-Factor Authentication**: Email one-time passcode, SMS, and passkeys/FIDO2 where supported by the selected flow
+- **Social Login**: Google, Facebook, Apple, and additional providers through supported federation
+- **Passwordless**: Email one-time passcodes and passkeys/FIDO2 where supported by the selected flow
 - **Username & Alias Sign-in**: Users can sign in with a custom alias (customer ID, loyalty number, etc.) in addition to their email address, assignable via Graph API or admin center
 - **Device Authorization Grant**: OAuth 2.0 device code flow for input-constrained devices such as smart TVs, IoT devices, and printers
-- **CheckID Integration**: Nordic/European national eID verification + global trusted identity verification (optional)
+- **CheckID Integration**: Nordic/European national eID verification plus provider-specific trusted identity verification where available (optional)
 - **SSO**: Single sign-on across your application portfolio
 
 ### Security & Risk Management
 - **Conditional Access**: Risk-based authentication policies
 - **Session Control**: Configurable sign-in frequency and persistent browser session policies via Conditional Access
 - **WAF Integration**: Native protection via Akamai and Cloudflare Web Application Firewall integrations
-- **Fraud Detection**: AI-powered anomaly detection
-- **Identity Protection**: Real-time threat monitoring
+- **Fraud Detection**: Bot and account-takeover protection through supported WAF and partner integrations
+- **Threat Monitoring**: Authentication, audit, and provider telemetry monitoring with operational alerting
 - **Audit Logging**: Comprehensive security event logging
 
 ### Developer Experience
@@ -125,7 +137,7 @@ flowchart TD
 ## CheckID Passwordless Module
 
 ### Overview
-The CheckID module adds trusted, government-grade and payment-provider identity verification for customers worldwide through integration with national electronic IDs, banking credentials, mobile payment systems, and custom API integrations for any market globally.
+The CheckID module adds trusted, government-grade and payment-provider identity verification through integration with national electronic IDs, banking credentials, mobile payment systems, and custom API integrations in markets where provider APIs and local requirements support it.
 
 ### Supported Identity Providers
 
@@ -157,21 +169,21 @@ The CheckID module adds trusted, government-grade and payment-provider identity 
   - India: Aadhaar (compliance-dependent)
   - Hong Kong: iAM Smart
   - Thailand: NDID
-  - Custom integrations for any market
+  - Custom integrations where provider APIs and local requirements support them
   
 - **Americas**:
   - Canada: Government sign-in services
   - USA: Login.gov, ID.me, state-level eIDs
   - Brazil: Gov.br
   - Mexico: e.firma
-  - Custom integrations for any market
+  - Custom integrations where provider APIs and local requirements support them
   
 - **Middle East & Africa**:
   - UAE: UAE Pass
   - Saudi Arabia: Absher, NAFATH
   - South Africa: Smart ID
   - Kenya: Huduma Namba
-  - Custom integrations for any market
+  - Custom integrations where provider APIs and local requirements support them
 
 **Payment & Fintech Providers**:
 - MobilePay (Nordic)
@@ -193,7 +205,7 @@ The CheckID module adds trusted, government-grade and payment-provider identity 
 - No manual document checks
 - Automatic account provisioning
 - Compliance-ready verification
-- Works in any market where you operate
+- Works in supported markets where the required provider integration is available
 
 **Account Recovery**:
 - Re-verify with trusted eID or payment provider
@@ -217,13 +229,13 @@ Enable Norwegian, Swedish, Danish, and Finnish customers to sign in with BankID,
 Support customers across 44 European countries with their national eID schemes and payment verification.
 
 **3. Global Customer Base**
-Serve customers worldwide with locally-trusted identity methods through Fortytwo's custom API integrations (Asia, Americas, Middle East, Africa).
+Serve customers across selected global markets with locally trusted identity methods through Fortytwo's custom API integrations.
 
 **4. High-Value Transactions**
 Step-up authentication for sensitive operations using verified government IDs or payment provider credentials.
 
 **5. Regulatory Compliance**
-Meet AML/KYC requirements globally with bank-grade identity verification and payment provider authentication.
+Support AML/KYC workflows with bank-grade identity verification and payment provider authentication where the selected provider and jurisdiction allow it.
 
 **6. Employee/Contractor Onboarding**
 Passwordless workforce authentication for operations in any country where you have staff.
@@ -246,9 +258,9 @@ Passwordless workforce authentication for operations in any country where you ha
 - Up to 10 European countries
 
 **Enterprise Integration**:
-- **Unlimited global custom API integrations**
+- **Custom API integration portfolio**
 - Fortytwo builds and maintains all integrations
-- Any identity provider in any market
+- Identity providers in supported markets
 - Dedicated CheckID instance
 - Custom compliance configurations
 - Priority support
@@ -431,7 +443,7 @@ Passwordless workforce authentication for operations in any country where you ha
 
 ## Migrating from Azure AD B2C
 
-Azure AD B2C became unavailable for new customers in May 2025 and is on a path toward end-of-life. If your organization is running customer identity on B2C, migrating to Microsoft Entra External ID is the natural next step, and Fortytwo handles the full migration as a managed engagement.
+Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, but Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.
 
 ### Migration Readiness Assessment
 
@@ -499,20 +511,20 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Security Features
 
-**Identity Protection**:
-- Real-time risk detection
-- Anomalous sign-in detection
-- Leaked credential monitoring
+**Security Monitoring**:
+- Authentication and audit telemetry monitoring
 - Suspicious activity alerts
-- CheckID verified identity assurance globally (optional)
+- Provider health and error-rate monitoring
+- Incident response runbooks
+- CheckID verified identity assurance in supported markets (optional)
 
 **Access Controls**:
 - Conditional Access policies
 - Location-based restrictions
-- Device compliance requirements
 - MFA enforcement
 - Step-up authentication with CheckID (optional)
 - Geographic policy enforcement
+- Session controls for sign-in frequency and persistent browser sessions
 
 **Data Protection**:
 - Encryption at rest and in transit
@@ -523,13 +535,13 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Compliance Standards
 
-**Certifications**:
-- SOC 2 Type II
-- ISO 27001
-- GDPR compliant
-- HIPAA eligible (with BAA)
-- PCI DSS Level 1 (for payment flows)
-- eIDAS compliant (with CheckID module)
+**Compliance Alignment**:
+- SOC 2-aligned controls
+- ISO 27001-aligned controls
+- GDPR-compliant data handling patterns
+- HIPAA-supporting architecture where a BAA is in place
+- PCI-conscious payment flow design
+- eIDAS-supporting identity verification with eligible CheckID providers
 - Regional compliance support (PDPA, LGPD, etc.)
 
 **Data Residency**:
