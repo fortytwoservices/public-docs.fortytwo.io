@@ -101,6 +101,20 @@ flowchart TB
     Mapping -->|"OIDC federation"| Config
 ```
 
+### External ID Control Boundary
+
+Microsoft Entra External ID owns customer authentication, user flows, directory objects, token issuance, and federation with supported identity providers. Application teams still own authorization decisions, tenant modeling, data access rules, and legacy protocol edge cases.
+
+Fortytwo designs this boundary during the initial workshop so the External ID tenant stays native where possible, and extension patterns are added only where the application architecture requires them.
+
+| Layer | Primary Responsibility | Common Implementation |
+|-------|------------------------|-----------------------|
+| Sign-in and token issuance | External ID authenticates users and issues JWTs | User flows, custom branding, MFA, passkeys/FIDO2, OIDC/SAML federation |
+| User lifecycle | External ID stores and manages customer accounts | Microsoft Graph, custom attributes, groups, application roles |
+| Application authorization | Applications decide what a signed-in user can do | Claims, groups, app roles, OPA for ABAC, OpenFGA/Zanzibar-style relationship checks |
+| Integration bridge | External systems enrich or validate flows | Custom authentication extensions, token enrichment APIs, CheckID, provider APIs |
+| Fallback brokering | Handle confirmed blockers that cannot be met natively | Keycloak or similar broker only where External ID cannot cover the requirement |
+
 ## Core Services
 
 ### Identity Management
@@ -120,7 +134,7 @@ flowchart TB
 - **SSO**: Single sign-on across your application portfolio
 
 ### Security & Risk Management
-- **Conditional Access**: Risk-based authentication policies
+- **Conditional Access**: MFA, location-aware, selected-app, device-platform, and session policies
 - **Session Control**: Configurable sign-in frequency and persistent browser session policies via Conditional Access
 - **WAF Integration**: Native protection via Akamai and Cloudflare Web Application Firewall integrations
 - **Fraud Detection**: Bot and account-takeover protection through supported WAF and partner integrations
@@ -133,6 +147,8 @@ flowchart TB
 - **Client Credentials (M2M)**: OAuth 2.0 client credentials flow for service-to-service integrations; requires M2M Premium add-on
 - **Webhook Integration**: Real-time event notifications
 - **Custom Claims**: Application-specific user attributes
+- **Authorization Bridge**: Optional OPA or OpenFGA/Zanzibar-style integration when claims, groups, and application roles are not enough
+- **Legacy Protocol Bridging**: Keycloak or another broker can be used for confirmed blockers, not as the default path
 
 ## CheckID Passwordless Module
 
@@ -389,9 +405,27 @@ Passwordless workforce authentication for operations in any country where you ha
 
 ## Implementation Guide
 
-### 8-Week Deployment Program
+### Design Workshops
 
-**Weeks 1-2: Discovery & Planning**
+The managed build starts with focused design workshops before tenant configuration. The goal is to make the identity model explicit, capture the decisions that affect application integration, and avoid rebuilding B2C custom-policy behavior by accident.
+
+**Workshop Outputs**:
+- Journey and UX flow map for sign-up, sign-in, reset, consent, and step-up flows
+- Claims, groups, application roles, and authorization pattern decisions
+- Identity provider and CheckID/eID integration backlog
+- Conditional Access, MFA, session, and threat-monitoring baseline
+- App inventory, redirect URI inventory, and API integration backlog
+- Pilot, rollback, cutover, and support plan
+
+### 6-8 Week Deployment Program
+
+**Week 0: Kickoff**
+- Access setup
+- Application inventory
+- Success measures and launch criteria
+- Existing identity and claims review
+
+**Week 1: Discovery & Design**
 - Requirements gathering and use case analysis
 - Identity provider selection (social, enterprise, custom, CheckID)
 - Geographic coverage assessment
@@ -401,7 +435,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - Brand asset collection
 - CheckID module assessment (if requested)
 
-**Weeks 3-4: Tenant Configuration**
+**Weeks 2-3: Tenant Configuration**
 - External ID tenant provisioning
 - Identity provider integration
 - CheckID module integration (if selected)
@@ -410,7 +444,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - User attribute schema design
 - Security policy configuration
 
-**Weeks 5-6: Application Integration**
+**Weeks 4-5: Application Integration**
 - SDK integration guidance
 - API endpoint configuration
 - CheckID authentication flows (if enabled)
@@ -419,7 +453,7 @@ Passwordless workforce authentication for operations in any country where you ha
 - Developer documentation
 - QA and security testing
 
-**Weeks 7-8: Go-Live Preparation**
+**Weeks 6-8: Go-Live Preparation**
 - Production deployment
 - Security review and penetration testing
 - Performance testing and optimization
@@ -443,7 +477,9 @@ Passwordless workforce authentication for operations in any country where you ha
 
 ## Migrating from Azure AD B2C
 
-Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, but Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.
+Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, and Microsoft has stated support continues until at least May 2030. Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.
+
+Migration is not a lift-and-shift exercise. B2C custom policies, TrustFramework XML, claims transformations, and per-application journeys need to be assessed and rebuilt against the External ID model. The aim is to keep what maps cleanly to native External ID and add bridge patterns only for confirmed gaps.
 
 ### Migration Readiness Assessment
 
@@ -461,6 +497,15 @@ It connects read-only to your B2C tenant and produces a structured readiness rep
 
 The report is the starting point for the scoped proposal and defines the migration phases, timeline, and whether JIT password migration is required.
 
+For most customers, the first step is a focused 5-day gap assessment:
+
+- Audit the current B2C tenant, custom policies, app registrations, claims, and identity providers
+- Classify each flow as native External ID, External ID with extension, or blocker
+- Identify authorization requirements that belong in the application layer rather than the identity provider
+- Decide whether OPA, OpenFGA/Zanzibar-style relationship authorization, or a lightweight claims bridge is needed
+- Use Keycloak or another broker only for confirmed External ID blockers such as legacy protocol or complex federation requirements
+- Produce the migration backlog, coexistence plan, and 6-8 week build path
+
 ### What Fortytwo Handles
 
 We own the end-to-end migration: assessment, configuration of the new External ID tenant, user and credential migration, application re-integration, and post-cutover support. Your team is not expected to operate the migration tooling or manage the Microsoft Graph scripting involved.
@@ -470,10 +515,11 @@ We own the end-to-end migration: assessment, configuration of the new External I
 | Phase | What We Do |
 |-------|------------|
 | Assessment & inventory | Map existing B2C tenant: user flows, custom policies (IEF), identity providers, apps, claims, branding, compliance requirements |
+| Gap classification | Decide what maps to native External ID, what needs custom authentication extensions, and what needs an authorization or federation bridge |
 | External ID tenant setup | Provision and harden the External ID tenant, configure identity providers, user flows, Conditional Access, and branding |
 | User data migration | Bulk-export users from B2C via Microsoft Graph and re-import into External ID with all relevant attributes and custom extension properties |
 | Password migration | Choose the right strategy for your situation (see below) and implement it; we build and operate the migration infrastructure |
-| Application re-integration | Update app registrations and OAuth/OIDC endpoints; test all authentication flows against the new tenant |
+| Application re-integration | Update app registrations, OAuth/OIDC endpoints, claims handling, authorization checks, and redirect URIs; test all authentication flows against the new tenant |
 | Cutover & decommission | Route live traffic to External ID, monitor authentication logs and error rates, then decommission the B2C tenant |
 
 ### Password Migration Strategy
