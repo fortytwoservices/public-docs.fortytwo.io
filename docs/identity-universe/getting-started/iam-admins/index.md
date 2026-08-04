@@ -1,4 +1,14 @@
-# Fortytwo Universe IAM Administrator
+# IAM Administrator
+
+## Identity Universe Administrator
+
+To become an Identity Universe IAM administrator certain role criteria must be met.
+
+Administrators must hold the following three roles to get full Identity Universe access for the organisation data:
+
+* IAM Core - user
+* IAM Core - administrator
+* Collection Criteria - Administrator
 
 ## User assignments
 

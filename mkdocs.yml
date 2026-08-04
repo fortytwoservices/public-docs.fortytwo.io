@@ -1,5 +1,5 @@
 site_name: Documentation for Fortytwo
-site_description: Documentation and user guides for Fortytwo
+site_description: Documentation and user guides from Fortytwo
 copyright: Made on the run 🏃
 theme:
   name: material
