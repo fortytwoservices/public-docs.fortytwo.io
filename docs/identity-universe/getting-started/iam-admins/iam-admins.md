@@ -1,16 +1,4 @@
-# Fortytwo Universe Administrator
-
-## Administration
-
-When assigned the IAM Core Administrator role the **Administration blade** becomes accessible.
-
-![Administration blade](media/administration-tpe.png)
-
-The Administration blade enables insight into the core of Identity Universe.
-
-* Identity Hub holds the IAM core data, connector data and sync rules
-* Collections is where criteria collections and joinable collections are maintained
-* Workflows is where automatic flows can be configured. Workflows work with collections, based on members entering or leaving a collection, and can trigger webhooks.
+# Fortytwo Universe IAM Administrator
 
 ## User assignments
 
@@ -30,3 +18,15 @@ We recommend using Entra security groups for assigning these roles to make acces
 1. Click **User and groups** and select a group and choose **Select**. Then click **Select a role** and **Select**. To add the permission click **Assign**. To assign multiple roles repeat the process for the same group and add additional permission.
    
     ![Fortytwo Universe add group/role](media/fortytwouniverseaddrole.png)
+
+## Administration
+
+When assigned the IAM Core Administrator role the **Administration blade** becomes accessible.
+
+![Administration blade](media/administration-tpe.png)
+
+The Administration blade enables insight into the core of Identity Universe.
+
+* Identity Hub holds the IAM core data, connector data and sync rules
+* Collections is where criteria collections and joinable collections are maintained
+* Workflows is where automatic flows can be configured. Workflows work with collections, based on members entering or leaving a collection, and can trigger webhooks.
