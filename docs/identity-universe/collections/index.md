@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Collections is a logic grouping of objects. Collection membership is evaluated using either one of two approaches, or a combination of both:
+Collections is a logical grouping of objects. Collection membership is evaluated using either one of two approaches, or a combination of both:
 
 * Criteria
 * Request to join (joinable)
