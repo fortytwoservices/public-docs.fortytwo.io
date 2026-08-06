@@ -65,4 +65,4 @@ The **Documentation page** will contain be the place to go for user guides and e
 
 ### Identity Universe IAM administrator
 
-For Identity Universe IAM administrators we refer to the [IAM admins section](./iam-admins/iam-admins.md#administration).
+For Identity Universe IAM administrators we refer to the [IAM admins section](./iam-admins/index.md#administration).
