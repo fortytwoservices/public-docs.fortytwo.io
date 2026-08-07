@@ -38,7 +38,6 @@ Can only be assigned to users:
 | Role | Role value | Granted access |
 |------|------------|----------------|
 | Collection Criteria - Administrator | collection_criteria_definition-administrator | Full access to collections |
-| (to come) Collection Criteria - User | collection_criteria_definition-user | Read access to collections |
 
 ### Applications
 
