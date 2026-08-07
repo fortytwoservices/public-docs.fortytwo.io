@@ -46,4 +46,4 @@ Both collection types *open to join* and *requires approval* require the user to
 
 ## Working with collections
 
-You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module - coming soon](./powershell-module.md) or [the API - also coming soon](./api.md) (if you prefer).
+You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](./powershell-module.md) or the [API](./api.md).
