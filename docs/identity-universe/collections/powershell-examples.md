@@ -35,7 +35,7 @@ Connect-Collection -AccessTokenProfile "Default" -Verbose
 # Get all collections, regardless of type
 $collections = Get-Collection -Verbose
 
-# Get GUIDs of members in a collection
+# Get GUIDs of members in a collection. See section "Use IAM Core for object lookup" for resolving memberIds
 $collections | Where-Object name -like "*External*" | Select-Object -ExpandProperty id | Get-CollectionResult
 
 <#
@@ -138,4 +138,6 @@ $newJoinableCollection = '{
 New-JoinableCollection -Collection ($newJoinableCollection | ConvertFrom-Json -AsHashtable) -Verbose
 ```
 
-See [IAM Core](../iam-core/index.md) for how to perform memberId lookups (memberIds result from Get-CollectionResult).
+## Use IAM Core for object lookup
+
+See [Get IAM Core object](../iam-core/powershell-examples.md#get-iam-core-object) for how to perform memberId lookups (memberIds result from Get-CollectionResult).
