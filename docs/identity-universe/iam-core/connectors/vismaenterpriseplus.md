@@ -10,6 +10,17 @@ Visma has a very old fashioned approach to APIs, where they need to _install_ th
 | clientsecret | The key of the client created | N/A |
 | fqdn | The hostname of the API | x-kommune.enterprise.visma.no |
 | companyid | The company in Visma Enterprise that the connector will get data for. If you have multiple companies, add multiple connectors. | 1 |
+| toporgname | Optional. Overrides the display name of the top node of the organization chart. Without it, the name from Visma is used. | Hareid kommune |
+
+`clientsecret` is a secret rather than an ordinary input, so it is passed with `-Secrets` rather than `-Configuration`.
+
+## Connector object types
+
+| Object type | Contents |
+|-|-|
+| person | Employees, including starters and terminated employees |
+| position | Their positions |
+| unit | The organization chart, including a synthetic root node with the external id `chart` |
 
 ## Creating a connector using PowerShell
 

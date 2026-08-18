@@ -28,3 +28,42 @@ An [Entra ID SCIM connector](./entraidscim.md) is a connector where Entra ID can
 
 From a [syncrule](../syncrules.md) standpoint, these connectors work as any other connector.
 
+## Available connectors
+
+Which connectors are enabled varies per tenant. Run `Get-IAMCoreConnectorTemplate` to see the ones available to you, along with the exact inputs each expects.
+
+### HR and payroll
+
+| Connector | Source system |
+|-|-|
+| [Alexis HR](./alexishr.md) | Alexis HR |
+| [Simployer](./simployer.md) | Simployer |
+| [SAP SuccessFactors](./successfactors.md) | SAP SuccessFactors |
+| [Visma Enterprise Plus](./vismaenterpriseplus.md) | Visma Enterprise HRM |
+| [Dottie](./dottie.md) | Dottie |
+
+### Education
+
+| Connector | Source system |
+|-|-|
+| [Vigilo OnEdHub](./vigiloonedhub.md) | Vigilo, through the OnEdHub OneRoster API |
+| [Visma Flyktning og Voksenopplæring](./vismaflyvo.md) | Visma FLYVO |
+
+### Entra ID
+
+| Connector | Purpose |
+|-|-|
+| [Entra ID SCIM](./entraidscim.md) | Entra ID pushes user data in, populating `entraObjectId` and related attributes |
+| [Entra ID Inbound](./entraidinbound.md) | IAM Core reads users from Entra ID |
+
+### Other
+
+| Connector | Purpose |
+|-|-|
+| [Demo data — HR](./demodatahr.md) | Fictional HR data for a demo municipality |
+| [Demo data — SAS](./demodatasas.md) | Fictional school information system data for the same municipality |
+| [File upload](./fileupload.md) | How file based connectors receive their data |
+| [Maskinporten](./maskinporten.md) | A prerequisite for connectors that authenticate through Maskinporten, rather than a connector itself |
+
+If the system you need is not listed, an [API based connector](#api-based-connector) can bring in data from anywhere — see the [Connector API](../connector-api.md).
+
