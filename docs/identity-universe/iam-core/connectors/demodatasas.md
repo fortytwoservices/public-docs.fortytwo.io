@@ -6,7 +6,7 @@ There are two dedicated demo data connectors for a non-existing Norwegian munici
 
 | Input | Description | Example value |
 |-|-|-|
-| schoolyear | The starting school year of the connector | 2025/2026 |
+| schoolyear | The starting school year of the connector. Choose from the list; the value is the four-digit start year, so the school year shown as 2025/2026 is supplied as `2025`. | 2025 |
 
 ## Creating a connector using PowerShell
 
@@ -23,4 +23,15 @@ $Connector = New-IAMCoreConnector `
 Write-Host "Created with id $($Connector.id)"
 ```
 
+## Connector object types
+
+| Object type | Contents |
+|-|-|
+| student | Pupils |
+| teacher | Teachers |
+| group | Schools and teaching groups |
+| member | Membership of a group, referencing a person and a group |
+
 ## Example sync rules
+
+Groups become [CoreOrgUnits](../objecttypes/coreorgunit.md), students and teachers become [CoreIdentities](../objecttypes/coreidentity.md), and members become [CoreRelationships](../objecttypes/corerelationship.md) tying the two together. See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for the shape of each.

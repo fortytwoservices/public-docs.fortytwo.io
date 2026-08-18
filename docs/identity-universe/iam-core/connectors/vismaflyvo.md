@@ -2,6 +2,15 @@
 
 This connector is a file upload based connector, which requires [setting up file upload](./fileupload.md).
 
+## Configuration inputs
+
+| Input | Description | Example value |
+|-|-|-|
+| clientid | Client ID of the app registration allowed to upload the file | your-app-reg-clientid |
+| orgnumber | The Norwegian organisation number. Used to build the Feide group identifiers and entitlements. | 123456789 |
+
+The school year is worked out automatically — it runs from 1 August to 30 June — so there is nothing to configure for it and nothing to change when the year rolls over.
+
 ## Creating a connector using PowerShell
 
 !!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
@@ -11,11 +20,15 @@ $Connector = New-IAMCoreConnector `
     -Name "FLYVO" `
     -TemplateId flyvo  `
     -Configuration @{
-        clientid = "your-app-reg-clientid"
+        clientid  = "your-app-reg-clientid"
+        orgnumber = "123456789"
     }
 
 Write-Host "Created with id $($Connector.id)"
 ```
+
+!!! warning "`orgnumber` is required"
+    The import fails with `orgnumber is required.` if it is missing, so make sure it is set before the first run.
 
 ## Example sync rules
 

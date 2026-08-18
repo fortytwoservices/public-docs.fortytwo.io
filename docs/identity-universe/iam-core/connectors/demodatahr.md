@@ -6,7 +6,7 @@ There are two dedicated demo data connectors for a non-existing Norwegian munici
 
 | Input | Description | Example value |
 |-|-|-|
-| relativedate | A relative date for all start and end dates | 2026-08-01 |
+| relativedate | A relative date for all start and end dates. Must be written as `yyyy-mm-dd`. | 2026-08-01 |
 
 ## Creating a connector using PowerShell
 
@@ -14,13 +14,23 @@ There are two dedicated demo data connectors for a non-existing Norwegian munici
 
 ```PowerShell
 $Connector = New-IAMCoreConnector `
-    -Name "SAS" `
-    -TemplateId relativedate  `
+    -Name "HR" `
+    -TemplateId utkantenkommunehr  `
     -Configuration @{
-        schoolyear = "2026-09-01"
+        relativedate = "2026-08-01"
     }
 
 Write-Host "Created with id $($Connector.id)"
 ```
 
+## Connector object types
+
+| Object type | Contents |
+|-|-|
+| person | The people of the municipality |
+| position | Their employments, referencing a person and a department |
+| department | The organizational tree |
+
 ## Example sync rules
+
+The worked examples on the [sync rules](../syncrules.md#managing-sync-rules-with-powershell) page are written against exactly this data, so they can be used as-is against a connector created from this template — one rule each for `person`, `position` and `department`.

@@ -1,5 +1,9 @@
 # CoreIdentity
 
+A CoreIdentity is a person: an employee, a student, a consultant, an agent. It holds what is true about the human being regardless of what they do — their name, their contact details, their accounts.
+
+What a person *does* belongs on a [CoreRelationship](corerelationship.md) instead. Someone who holds two positions is one CoreIdentity with two relationships, not two identities.
+
 ## Default attributes
 
 !!! tip "All [common attributes](common.md) are available as well"
@@ -9,10 +13,26 @@
 | string | displayName                         | Display name                                                       |
 | string | firstName                           | First name                                                         |
 | string | lastName                            | Last name                                                          |
-| string | mobile                              | Mobile phone number                                                |
-| string | nin                                 | National National Number                                           |
+| string | mobile                              | Work mobile phone number                                           |
+| string | privateMobile                       | Private mobile phone number                                        |
+| string | email                               | Work email address                                                 |
+| string | privateEmail                        | Private email address                                              |
+| string | countryCode                         | Country the person is associated with                              |
+| string | nin                                 | National identity number                                           |
 | string | entraObjectId                       | The Entra Object ID, required for any user accessing the services  |
-| string | entraUserPrincipalName              |                                                                    |
-| string | entraOnPremisesSamAccountName       |                                                                    |
-| string | entraOnPremisesDistinguishedName    |                                                                    |
+| string | entraUserPrincipalName              | The user principal name of the Entra ID account                    |
+| string | entraOnPremisesSamAccountName       | The on-premises Active Directory sAMAccountName                    |
+| string | entraOnPremisesDistinguishedName    | The on-premises Active Directory distinguished name                |
+| boolean | entraOnPremisesSyncEnabled         | Whether the Entra ID account is synchronized from on-premises AD   |
 
+CoreIdentity has no date, reference or multi-valued attributes — those appear on [CoreRelationship](corerelationship.md) and [CoreOrgUnit](coreorgunit.md).
+
+## The Entra attributes
+
+The `entra*` attributes are not something an HR system provides. They are filled in by an [Entra ID connector](../connectors/entraidscim.md) that joins to an identity another connector already created.
+
+`entraObjectId` matters most: it is the link between a signed-in session and the CoreIdentity, so a person cannot use most Identity Universe features until it is populated.
+
+## Identifying a person
+
+`nin` and the [anchors](common.md#anchors) are what [sync rules](../syncrules.md) normally join on, since they are stable identifiers that survive a change of name or position. A common pattern is to join on the source system's own id first and fall back to the national identity number, so that a person known to two HR systems still becomes one identity — see [join priority](../syncrules.md#join-priority).
