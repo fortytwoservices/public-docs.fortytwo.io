@@ -14,7 +14,7 @@ There are a few general types of connectors:
 
 ### First party connector
 
-A first party connector is connector where Fortytwo maintains the integration, such as for [Visma Enterprise Plus](./vismaenterpriseplus.md) and [Simployer](./alexishr.md), and you as a customer only provides the required input configuration, such as a username and password, client id and secret, certificate, etc.
+A first party connector is connector where Fortytwo maintains the integration, such as for [Visma Enterprise Plus](./vismaenterpriseplus.md) and [Alexis HR](./alexishr.md), and you as a customer only provides the required input configuration, such as a username and password, client id and secret, certificate, etc.
 
 After a first party connector is created, it has the state "Created", until the first party connector runtime of the IAM Core picks it up and creates a job for it, after which it becomes "Provisioned".
 
@@ -27,4 +27,43 @@ An API based connector is a connector where you as the customer can populate dat
 An [Entra ID SCIM connector](./entraidscim.md) is a connector where Entra ID can send data about users, in order to populate certain attributes on [CoreIdentities](../objecttypes/coreidentity.md), such as ```EntraObjectId```, which is required for users to access most features (used to identity the link between a signed in session and the [CoreIdentity](../objecttypes/coreidentity.md)).
 
 From a [syncrule](../syncrules.md) standpoint, these connectors work as any other connector.
+
+## Available connectors
+
+Which connectors are enabled varies per tenant. Run `Get-IAMCoreConnectorTemplate` to see the ones available to you, along with the exact inputs each expects.
+
+### HR and payroll
+
+| Connector | Source system |
+|-|-|
+| [Alexis HR](./alexishr.md) | Alexis HR |
+| [Simployer](./simployer.md) | Simployer |
+| [SAP SuccessFactors](./successfactors.md) | SAP SuccessFactors |
+| [Visma Enterprise Plus](./vismaenterpriseplus.md) | Visma Enterprise HRM |
+| [Dottie](./dottie.md) | Dottie |
+
+### Education
+
+| Connector | Source system |
+|-|-|
+| [Vigilo OnEdHub](./vigiloonedhub.md) | Vigilo, through the OnEdHub OneRoster API |
+| [Visma Flyktning og Voksenopplæring](./vismaflyvo.md) | Visma FLYVO |
+
+### Entra ID
+
+| Connector | Purpose |
+|-|-|
+| [Entra ID SCIM](./entraidscim.md) | Entra ID pushes user data in, populating `entraObjectId` and related attributes |
+| [Entra ID Inbound](./entraidinbound.md) | IAM Core reads users from Entra ID |
+
+### Other
+
+| Connector | Purpose |
+|-|-|
+| [Demo data — HR](./demodatahr.md) | Fictional HR data for a demo municipality |
+| [Demo data — SAS](./demodatasas.md) | Fictional school information system data for the same municipality |
+| [File upload](./fileupload.md) | How file based connectors receive their data |
+| [Maskinporten](./maskinporten.md) | A prerequisite for connectors that authenticate through Maskinporten, rather than a connector itself |
+
+If the system you need is not listed, an [API based connector](#api-based-connector) can bring in data from anywhere — see the [Connector API](../connector-api.md).
 
