@@ -44,6 +44,27 @@ When a collection is configured with an approval gate the approval flow is trigg
 
 Both collection types *open to join* and *requires approval* require the user to be *in scope* in order to see them and request to join. To be *in scope* the user must be a member of a collection, for example a criteria collection which contains users with `relationshipType equals employee`. The criteria collection is then applied as a filter to enable anyone with a relationshipType (position in this case) **employee** to request access to the said collection.
 
+## Object types
+
+A collection holds one kind of object, fixed when it is created:
+
+| Object type | Holds |
+|-|-|
+| `Identity` | [CoreIdentities](../iam-core/objecttypes/coreidentity.md) — people |
+| `Relationship` | [CoreRelationships](../iam-core/objecttypes/corerelationship.md) — a person in a particular position |
+| `OrgUnit` | [CoreOrgUnits](../iam-core/objecttypes/coreorgunit.md) — parts of the organisation |
+| `User` | Entra ID users |
+| `Group` | Entra ID groups |
+
+Choosing between `Identity` and `Relationship` is the decision worth thinking about. A collection of identities is about the person, so it is right for something like "has completed security training". A collection of relationships is about a particular job, so it is right for anything tied to a position — a licence that belongs to a role, or access that should follow one of someone's two part-time jobs and not the other.
+
+## Tags and attributes
+
+Collections can carry `metadata` with `tags` and free-form `attributes`, and both can be searched on. With a few dozen collections this is the difference between finding the one you want and scrolling. There are [limits](./criteria.md#metadata-limits) on how many you can set and how long they can be.
+
 ## Working with collections
 
 You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](./powershell-module.md) or the [API](./api.md).
+
+- [Criteria reference](./criteria.md) — the condition syntax, operators and filterable attributes
+- [Joinable collections reference](./joinable.md) — join policies, approval gates and the request lifecycle
