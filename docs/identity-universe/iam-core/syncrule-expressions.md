@@ -259,6 +259,25 @@ Produces: **string**.
 }
 ```
 
+### trim
+
+Removes leading and trailing whitespace.
+
+Produces: **string**.
+
+| Property | Type | Required |
+|-|-|-|
+| `input` | string expression | Yes |
+
+```json
+{
+  "$type": "trim",
+  "input": { "$type": "attribute", "attribute": "names/firstname" }
+}
+```
+
+Source systems frequently carry stray spaces in free-text fields, and those spaces survive into display names and email addresses if nothing removes them. `trim` only touches the ends of the value — to remove whitespace inside it, use [`regexreplace`](#regexreplace).
+
 ### regexreplace
 
 Applies a regular expression replacement. All matches are replaced.
@@ -772,6 +791,7 @@ Produces: **object**.
 | [`substring`](#substring) | String | Extract by position |
 | [`tolower`](#tolower-toupper) | String | Lower case |
 | [`toupper`](#tolower-toupper) | String | Upper case |
+| [`trim`](#trim) | String | Remove surrounding whitespace |
 | [`regexreplace`](#regexreplace) | String | Regular expression replace |
 | [`regexswitch`](#regexswitch) | String | Choose a value by pattern |
 | [`tojson`](#tojson) | String | Raw JSON of an attribute |

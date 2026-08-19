@@ -87,12 +87,57 @@ See [sync rules](./syncrules.md#managing-sync-rules-with-powershell) for worked 
 | `Get-IAMCoreRelationship` | List relationships, or get one by `-Id`. |
 | `Get-IAMCoreOrgUnit` | List org units, or get one by `-Id`. Add `-IncludeParents` to walk up the tree. |
 | `Get-IAMCoreObject` | The same, with `-ObjectType` as `CoreIdentity`, `CoreRelationship` or `CoreOrgUnit`. |
+| `Find-IAMCoreIdentity` | Search identities by `-Text`. |
+| `Find-IAMCoreOrgUnit` | Search org units by `-Text`. |
+| `Find-IAMCoreRelationship` | Search relationships by `-Text`. |
+| `Get-IAMCoreIdentityRelationship` | The relationships held by one identity, by `-Id`. |
+| `Get-IAMCoreOrgUnitRelationship` | The relationships attached to one org unit, by `-Id`. |
 | `Show-IAMCoreOrgUnitStructure` | Render the org unit hierarchy as a tree. |
 | `Get-IAMCoreSchema` | The attribute schema of the core object types. |
 
-All four `Get-` cmdlets accept `-IncludeConnectors` when fetching a single object, which adds the connector objects contributing to it — the quickest way to see where a value came from.
+The three `Get-` cmdlets for core objects accept `-IncludeConnectors` when fetching a single object, which adds the connector objects contributing to it — the quickest way to see where a value came from.
 
-When listing, `-PageSize` defaults to 10000.
+When listing, the cmdlets fetch every page for you, so a plain `Get-IAMCoreIdentity` returns all identities however many there are. `-PageSize` controls how many are fetched per request and defaults to 2000.
+
+### Searching
+
+`Find-IAMCoreIdentity`, `Find-IAMCoreOrgUnit` and `Find-IAMCoreRelationship` look up objects without needing an id:
+
+```PowerShell
+Find-IAMCoreIdentity -Text "Jacobsen"
+Find-IAMCoreIdentity -Text "18068180018"
+Find-IAMCoreOrgUnit -Text "Utkanten Kommune"
+Find-IAMCoreRelationship -Text "Sykepleier"
+```
+
+`-Text` must be between 3 and 100 characters, and at most 100 results come back, so this is a lookup rather than a way to enumerate. Which attributes are searched depends on the object type:
+
+| Object type | Matched exactly | Matched on a substring |
+|-|-|-|
+| Identity | `nin`, `entraObjectId`, `entraOnPremisesSamAccountName` | `displayName`, `email`, `entraUserPrincipalName` |
+| OrgUnit | `externalId` | `displayName`, `email` |
+| Relationship | `employeeId` | `title` |
+
+Substring matching ignores case for identities and org units. There are no wildcards.
+
+### Walking between objects
+
+```PowerShell
+# Every position held by one person
+Get-IAMCoreIdentityRelationship -Id $Identity.id
+
+# Everyone attached to one org unit
+Get-IAMCoreOrgUnitRelationship -Id $OrgUnit.id
+```
+
+Both take a pipeline value, so a set of relationships can be resolved back to the org units behind them:
+
+```PowerShell
+Get-IAMCoreRelationship |
+    ForEach-Object { $_.orgUnit.value.objectId } |
+    Sort-Object -Unique |
+    ForEach-Object { Get-IAMCoreOrgUnitRelationship -Id $_ }
+```
 
 ### Sync jobs
 
@@ -101,6 +146,14 @@ When listing, `-PageSize` defaults to 10000.
 | `New-IAMCoreSyncJob` | Queue a job. `-JobType` is `FullSyncTenant` (default) or `ConnectorImport` with a `-ConnectorId`. |
 | `Get-IAMCoreSyncJob` | List jobs, or get one by `-Id`. |
 | `Wait-IAMCoreSyncJob` | Block until a job finishes. `-TimeoutMinutes` defaults to 30, `-Sleep` to 5 seconds. |
+
+Jobs do not run concurrently where they would interfere, and queuing one that conflicts fails rather than waiting:
+
+- A full sync is refused while connector imports are pending or running.
+- A connector import is refused while a full sync is pending or running.
+- A second job of the same type, for the same connector, is refused while the first is unfinished.
+
+So the reliable pattern is to wait for each job rather than queuing several at once. Completed jobs are kept for 30 days.
 
 ## Common patterns
 

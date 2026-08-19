@@ -36,6 +36,10 @@ It is possible to flow string data into any core attribute named **custom/_somet
 
 Custom attributes need no registration — pick a name and start flowing into it. They are always strings, so they can only be targeted by a `string` attribute flow, and they are returned on the object under `customStringAttributeValues`, keyed by the full name including the `custom/` prefix.
 
+## When an object last changed
+
+Every core object is returned with a `lastUpdated` timestamp recording when the record was last written. It is meant for change detection — working out what has moved since you last looked — rather than as an audit trail, since it reflects any write to the object and has one-second resolution. See [lastUpdated](../api.md#lastupdated).
+
 ## Where values come from
 
 Every value on a core object records which [sync rule](../syncrules.md) provided it. That is what makes it possible to answer "why does this identity have this value?", and it is also how values are cleaned up: when the rule that provided a value stops providing it — because it was disabled, deleted, changed, or the object fell out of its scope — the value is removed on the next synchronization.
