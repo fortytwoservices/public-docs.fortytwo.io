@@ -4009,6 +4009,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#searching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Searching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walking-between-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walking between objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sync-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7830,6 +7852,26 @@
 <td>The same, with <code>-ObjectType</code> as <code>CoreIdentity</code>, <code>CoreRelationship</code> or <code>CoreOrgUnit</code>.</td>
 </tr>
 <tr>
+<td><code>Find-IAMCoreIdentity</code></td>
+<td>Search identities by <code>-Text</code>.</td>
+</tr>
+<tr>
+<td><code>Find-IAMCoreOrgUnit</code></td>
+<td>Search org units by <code>-Text</code>.</td>
+</tr>
+<tr>
+<td><code>Find-IAMCoreRelationship</code></td>
+<td>Search relationships by <code>-Text</code>.</td>
+</tr>
+<tr>
+<td><code>Get-IAMCoreIdentityRelationship</code></td>
+<td>The relationships held by one identity, by <code>-Id</code>.</td>
+</tr>
+<tr>
+<td><code>Get-IAMCoreOrgUnitRelationship</code></td>
+<td>The relationships attached to one org unit, by <code>-Id</code>.</td>
+</tr>
+<tr>
 <td><code>Show-IAMCoreOrgUnitStructure</code></td>
 <td>Render the org unit hierarchy as a tree.</td>
 </tr>
@@ -7839,8 +7881,56 @@
 </tr>
 </tbody>
 </table>
-<p>All four <code>Get-</code> cmdlets accept <code>-IncludeConnectors</code> when fetching a single object, which adds the connector objects contributing to it — the quickest way to see where a value came from.</p>
-<p>When listing, <code>-PageSize</code> defaults to 10000.</p>
+<p>The three <code>Get-</code> cmdlets for core objects accept <code>-IncludeConnectors</code> when fetching a single object, which adds the connector objects contributing to it — the quickest way to see where a value came from.</p>
+<p>When listing, the cmdlets fetch every page for you, so a plain <code>Get-IAMCoreIdentity</code> returns all identities however many there are. <code>-PageSize</code> controls how many are fetched per request and defaults to 2000.</p>
+<h3 id="searching">Searching<a class="headerlink" href="#searching" title="Permanent link">&para;</a></h3>
+<p><code>Find-IAMCoreIdentity</code>, <code>Find-IAMCoreOrgUnit</code> and <code>Find-IAMCoreRelationship</code> look up objects without needing an id:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Find-IAMCoreIdentity</span> <span class="n">-Text</span> <span class="s2">"Jacobsen"</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">Find-IAMCoreIdentity</span> <span class="n">-Text</span> <span class="s2">"18068180018"</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">Find-IAMCoreOrgUnit</span> <span class="n">-Text</span> <span class="s2">"Utkanten Kommune"</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">Find-IAMCoreRelationship</span> <span class="n">-Text</span> <span class="s2">"Sykepleier"</span>
+</span></code></pre></div>
+<p><code>-Text</code> must be between 3 and 100 characters, and at most 100 results come back, so this is a lookup rather than a way to enumerate. Which attributes are searched depends on the object type:</p>
+<table>
+<thead>
+<tr>
+<th>Object type</th>
+<th>Matched exactly</th>
+<th>Matched on a substring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td><code>nin</code>, <code>entraObjectId</code>, <code>entraOnPremisesSamAccountName</code></td>
+<td><code>displayName</code>, <code>email</code>, <code>entraUserPrincipalName</code></td>
+</tr>
+<tr>
+<td>OrgUnit</td>
+<td><code>externalId</code></td>
+<td><code>displayName</code>, <code>email</code></td>
+</tr>
+<tr>
+<td>Relationship</td>
+<td><code>employeeId</code></td>
+<td><code>title</code></td>
+</tr>
+</tbody>
+</table>
+<p>Substring matching ignores case for identities and org units. There are no wildcards.</p>
+<h3 id="walking-between-objects">Walking between objects<a class="headerlink" href="#walking-between-objects" title="Permanent link">&para;</a></h3>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Every position held by one person</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Get-IAMCoreIdentityRelationship</span> <span class="n">-Id</span> <span class="nv">$Identity</span><span class="p">.</span><span class="n">id</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c"># Everyone attached to one org unit</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">Get-IAMCoreOrgUnitRelationship</span> <span class="n">-Id</span> <span class="nv">$OrgUnit</span><span class="p">.</span><span class="n">id</span>
+</span></code></pre></div>
+<p>Both take a pipeline value, so a set of relationships can be resolved back to the org units behind them:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">Get-IAMCoreRelationship</span> <span class="p">|</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">orgUnit</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">objectId</span> <span class="p">}</span> <span class="p">|</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">Sort-Object</span> <span class="n">-Unique</span> <span class="p">|</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nb">Get-IAMCoreOrgUnitRelationship</span> <span class="n">-Id</span> <span class="nv">$_</span> <span class="p">}</span>
+</span></code></pre></div>
 <h3 id="sync-jobs">Sync jobs<a class="headerlink" href="#sync-jobs" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -7864,21 +7954,28 @@
 </tr>
 </tbody>
 </table>
+<p>Jobs do not run concurrently where they would interfere, and queuing one that conflicts fails rather than waiting:</p>
+<ul>
+<li>A full sync is refused while connector imports are pending or running.</li>
+<li>A connector import is refused while a full sync is pending or running.</li>
+<li>A second job of the same type, for the same connector, is refused while the first is unfinished.</li>
+</ul>
+<p>So the reliable pattern is to wait for each job rather than queuing several at once. Completed jobs are kept for 30 days.</p>
 <h2 id="common-patterns">Common patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h2>
 <p>Run a full synchronization and wait for it:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span> <span class="n">-TimeoutMinutes</span> <span class="n">10</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span> <span class="n">-TimeoutMinutes</span> <span class="n">10</span>
 </span></code></pre></div>
 <p>Import from one connector, then synchronize:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="n">-JobType</span> <span class="n">ConnectorImport</span> <span class="n">-ConnectorId</span> <span class="nv">$Connector</span><span class="p">.</span><span class="n">id</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="n">-JobType</span> <span class="n">ConnectorImport</span> <span class="n">-ConnectorId</span> <span class="nv">$Connector</span><span class="p">.</span><span class="n">id</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
 </span></code></pre></div>
 <p>Find a person and see which connectors contribute to them:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">Get-IAMCoreIdentity</span> <span class="p">|</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">displayName</span> <span class="o">-eq</span> <span class="s2">"Ola Nordmann"</span> <span class="p">}</span> <span class="p">|</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">Get-IAMCoreIdentity</span> <span class="n">-IncludeConnectors</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">Get-IAMCoreIdentity</span> <span class="p">|</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">displayName</span> <span class="o">-eq</span> <span class="s2">"Ola Nordmann"</span> <span class="p">}</span> <span class="p">|</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nb">Get-IAMCoreIdentity</span> <span class="n">-IncludeConnectors</span>
 </span></code></pre></div>
 <p>Inspect the organizational tree:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">Get-IAMCoreOrgUnit</span> <span class="p">|</span> <span class="nb">Show-IAMCoreOrgUnitStructure</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">Get-IAMCoreOrgUnit</span> <span class="p">|</span> <span class="nb">Show-IAMCoreOrgUnitStructure</span>
 </span></code></pre></div>
 <p>More examples are on the <a href="../powershell-examples/">PowerShell examples</a> page.</p>
 
@@ -7903,7 +8000,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2026 08:00:22 UTC">August 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 18:42:25 UTC">August 19, 2026</span>
   </span>
 
     
