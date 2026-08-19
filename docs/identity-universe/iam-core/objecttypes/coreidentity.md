@@ -24,8 +24,33 @@ What a person *does* belongs on a [CoreRelationship](corerelationship.md) instea
 | string | entraOnPremisesSamAccountName       | The on-premises Active Directory sAMAccountName                    |
 | string | entraOnPremisesDistinguishedName    | The on-premises Active Directory distinguished name                |
 | boolean | entraOnPremisesSyncEnabled         | Whether the Entra ID account is synchronized from on-premises AD   |
+| reference to CoreRelationship | primaryRelationship   | The person's main position, where they hold more than one          |
 
-CoreIdentity has no date, reference or multi-valued attributes — those appear on [CoreRelationship](corerelationship.md) and [CoreOrgUnit](coreorgunit.md).
+## Primary relationship
+
+A person with several [relationships](corerelationship.md) — two part-time positions, or a job alongside an elected role — has no inherent "main" one. `primaryRelationship` is where you record which it is, so that downstream systems have a single answer for questions like which department to show or which manager to route an approval to.
+
+It is set with a `reference` attribute flow, pointing at the connector object that becomes the relationship:
+
+```powershell
+@{
+    '$type'             = "reference"
+    targetAttributeName = "primaryRelationship"
+    value               = @{
+        '$type'             = "asreference"
+        objectType          = "position"
+        referencedAttribute = "id"
+        input               = @{
+            '$type'   = "attribute"
+            attribute = "primaryPositionId"
+        }
+    }
+}
+```
+
+This only works if the source system says which position is primary. Where it does not, leave the attribute unset rather than guessing.
+
+CoreIdentity has no date or multi-valued attributes — those appear on [CoreRelationship](corerelationship.md) and [CoreOrgUnit](coreorgunit.md).
 
 ## The Entra attributes
 

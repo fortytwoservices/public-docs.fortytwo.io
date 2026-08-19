@@ -72,6 +72,7 @@ Two constraints matter when choosing property names in `data`:
 |-|-|-|
 | `GET` | `/sync/connectors/{connectorId}/data` | Everything currently in the connector space |
 | `POST` | `/sync/connectors/{connectorId}/data` | Create an object |
+| `GET` | `/sync/connectors/{connectorId}/data/{objectType}/{externalId}` | One object, by the identifiers you gave it |
 | `PUT` | `/sync/connectors/{connectorId}/data/{connectorObjectId}` | Replace an object |
 | `DELETE` | `/sync/connectors/{connectorId}/data/{connectorObjectId}` | Delete an object |
 | `GET` | `/sync/connectors/{connectorId}/data/configuration` | The connector's own configuration |
@@ -84,9 +85,18 @@ Responses are wrapped in an envelope:
 
 A few behaviours worth knowing:
 
+- A successful create returns **201**, with a `Location` header pointing at the new object.
 - Creating an object whose `externalId` and `objectType` already exist returns **409**.
 - On a `PUT`, the `id` in the body must either be omitted or match the id in the route.
 - A `PUT` whose `data` is identical to what is already stored is a no-op, so re-sending unchanged objects is cheap and does not register as a change.
+
+Looking an object up by the identifiers you already have avoids keeping a map of your own ids to IAM Core ids:
+
+```
+GET /iamcore/beta/sync/connectors/{connectorId}/data/person/12345
+```
+
+Objects also carry a `lastUpdated` timestamp recording when they were last written. See [lastUpdated](./api.md#lastupdated).
 
 ## Deleting, and how full imports work
 

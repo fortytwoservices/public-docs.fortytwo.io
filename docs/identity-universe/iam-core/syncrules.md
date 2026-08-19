@@ -135,6 +135,13 @@ If a join flow's expression evaluates to null or an empty string, that flow is s
 
 Use a separate join scope when you deliberately want two populations that must never be joined together even though they might share attribute values — for example pupils and employees who could both appear with the same national identity number, but must remain two separate identities.
 
+#### Joining across every scope
+
+Setting `joinScope` to `*` makes a rule join to core objects in **any** join scope, rather than only its own. This is for connectors that enrich a population they did not create and should not be partitioned away from — an Entra ID connector contributing `entraObjectId` to both pupils and employees, for instance, rather than needing one rule per scope.
+
+!!! warning "A wildcard rule cannot provision"
+    A rule with `joinScope` set to `*` must have `provisioningEnabled` set to `false`, and creating one with provisioning enabled is rejected with `A sync rule with JoinScope '*' cannot have provisioning enabled`. The reason is that a new core object has to be created in one specific scope, and `*` does not name one. Wildcard rules are therefore always [join only](#provisioning).
+
 ### Ambiguous joins
 
 If the join flows match **more than one** core object, the object is not synchronized at all and an error is logged saying that manual intervention is required. This is intentional — silently picking one of two candidates would merge two people.
@@ -192,6 +199,7 @@ The target attribute must exist on the core object type, and its type must match
     |-|-|
     | `string` | `id` (join only), `nin`, `displayName`, `firstName`, `lastName`, `mobile`, `privateMobile`, `email`, `privateEmail`, `countryCode`, `entraObjectId`, `entraUserPrincipalName`, `entraOnPremisesSamAccountName`, `entraOnPremisesDistinguishedName`, `anchor1`–`anchor9`, `custom/*` |
     | `boolean` | `entraOnPremisesSyncEnabled` |
+    | `reference` | `primaryRelationship` |
 
 === "Relationship"
 
