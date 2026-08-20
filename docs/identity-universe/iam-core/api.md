@@ -95,7 +95,7 @@ The `search` endpoints take a required `text` parameter, return at most 100 resu
 | OrgUnit | `externalId` | `displayName`, `email` |
 | Relationship | `employeeId` | `title` |
 
-Substring matching ignores case for identities and org units. There are no wildcards and no field selectors — it is a plain lookup.
+Substring matching ignores case. There are no wildcards and no field selectors — it is a plain lookup.
 
 ### lastUpdated
 

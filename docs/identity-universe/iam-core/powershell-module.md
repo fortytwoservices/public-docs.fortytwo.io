@@ -118,7 +118,7 @@ Find-IAMCoreRelationship -Text "Sykepleier"
 | OrgUnit | `externalId` | `displayName`, `email` |
 | Relationship | `employeeId` | `title` |
 
-Substring matching ignores case for identities and org units. There are no wildcards.
+Substring matching ignores case. There are no wildcards.
 
 ### Walking between objects
 

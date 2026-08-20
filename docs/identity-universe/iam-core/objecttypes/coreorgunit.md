@@ -20,13 +20,20 @@ A CoreOrgUnit is a part of the organisation: a company, a department, a school, 
 | string                   | educationStatus                       | Education sector status of the unit                                |
 | string                   | educationSchoolYear                   | The school year the unit applies to                                |
 | string                   | educationLanguage                     | Primary language of instruction                                    |
+| string                   | educationCourse                       | The course the unit teaches                                        |
+| string                   | educationSourcedId                    | The unit's identifier in the student information system            |
+| datetime                 | educationStartDate                    | When the unit starts, such as the beginning of a school year       |
+| datetime                 | educationEndDate                      | When the unit ends                                                 |
 | multi-valued string      | educationGrades                       | Grade levels covered by the unit                                   |
 | multi-valued string      | educationSubjectCodes                 | Subject codes taught by the unit                                   |
+| multi-valued string      | educationCodes                        | Other codes associated with the unit                               |
 | reference to CoreOrgUnit | parent                                | The parent unit in the organizational tree                         |
 | reference to Identity    | manager                               | The person who manages the unit                                    |
 | reference to Identities  | deputies                              | People acting as deputy managers for the unit                      |
 
 The `education*` attributes exist for schools and are usually only populated when the source is a student information system.
+
+`educationStartDate` and `educationEndDate` are the only dates on an org unit, and they are ordinary attributes — nothing expires a class when its end date passes. To have a teaching group disappear at the end of the year, scope the sync rule that creates it, the same way [relationships](corerelationship.md#dates-and-validity) are handled. [`lastdatetime` and `nextdatetime`](../syncrule-expressions.md#lastdatetime) express an annual cycle without needing the dates edited each year.
 
 ## Building the tree
 

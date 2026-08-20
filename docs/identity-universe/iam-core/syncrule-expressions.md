@@ -282,7 +282,7 @@ Source systems frequently carry stray spaces in free-text fields, and those spac
 
 Applies a regular expression replacement. All matches are replaced.
 
-Produces: **string**.
+Produces: **string**, or a **multi-valued string** of one value where a multi-valued flow needs it.
 
 | Property | Type | Required |
 |-|-|-|
@@ -609,6 +609,63 @@ Produces: **date/time**.
 }
 ```
 
+### lastdatetime
+
+The most recent time a given day of the year went past.
+
+Produces: **date/time**.
+
+| Property | Type | Required |
+|-|-|-|
+| `day` | integer | Yes |
+| `month` | integer | Yes |
+
+```json
+{ "$type": "lastdatetime", "day": 1, "month": 8 }
+```
+
+Evaluated on 20 August 2026 this gives 1 August 2026; evaluated on 20 January 2027 it gives 1 August 2026 again, because the date is always in the past. A day and month that never form a real date produce no value.
+
+### nextdatetime
+
+The mirror image: the next time a given day of the year will come round.
+
+Produces: **date/time**.
+
+| Property | Type | Required |
+|-|-|-|
+| `day` | integer | Yes |
+| `month` | integer | Yes |
+
+```json
+{ "$type": "nextdatetime", "day": 1, "month": 8 }
+```
+
+Evaluated on 20 August 2026 this gives 1 August 2027.
+
+Together the two bracket the current period without anyone having to edit a date each year, which is what school years and other annual cycles need — `lastdatetime` for when the current year began, `nextdatetime` for when it ends:
+
+```json
+{
+  "$type": "and",
+  "inputs": [
+    {
+      "$type": "isdatetimeafter",
+      "input": { "$type": "datetimeutcnow" },
+      "after": { "$type": "lastdatetime", "day": 1, "month": 8 }
+    },
+    {
+      "$type": "isdatetimebefore",
+      "input": { "$type": "datetimeutcnow" },
+      "before": { "$type": "nextdatetime", "day": 1, "month": 8 }
+    }
+  ]
+}
+```
+
+!!! note "Both are exclusive of today"
+    A date matching today is treated as belonging to the previous or next cycle rather than the current instant, so the two never return the same day.
+
 ---
 
 ## Reference expressions
@@ -792,7 +849,7 @@ Produces: **object**.
 | [`tolower`](#tolower-toupper) | String | Lower case |
 | [`toupper`](#tolower-toupper) | String | Upper case |
 | [`trim`](#trim) | String | Remove surrounding whitespace |
-| [`regexreplace`](#regexreplace) | String | Regular expression replace |
+| [`regexreplace`](#regexreplace) | String, multi-valued string | Regular expression replace |
 | [`regexswitch`](#regexswitch) | String | Choose a value by pattern |
 | [`tojson`](#tojson) | String | Raw JSON of an attribute |
 | [`tostring`](#tostring) | String | Read a string from an object |
@@ -809,6 +866,8 @@ Produces: **object**.
 | [`datetimeutcnow`](#datetimeutcnow) | Date/time | Current UTC time |
 | [`todatetime`](#todatetime) | Date/time | Parse a string |
 | [`adddays`](#adddays) | Date/time | Shift by days |
+| [`lastdatetime`](#lastdatetime) | Date/time | Last occurrence of a day and month |
+| [`nextdatetime`](#nextdatetime) | Date/time | Next occurrence of a day and month |
 | [`asreference`](#asreference) | Reference | Resolve a reference to a core object |
 | [`tostrings`](#tostrings) | Multi-valued string | One attribute from each object |
 | [`multivalueregexreplace`](#multivalueregexreplace) | Multi-valued string | Regex replace on each value |
