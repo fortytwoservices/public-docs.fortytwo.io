@@ -140,7 +140,7 @@ Use a separate join scope when you deliberately want two populations that must n
 Setting `joinScope` to `*` makes a rule join to core objects in **any** join scope, rather than only its own. This is for connectors that enrich a population they did not create and should not be partitioned away from — an Entra ID connector contributing `entraObjectId` to both pupils and employees, for instance, rather than needing one rule per scope.
 
 !!! warning "A wildcard rule cannot provision"
-    A rule with `joinScope` set to `*` must have `provisioningEnabled` set to `false`, and creating one with provisioning enabled is rejected with `A sync rule with JoinScope '*' cannot have provisioning enabled`. The reason is that a new core object has to be created in one specific scope, and `*` does not name one. Wildcard rules are therefore always [join only](#provisioning).
+    A rule with `joinScope` set to `*` must have `provisioningEnabled` set to `false`. Creating one with provisioning enabled is rejected, and so is turning provisioning on for an existing wildcard rule, both with `A sync rule with JoinScope '*' cannot have provisioning enabled`. The reason is that a new core object has to be created in one specific scope, and `*` does not name one. Wildcard rules are therefore always [join only](#provisioning).
 
 ### Ambiguous joins
 
@@ -214,9 +214,10 @@ The target attribute must exist on the core object type, and its type must match
 
     | Flow type | Valid target attributes |
     |-|-|
-    | `string` | `id` (join only), `displayName`, `type`, `subType`, `email`, `legalIdentifier`, `address`, `postalCode`, `city`, `educationStatus`, `educationSchoolYear`, `educationLanguage`, `externalId`, `anchor1`–`anchor9`, `custom/*` |
+    | `string` | `id` (join only), `displayName`, `type`, `subType`, `email`, `legalIdentifier`, `address`, `postalCode`, `city`, `educationStatus`, `educationSchoolYear`, `educationLanguage`, `educationCourse`, `educationSourcedId`, `externalId`, `anchor1`–`anchor9`, `custom/*` |
+    | `datetime` | `educationStartDate`, `educationEndDate` |
     | `reference` | `parent`, `manager`, `deputies` |
-    | `multivaluedstring` | `educationGrades`, `educationSubjectCodes` |
+    | `multivaluedstring` | `educationGrades`, `educationSubjectCodes`, `educationCodes` |
 
 Any string flow whose target begins with `custom/` is accepted, which is how you store data that has no standard attribute. See [custom string values](./objecttypes/common.md#custom-string-values).
 
