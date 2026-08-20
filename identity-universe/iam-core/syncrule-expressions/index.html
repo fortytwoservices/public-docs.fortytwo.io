@@ -5044,6 +5044,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#lastdatetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lastdatetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextdatetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextdatetime
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8465,7 +8487,7 @@
 <p>Source systems frequently carry stray spaces in free-text fields, and those spaces survive into display names and email addresses if nothing removes them. <code>trim</code> only touches the ends of the value — to remove whitespace inside it, use <a href="#regexreplace"><code>regexreplace</code></a>.</p>
 <h3 id="regexreplace">regexreplace<a class="headerlink" href="#regexreplace" title="Permanent link">&para;</a></h3>
 <p>Applies a regular expression replacement. All matches are replaced.</p>
-<p>Produces: <strong>string</strong>.</p>
+<p>Produces: <strong>string</strong>, or a <strong>multi-valued string</strong> of one value where a multi-valued flow needs it.</p>
 <table>
 <thead>
 <tr>
@@ -8966,6 +8988,81 @@
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">  </span><span class="nt">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetimeutcnow"</span><span class="w"> </span><span class="p">}</span>
 </span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="p">}</span>
 </span></code></pre></div>
+<h3 id="lastdatetime">lastdatetime<a class="headerlink" href="#lastdatetime" title="Permanent link">&para;</a></h3>
+<p>The most recent time a given day of the year went past.</p>
+<p>Produces: <strong>date/time</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>day</code></td>
+<td>integer</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td>integer</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastdatetime"</span><span class="p">,</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>Evaluated on 20 August 2026 this gives 1 August 2026; evaluated on 20 January 2027 it gives 1 August 2026 again, because the date is always in the past. A day and month that never form a real date produce no value.</p>
+<h3 id="nextdatetime">nextdatetime<a class="headerlink" href="#nextdatetime" title="Permanent link">&para;</a></h3>
+<p>The mirror image: the next time a given day of the year will come round.</p>
+<p>Produces: <strong>date/time</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>day</code></td>
+<td>integer</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td>integer</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextdatetime"</span><span class="p">,</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>Evaluated on 20 August 2026 this gives 1 August 2027.</p>
+<p>Together the two bracket the current period without anyone having to edit a date each year, which is what school years and other annual cycles need — <code>lastdatetime</code> for when the current year began, <code>nextdatetime</code> for when it ends:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"and"</span><span class="p">,</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"isdatetimeafter"</span><span class="p">,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetimeutcnow"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">      </span><span class="nt">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastdatetime"</span><span class="p">,</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"isdatetimebefore"</span><span class="p">,</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetimeutcnow"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">      </span><span class="nt">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextdatetime"</span><span class="p">,</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Both are exclusive of today</p>
+<p>A date matching today is treated as belonging to the previous or next cycle rather than the current instant, so the two never return the same day.</p>
+</div>
 <hr />
 <h2 id="reference-expressions">Reference expressions<a class="headerlink" href="#reference-expressions" title="Permanent link">&para;</a></h2>
 <h3 id="asreference">asreference<a class="headerlink" href="#asreference" title="Permanent link">&para;</a></h3>
@@ -9001,12 +9098,12 @@
 </tr>
 </tbody>
 </table>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">{</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asreference"</span><span class="p">,</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span><span class="nt">"objectType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span><span class="nt">"referencedAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asreference"</span><span class="p">,</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">"objectType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="p">,</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">"referencedAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"department"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Reading this literally: take the current object's <code>department</code> value, find the connector object of type <code>department</code> whose <code>id</code> equals it, and reference the core object that object is joined to.</p>
 <div class="admonition note">
@@ -9040,14 +9137,14 @@
 </tr>
 </tbody>
 </table>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="p">{</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostrings"</span><span class="p">,</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1edtech.code"</span>
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostrings"</span><span class="p">,</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1edtech.code"</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Given a collection of group objects this yields something like <code>["SAF0004", "aarstrinn4"]</code>. Only text values are collected; objects whose attribute is missing or is not text contribute nothing. Order is preserved and duplicates are kept.</p>
 <h3 id="multivalueregexreplace">multivalueregexreplace<a class="headerlink" href="#multivalueregexreplace" title="Permanent link">&para;</a></h3>
@@ -9080,24 +9177,24 @@
 </tbody>
 </table>
 <p>The list always keeps the same number of values — this transforms, it never filters. Nesting is the way to apply different rules to different values, here turning subject codes and year-level codes into their respective Feide GREP URNs:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivalueregexreplace"</span><span class="p">,</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^([A-Z]{3}\\d{4})$"</span><span class="p">,</span>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">"replacement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:mace:feide.no:go:grep:http://psi.udir.no/kl06/$1"</span><span class="p">,</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivalueregexreplace"</span><span class="p">,</span>
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^aarstrinn"</span><span class="p">,</span>
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="nt">"replacement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:mace:feide.no:go:grep:http://psi.udir.no/laereplan/aarstrinn/aarstrinn"</span><span class="p">,</span>
-</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostrings"</span><span class="p">,</span>
-</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">        </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span>
-</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">        </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span>
-</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">      </span><span class="p">},</span>
-</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">      </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1edtech.code"</span>
-</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="p">{</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivalueregexreplace"</span><span class="p">,</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^([A-Z]{3}\\d{4})$"</span><span class="p">,</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span><span class="nt">"replacement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:mace:feide.no:go:grep:http://psi.udir.no/kl06/$1"</span><span class="p">,</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivalueregexreplace"</span><span class="p">,</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^aarstrinn"</span><span class="p">,</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="nt">"replacement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:mace:feide.no:go:grep:http://psi.udir.no/laereplan/aarstrinn/aarstrinn"</span><span class="p">,</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">    </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostrings"</span><span class="p">,</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">        </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">        </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="w">      </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1edtech.code"</span>
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="multivaluedobjectattribute">multivaluedobjectattribute<a class="headerlink" href="#multivaluedobjectattribute" title="Permanent link">&para;</a></h3>
 <p>Reads an array of objects from the connector object, as input to the expressions below.</p>
@@ -9118,7 +9215,7 @@
 </tr>
 </tbody>
 </table>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span><span class="w"> </span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metadata/1edtech.grepGroups"</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
 <p>If the attribute is missing or is not an array, the expression produces no value.</p>
 <h3 id="whereattribute">whereattribute<a class="headerlink" href="#whereattribute" title="Permanent link">&para;</a></h3>
@@ -9154,12 +9251,12 @@
 </tr>
 </tbody>
 </table>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whereattribute"</span><span class="p">,</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumbers"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span>
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile"</span>
-</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">{</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whereattribute"</span><span class="p">,</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumbers"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile"</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">No nested paths, and case sensitive</p>
@@ -9190,20 +9287,20 @@
 </tbody>
 </table>
 <p><code>index</code> is zero-based, and an index past the end produces no value. Combined with <code>whereattribute</code> and <code>tostring</code>, this is the standard "pick the first matching sub-object and read a field from it" pattern:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="p">{</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostring"</span><span class="p">,</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selectindex"</span><span class="p">,</span>
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whereattribute"</span><span class="p">,</span>
-</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumbers"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">      </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span>
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile"</span>
-</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">{</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tostring"</span><span class="p">,</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">    </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selectindex"</span><span class="p">,</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">      </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whereattribute"</span><span class="p">,</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">      </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"multivaluedobjectattribute"</span><span class="p">,</span><span class="w"> </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumbers"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">      </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile"</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
 <h2 id="quick-reference">Quick reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
@@ -9278,7 +9375,7 @@
 </tr>
 <tr>
 <td><a href="#regexreplace"><code>regexreplace</code></a></td>
-<td>String</td>
+<td>String, multi-valued string</td>
 <td>Regular expression replace</td>
 </tr>
 <tr>
@@ -9362,6 +9459,16 @@
 <td>Shift by days</td>
 </tr>
 <tr>
+<td><a href="#lastdatetime"><code>lastdatetime</code></a></td>
+<td>Date/time</td>
+<td>Last occurrence of a day and month</td>
+</tr>
+<tr>
+<td><a href="#nextdatetime"><code>nextdatetime</code></a></td>
+<td>Date/time</td>
+<td>Next occurrence of a day and month</td>
+</tr>
+<tr>
 <td><a href="#asreference"><code>asreference</code></a></td>
 <td>Reference</td>
 <td>Resolve a reference to a core object</td>
@@ -9417,7 +9524,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 18:42:25 UTC">August 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 20, 2026 14:09:50 UTC">August 20, 2026</span>
   </span>
 
     

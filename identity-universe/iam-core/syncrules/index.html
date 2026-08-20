@@ -8066,7 +8066,7 @@
 <p>Setting <code>joinScope</code> to <code>*</code> makes a rule join to core objects in <strong>any</strong> join scope, rather than only its own. This is for connectors that enrich a population they did not create and should not be partitioned away from — an Entra ID connector contributing <code>entraObjectId</code> to both pupils and employees, for instance, rather than needing one rule per scope.</p>
 <div class="admonition warning">
 <p class="admonition-title">A wildcard rule cannot provision</p>
-<p>A rule with <code>joinScope</code> set to <code>*</code> must have <code>provisioningEnabled</code> set to <code>false</code>, and creating one with provisioning enabled is rejected with <code>A sync rule with JoinScope '*' cannot have provisioning enabled</code>. The reason is that a new core object has to be created in one specific scope, and <code>*</code> does not name one. Wildcard rules are therefore always <a href="#provisioning">join only</a>.</p>
+<p>A rule with <code>joinScope</code> set to <code>*</code> must have <code>provisioningEnabled</code> set to <code>false</code>. Creating one with provisioning enabled is rejected, and so is turning provisioning on for an existing wildcard rule, both with <code>A sync rule with JoinScope '*' cannot have provisioning enabled</code>. The reason is that a new core object has to be created in one specific scope, and <code>*</code> does not name one. Wildcard rules are therefore always <a href="#provisioning">join only</a>.</p>
 </div>
 <h3 id="ambiguous-joins">Ambiguous joins<a class="headerlink" href="#ambiguous-joins" title="Permanent link">&para;</a></h3>
 <p>If the join flows match <strong>more than one</strong> core object, the object is not synchronized at all and an error is logged saying that manual intervention is required. This is intentional — silently picking one of two candidates would merge two people.</p>
@@ -8199,7 +8199,11 @@
 <tbody>
 <tr>
 <td><code>string</code></td>
-<td><code>id</code> (join only), <code>displayName</code>, <code>type</code>, <code>subType</code>, <code>email</code>, <code>legalIdentifier</code>, <code>address</code>, <code>postalCode</code>, <code>city</code>, <code>educationStatus</code>, <code>educationSchoolYear</code>, <code>educationLanguage</code>, <code>externalId</code>, <code>anchor1</code>–<code>anchor9</code>, <code>custom/*</code></td>
+<td><code>id</code> (join only), <code>displayName</code>, <code>type</code>, <code>subType</code>, <code>email</code>, <code>legalIdentifier</code>, <code>address</code>, <code>postalCode</code>, <code>city</code>, <code>educationStatus</code>, <code>educationSchoolYear</code>, <code>educationLanguage</code>, <code>educationCourse</code>, <code>educationSourcedId</code>, <code>externalId</code>, <code>anchor1</code>–<code>anchor9</code>, <code>custom/*</code></td>
+</tr>
+<tr>
+<td><code>datetime</code></td>
+<td><code>educationStartDate</code>, <code>educationEndDate</code></td>
 </tr>
 <tr>
 <td><code>reference</code></td>
@@ -8207,7 +8211,7 @@
 </tr>
 <tr>
 <td><code>multivaluedstring</code></td>
-<td><code>educationGrades</code>, <code>educationSubjectCodes</code></td>
+<td><code>educationGrades</code>, <code>educationSubjectCodes</code>, <code>educationCodes</code></td>
 </tr>
 </tbody>
 </table>
@@ -8795,7 +8799,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 18:42:25 UTC">August 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 20, 2026 14:09:50 UTC">August 20, 2026</span>
   </span>
 
     
