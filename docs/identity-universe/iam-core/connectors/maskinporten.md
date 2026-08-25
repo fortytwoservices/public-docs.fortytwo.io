@@ -6,11 +6,19 @@ This is not a connector, but is used as authentication by several integrations.
 
 ## Steps
 
-Sign into [Samarbeidsportalen](https://samarbeid.digdir.no/) and find **Integrations ("Integrasjoner")** 
+Maskinporten-clients are created using the self service portal from Digdir::
 
-![New integrations button](media/image.png)
+- For production, the client is created at [https://sjolvbetjening.samarbeid.digdir.no/](https://sjolvbetjening.samarbeid.digdir.no/)
+- For test (meaning the Digdir test environment), the client is created at [https://sjolvbetjening.test.samarbeid.digdir.no/](https://sjolvbetjening.test.samarbeid.digdir.no/)
 
-<hr />
+
+When you are signed, the organization you represent is shown in the top right corner:
+
+![alt text](media/image-18.png)
+
+Make sure you have the correct active organization before the next step.
+
+
 
 On the **New integration ("Ny integrasjon")** experience, select the scopes you need to provide Fortytwo access to. This varies with the connector.
 
