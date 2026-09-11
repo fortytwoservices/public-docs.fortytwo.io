@@ -1,6 +1,6 @@
-# Step 2 - Configuring email patterns
+# Step 2 - Configuring email/accountname patterns
 
-Email patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.
+Patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.
 
 By consenting to Bytt.Email, you now have three new multivalued string attributes available for cloud managed groups in your tenant:
 
@@ -9,8 +9,19 @@ By consenting to Bytt.Email, you now have three new multivalued string attribute
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_aliaspatterns | Patterns available as email alias only |
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_signinnamepatterns | Patterns available as sign-in name only |
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns | Patterns available both as sign-in name and alias |
+| extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns | Patterns available for accountnames |
 
-In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set. If a user is a memer of multilpe email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.
+In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set. If a user is a member of multiple email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.
+
+It is also possible to set priority by appending a '|\<digit\>' to the end of each pattern.
+Lower digits means higher priority.
+I.E
+```JSON
+{
+    "{firstname1,2}{lastname-1,3}|10" # This will have higher priority than the one below
+    "{firstname1,3}{lastname-1,2}|20"
+}
+```
 
 Microsoft does not provide a user interface for these types of properties. The attributes can be set by using [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) or by using the Microsoft Graph PowerShell module.
 
@@ -59,6 +70,80 @@ POST https://graph.microsoft.com/v1.0/groups/
         "{firstname2}.{lastname-2}@{currentsuffix}",
         "{firstname1}.{lastname-1}2@{currentsuffix}",
         "{firstname1,1}.{lastname-1}@{currentsuffix}"     
+    ]
+}
+```
+
+## Create accountname pattern group using PowerShell
+
+This will create a group for accountnames, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.
+
+```PowerShell
+Connect-MgGraph -scopes group.readwrite.all
+New-MgGroup -DisplayName "Accountname patterns - All Users" -MailEnabled:$false -SecurityEnabled:$true -MailNickname "$(new-guid)".Substring(0,8) -AdditionalProperties @{
+    "extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns" = @(
+        "{firstname1,2}{lastname-1,3}"
+        "{firstname1,3}{lastname-1,2}"
+        "{firstname1,4}{lastname-1,1}"
+        "{firstname1,4}{lastname-1,2}"
+        "{firstname1,5}{lastname-1,1}"
+        "{firstname1,2}{lastname-1,4}"
+        "{firstname1,1}{lastname-1,4}"
+        "{firstname1,1}{lastname-1,5}"
+    )
+}
+```
+
+## Create accountname pattern group using Microsoft Graph
+
+This will create a group with patterns accountnames. A simple way to configure groups in this manner, is to use the [Microsoft Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer). Remember to sign in, instead of using the sample tenant for Graph Explorer.
+
+```
+POST https://graph.microsoft.com/v1.0/groups/
+```
+
+```JSON
+{
+    "displayName": "Accountname pattern - 1",
+    "securityEnabled": true,
+    "mailEnabled": false,
+    "mailNickname": "accountNamePattern1",
+    "extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns": [
+        "{firstname1,2}{lastname-1,3}"
+        "{firstname1,3}{lastname-1,2}"
+        "{firstname1,4}{lastname-1,1}"
+        "{firstname1,4}{lastname-1,2}"
+        "{firstname1,5}{lastname-1,1}"
+        "{firstname1,2}{lastname-1,4}"
+        "{firstname1,1}{lastname-1,4}"
+        "{firstname1,1}{lastname-1,5}" 
+    ]
+}
+```
+
+## Example accountname pattern group using Microsoft Graph with priority set
+
+This will create a group with patterns accountnames, with priority set.
+
+```
+POST https://graph.microsoft.com/v1.0/groups/
+```
+
+```JSON
+{
+    "displayName": "Accountname pattern - 1",
+    "securityEnabled": true,
+    "mailEnabled": false,
+    "mailNickname": "accountNamePattern1",
+    "extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns": [
+        "{firstname1,2}{lastname-1,3}|10"
+        "{firstname1,3}{lastname-1,2}|20"
+        "{firstname1,4}{lastname-1,1}|30"
+        "{firstname1,4}{lastname-1,2}|40"
+        "{firstname1,5}{lastname-1,1}|50"
+        "{firstname1,2}{lastname-1,4}|60"
+        "{firstname1,1}{lastname-1,4}|70"
+        "{firstname1,1}{lastname-1,5}|80"
     ]
 }
 ```
