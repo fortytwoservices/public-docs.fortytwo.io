@@ -25,7 +25,7 @@
     
     
       
-        <title>Step 2 - Configuring email patterns - Documentation for Fortytwo</title>
+        <title>Step 2 - Configuring email/accountname patterns - Documentation for Fortytwo</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-2-configuring-email-patterns" class="md-skip">
+        <a href="#step-2-configuring-emailaccountname-patterns" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Step 2 - Configuring email patterns
+              Step 2 - Configuring email/accountname patterns
             
           </span>
         </div>
@@ -4867,7 +4867,7 @@
   <span class="md-ellipsis">
     
   
-    Step 2 - Configuring email patterns
+    Step 2 - Configuring email/accountname patterns
   
 
     
@@ -4885,7 +4885,7 @@
   <span class="md-ellipsis">
     
   
-    Step 2 - Configuring email patterns
+    Step 2 - Configuring email/accountname patterns
   
 
     
@@ -4926,6 +4926,39 @@
     <span class="md-ellipsis">
       
         Create email pattern group using Microsoft Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-accountname-pattern-group-using-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create accountname pattern group using PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-accountname-pattern-group-using-microsoft-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create accountname pattern group using Microsoft Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-accountname-pattern-group-using-microsoft-graph-with-priority-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example accountname pattern group using Microsoft Graph with priority set
       
     </span>
   </a>
@@ -7665,8 +7698,8 @@
   
 
 
-<h1 id="step-2-configuring-email-patterns">Step 2 - Configuring email patterns<a class="headerlink" href="#step-2-configuring-email-patterns" title="Permanent link">&para;</a></h1>
-<p>Email patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.</p>
+<h1 id="step-2-configuring-emailaccountname-patterns">Step 2 - Configuring email/accountname patterns<a class="headerlink" href="#step-2-configuring-emailaccountname-patterns" title="Permanent link">&para;</a></h1>
+<p>Patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.</p>
 <p>By consenting to Bytt.Email, you now have three new multivalued string attributes available for cloud managed groups in your tenant:</p>
 <table>
 <thead>
@@ -7688,48 +7721,118 @@
 <td>extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns</td>
 <td>Patterns available both as sign-in name and alias</td>
 </tr>
+<tr>
+<td>extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns</td>
+<td>Patterns available for accountnames</td>
+</tr>
 </tbody>
 </table>
-<p>In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set. If a user is a memer of multilpe email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.</p>
+<p>In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set. If a user is a member of multiple email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.</p>
+<p>It is also possible to set priority by appending a '|\&lt;digit&gt;' to the end of each pattern.
+Lower digits means higher priority.
+I.E
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s2">"{firstname1,2}{lastname-1,3}|10"</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">have</span><span class="w"> </span><span class="err">higher</span><span class="w"> </span><span class="err">priori</span><span class="kc">t</span><span class="err">y</span><span class="w"> </span><span class="kc">t</span><span class="err">ha</span><span class="kc">n</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">o</span><span class="kc">ne</span><span class="w"> </span><span class="err">below</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="s2">"{firstname1,3}{lastname-1,2}|20"</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div></p>
 <p>Microsoft does not provide a user interface for these types of properties. The attributes can be set by using <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> or by using the Microsoft Graph PowerShell module.</p>
 <h2 id="create-email-pattern-group-using-powershell">Create email pattern group using PowerShell<a class="headerlink" href="#create-email-pattern-group-using-powershell" title="Permanent link">&para;</a></h2>
 <p>This will create a group for a domain in the <code>$domain</code> variable, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Connect-MgGraph</span> <span class="n">-scopes</span> <span class="n">group</span><span class="p">.</span><span class="n">readwrite</span><span class="p">.</span><span class="n">all</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$domain</span> <span class="p">=</span> <span class="s2">"yourdomain.com"</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">New-MgGroup</span> <span class="n">-DisplayName</span> <span class="s2">"Email patterns - $domain"</span> <span class="n">-MailEnabled</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-SecurityEnabled</span><span class="p">:</span><span class="nv">$true</span> <span class="n">-MailNickname</span> <span class="s2">"</span><span class="p">$(</span><span class="nb">new-guid</span><span class="p">)</span><span class="s2">"</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="n">8</span><span class="p">)</span> <span class="n">-AdditionalProperties</span> <span class="p">@{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span> <span class="p">=</span> <span class="p">@(</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="s2">"{firstname1}.{lastname-1}@$domain"</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s2">"{firstname1}.{firstname2}.{lastname-1}@$domain"</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="s2">"{firstname1}.{lastname-2}.{lastname-1}@$domain"</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="s2">"{firstnamewd1}.{lastnamewd-1}@$domain"</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="s2">"{firstnamewd1}.{firstnamewd2}.{lastnamewd-1}@$domain"</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="s2">"{firstnamewd1}.{lastnamewd-2}.{lastnamewd-1}@$domain"</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@$domain"</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="s2">"{firstname1}.{lastname-1}2@$domain"</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Connect-MgGraph</span> <span class="n">-scopes</span> <span class="n">group</span><span class="p">.</span><span class="n">readwrite</span><span class="p">.</span><span class="n">all</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$domain</span> <span class="p">=</span> <span class="s2">"yourdomain.com"</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">New-MgGroup</span> <span class="n">-DisplayName</span> <span class="s2">"Email patterns - $domain"</span> <span class="n">-MailEnabled</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-SecurityEnabled</span><span class="p">:</span><span class="nv">$true</span> <span class="n">-MailNickname</span> <span class="s2">"</span><span class="p">$(</span><span class="nb">new-guid</span><span class="p">)</span><span class="s2">"</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="n">8</span><span class="p">)</span> <span class="n">-AdditionalProperties</span> <span class="p">@{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="s2">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span> <span class="p">=</span> <span class="p">@(</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="s2">"{firstname1}.{lastname-1}@$domain"</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="s2">"{firstname1}.{firstname2}.{lastname-1}@$domain"</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="s2">"{firstname1}.{lastname-2}.{lastname-1}@$domain"</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="s2">"{firstnamewd1}.{lastnamewd-1}@$domain"</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="s2">"{firstnamewd1}.{firstnamewd2}.{lastnamewd-1}@$domain"</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="s2">"{firstnamewd1}.{lastnamewd-2}.{lastnamewd-1}@$domain"</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@$domain"</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="s2">"{firstname1}.{lastname-1}2@$domain"</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="create-email-pattern-group-using-microsoft-graph">Create email pattern group using Microsoft Graph<a class="headerlink" href="#create-email-pattern-group-using-microsoft-graph" title="Permanent link">&para;</a></h2>
 <p>This will create a group with patterns only available as sign-in name / primary email address. A simple way to configure groups in this manner, is to use the <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Microsoft Graph explorer</a>. Remember to sign in, instead of using the sample tenant for Graph Explorer.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>POST https://graph.microsoft.com/v1.0/groups/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>POST https://graph.microsoft.com/v1.0/groups/
 </span></code></pre></div>
-<div class="language-JSON highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email pattern - 1"</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">"securityEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">"mailEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">"mailNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emailpattern1"</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_signinnamepatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-2}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="s2">"{firstname1,1}{firstname2,1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="s2">"{firstname1,1}{firstname2,1}{firstname3,1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="s2">"{firstname1,3}{lastname-1,3}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="s2">"{firstname2}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="s2">"{firstname2}.{lastname-2}@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}2@{currentsuffix}"</span><span class="p">,</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="s2">"{firstname1,1}.{lastname-1}@{currentsuffix}"</span><span class="w">     </span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email pattern - 1"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"securityEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">"mailEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">"mailNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emailpattern1"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_signinnamepatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-2}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="s2">"{firstname1,1}{firstname2,1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="s2">"{firstname1,1}{firstname2,1}{firstname3,1}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="s2">"{firstname1,3}{lastname-1,3}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="s2">"{firstname2}.{lastname-1}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="s2">"{firstname2}.{lastname-2}@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}2@{currentsuffix}"</span><span class="p">,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="s2">"{firstname1,1}.{lastname-1}@{currentsuffix}"</span><span class="w">     </span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="create-accountname-pattern-group-using-powershell">Create accountname pattern group using PowerShell<a class="headerlink" href="#create-accountname-pattern-group-using-powershell" title="Permanent link">&para;</a></h2>
+<p>This will create a group for accountnames, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Connect-MgGraph</span> <span class="n">-scopes</span> <span class="n">group</span><span class="p">.</span><span class="n">readwrite</span><span class="p">.</span><span class="n">all</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">New-MgGroup</span> <span class="n">-DisplayName</span> <span class="s2">"Accountname patterns - All Users"</span> <span class="n">-MailEnabled</span><span class="p">:</span><span class="nv">$false</span> <span class="n">-SecurityEnabled</span><span class="p">:</span><span class="nv">$true</span> <span class="n">-MailNickname</span> <span class="s2">"</span><span class="p">$(</span><span class="nb">new-guid</span><span class="p">)</span><span class="s2">"</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="n">8</span><span class="p">)</span> <span class="n">-AdditionalProperties</span> <span class="p">@{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">"extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns"</span> <span class="p">=</span> <span class="p">@(</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="s2">"{firstname1,2}{lastname-1,3}"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="s2">"{firstname1,3}{lastname-1,2}"</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s2">"{firstname1,4}{lastname-1,1}"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s2">"{firstname1,4}{lastname-1,2}"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s2">"{firstname1,5}{lastname-1,1}"</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s2">"{firstname1,2}{lastname-1,4}"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">"{firstname1,1}{lastname-1,4}"</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="s2">"{firstname1,1}{lastname-1,5}"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="p">)</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="create-accountname-pattern-group-using-microsoft-graph">Create accountname pattern group using Microsoft Graph<a class="headerlink" href="#create-accountname-pattern-group-using-microsoft-graph" title="Permanent link">&para;</a></h2>
+<p>This will create a group with patterns accountnames. A simple way to configure groups in this manner, is to use the <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Microsoft Graph explorer</a>. Remember to sign in, instead of using the sample tenant for Graph Explorer.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>POST https://graph.microsoft.com/v1.0/groups/
+</span></code></pre></div>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountname pattern - 1"</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">"securityEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">"mailEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">"mailNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountNamePattern1"</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="s2">"{firstname1,2}{lastname-1,3}"</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="s2">"{firstname1,3}{lastname-1,2}"</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="s2">"{firstname1,4}{lastname-1,1}"</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="s2">"{firstname1,4}{lastname-1,2}"</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="s2">"{firstname1,5}{lastname-1,1}"</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="s2">"{firstname1,2}{lastname-1,4}"</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="s2">"{firstname1,1}{lastname-1,4}"</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="s2">"{firstname1,1}{lastname-1,5}"</span><span class="w"> </span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="example-accountname-pattern-group-using-microsoft-graph-with-priority-set">Example accountname pattern group using Microsoft Graph with priority set<a class="headerlink" href="#example-accountname-pattern-group-using-microsoft-graph-with-priority-set" title="Permanent link">&para;</a></h2>
+<p>This will create a group with patterns accountnames, with priority set.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>POST https://graph.microsoft.com/v1.0/groups/
+</span></code></pre></div>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountname pattern - 1"</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">"securityEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">"mailEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">"mailNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountNamePattern1"</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="s2">"{firstname1,2}{lastname-1,3}|10"</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="s2">"{firstname1,3}{lastname-1,2}|20"</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="s2">"{firstname1,4}{lastname-1,1}|30"</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="s2">"{firstname1,4}{lastname-1,2}|40"</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="s2">"{firstname1,5}{lastname-1,1}|50"</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="s2">"{firstname1,2}{lastname-1,4}|60"</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">        </span><span class="s2">"{firstname1,1}{lastname-1,4}|70"</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="s2">"{firstname1,1}{lastname-1,5}|80"</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="placeholders">Placeholders<a class="headerlink" href="#placeholders" title="Permanent link">&para;</a></h2>
 <table>
@@ -7979,28 +8082,28 @@
 </tbody>
 </table>
 <h3 id="example-group-1">Example Group 1<a class="headerlink" href="#example-group-1" title="Permanent link">&para;</a></h3>
-<div class="language-JSON highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@contoso.com"</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@contoso.com"</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@contoso.com"</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@contoso.com"</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="example-group-2">Example Group 2<a class="headerlink" href="#example-group-2" title="Permanent link">&para;</a></h3>
-<div class="language-JSON highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@nwtraders.com"</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com"</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@nwtraders.com"</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com"</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="example-group-3">Example Group 3<a class="headerlink" href="#example-group-3" title="Permanent link">&para;</a></h3>
-<div class="language-JSON highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_aliaspatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@test.com"</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@test.com"</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nt">"extension_34ee8edbd2ff4ee9bac373b53303e00f_aliaspatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="s2">"{firstname1}.{lastname-1}@test.com"</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="s2">"{firstname1}.{firstname2,1}.{lastname-1}@test.com"</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="next-step">Next step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
 <p><a href="../config-step3/">Go to next step</a></p>
@@ -8026,7 +8129,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 17, 2025 10:54:20 UTC">October 17, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 11, 2026 09:42:37 UTC">September 11, 2026</span>
   </span>
 
     
