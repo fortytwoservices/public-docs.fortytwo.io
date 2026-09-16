@@ -10,11 +10,11 @@ Class overview:
 
 One-time policy assignment:
 
-![One-time policy assignment](media/image-4.png)
+![One-time policy assignment](media/image-8.png)
 
 Recurring policy assignment:
 
-![Recurring policy assignment](media/image-5.png)
+![Recurring policy assignment screenshot](media/image-7.png)
 
 ## Enabling the feature
 
