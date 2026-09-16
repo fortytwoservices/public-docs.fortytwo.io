@@ -4,24 +4,28 @@ The internet policy feature enables teacher and other delegated personell to ass
 
 ## Screenshots
 
-![Screenshot 1](media/image-4.png)
+Class overview:
 
-![Screenshot 2](media/image-5.png)
+![Class overview](media/image-6.png)
 
-![Screenshot 3](media/image-6.png)
+One-time policy assignment:
+
+![One-time policy assignment](media/image-4.png)
+
+Recurring policy assignment:
+
+![Recurring policy assignment](media/image-5.png)
 
 ## Enabling the feature
 
 In order to enable the feature, the following is needed:
 
 1. Admin consent to allow the service access to the tenant
-2. Define a policy
+2. Create a policy definition
 
 ### Admin consent
 
-In order for the service to access your tenant, consent to the following application:
-
-https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42e9-882b-9f3bd3f23979
+In order for the service to access your tenant, [consent to this application](https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42e9-882b-9f3bd3f23979)
 
 ![Admin consent screenshot](media/image.png)
 
