@@ -9,6 +9,7 @@ Administrators must hold the following three roles to get full Identity Universe
 * IAM Core - user
 * IAM Core - administrator
 * Collection Criteria - Administrator
+* Education - Administrator
 
 ## User assignments
 

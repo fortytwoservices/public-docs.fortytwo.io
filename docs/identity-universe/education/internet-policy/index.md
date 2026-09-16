@@ -2,6 +2,14 @@
 
 The internet policy feature enables teacher and other delegated personell to assign internet policies to students, either as one-time assignments ("From December 1st to December 3rd") or recurring assignments ("Every monday and tuesday between 8 and 11")". Each policy is always connected to an Entra ID security group, where different network equipment or services like  [Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/) are responsible for the network level enforcement.
 
+## Screenshots
+
+![Screenshot 1](media/image-4.png)
+
+![Screenshot 2](media/image-5.png)
+
+![Screenshot 3](media/image-6.png)
+
 ## Enabling the feature
 
 In order to enable the feature, the following is needed:
@@ -19,6 +27,6 @@ https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42
 
 This will request access to read users and group members, but no write access. Instead, write access will be granted on a per policy group basis, to ensure we follow the principle of least privilege.
 
-### Defining a new policy
+### Defining your first policy definition
 
-Following [this guide](./define-policy.md) to define a new policy.
+Following [this guide](./create-policy-definition.md) to create a new policy definition.
