@@ -3484,6 +3484,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3558,6 +3562,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../identity-universe/education/iam-core-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IAM Core attributes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -3575,7 +3607,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -3597,14 +3629,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3631,6 +3663,136 @@
     
   
     Create policy definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../identity-universe/education/student-password/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Student password
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3_4" id="__nav_5_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Student password
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../identity-universe/education/student-password/installation-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation - Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../identity-universe/education/student-password/installation-cloud-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation - Cloud only students
   
 
     
@@ -5216,10 +5378,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#server-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements
+        Server requirements
       
     </span>
   </a>
@@ -7935,10 +8097,10 @@
 <p><strong>Note:</strong> If you do not have Active Directory users that will be using Bytt.Email, or want to test out the service without granting acces, <a href="../config-step6/">simply go to the next step</a></p>
 </blockquote>
 <p>The ChangeEmail agent module is a simple module made for listening to change requests from Bytt.Email / ChangeEmail by Fortytwo, updating the user account in Active Directory and reporting back the status of the change. There are a few steps required to install the module and run it:</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<h2 id="server-requirements">Server requirements<a class="headerlink" href="#server-requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The agent must be running on a domain joined windows server (We recommend running on the Entra ID Connect or Entra ID Cloud sync server)</li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi">PowerShell 7.5 or newer installed</a></li>
+<li>The agent must be running on a domain joined windows server (You can run the agent on the Entra ID Connect or Entra ID Cloud sync server)</li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6#msi">PowerShell 7.6</a></li>
 <li>AD PowerShell installed (<code>Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature</code>)</li>
 </ul>
 <h2 id="step-1-configure-changeemail-requirements">Step 1 - Configure changeemail requirements<a class="headerlink" href="#step-1-configure-changeemail-requirements" title="Permanent link">&para;</a></h2>
@@ -7965,7 +8127,7 @@
 </ol>
 <p><img alt="" src="../media/20250905140155.png" /></p>
 <ol>
-<li>Under <strong>Certificates &amp; secrets</strong> upload the certificate file created in Step 2</li>
+<li>Under <strong>Certificates &amp; secrets</strong> upload the certificate file created in Step 1</li>
 </ol>
 <p><img alt="" src="../media/20250905140307.png" /></p>
 <ol>
@@ -8082,7 +8244,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 28, 2025 10:47:00 UTC">November 28, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 17, 2026 06:46:20 UTC">September 17, 2026</span>
   </span>
 
     
