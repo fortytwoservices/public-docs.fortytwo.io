@@ -28,19 +28,21 @@ Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: 
 
 4. Note down the **Client ID** and **Tenant ID**:
 
-![](media/20250905140155.png)
+![Screenshot](media/image-7.png)
 
 5. Under **Certificates & secrets** upload the certificate file created above
 
-![](media/20250905140307.png)
+![Screenshot](media/image-8.png)
 
 6. Under **API permissions**, click **Add a permission**, select **APIs my organization uses** and locate **Fortytwo Universe**
 
-![](media/20250905140407.png)
+![alt text](media/image-9.png)
 
 7. Under **Application permissions** check **education.studentpasswordrequest.process.all** and click *Add permissions**.
 
 8. Click **Grant admin consent**
+
+![alt text](media/image-10.png)
 
 ## Step 2 - Create the run file for the agent
 
