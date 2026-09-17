@@ -4,10 +4,10 @@
 
 The ChangeEmail agent module is a simple module made for listening to change requests from Bytt.Email / ChangeEmail by Fortytwo, updating the user account in Active Directory and reporting back the status of the change. There are a few steps required to install the module and run it:
 
-## Requirements
+## Server requirements
 
-- The agent must be running on a domain joined windows server (We recommend running on the Entra ID Connect or Entra ID Cloud sync server)
-- [PowerShell 7.5 or newer installed](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows#msi)
+- The agent must be running on a domain joined windows server (You can run the agent on the Entra ID Connect or Entra ID Cloud sync server)
+- [PowerShell 7.6](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6#msi)
 - AD PowerShell installed (```Install-WindowsFeature -Name RSAT-AD-Tools -IncludeAllSubFeature```)
 
 ## Step 1 - Configure changeemail requirements
@@ -33,7 +33,7 @@ Write-Host "" "Thumbprint:       $($Certificate.ThumbPrint)" "Certificate file: 
 
 ![](media/20250905140155.png)
 
-5. Under **Certificates & secrets** upload the certificate file created in Step 2
+5. Under **Certificates & secrets** upload the certificate file created in Step 1
 
 ![](media/20250905140307.png)
 
