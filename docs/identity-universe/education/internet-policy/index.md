@@ -4,15 +4,19 @@ The internet policy feature enables teachers and other delegated personell to as
 
 ## Screenshots
 
-Class overview:
+### Class overview
+
+The class list is shown based on the signed in user's access, either through being a teacher or getting delegated access to any of the organizational units.
 
 ![Class overview](media/image-6.png)
 
-One-time policy assignment:
+### One-time policy assignment
+
+A one-time policy can be assigned to students, where the assignment has a start and end time. This is useful for both short one-off assignment, such as for exams, and more permanent assignments, like blocking social media for the school year.
 
 ![One-time policy assignment](media/image-8.png)
 
-Recurring policy assignment:
+A recurring policy assignment is useful when you have the need for things like blocking YouTube every monday between 8 AM and 3 PM.
 
 ![Recurring policy assignment screenshot](media/image-7.png)
 
