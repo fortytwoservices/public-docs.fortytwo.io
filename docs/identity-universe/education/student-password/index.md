@@ -14,4 +14,4 @@ If you have cloud only students, you needs to follow the [cloud only installatio
 
 If you have students with AD accounts, you need to follow the [Active Directory agent installation guide](./installation-ad.md).
 
-If you have a mix, you follow both. 🚀
+If you have a mix of both cloud only students and students with AD accounts, you follow both guides, and ensure that the ```entraOnPremisesSyncEnabled``` attribute is populated porperly according to [the attribute documentation](../iam-core-attributes.md). 🖖
