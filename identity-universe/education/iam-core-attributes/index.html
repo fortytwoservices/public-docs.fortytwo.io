@@ -3687,10 +3687,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#identity" class="md-nav__link">
+  <a href="#student-core-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Identity
+        Student -&gt; Core Identity
       
     </span>
   </a>
@@ -3698,10 +3698,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#relationship" class="md-nav__link">
+  <a href="#teacher-core-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Relationship
+        Teacher -&gt; Core Identity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teacher-and-student-relationship-core-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teacher and student relationship -&gt; Core Relationship
       
     </span>
   </a>
@@ -3716,6 +3727,62 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="OrgUnit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FEIDE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FEIDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#org-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Org units
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#students-and-teachers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Students and teachers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -8048,13 +8115,235 @@
 
 
 <h1 id="iam-core-attributes">IAM Core attributes<a class="headerlink" href="#iam-core-attributes" title="Permanent link">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Unfinished, this will be expanded</p>
-</div>
-<p>In order to use the education features, we need to configure <a href="../../iam-core/">IAM Core</a> attributes in our recommended way.</p>
-<h2 id="identity">Identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h2>
-<h2 id="relationship">Relationship<a class="headerlink" href="#relationship" title="Permanent link">&para;</a></h2>
+<p>In order to use the education features, <a href="../../iam-core/">IAM Core</a> must be populated with data from the school information system(s) you have through <a href="../../iam-core/connectors/">connectors</a>. The connectors all come with pre made synchronization rules that will support the education features, but if you  in case, here all required attributes:</p>
+<h2 id="student-core-identity">Student -&gt; Core Identity<a class="headerlink" href="#student-core-identity" title="Permanent link">&para;</a></h2>
+<p>Each student need to be created as an identity in IAM Core, with the below attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayName</td>
+<td>To display human friendly in the user interface</td>
+<td>John Doe</td>
+</tr>
+<tr>
+<td>entraObjectId</td>
+<td>Required by both student password and internet policy features in order to locate the Entra user account of the student</td>
+<td>09964771-f29e-48c5-9754-78bfa9e603e7</td>
+</tr>
+<tr>
+<td>entraOnPremisesSyncEnabled</td>
+<td>Required by the student password feature, if you need to use the AD Agent</td>
+<td>true</td>
+</tr>
+<tr>
+<td>entraOnPremisesUserPrincipalName</td>
+<td>Displayed in the user interface, as the username of the student</td>
+<td>john.doe@test.com</td>
+</tr>
+</tbody>
+</table>
+<p>It is also recommended to populate these attributes:</p>
+<ul>
+<li>nin</li>
+<li>firstName</li>
+<li>lastName</li>
+<li>entraOnPremisesSamAccountName</li>
+<li>dateOfBirth</li>
+</ul>
+<h2 id="teacher-core-identity">Teacher -&gt; Core Identity<a class="headerlink" href="#teacher-core-identity" title="Permanent link">&para;</a></h2>
+<p>Each teacher need to be created as an identity in IAM Core, usually connected with HR data as well, but that is techincally not a requirement. The below attributes are required:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entraObjectId</td>
+<td>Required by the Universe Portal and API in order to map the Entra signed in session (JWT) to Core Identity</td>
+<td>09964771-f29e-48c5-9754-78bfa9e603e7</td>
+</tr>
+</tbody>
+</table>
+<p>It is also recommended to populate these attributes:</p>
+<ul>
+<li>nin</li>
+<li>firstName</li>
+<li>lastName</li>
+<li>entraOnPremisesSamAccountName</li>
+<li>dateOfBirth</li>
+</ul>
+<h2 id="teacher-and-student-relationship-core-relationship">Teacher and student relationship -&gt; Core Relationship<a class="headerlink" href="#teacher-and-student-relationship-core-relationship" title="Permanent link">&para;</a></h2>
+<p>The relationship between a teacher / student and the different educational groups they are member of are mapped as Core Relationships with the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td>A reference to the Core Identity of the teacher or student</td>
+<td>035e4651-afd6-4ddb-964f-405bc0e3fa89</td>
+</tr>
+<tr>
+<td>orgUnit</td>
+<td>A reference to the Core OrgUnit for the education group</td>
+<td>e6345196-084d-43d3-905f-19d3810a468b</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Always set to 'education' in order to tell the education services that this is an education relationship</td>
+<td>education</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>Always set to 'teacher' for teachers and 'student' for students, which tells the education services that the identity of this relationship is a teacher/student for the org unit of the relationship in question</td>
+<td>teacher</td>
+</tr>
+</tbody>
+</table>
+<p>There are also some optional attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startDate</td>
+<td>The start date of the relationship, if ommited, the relationship is considered as having a start date in the past</td>
+<td>2026-08-01</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>The end date of the relationship, if ommited, the relationship is considered as having an end date in the future</td>
+<td>2026-08-01</td>
+</tr>
+</tbody>
+</table>
 <h2 id="orgunit">OrgUnit<a class="headerlink" href="#orgunit" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayName</td>
+<td>The name displayed in the Universe portal</td>
+<td>1st grade</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>A reference to the parent Core OrgUnit for the education group. See separate note on the org unit structure.</td>
+<td>d6052f2e-c130-4893-ac85-cbe2d2bb7e9b</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Always set to 'education' in order to tell the education services that this is an education org unit</td>
+<td>education</td>
+</tr>
+<tr>
+<td>subType</td>
+<td>The OneRoster type of the org unit. The values that have special uses are: <strong>schoolowner</strong>, <strong>school</strong>, <strong>ext:municipality</strong>, <strong>scheduled</strong>, <strong>ghost course</strong> and <strong>homeroom</strong>, but any other value may be used</td>
+<td>teacher</td>
+</tr>
+</tbody>
+</table>
+<h3 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h3>
+<p>In general, the following structure is used:</p>
+<ul>
+<li>School owner or ext:muncipality<ul>
+<li>School<ul>
+<li>Scheduled</li>
+<li>Homeroom</li>
+<li>other types</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="feide">FEIDE<a class="headerlink" href="#feide" title="Permanent link">&para;</a></h2>
+<p>For Norway only, there are some required attributes for populating the FEIDE catalog:</p>
+<h3 id="org-units">Org units<a class="headerlink" href="#org-units" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>educationGrades</td>
+<td>The grade of the <strong>homeroom</strong> (basisgruppe)</td>
+<td>6</td>
+</tr>
+<tr>
+<td>educationSourcedId</td>
+<td>The id from the school information system</td>
+<td>383938</td>
+</tr>
+<tr>
+<td>educationCodes</td>
+<td>The UDIR education codes of the <strong>scheduled</strong> group (faggruppe)</td>
+<td>NOR1234</td>
+</tr>
+<tr>
+<td>educationStartDate</td>
+<td>The start date of the group from the school information system, required for <strong>homeroom</strong> and <strong>scheduled</strong></td>
+<td>2026-08-01</td>
+</tr>
+<tr>
+<td>educationEndDate</td>
+<td>The end date of the group from the school information system, required for <strong>homeroom</strong> and <strong>scheduled</strong></td>
+<td>2026-07-31</td>
+</tr>
+<tr>
+<td>legalIdentifier</td>
+<td>Required for <strong>school</strong> and <strong>schoolowner</strong> to be the identifier from Brreg</td>
+<td>NO123123123</td>
+</tr>
+</tbody>
+</table>
+<h3 id="students-and-teachers">Students and teachers<a class="headerlink" href="#students-and-teachers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nin</td>
+<td>The national identifier number of the person</td>
+<td>12345678910</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -8077,7 +8366,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 17, 2026 06:46:20 UTC">September 17, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 18, 2026 17:37:04 UTC">September 18, 2026</span>
   </span>
 
     
