@@ -68,3 +68,5 @@ You can work with the [Identity Universe collections blade](https://universe.for
 
 - [Criteria reference](./criteria.md) — the condition syntax, operators and filterable attributes
 - [Joinable collections reference](./joinable.md) — join policies, approval gates and the request lifecycle
+
+A collection can also be connected to a Microsoft Entra ID group, so that group's membership follows the collection — see [Group Link](../group-link/index.md), and [the design guidance](./group-link.md) for composing the collections behind one.

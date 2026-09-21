@@ -6,6 +6,8 @@ The collection represents the desired membership, while Group Link keeps the mem
 
 This page describes the purpose of Group Link, the recommended design model, expected membership behavior, and the operational considerations that should be understood before enabling it.
 
+For how a link behaves once it exists, and the endpoints that manage one, see the [Group Link](../group-link/index.md) section and [its API](../group-link/api.md).
+
 ## Conceptual model
 
 A Group Link establishes a relationship between:
@@ -550,6 +552,8 @@ Before enabling Group Link, verify the following:
 
 ## Related documentation
 
+- [Group Link](../group-link/index.md) — how a link behaves
+- [Group Link API](../group-link/api.md) — creating and managing a link
 - [Collection design patterns](design-patterns.md)
 - [Criteria collections](criteria.md)
 - [Joinable collections](joinable.md)
