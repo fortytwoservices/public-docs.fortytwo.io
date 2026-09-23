@@ -582,9 +582,14 @@ Before using a collection for access control, verify the following:
 
 ## Related documentation
 
-- [Group Link](group-link.md)
-- [Criteria collections](criteria.md)
+- [Collections](index.md)
+- [Collections API](api.md)
+- [Criteria Collections](criteria.md)
 - [Joinable collections](joinable.md)
-- Collection naming and metadata
-- Collection troubleshooting
-- Collection automation and API usage
+- [Authenticating PowerShell](authentication-powershell.md)
+- [PowerShell module](powershell-module.md)
+- [PowerShell examples](powershell-examples.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
+- [Collection migration patterns](migration-patterns.md)

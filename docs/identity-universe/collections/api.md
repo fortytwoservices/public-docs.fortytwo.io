@@ -175,3 +175,17 @@ All under `/collections-joinable/beta/membership-requests`. These are the endpoi
 Submitting takes optional `notes` and a `relationshipId` naming the position the membership is for. Approve and reject take the same two; cancel and leave take just `relationshipId`. All of them expect a body, so send `{}` if you have nothing to say.
 
 A request that cannot be acted on in its current state is refused — approving something that is not waiting at a gate, or leaving a collection you have not joined. Acting without being the current approver is refused as well. See [the request lifecycle](./joinable.md#the-request-lifecycle).
+
+## Related documentation
+
+- [Collections](index.md)
+- [Criteria collections](criteria.md)
+- [Joinable collections](joinable.md)
+- [PowerShell module](powershell-module.md)
+- [PowerShell examples](powershell-examples.md)
+- [Authenticating PowerShell](authentication-powershell.md)
+- [Collection design patterns](design-patterns.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
+- [Collection migration patterns](migration-patterns.md)

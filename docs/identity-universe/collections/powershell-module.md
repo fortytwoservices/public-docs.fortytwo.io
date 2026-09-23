@@ -201,3 +201,17 @@ Members come back as identifiers. To resolve them into people, see [getting an I
     A criteria collection recalculates its members asynchronously, so a collection you have just created or edited may report nothing for a short while. `Test-CriteriaCollectionMember` answers immediately; `Get-CollectionResult` reflects the last evaluation.
 
 More examples are on the [PowerShell examples](./powershell-examples.md) page.
+
+## Related documentation
+
+- [Collections](index.md)
+- [Collections API](api.md)
+- [Criteria Collections](criteria.md)
+- [Joinable collections](joinable.md)
+- [Authenticating PowerShell](authentication-powershell.md)
+- [PowerShell examples](powershell-examples.md)
+- [Collection design patterns](design-patterns.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
+- [Collection migration patterns](migration-patterns.md)

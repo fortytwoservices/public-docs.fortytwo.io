@@ -141,3 +141,17 @@ New-JoinableCollection -Collection ($newJoinableCollection | ConvertFrom-Json -A
 ## Use IAM Core for object lookup
 
 See [Get IAM Core object](../iam-core/powershell-examples.md#get-iam-core-object) for how to perform memberId lookups (memberIds result from Get-CollectionResult).
+
+## Related documentation
+
+- [Collections](index.md)
+- [Collections API](api.md)
+- [Criteria Collections](criteria.md)
+- [Joinable collections](joinable.md)
+- [Authenticating PowerShell](authentication-powershell.md)
+- [PowerShell module](powershell-module.md)
+- [Collection design patterns](design-patterns.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
+- [Collection migration patterns](migration-patterns.md)

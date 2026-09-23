@@ -69,4 +69,14 @@ You can work with the [Identity Universe collections blade](https://universe.for
 - [Criteria reference](./criteria.md) — the condition syntax, operators and filterable attributes
 - [Joinable collections reference](./joinable.md) — join policies, approval gates and the request lifecycle
 
-A collection can also be connected to a Microsoft Entra ID group, so that group's membership follows the collection — see [Group Link](../group-link/index.md), and [the design guidance](./group-link.md) for composing the collections behind one.
+## Related documentation
+
+- [Criteria collections](criteria.md)
+- [Joinable collections](joinable.md)
+- [PowerShell module](powershell-module.md)
+- [PowerShell examples](powershell-examples.md)
+- [Authenticating PowerShell](authentication-powershell.md)
+- [Collection design patterns](design-patterns.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)

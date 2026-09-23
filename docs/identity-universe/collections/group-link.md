@@ -552,11 +552,12 @@ Before enabling Group Link, verify the following:
 
 ## Related documentation
 
-- [Group Link](../group-link/index.md) — how a link behaves
-- [Group Link API](../group-link/api.md) — creating and managing a link
-- [Collection design patterns](design-patterns.md)
+- [Collections](index.md)
 - [Criteria collections](criteria.md)
 - [Joinable collections](joinable.md)
-- Collection naming and metadata
-- Collection troubleshooting
-- Collection automation and API usage
+- [PowerShell module](powershell-module.md)
+- [PowerShell examples](powershell-examples.md)
+- [Authenticating PowerShell](authentication-powershell.md)
+- [Collection design patterns](design-patterns.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
