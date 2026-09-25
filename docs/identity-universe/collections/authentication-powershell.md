@@ -41,3 +41,17 @@ With these steps completed you will have been issued an access_token that can be
 ## More ways to issue an Entra ID access_token
 
 A few common EntraIDAccessToken methods are described in this article. For a more extensive list, using system-assigned identities, or an Azure Arc identity, you may want to take a look [here](../../identity-universe/iam-core/authentication-powershell.md).
+
+## Related documentation
+
+- [Collections](index.md)
+- [Collections API](api.md)
+- [Criteria collections](criteria.md)
+- [Joinable collections](joinable.md)
+- [PowerShell module](powershell-module.md)
+- [PowerShell examples](powershell-examples.md)
+- [Collection design patterns](design-patterns.md)
+- [Group Link](group-link.md)
+- [Collection naming and metadata](naming-and-metadata.md)
+- [Collections troubleshooting](troubleshooting.md)
+- [Collection migration patterns](migration-patterns.md)
