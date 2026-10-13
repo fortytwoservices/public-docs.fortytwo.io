@@ -40,6 +40,7 @@ Nothing modifies a core object except a sync rule, which means every value can b
 You can work with the [Synchronization admin interface](https://universe.fortytwo.io), the [PowerShell module](./powershell-module.md) or, if you are advanced, [the API](./api.md).
 
 - [Connectors](./connectors/index.md) — bringing source systems in
+- [Synchronization](./sync.md) — how imports and full sync jobs run
 - [Sync rules](syncrules.md) — turning connector data into core objects
 - [Sync rule expressions](syncrule-expressions.md) — the expression reference
 - [Core object types](objecttypes/common.md) — the data model in detail

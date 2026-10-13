@@ -1,5 +1,6 @@
 title: IAM Core
 nav:
   - ...
+  - sync.md
   - syncrules.md
   - syncrule-expressions.md
