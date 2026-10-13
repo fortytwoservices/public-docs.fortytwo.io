@@ -4254,6 +4254,8 @@
       
         
       
+        
+      
     
     
     
@@ -5338,6 +5340,34 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synchronization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -8386,7 +8416,7 @@
 <p><code>id</code> is assigned by IAM Core when the object is created and never changes. A sync rule may join on it, which is how a connector that already knows the IAM Core identifier connects directly, but it can never be given a value.</p>
 <p><code>joinScope</code> partitions the core so that a sync rule only matches core objects carrying the same value. It comes from the sync rule that created the object and defaults to <code>default</code>. See <a href="../../syncrules/#join-scope">join scope</a>.</p>
 <h2 id="custom-string-values">Custom string values<a class="headerlink" href="#custom-string-values" title="Permanent link">&para;</a></h2>
-<p>It is possible to flow string data into any core attribute named <strong>custom/<em>something</em></strong><em>. This means that if you want to store information that does not really belong in any standard attribute, let's say "License plate", you can name it something like </em><em>custom/license_plate</em>* and it will be stored.</p>
+<p>It is possible to flow string data into any core attribute named <strong>custom/<em>something</em></strong>*. This means that if you want to store information that does not really belong in any standard attribute, let's say "License plate", you can name it something like <strong>custom/license_plate</strong> and it will be stored.</p>
 <p>Custom attributes need no registration — pick a name and start flowing into it. They are always strings, so they can only be targeted by a <code>string</code> attribute flow, and they are returned on the object under <code>customStringAttributeValues</code>, keyed by the full name including the <code>custom/</code> prefix.</p>
 <h2 id="when-an-object-last-changed">When an object last changed<a class="headerlink" href="#when-an-object-last-changed" title="Permanent link">&para;</a></h2>
 <p>Every core object is returned with a <code>lastUpdated</code> timestamp recording when the record was last written. It is meant for change detection — working out what has moved since you last looked — rather than as an audit trail, since it reflects any write to the object and has one-second resolution. See <a href="../../api/#lastupdated">lastUpdated</a>.</p>
