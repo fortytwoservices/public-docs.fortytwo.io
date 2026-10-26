@@ -52,7 +52,7 @@ Integrating an application with the Identity platform requires an app registrati
 The first step to getting started with the application and Identity platform integration is to create an app registration (though it may prove useful to read through this documentation first).  
 The app registration will be created based on the type of application that you will be integrating. Creating an app registration can be done by anyone holding the Application Developer or Application Administrator (or more privileged) role.
 
-[What type is your app](./c1-Creating-an-app-registration.md#what-type-of-application-are-you-integrating--developing) goes into detail on the mandatory and optional settings needed to be configured for an app integration to function.
+[What type is your app](./c1-Creating-an-app-registration.md#what-type-of-application-are-you-integrating-developing) goes into detail on the mandatory and optional settings needed to be configured for an app integration to function.
 
 [Requesting an application registration](./c1-Creating-an-app-registration.md) explains the app registration process.  
 Based on the provided information you will be able create a new app registration, or make a request for an app registration to created on your behalf.

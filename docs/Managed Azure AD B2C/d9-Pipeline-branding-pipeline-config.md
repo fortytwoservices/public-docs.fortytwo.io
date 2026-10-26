@@ -11,24 +11,24 @@
       - [The manual way](#the-manual-way)
     - [Azure DevOps Pipelines Environments](#azure-devops-pipelines-environments)
     - [Azure DevOps Pipelines Library](#azure-devops-pipelines-library)
-      - [Azure DevOps Pipelines variable group - content deployment](#azure-devops-pipelines-variable-group---content-deployment)
+      - [Azure DevOps Pipelines variable group - content deployment](#azure-devops-pipelines-variable-group-content-deployment)
     - [Branding](#branding)
     - [Upload branding files via Azure DevOps pipeline](#upload-branding-files-via-azure-devops-pipeline)
-      - [Development pipeline - branding](#development-pipeline---branding)
-      - [Test and Production pipelines - branding](#test-and-production-pipelines---branding)
+      - [Development pipeline - branding](#development-pipeline-branding)
+      - [Test and Production pipelines - branding](#test-and-production-pipelines-branding)
     - [Policies](#policies)
-      - [Polices - Dev](#polices---dev)
-      - [Polices - Test](#polices---test)
-      - [Polices - Prod](#polices---prod)
+      - [Polices - Dev](#polices-dev)
+      - [Polices - Test](#polices-test)
+      - [Polices - Prod](#polices-prod)
     - [Upload policy files via Azure DevOps pipeline](#upload-policy-files-via-azure-devops-pipeline)
-      - [Development pipelines - policies](#development-pipelines---policies)
-      - [Test and Production pipelines - policies](#test-and-production-pipelines---policies)
+      - [Development pipelines - policies](#development-pipelines-policies)
+      - [Test and Production pipelines - policies](#test-and-production-pipelines-policies)
   - [How to work with an Azure DevOps repository](#how-to-work-with-an-azure-devops-repository)
   - [Recommended procedure](#recommended-procedure)
     - [Checking in files to git repository with Visual Studio Code](#checking-in-files-to-git-repository-with-visual-studio-code)
     - [Branch out from the **main** branch](#branch-out-from-the-main-branch)
-      - [Branching - graphical user interface](#branching---graphical-user-interface)
-      - [Branching - terminal / shell](#branching---terminal--shell)
+      - [Branching - graphical user interface](#branching-graphical-user-interface)
+      - [Branching - terminal / shell](#branching-terminal-shell)
 
 ## Introduction
 
@@ -311,7 +311,7 @@ The following (recommended) [procedure](#recommended-procedure) uses an Azure De
 
 ## Recommended procedure
 
-1. Branch out from the **main** branch (using [graphical user interface](#branching---graphical-user-interface) or [shell / terminal](#branching---terminal--shell))
+1. Branch out from the **main** branch (using [graphical user interface](#branching-graphical-user-interface) or [shell / terminal](#branching-terminal-shell))
 1. Make code changes in the new branch
     1. If environment is **Development**, it is convenient to [manually upload files](./d5-Pipeline-branding-policies.md#uploading-custom-branding-files)
     1. Eventually, manual upload files will only be possible in **Development** as all changes to **Test** and **Production** should be fully automated

@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [TEST - tenant.onmicrosoft.com - app registrations](#test---tenantonmicrosoftcom---app-registrations)
+- [TEST - tenant.onmicrosoft.com - app registrations](#test-tenantonmicrosoftcom-app-registrations)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Management](#management)

@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Custom branding - sign-in pages](#custom-branding---sign-in-pages)
+- [Custom branding - sign-in pages](#custom-branding-sign-in-pages)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Custom branding](#custom-branding)
@@ -14,10 +14,10 @@
       - [PowerShell script B2C-BlobManagement.ps1](#powershell-script-b2c-blobmanagementps1)
         - [Script pre-requisites](#script-pre-requisites)
         - [Script availability](#script-availability)
-      - [Script updates - public repository](#script-updates---public-repository)
+      - [Script updates - public repository](#script-updates-public-repository)
         - [Script execution](#script-execution)
-        - [Script variables - manually configured section](#script-variables---manually-configured-section)
-        - [Script variables - tips and notes](#script-variables---tips-and-notes)
+        - [Script variables - manually configured section](#script-variables-manually-configured-section)
+        - [Script variables - tips and notes](#script-variables-tips-and-notes)
 
 ## Introduction
 
@@ -98,7 +98,7 @@ Using **az** for automation is also the most straight-forward as the Azure CLI p
 The Powershell script B2C-BlobManagement was developed for bridging the gap between the various different tools.
 
 The advantage of this script is that it does not need installation, granted PowerShell script execution is enabled.
-The pre-requisite PowerShell modules are checked for at runtime and installed in user context if found missing (**REMEMBER** to check out the [$NoTestPreReqsOverride](#script-variables---tips-and-notes)) TIP!
+The pre-requisite PowerShell modules are checked for at runtime and installed in user context if found missing (**REMEMBER** to check out the [$NoTestPreReqsOverride](#script-variables-tips-and-notes)) TIP!
 
 Using this script it is easy to both implement it in a pipeline as well as running it in authenticated user context.  
 It's primary function is to upload files, set content type and set cache control on .js files (because they are prone to frequent updates).

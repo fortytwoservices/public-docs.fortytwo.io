@@ -6,16 +6,16 @@
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Platform app registrations](#platform-app-registrations)
-    - [What type of application are you integrating / developing](#what-type-of-application-are-you-integrating--developing)
+    - [What type of application are you integrating / developing](#what-type-of-application-are-you-integrating-developing)
       - [If the application is a *Web app* the following information must be provided](#if-the-application-is-a-web-app-the-following-information-must-be-provided)
       - [If the app is a single-page application please provide the following](#if-the-app-is-a-single-page-application-please-provide-the-following)
       - [If is is a Web API this information is required](#if-is-is-a-web-api-this-information-is-required)
       - [And if it is a **Native client** this information is required](#and-if-it-is-a-native-client-this-information-is-required)
   - [Application registration form](#application-registration-form)
-    - [Create / request app registration form](#create--request-app-registration-form)
+    - [Create / request app registration form](#create-request-app-registration-form)
     - [App registration answer form with information to configured in the application](#app-registration-answer-form-with-information-to-configured-in-the-application)
-    - [Example with two sample apps - create / request app registration](#example-with-two-sample-apps---create--request-app-registration)
-    - [Example with two sample apps - response after app registrations have been created](#example-with-two-sample-apps---response-after-app-registrations-have-been-created)
+    - [Example with two sample apps - create / request app registration](#example-with-two-sample-apps-create-request-app-registration)
+    - [Example with two sample apps - response after app registrations have been created](#example-with-two-sample-apps-response-after-app-registrations-have-been-created)
 
 ## Introduction
 

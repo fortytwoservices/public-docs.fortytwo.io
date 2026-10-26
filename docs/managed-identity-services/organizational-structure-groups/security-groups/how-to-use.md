@@ -10,7 +10,9 @@ This means that if you have an existing Team, where you want to dynamically add 
 
 1. In the Entra or Azure portal, find the group and update the **Membership type** to **Dynamic user**, and click **Add dynamic query**
 
+<!-- Broken Link
 ![](media/20231222150731.png)
+-->
 
 2. Edit the query and insert something like this, where the GUID values below are replaced with the object id of the groups you want to add:
 

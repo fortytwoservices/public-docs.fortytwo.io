@@ -21,7 +21,7 @@
   - [SAML Service Provider (SP) configuration](#saml-service-provider-sp-configuration)
     - [SAML SP metadata](#saml-sp-metadata)
     - [SAML SP issuer](#saml-sp-issuer)
-    - [SAML URL / SAML Endpoint / Login URL](#saml-url--saml-endpoint--login-url)
+    - [SAML URL / SAML Endpoint / Login URL](#saml-url-saml-endpoint-login-url)
 
 ## Introduction
 

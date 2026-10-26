@@ -11,10 +11,10 @@ Det er ofte mulig å integrere en applikasjon på flere måter, og for å sørge
 
 ## Brukerprovisjonering
 
-1. [SCIM-basert integrasjon](./Brukerprovisjonering/1.md)
-2. [Populering av applikasjon via API-basert integrasjon](./Brukerprovisjonering/2.md)
-3. [Filuttrekk](./Brukerprovisjonering/3.md)
-4. [Applikasjon leser selv via Microsoft Graph](./Brukerprovisjonering/4.md)
+1. [SCIM-basert integrasjon](./Brukerprovisjonering/01-SCIM-basert integrasjon.md)
+2. [Populering av applikasjon via API-basert integrasjon](./Brukerprovisjonering/02-API-basert integrasjon.md)
+3. [Filuttrekk](./Brukerprovisjonering/03-Fil-basert integrasjon.md)
+4. [Applikasjon leser selv via Microsoft Graph](./Brukerprovisjonering/04-App-read integrasjon.md)
 
 ## Single Sign-On
 
@@ -24,8 +24,8 @@ Det er ofte mulig å integrere en applikasjon på flere måter, og for å sørge
 
 ## Autorisasjon
 
-1. [App-roller og tildelinger](./Autorisasjon/1.md)
-2. [Assigned groups as claim](./Autorisasjon/2.md)
-3. [SCIM-transferred groups](./Autorisasjon/3.md)
-4. [Pipeline transferring app roles to app via API integration](./Autorisasjon/4.md)
-5. [Application reading groups from Microsoft Graph](./Autorisasjon/5.md)
+1. [App-roller og tildelinger](./Autorisasjon og grupper/01-App-roller og tildelinger.md)
+2. [Assigned groups as claim](./Autorisasjon og grupper/02-Assigned groups as claim.md)
+3. [SCIM-transferred groups](./Autorisasjon og grupper/03-SCIM-transferred groups.md)
+4. [Pipeline transferring app roles to app via API integration](./Autorisasjon og grupper/04-Pipeline transferring app roles.md)
+5. [Application reading groups from Microsoft Graph](./Autorisasjon og grupper/05-Application reading groups.md)

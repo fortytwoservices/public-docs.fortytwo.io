@@ -7,7 +7,7 @@
   - [Introduction](#introduction)
   - [Getting started with application integration](#getting-started-with-application-integration)
   - [App registrations](#app-registrations)
-  - [Identity Experience Framework - custom policies](#identity-experience-framework---custom-policies)
+  - [Identity Experience Framework - custom policies](#identity-experience-framework-custom-policies)
   - [Authentication and authorization](#authentication-and-authorization)
   - [Application integration examples](#application-integration-examples)
   - [Other](#other)
@@ -72,9 +72,9 @@ Built-in policies (as opposed to **custom policies**) are also referred to as Us
 
 Here are some templates, one per environment, as an example of how to list the available User Journeys:
 
-- [User Journeys in DEV](./f1-DEV-User-Journeys.md#UserJourneys)
-- [User Journeys in TEST](./g1-TEST-User-Journeys.md#UserJourneys)
-- [User Journeys in PROD](./h1-PROD-User-Journeys.md#UserJourneys)
+- [User Journeys in DEV](./f1-DEV-User-Journeys.md)
+- [User Journeys in TEST](./g1-TEST-User-Journeys.md)
+- [User Journeys in PROD](./h1-PROD-User-Journeys.md)
 
 ## Authentication and authorization
 

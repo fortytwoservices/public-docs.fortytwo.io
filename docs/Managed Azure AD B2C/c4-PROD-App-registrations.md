@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [PROD - tenant.onmicrosoft.com - app registrations](#prod---tenantonmicrosoftcom---app-registrations)
+- [PROD - tenant.onmicrosoft.com - app registrations](#prod-tenantonmicrosoftcom-app-registrations)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Management](#management)

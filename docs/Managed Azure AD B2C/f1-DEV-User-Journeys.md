@@ -2,15 +2,15 @@
 
 ## Table of contents
 
-- [DEV - tenant.onmicrosoft.com - user journeys](#dev---tenantonmicrosoftcom---user-journeys)
+- [DEV - tenant.onmicrosoft.com - user journeys](#dev-tenantonmicrosoftcom-user-journeys)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Execution policies (User Journeys)](#execution-policies-user-journeys)
   - [Single Sign-On](#single-sign-on)
   - [Localization](#localization)
-  - [User Journey - signupsignin](#user-journey---signupsignin)
-  - [User Journey - passwordreset](#user-journey---passwordreset)
-  - [User Journey - profileedit](#user-journey---profileedit)
+  - [User Journey - signupsignin](#user-journey-signupsignin)
+  - [User Journey - passwordreset](#user-journey-passwordreset)
+  - [User Journey - profileedit](#user-journey-profileedit)
 
 ## Introduction
 
@@ -32,14 +32,14 @@ When naming a User Journey it is good practice to use descriptive names, taking 
 Policies commonly used by applications:
 
 - v1
-  - [b2c_1a_v1_signupsignin](#user-journey---signupsignin)
+  - [b2c_1a_v1_signupsignin](#user-journey-signupsignin)
 
 Policies (usually) included in Managed B2C deployment:
 
 - v2
-  - [b2c_1a_v2_signupsignin](#user-journey---signupsignin)
-  - [b2c_1a_v2_passwordreset](#user-journey---passwordreset)
-  - [b2c_1a_v2_profileedit](#user-journey---profileedit)
+  - [b2c_1a_v2_signupsignin](#user-journey-signupsignin)
+  - [b2c_1a_v2_passwordreset](#user-journey-passwordreset)
+  - [b2c_1a_v2_profileedit](#user-journey-profileedit)
 
 ## Single Sign-On
 

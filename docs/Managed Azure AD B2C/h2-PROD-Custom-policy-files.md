@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [PROD - tenantname.onmicrosoft.com - custom policy files](#prod---tenantnameonmicrosoftcom---custom-policy-files)
+- [PROD - tenantname.onmicrosoft.com - custom policy files](#prod-tenantnameonmicrosoftcom-custom-policy-files)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [v1 policies](#v1-policies)

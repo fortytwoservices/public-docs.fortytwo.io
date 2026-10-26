@@ -2,7 +2,9 @@
 
 At Fortytwo, we understand the critical importance of maintaining seamless integration between your Human Resources (HR) system and Entra ID for efficient user account and access management. Our managed service, *Organizational structure as security groups*, is designed to streamline and automate the synchronization of the HR organizational structure / hierarchy into an Entra ID security group structure that can be used to automatically assign licenses, services, applications and other Entra ID managed resources such as Teams.
 
-![](media/20240117100244.png)
+<!-- Broken Link
+![Service Overview](media/20240117100244.png)
+-->
 
 ## Key Features
 

@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [TEST - tenant.onmicrosoft.com - custom policy files](#test---tenantonmicrosoftcom---custom-policy-files)
+- [TEST - tenant.onmicrosoft.com - custom policy files](#test-tenantonmicrosoftcom-custom-policy-files)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [v1 policies](#v1-policies)

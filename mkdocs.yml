@@ -54,6 +54,7 @@ plugins:
         "Self%20Hosted%20Runners/GitHub/index.md": "marketplace-offerings/self-hosted-runners/github/index.md"
         "Self%20Hosted%20Runners/Azure%20DevOps/index.md": "marketplace-offerings/self-hosted-runners/ado/index.md"
         "Self%20Hosted%20Runners/index.md": "marketplace-offerings/self-hosted-runners/index.md"
+        'Entra Reference Architecture/Norske kommuner og fylkeskommuner/Integrasjon av tjenester/Autorisasjon og grupper/04-Pipeline transferring app roles.md': 'Entra Reference Architecture/Norske kommuner og fylkeskommuner/Integrasjon av tjenester/Autorisasjon og grupper/04-Pipeline transferring app roles.md'
 markdown_extensions:
   - toc:
       permalink: true
@@ -96,9 +97,7 @@ extra:
   #          note: >-
   #            Thanks for your feedback!
   social:
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/AmestoFortytwo
     - icon: fontawesome/brands/github
       link: https://github.com/fortytwoservices
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/fortytwobyamesto
+      link: https://www.linkedin.com/company/fortytwoio

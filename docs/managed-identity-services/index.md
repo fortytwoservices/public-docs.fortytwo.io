@@ -4,5 +4,5 @@ Welcome to Fortytwo Managed Identity Services. Here you will find documentation 
 
 ## Available Services
 
-### [Verified ID](verified-id/)
+### [Verified ID](verified-id/index.md)
 Enterprise-grade Microsoft Entra Verified ID implementation delivered as a managed proxy service. Includes support for multiple credential types, optional CheckID frontend integration, and white-label customization options.

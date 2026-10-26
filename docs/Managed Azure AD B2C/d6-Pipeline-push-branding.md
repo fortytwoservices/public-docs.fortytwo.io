@@ -13,8 +13,8 @@
   - [Recommended procedure](#recommended-procedure)
     - [Checking in files to git repository with Visual Studio Code](#checking-in-files-to-git-repository-with-visual-studio-code)
     - [Branch out from the **main** branch](#branch-out-from-the-main-branch)
-      - [Branching - graphical user interface](#branching---graphical-user-interface)
-      - [Branching - terminal / shell](#branching---terminal--shell)
+      - [Branching - graphical user interface](#branching-graphical-user-interface)
+      - [Branching - terminal / shell](#branching-terminal-shell)
 
 ## Introduction
 
@@ -97,7 +97,7 @@ The following (recommended) [procedure](#recommended-procedure) uses an Azure De
 
 ## Recommended procedure
 
-1. Branch out from the **main** branch (using [graphical user interface](#branching---graphical-user-interface) or [shell / terminal](#branching---terminal--shell))
+1. Branch out from the **main** branch (using [graphical user interface](#branching-graphical-user-interface) or [shell / terminal](#branching-terminal-shell))
 1. Make code changes in the new branch
     1. If environment is **Development**, it is convenient to [manually upload files](./d5-Pipeline-branding-policies.md#uploading-custom-branding-files)
     1. Eventually, manual upload files will only be possible in **Development** as all changes to **Test** and **Production** should be fully automated

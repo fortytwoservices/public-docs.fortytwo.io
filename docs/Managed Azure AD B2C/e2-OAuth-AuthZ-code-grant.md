@@ -170,7 +170,7 @@ A successful response will look like:
 
 ### Validating the id_token
 
-Just receiving an **id_token** is not enough to authenticate the user. You must validate the signature of the **id_token** and verify the claims in the token as per your app's requirements. The Microsoft Identity Platform uses JSON Web Tokens (JWTs) and public key cryptography to sign tokens and verify that they are valid. See article [Validating OAuth 2.0 / OpenID Connect tokens](./e5-Token-validation.md#validating-oauth-20--openid-connect-tokens) for best practice on how to validate a token. The **access_token** must be validated by the service (API) that the application is calling.
+Just receiving an **id_token** is not enough to authenticate the user. You must validate the signature of the **id_token** and verify the claims in the token as per your app's requirements. The Microsoft Identity Platform uses JSON Web Tokens (JWTs) and public key cryptography to sign tokens and verify that they are valid. See article [Validating OAuth 2.0 / OpenID Connect tokens](./e5-Token-validation.md#validating-oauth-20-openid-connect-tokens) for best practice on how to validate a token. The **access_token** must be validated by the service (API) that the application is calling.
 
 ## 3. Use the access_token
 

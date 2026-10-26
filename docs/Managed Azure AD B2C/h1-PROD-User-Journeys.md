@@ -2,13 +2,13 @@
 
 ## Table of contents
 
-- [PROD - tenant.onmicrosoft.com - user journeys](#prod---tenantonmicrosoftcom---user-journeys)
+- [PROD - tenant.onmicrosoft.com - user journeys](#prod-tenantonmicrosoftcom-user-journeys)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Execution policies (User Journeys)](#execution-policies-user-journeys)
   - [Single Sign-On](#single-sign-on)
   - [Localization](#localization)
-  - [User Journey - signupsignin](#user-journey---signupsignin)
+  - [User Journey - signupsignin](#user-journey-signupsignin)
 
 ## Introduction
 
@@ -30,7 +30,7 @@ When naming a User Journey it is good practice to use descriptive names, taking 
 Policies commonly used by applications:
 
 - v1
-  - [b2c_1a_v1_signupsignin](#user-journey---signupsignin)
+  - [b2c_1a_v1_signupsignin](#user-journey-signupsignin)
 
 ## Single Sign-On
 

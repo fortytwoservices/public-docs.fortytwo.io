@@ -5,7 +5,7 @@
 - [Validate OpenID Connect and OAuth 2.0 tokens](#validate-openid-connect-and-oauth-20-tokens)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Validating OAuth 2.0 / OpenID Connect tokens](#validating-oauth-20--openid-connect-tokens)
+  - [Validating OAuth 2.0 / OpenID Connect tokens](#validating-oauth-20-openid-connect-tokens)
 
 ## Introduction
 
