@@ -1,15 +1,17 @@
-# IAM Administrator
+# Administrator permissions
 
 ## Identity Universe Administrator
 
-To become an Identity Universe IAM administrator certain role criteria must be met.
+To be an Identity Universe IAM administrator, a user must be assigned specific roles that grant the necessary permissions.
 
-Administrators must hold the following three roles to get full Identity Universe access for the organisation data:
+Administrators must hold the following roles to get full Identity Universe access for the organisation data:
 
 * IAM Core - user
 * IAM Core - administrator
-* Collection Criteria - Administrator
-* Education - Administrator
+* Collections - Administrator
+* Events - administrator
+* Workflows - administrator
+* Education - administrator
 
 ## User assignments
 

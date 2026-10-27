@@ -4,20 +4,32 @@
 
 Go here to access Fortytwo Identity Universe: [https://universe.fortytwo.io](https://universe.fortytwo.io)
 
-### Admin consent - user consent
+### Get your tenant white listed
 
-We recommend performing "admin consent" to enable all Entra ID users to access the Identity Universe. This can be achieved by a Global Admin by following and accepting the Microsoft admin consent flow for Identity Universe on behalf of the organisation: [https://login.microsoftonline.com/common/adminconsent?client_id=d5151be7-b1d6-411d-88f1-b1da1350211f](https://login.microsoftonline.com/common/adminconsent?client_id=d5151be7-b1d6-411d-88f1-b1da1350211f)
+First, contact Fortytwo so we can whitelist your Entra tenant. Make sure to have your tenant ID ready. If you have multiple tenants, we would need all your IDs; each tenant would be its own instance.
+
+### Admin consent
+
+Identity Universe consists of several components. To get full functionality, you need to consent to all of these. We recommend performing "admin consent" to enable all Entra ID users to access the Identity Universe. This can be achieved by a Global Admin by following and accepting the Microsoft admin consent flow for Identity Universe on behalf of the organisation. If admin consent is **not** in place each person must grant (user) consent when signing in for the first time.
+
+| Link | Name | Description |
+| --- | --- | --- |
+| [https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408](https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408) | Fortytwo Universe | **Required** Core module for Identity Universe with all APIs |
+| [https://login.microsoftonline.com/common/adminconsent?client_id=d5151be7-b1d6-411d-88f1-b1da1350211f](https://login.microsoftonline.com/common/adminconsent?client_id=d5151be7-b1d6-411d-88f1-b1da1350211f) | Fortytwo Universe - Portal | **Required** Enables the portal for Identity Universe |
+| [https://login.microsoftonline.com/common/adminconsent?client_id=70a5c607-eb33-4599-8762-f3a2874732a9](https://login.microsoftonline.com/common/adminconsent?client_id=70a5c607-eb33-4599-8762-f3a2874732a9) | Fortytwo Universe - Criteria Collections | **Required** Enables Collections, a core component of Identity Universe |
+| [https://login.microsoftonline.com/common/adminconsent?client_id=2fcb40bf-98fd-499c-b47f-935aaa071984](https://login.microsoftonline.com/common/adminconsent?client_id=2fcb40bf-98fd-499c-b47f-935aaa071984) | Fortytwo Universe - Entra ID Connector | **Optional** Allows Identity Universe to read data from your tenant and use it as an inbound connector |
+| [https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f](https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f) | Fortytwo Universe - PowerShell client | **Optional** Allows Fortytwo's PowerShell module to connect to your instance so you can get programmatic access |
+| [https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42e9-882b-9f3bd3f23979](https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42e9-882b-9f3bd3f23979) | Fortytwo Universe - Education | **Installation Specific** Only for customers using the Education component in Identity Universe  |
 
 This is what admin consent looks like:
 
-![Admin consent Fortytwo Universe - WebUI](media/fortytwowebuiadminconsent-tpe.png)
+![Admin consent Fortytwo Universe - WebUI](media/fortytwowebuiadminconsent.png)
 
-If admin consent is **not** in place each person must grant (user) consent when signing in for the first time.
+## Assign permissions
 
-This is what user consent looks like:
+Before you can see or do anything in the portal, you have to [assign permissions](./iam-admins/index.md).
 
-![User consent Fortytwo Universe - WebUI](media/fortytwowebuiuserconsent.png)
-
+## First glance of the Portal
 
 ### Dashboard
 
@@ -62,7 +74,3 @@ If you are an administrator you will be able to see **all** registered schools a
 The **Documentation page** will contain be the place to go for user guides and explanations on how to navigate the Identity Universe. This section will keep growing as features are added.
 
 ![Documentation page](media/documentation.png)
-
-### Identity Universe IAM administrator
-
-For Identity Universe IAM administrators we refer to the [IAM admins section](./iam-admins/index.md#administration).

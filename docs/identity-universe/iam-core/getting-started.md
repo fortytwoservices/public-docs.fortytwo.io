@@ -2,9 +2,7 @@
 
 ## Admin consent to Fortytwo Universe
 
-https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408
-
-Consent has to be granted by a Global Administrator, once per tenant. See [getting started](../getting-started/index.md) for what the consent screen looks like, and [IAM administrator](../getting-started/iam-admins/index.md) for the roles that have to be assigned afterwards.
+Consent has to be granted by a Global Administrator, once per tenant. See [getting started](../getting-started/index.md) for details, and [Administrator permissions](../getting-started/iam-admins/index.md) for the roles that have to be assigned afterwards.
 
 ## Setting up IAM Core
 
@@ -60,10 +58,3 @@ Get-IAMCoreOrgUnit | Show-IAMCoreOrgUnitStructure
 ## Adding a second source
 
 Once one system is flowing, additional systems join onto what is already there rather than creating duplicates. The second connector's rules are usually [join only](sync/syncrules.md#provisioning) — they enrich existing identities instead of provisioning new ones — and [priority](sync/syncrules.md#priority-and-attribute-ownership) decides which system wins where both supply the same attribute.
-
-## Where to go next
-
-- [Connectors](connectors/index.md) — the available source systems, and how to build your own
-- [Sync rules](sync/syncrules.md) — scope, joining, and attribute flows
-- [Core object types](objecttypes/common.md) — what you can write to
-- [PowerShell module](api/iamcoreadmin-module.md) — the full cmdlet reference
