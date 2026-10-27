@@ -1,6 +1,6 @@
 # Authenticating PowerShell
 
-This page describes different ways of authenticating PowerShell to the Fortytwo Universe, for different automations, such as [uploading file data](./connectors/fileupload.md), talking to the [connector API](./connector-api.md), etc.
+This page describes different ways of authenticating PowerShell to the Fortytwo Universe, for different automations, such as [uploading file data](../connectors/fileupload.md), talking to the [connector API](connector-api.md), etc.
 
 All scripts use the [EntraIDAccessToken PowerShell module](https://www.powershellgallery.com/packages/EntraIDAccessToken), which means that the only thing required to connect is to complete one of the available ```Add-EntraID*AccessTokenProfile``` cmdlets. This is documented [here](https://github.com/fortytwoservices/powershell-module-entraidaccesstoken), but below are the most common scenarios covered.
 

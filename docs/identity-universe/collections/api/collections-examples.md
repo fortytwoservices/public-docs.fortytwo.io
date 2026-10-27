@@ -1,4 +1,4 @@
-# PowerShell examples
+# Collections PowerShell examples
 
 The module **Fortytwo.IAM.Collections** is created for managing Identity Universe collections through PowerShell.
 
@@ -140,18 +140,18 @@ New-JoinableCollection -Collection ($newJoinableCollection | ConvertFrom-Json -A
 
 ## Use IAM Core for object lookup
 
-See [Get IAM Core object](../iam-core/powershell-examples.md#get-iam-core-object) for how to perform memberId lookups (memberIds result from Get-CollectionResult).
+See [Get IAM Core object](../../iam-core/api/iamcoreadmin-examples.md#get-iam-core-object) for how to perform memberId lookups (memberIds result from Get-CollectionResult).
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
-- [Criteria Collections](criteria.md)
-- [Joinable collections](joinable.md)
+- [Collections](../index.md)
+- [Collections API](index.md)
+- [Criteria Collections](../plandesign/criteria.md)
+- [Joinable collections](../plandesign/joinable.md)
 - [Authenticating PowerShell](authentication-powershell.md)
-- [PowerShell module](powershell-module.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)
+- [PowerShell module](collections-module.md)
+- [Collection design patterns](../plandesign/design-patterns.md)
+- [Group Link](../plandesign/group-link.md)
+- [Collection naming and metadata](../plandesign/naming-and-metadata.md)
+- [Collections troubleshooting](../troubleshooting.md)
+- [Collection migration patterns](../plandesign/migration-patterns.md)

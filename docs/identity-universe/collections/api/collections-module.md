@@ -1,4 +1,4 @@
-# PowerShell Module
+# Collections PowerShell Module
 
 The module **Fortytwo.IAM.Collections** is created for managing Identity Universe collections through PowerShell.
 
@@ -27,7 +27,7 @@ If your account exists in more than one tenant, name the one you want:
 Connect-Collection -TenantId "00000000-0000-0000-0000-000000000000"
 ```
 
-For unattended use, create an access token profile first and pass its name. See [authenticating PowerShell](./authentication-powershell.md) for the available credential types.
+For unattended use, create an access token profile first and pass its name. See [authenticating PowerShell](authentication-powershell.md) for the available credential types.
 
 ```PowerShell
 Add-EntraIDClientSecretAccessTokenProfile `
@@ -73,7 +73,7 @@ Which tenant you are working in comes from the token, so there is no tenant para
 | `Import-JoinableCollectionMemberBatch` | Add members directly, bypassing the request flow. |
 
 !!! note "Approvals are not available in PowerShell"
-    There are no cmdlets for submitting, approving or rejecting membership requests. Use the web interface, or [the API](./api.md#membership-requests) directly.
+    There are no cmdlets for submitting, approving or rejecting membership requests. Use the web interface, or [the API](index.md#membership-requests) directly.
 
 ## Creating a criteria collection
 
@@ -127,7 +127,7 @@ $Collection | New-CriteriaCollection -SkipCollectionMemberTest
 
 The new collection's id is only written to the verbose stream, so add `-Verbose` if you need it, or fetch the collection afterwards.
 
-See the [criteria reference](./criteria.md) for the full condition syntax.
+See the [criteria reference](../plandesign/criteria.md) for the full condition syntax.
 
 ## Editing a collection
 
@@ -165,7 +165,7 @@ $Collection | New-JoinableCollection
 
 `-ApprovalRequired` takes a boolean rather than being a switch, so write `-ApprovalRequired $true`.
 
-The template starts `joinableBy` as an empty hashtable, which means anyone may request. To scope it, set `collectionIds` as above. See the [joinable collections reference](./joinable.md) for gates and eligibility.
+The template starts `joinableBy` as an empty hashtable, which means anyone may request. To scope it, set `collectionIds` as above. See the [joinable collections reference](../plandesign/joinable.md) for gates and eligibility.
 
 ### Seeding members
 
@@ -195,23 +195,23 @@ objectType   : Relationship
 memberIds    : {d42a1f3f-4a1b-42e5-bb04-63536796ec70}
 ```
 
-Members come back as identifiers. To resolve them into people, see [getting an IAM Core object](../iam-core/powershell-examples.md#get-iam-core-object).
+Members come back as identifiers. To resolve them into people, see [getting an IAM Core object](../../iam-core/api/iamcoreadmin-examples.md#get-iam-core-object).
 
 !!! note "Criteria membership is refreshed in the background"
     A criteria collection recalculates its members asynchronously, so a collection you have just created or edited may report nothing for a short while. `Test-CriteriaCollectionMember` answers immediately; `Get-CollectionResult` reflects the last evaluation.
 
-More examples are on the [PowerShell examples](./powershell-examples.md) page.
+More examples are on the [PowerShell examples](collections-examples.md) page.
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
-- [Criteria Collections](criteria.md)
-- [Joinable collections](joinable.md)
+- [Collections](../index.md)
+- [Collections API](index.md)
+- [Criteria Collections](../plandesign/criteria.md)
+- [Joinable collections](../plandesign/joinable.md)
 - [Authenticating PowerShell](authentication-powershell.md)
-- [PowerShell examples](powershell-examples.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)
+- [PowerShell examples](collections-examples.md)
+- [Collection design patterns](../plandesign/design-patterns.md)
+- [Group Link](../plandesign/group-link.md)
+- [Collection naming and metadata](../plandesign/naming-and-metadata.md)
+- [Collections troubleshooting](../troubleshooting.md)
+- [Collection migration patterns](../plandesign/migration-patterns.md)

@@ -1,8 +1,8 @@
 # Connector API
 
-The Connector API is how an [API based connector](./connectors/index.md#api-based-connector) populates its own connector space. It lets you bring data from any system into IAM Core, whether or not Fortytwo has a first party connector for it.
+The Connector API is how an [API based connector](../connectors/index.md#api-based-connector) populates its own connector space. It lets you bring data from any system into IAM Core, whether or not Fortytwo has a first party connector for it.
 
-If you are working in PowerShell, the [Connector PowerShell Module](./connector-powershell-module.md) wraps this API and handles the full-import bookkeeping for you. This page describes what it does underneath.
+If you are working in PowerShell, the [Connector PowerShell Module](connector-powershell-module.md) wraps this API and handles the full-import bookkeeping for you. This page describes what it does underneath.
 
 All routes below are relative to `https://api.fortytwo.io/iamcore/beta`.
 
@@ -31,7 +31,7 @@ The connector will only accept writes from that exact application. If a call is 
 
 ## Authentication
 
-Get a token for the scope `https://api.fortytwo.io/.default` using the client credentials flow, and send it as a bearer token. See [authentication with PowerShell](./authentication-powershell.md) for the easiest way to do this.
+Get a token for the scope `https://api.fortytwo.io/.default` using the client credentials flow, and send it as a bearer token. See [authentication with PowerShell](authentication-powershell.md) for the easiest way to do this.
 
 ## The connector object
 
@@ -59,7 +59,7 @@ Everything in a connector space is a connector object:
 An object is identified by the **pair** of `externalId` and `objectType`. Two objects of different types may share an external id, but two `person` objects may not.
 
 !!! tip "Keep the data close to the source"
-    Resist the urge to clean up or rename fields on the way in. The connector space is meant to look like the source system, so that changes there are easy to recognise, and so that [sync rules](./syncrules.md) remain the single place where mapping happens. If the HR system calls it `given`, call it `given`.
+    Resist the urge to clean up or rename fields on the way in. The connector space is meant to look like the source system, so that changes there are easy to recognise, and so that [sync rules](../sync/syncrules.md) remain the single place where mapping happens. If the HR system calls it `given`, call it `given`.
 
 Two constraints matter when choosing property names in `data`:
 
@@ -96,7 +96,7 @@ Looking an object up by the identifiers you already have avoids keeping a map of
 GET /iamcore/beta/sync/connectors/{connectorId}/data/person/12345
 ```
 
-Objects also carry a `lastUpdated` timestamp recording when they were last written. See [lastUpdated](./api.md#lastupdated).
+Objects also carry a `lastUpdated` timestamp recording when they were last written. See [lastUpdated](index.md#lastupdated).
 
 ## Deleting, and how full imports work
 
@@ -108,13 +108,13 @@ A full import is therefore a diff performed by the connector:
 2. Compare against the source system.
 3. `POST` what is new, `PUT` what changed, and `DELETE` what is no longer in the source.
 
-The [Connector PowerShell Module](./connector-powershell-module.md) implements exactly this, which is the main reason to use it rather than calling the API directly.
+The [Connector PowerShell Module](connector-powershell-module.md) implements exactly this, which is the main reason to use it rather than calling the API directly.
 
 Deletion is not immediate. A deleted object is retained for a period so it can come back if it reappears in the source — controlled per connector by `softDeletionDays`, which defaults to 90. Within that window, re-creating an object with the same `externalId` and `objectType` restores it, **keeping its link to the core object**. That means a person who briefly disappears from an HR export does not get a brand new identity when they return. After the retention period the object is removed permanently.
 
 ## Synchronizing
 
-Writing to the connector space does not by itself change any core objects. Once an import has finished, run a synchronization so the [sync rules](./syncrules.md) are evaluated:
+Writing to the connector space does not by itself change any core objects. Once an import has finished, run a synchronization so the [sync rules](../sync/syncrules.md) are evaluated:
 
 ```PowerShell
 New-IAMCoreSyncJob | Wait-IAMCoreSyncJob

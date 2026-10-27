@@ -1,7 +1,7 @@
 # Synchronization
 
 A connector import copies source data into connector objects. A full sync then
-reads those objects and applies the customer's [sync rules](./syncrules.md) to
+reads those objects and applies the customer's [sync rules](syncrules.md) to
 create, change, delete or restore IAM Core objects. Importing data and
 synchronizing it are separate jobs.
 

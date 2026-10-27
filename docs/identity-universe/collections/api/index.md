@@ -55,8 +55,8 @@ There are three route prefixes, all under `https://api.fortytwo.io`:
 | Prefix | Covers |
 |-|-|
 | `/collections/beta` | Reading across both kinds of collection |
-| `/collections-criteria/beta` | Managing [criteria collections](./criteria.md) |
-| `/collections-joinable/beta` | Managing [joinable collections](./joinable.md) and their membership requests |
+| `/collections-criteria/beta` | Managing [criteria collections](../plandesign/criteria.md) |
+| `/collections-joinable/beta` | Managing [joinable collections](../plandesign/joinable.md) and their membership requests |
 
 Every response is wrapped in an envelope:
 
@@ -126,7 +126,7 @@ The preview endpoint takes the collection under a `preview` key, and optionally 
 }
 ```
 
-It responds with `preview`, `added` and `removed`. See [previewing](./criteria.md#previewing).
+It responds with `preview`, `added` and `removed`. See [previewing](../plandesign/criteria.md#previewing).
 
 ### Joinable collections
 
@@ -143,7 +143,7 @@ It responds with `preview`, `added` and `removed`. See [previewing](./criteria.m
 | `GET` | `/collections-joinable/beta/member-of` | Collections the caller is a member of |
 | `GET` | `/collections-joinable/beta/search` | Search by `tags` and `attributes` |
 
-Creating one takes `objectType`, `name` and `joinPolicy` — see [the join policy](./joinable.md#the-join-policy).
+Creating one takes `objectType`, `name` and `joinPolicy` — see [the join policy](../plandesign/joinable.md#the-join-policy).
 
 Adding or removing members directly takes IAM Core identity ids:
 
@@ -174,18 +174,18 @@ All under `/collections-joinable/beta/membership-requests`. These are the endpoi
 
 Submitting takes optional `notes` and a `relationshipId` naming the position the membership is for. Approve and reject take the same two; cancel and leave take just `relationshipId`. All of them expect a body, so send `{}` if you have nothing to say.
 
-A request that cannot be acted on in its current state is refused — approving something that is not waiting at a gate, or leaving a collection you have not joined. Acting without being the current approver is refused as well. See [the request lifecycle](./joinable.md#the-request-lifecycle).
+A request that cannot be acted on in its current state is refused — approving something that is not waiting at a gate, or leaving a collection you have not joined. Acting without being the current approver is refused as well. See [the request lifecycle](../plandesign/joinable.md#the-request-lifecycle).
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Criteria collections](criteria.md)
-- [Joinable collections](joinable.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
+- [Collections](../index.md)
+- [Criteria collections](../plandesign/criteria.md)
+- [Joinable collections](../plandesign/joinable.md)
+- [PowerShell module](collections-module.md)
+- [PowerShell examples](collections-examples.md)
 - [Authenticating PowerShell](authentication-powershell.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)
+- [Collection design patterns](../plandesign/design-patterns.md)
+- [Group Link](../plandesign/group-link.md)
+- [Collection naming and metadata](../plandesign/naming-and-metadata.md)
+- [Collections troubleshooting](../troubleshooting.md)
+- [Collection migration patterns](../plandesign/migration-patterns.md)

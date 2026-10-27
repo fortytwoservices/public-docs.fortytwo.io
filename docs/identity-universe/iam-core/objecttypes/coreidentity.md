@@ -60,4 +60,4 @@ The `entra*` attributes are not something an HR system provides. They are filled
 
 ## Identifying a person
 
-`nin` and the [anchors](common.md#anchors) are what [sync rules](../syncrules.md) normally join on, since they are stable identifiers that survive a change of name or position. A common pattern is to join on the source system's own id first and fall back to the national identity number, so that a person known to two HR systems still becomes one identity — see [join priority](../syncrules.md#join-priority).
+`nin` and the [anchors](common.md#anchors) are what [sync rules](../sync/syncrules.md) normally join on, since they are stable identifiers that survive a change of name or position. A common pattern is to join on the source system's own id first and fall back to the national identity number, so that a person known to two HR systems still becomes one identity — see [join priority](../sync/syncrules.md#join-priority).

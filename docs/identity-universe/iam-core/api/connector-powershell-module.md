@@ -1,6 +1,6 @@
 # Connector PowerShell Module
 
-The module **Fortytwo.IAM.Core.Connector** is for building an [API based connector](./connectors/index.md#api-based-connector) in PowerShell. It wraps the [Connector API](./connector-api.md) and, more usefully, works out for you which objects need to be created, updated and deleted on each import.
+The module **Fortytwo.IAM.Core.Connector** is for building an [API based connector](../connectors/index.md#api-based-connector) in PowerShell. It wraps the [Connector API](connector-api.md) and, more usefully, works out for you which objects need to be created, updated and deleted on each import.
 
 ## Installing the module
 
@@ -23,7 +23,7 @@ Add-EntraIDClientSecretAccessTokenProfile `
 Connect-Connector -ConnectorId "<the connector id>" -AccessTokenProfile "MyConnector"
 ```
 
-See [setting up](./connector-api.md#setting-up) for how the app registration and the connector are tied together.
+See [setting up](connector-api.md#setting-up) for how the app registration and the connector are tied together.
 
 ## The sync session
 
@@ -53,7 +53,7 @@ $Operations = Get-ConnectorSyncSessionOperation
 $Operations | Complete-ConnectorSyncSessionOperation
 ```
 
-Because the session is a declaration of the full current state, objects that were in the connector space but were not added to the session are deleted. This is what makes deletions work — see [how full imports work](./connector-api.md#deleting-and-how-full-imports-work).
+Because the session is a declaration of the full current state, objects that were in the connector space but were not added to the session are deleted. This is what makes deletions work — see [how full imports work](connector-api.md#deleting-and-how-full-imports-work).
 
 !!! warning "Add everything, or things get deleted"
     If the source system fails halfway through and you only add half the objects, the missing half will be deleted. Let the import fail loudly rather than completing a session with partial data. `Get-ConnectorSyncSessionOperation` refuses an empty session unless you pass `-AllowEmptySession`, which guards against the worst case.
@@ -84,7 +84,7 @@ Get-ConnectorSyncSessionOperationStatistics
 
 ## After the import
 
-Populating the connector space does not change any core objects on its own. Run a synchronization to have the [sync rules](./syncrules.md) evaluated — this is done with the [admin module](./powershell-module.md), not this one:
+Populating the connector space does not change any core objects on its own. Run a synchronization to have the [sync rules](../sync/syncrules.md) evaluated — this is done with the [admin module](iamcoreadmin-module.md), not this one:
 
 ```PowerShell
 New-IAMCoreSyncJob | Wait-IAMCoreSyncJob

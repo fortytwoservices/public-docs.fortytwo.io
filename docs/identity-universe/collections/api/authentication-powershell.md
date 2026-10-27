@@ -31,7 +31,7 @@ The **ClientId** is the enterprise application **Fortytwo Universe - Prod - Powe
 
 ## Consent
 
-Enterprise application **Fortytwo Universe - Prod - PowerShell Client** requires consent. This can be provided when using the client id for the first time, or it can be provided by admin consent (this follows the same process as the [consent flow for Identity Universe WebUI](../getting-started/index.md#admin-consent-user-consent)).
+Enterprise application **Fortytwo Universe - Prod - PowerShell Client** requires consent. This can be provided when using the client id for the first time, or it can be provided by admin consent (this follows the same process as the [consent flow for Identity Universe WebUI](../../getting-started/index.md#admin-consent-user-consent)).
 
 Admin consent URL for **Fortytwo Universe - Prod - PowerShell Client**:  
 [https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f](https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f)
@@ -40,18 +40,18 @@ With these steps completed you will have been issued an access_token that can be
 
 ## More ways to issue an Entra ID access_token
 
-A few common EntraIDAccessToken methods are described in this article. For a more extensive list, using system-assigned identities, or an Azure Arc identity, you may want to take a look [here](../../identity-universe/iam-core/authentication-powershell.md).
+A few common EntraIDAccessToken methods are described in this article. For a more extensive list, using system-assigned identities, or an Azure Arc identity, you may want to take a look [here](../../iam-core/api/authentication-powershell.md).
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
-- [Criteria collections](criteria.md)
-- [Joinable collections](joinable.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)
+- [Collections](../index.md)
+- [Collections API](index.md)
+- [Criteria collections](../plandesign/criteria.md)
+- [Joinable collections](../plandesign/joinable.md)
+- [PowerShell module](collections-module.md)
+- [PowerShell examples](collections-examples.md)
+- [Collection design patterns](../plandesign/design-patterns.md)
+- [Group Link](../plandesign/group-link.md)
+- [Collection naming and metadata](../plandesign/naming-and-metadata.md)
+- [Collections troubleshooting](../troubleshooting.md)
+- [Collection migration patterns](../plandesign/migration-patterns.md)

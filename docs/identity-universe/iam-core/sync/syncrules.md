@@ -1,10 +1,10 @@
 # Sync rules
 
-Sync rules are the bridge between a [connector's](./connectors/index.md) connector space and the [core objects](./objecttypes/common.md) in IAM Core. A connector brings data _in_, but on its own that data does nothing — it just sits in the connector space. It is the sync rules that decide which of those objects matter, which core object each one belongs to, and which attribute values end up on that core object.
+Sync rules are the bridge between a [connector's](../connectors/index.md) connector space and the [core objects](../objecttypes/common.md) in IAM Core. A connector brings data _in_, but on its own that data does nothing — it just sits in the connector space. It is the sync rules that decide which of those objects matter, which core object each one belongs to, and which attribute values end up on that core object.
 
 Nothing can modify a core object except a sync rule. This is a deliberate design choice: because every value on a core object is written by a named sync rule, you can always answer the question _"where did this value come from?"_.
 
-A sync rule always belongs to exactly one connector, and it always targets exactly one [core object type](./index.md).
+A sync rule always belongs to exactly one connector, and it always targets exactly one [core object type](../index.md).
 
 ## What a sync rule does
 
@@ -47,7 +47,7 @@ Sections below cover each of these in turn.
 
 ## Scope
 
-`scope` is a list of boolean [expressions](./syncrule-expressions.md). **All of them must evaluate to `true`** for the connector object to be in scope — the list is combined with a logical AND.
+`scope` is a list of boolean [expressions](syncrule-expressions.md). **All of them must evaluate to `true`** for the connector object to be in scope — the list is combined with a logical AND.
 
 Before the scope expressions are even evaluated, the object must also match the rule's `connectorId` and `connectorObjectType`. A `person` object is never evaluated by a rule whose `connectorObjectType` is `department`.
 
@@ -76,7 +76,7 @@ A scope that only includes employees whose employment is not marked as historic:
     `scope` must contain at least one expression. An empty list means the rule never applies to anything. Use `{ "$type": "true" }` if you want the rule to apply to every object of the type.
 
 !!! tip "Use `or` for alternatives"
-    Because the entries in `scope` are ANDed together, alternatives must be expressed inside a single [`or`](./syncrule-expressions.md#or) expression rather than as two separate scope entries.
+    Because the entries in `scope` are ANDed together, alternatives must be expressed inside a single [`or`](syncrule-expressions.md#or) expression rather than as two separate scope entries.
 
 An expression that cannot be evaluated — for example because the source attribute is missing, or is not a boolean — evaluates to null, and anything that is not exactly `true` puts the object out of scope. A misspelled attribute name therefore shows up as "nothing synchronizes", not as an error.
 
@@ -149,7 +149,7 @@ If the join flows match **more than one** core object, the object is not synchro
 Resolving an ambiguity usually means correcting the source data, or deleting the duplicate core object.
 
 !!! tip "Joining on `id`"
-    The core object's own `id` may be used as a join target, which is how a connector that already knows the IAM Core id (such as the [Entra ID SCIM connector](./connectors/entraidscim.md)) connects directly. `id` may **only** be used as a join flow — you cannot use it as an ordinary target attribute.
+    The core object's own `id` may be used as a join target, which is how a connector that already knows the IAM Core id (such as the [Entra ID SCIM connector](../connectors/entraidscim.md)) connects directly. `id` may **only** be used as a join flow — you cannot use it as an ordinary target attribute.
 
 ## Provisioning
 
@@ -164,7 +164,7 @@ An existing join always beats provisioning: if a core object was found, no new o
 
 ## Attribute flows
 
-`inboundAttributeFlows` is the list of values the rule writes. Each flow has a type matching the type of the target attribute, a `targetAttributeName`, and a `value` [expression](./syncrule-expressions.md).
+`inboundAttributeFlows` is the list of values the rule writes. Each flow has a type matching the type of the target attribute, a `targetAttributeName`, and a `value` [expression](syncrule-expressions.md).
 
 | Flow `$type` | Writes to | Extra properties |
 |-|-|-|
@@ -219,11 +219,11 @@ The target attribute must exist on the core object type, and its type must match
     | `reference` | `parent`, `manager`, `deputies` |
     | `multivaluedstring` | `educationGrades`, `educationSubjectCodes`, `educationCodes` |
 
-Any string flow whose target begins with `custom/` is accepted, which is how you store data that has no standard attribute. See [custom string values](./objecttypes/common.md#custom-string-values).
+Any string flow whose target begins with `custom/` is accepted, which is how you store data that has no standard attribute. See [custom string values](../objecttypes/common.md#custom-string-values).
 
 ### References
 
-Reference attributes point at another core object. You do not supply the core object id directly — instead you point at another _connector_ object with [`asreference`](./syncrule-expressions.md#asreference), and IAM Core resolves it to whichever core object that connector object is joined to.
+Reference attributes point at another core object. You do not supply the core object id directly — instead you point at another _connector_ object with [`asreference`](syncrule-expressions.md#asreference), and IAM Core resolves it to whichever core object that connector object is joined to.
 
 ```powershell
 @{
@@ -278,7 +278,7 @@ Disabling a rule takes it out of synchronization, which means the attributes it 
 
 ## Managing sync rules with PowerShell
 
-The [**Fortytwo.IAM.Core.Admin**](./powershell-module.md) module is the most practical way to work with sync rules.
+The [**Fortytwo.IAM.Core.Admin**](../api/iamcoreadmin-module.md) module is the most practical way to work with sync rules.
 
 ```powershell
 Install-Module Fortytwo.IAM.Core.Admin -Scope CurrentUser
@@ -701,7 +701,7 @@ objectValue      :
 objectValues     :
 ```
 
-Some expressions fill several fields at once — [`attribute`](./syncrule-expressions.md#attribute) can act as a string, a multi-valued string and a boolean, so all three are populated where applicable.
+Some expressions fill several fields at once — [`attribute`](syncrule-expressions.md#attribute) can act as a string, a multi-valued string and a boolean, so all three are populated where applicable.
 
 ## Previewing a single object
 
@@ -722,7 +722,7 @@ Start-IAMCoreConnectorDataObjectSync -ConnectorId $HRConnector.id -ConnectorObje
 
 ## API
 
-Sync rules can also be managed directly over [the API](./api.md). All routes are relative to `https://api.fortytwo.io/iamcore/beta`.
+Sync rules can also be managed directly over [the API](../api/index.md). All routes are relative to `https://api.fortytwo.io/iamcore/beta`.
 
 | Method | Route | Description |
 |-|-|-|
@@ -772,6 +772,6 @@ A complete sync rule as JSON:
 
 ## Next
 
-- [Sync rule expressions](./syncrule-expressions.md) — the full reference of every expression type
-- [Connectors](./connectors/index.md) — where the data comes from
-- [Core object types](./objecttypes/common.md) — what you can write to
+- [Sync rule expressions](syncrule-expressions.md) — the full reference of every expression type
+- [Connectors](../connectors/index.md) — where the data comes from
+- [Core object types](../objecttypes/common.md) — what you can write to

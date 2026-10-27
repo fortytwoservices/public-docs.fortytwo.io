@@ -6,7 +6,7 @@ The collection represents the desired membership, while Group Link keeps the mem
 
 This page describes the purpose of Group Link, the recommended design model, expected membership behavior, and the operational considerations that should be understood before enabling it.
 
-For how a link behaves once it exists, and the endpoints that manage one, see the [Group Link](../group-link/index.md) section and [its API](../group-link/api.md).
+For how a link behaves once it exists, and the endpoints that manage one, see the [Group Link](../../group-link/index.md) section and [its API](../../group-link/api.md).
 
 ## Conceptual model
 
@@ -552,12 +552,12 @@ Before enabling Group Link, verify the following:
 
 ## Related documentation
 
-- [Collections](index.md)
+- [Collections](../index.md)
 - [Criteria collections](criteria.md)
 - [Joinable collections](joinable.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
-- [Authenticating PowerShell](authentication-powershell.md)
+- [PowerShell module](../api/collections-module.md)
+- [PowerShell examples](../api/collections-examples.md)
+- [Authenticating PowerShell](../api/authentication-powershell.md)
 - [Collection design patterns](design-patterns.md)
 - [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
+- [Collections troubleshooting](../troubleshooting.md)

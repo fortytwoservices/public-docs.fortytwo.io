@@ -355,15 +355,15 @@ all to maintain the same membership simultaneously.
 
 ## Related documentation
 
-- [Collections](index.md)
+- [Collections](../index.md)
 - [Criteria collections](criteria.md)
 - [Joinable collections](joinable.md)
-- [Collections API](api.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
-- [Authenticating PowerShell](authentication-powershell.md)
+- [Collections API](../api/index.md)
+- [PowerShell module](../api/collections-module.md)
+- [PowerShell examples](../api/collections-examples.md)
+- [Authenticating PowerShell](../api/authentication-powershell.md)
 - [Collection design patterns](design-patterns.md)
 - [Group Link](group-link.md)
 - [Collection naming and metadata](naming-and-metadata.md)
-- [Collection troubleshooting](troubleshooting.md)
+- [Collection troubleshooting](../troubleshooting.md)
 - [Collection migration patterns](migration-patterns.md)

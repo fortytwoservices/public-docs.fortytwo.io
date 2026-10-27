@@ -1,6 +1,10 @@
 title: IAM Core
-nav:
+
+arrange:
+  - getting-started.md
+  - connectors
+  - sync
+  - objecttypes
+  - primary-releationship.md
+  - api
   - ...
-  - sync.md
-  - syncrules.md
-  - syncrule-expressions.md

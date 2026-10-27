@@ -1,4 +1,4 @@
-# API
+# API and PowerShell
 
 [Swagger](https://api.fortytwo.io/iamcore/swagger)
 
@@ -83,7 +83,7 @@ GET /iamcore/beta/sync/coreobjects/identities?pageSize=500&nextCursor=v1_...
 
 The cursor is an opaque string. Do not parse it or construct one. It is safe to hold on to and replay: sending the same cursor twice returns the same page, and a cursor keeps working across service restarts. A cursor that has been altered causes the request to fail rather than silently restarting from the beginning.
 
-The [PowerShell module](./powershell-module.md) walks the pages for you, so this only matters when calling the API directly.
+The [PowerShell module](iamcoreadmin-module.md) walks the pages for you, so this only matters when calling the API directly.
 
 ### Searching
 

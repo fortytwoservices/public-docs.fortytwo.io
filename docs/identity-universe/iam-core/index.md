@@ -1,6 +1,6 @@
 # IAM Core
 
-The IAM Core, is the heart of the Identity Universe, and is what makes most of the revolving services run. The IAM Core is populated by adding data sources, such as HR systems using [connectors](./connectors/index.md), and synchronizing in data using [sync rules](syncrules.md).
+The IAM Core, is the heart of the Identity Universe, and is what makes most of the revolving services run. The IAM Core is populated by adding data sources, such as HR systems using [connectors](./connectors/index.md), and synchronizing in data using [sync rules](sync/syncrules.md).
 
 In the IAM Core, there are three different types of objects, which is used to model _everything_:
 
@@ -31,16 +31,16 @@ flowchart LR
     C --> D[Core objects]
 ```
 
-A [connector](./connectors/index.md) brings data from a source system into its own private area called the connector space, keeping it as close to the original shape as possible. [Sync rules](syncrules.md) then decide which of those objects matter, which core object each one belongs to, and which values flow onto it.
+A [connector](./connectors/index.md) brings data from a source system into its own private area called the connector space, keeping it as close to the original shape as possible. [Sync rules](sync/syncrules.md) then decide which of those objects matter, which core object each one belongs to, and which values flow onto it.
 
 Nothing modifies a core object except a sync rule, which means every value can be traced back to the rule that wrote it.
 
 ## Working with the solution
 
-You can work with the [Synchronization admin interface](https://universe.fortytwo.io), the [PowerShell module](./powershell-module.md) or, if you are advanced, [the API](./api.md).
+You can work with the [Synchronization admin interface](https://universe.fortytwo.io), the [PowerShell module](api/iamcoreadmin-module.md) or, if you are advanced, [the API](api/index.md).
 
 - [Connectors](./connectors/index.md) — bringing source systems in
-- [Synchronization](./sync.md) — how imports and full sync jobs run
-- [Sync rules](syncrules.md) — turning connector data into core objects
-- [Sync rule expressions](syncrule-expressions.md) — the expression reference
+- [Synchronization](sync/index.md) — how imports and full sync jobs run
+- [Sync rules](sync/syncrules.md) — turning connector data into core objects
+- [Sync rule expressions](sync/syncrule-expressions.md) — the expression reference
 - [Core object types](objecttypes/common.md) — the data model in detail

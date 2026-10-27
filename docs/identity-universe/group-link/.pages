@@ -1,4 +1,4 @@
 title: Group Link
-nav:
-  - index.md
+arrange:
+  - ...
   - api.md

@@ -13,7 +13,7 @@ In order for users to be able to talk to the Fortytwo Universe, we need to ident
 
 !!! note "No user interface available yet"
 
-!!! note "Please follow the [Authenticating PowerShell](../authentication-powershell.md) documentation in order to have a working PowerShell connection"
+!!! note "Please follow the [Authenticating PowerShell](../api/authentication-powershell.md) documentation in order to have a working PowerShell connection"
 
 Create a new connector using the below cmdlet:
 

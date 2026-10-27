@@ -1,4 +1,4 @@
-# Get started
+# Getting started
 
 ## Admin consent to Fortytwo Universe
 
@@ -12,7 +12,7 @@ Getting from an empty tenant to useful data is four steps, in this order.
 
 ### 1. Add a connector
 
-A [connector](./connectors/index.md) brings a source system into IAM Core. Start with whichever system is authoritative for people — usually HR.
+A [connector](connectors/index.md) brings a source system into IAM Core. Start with whichever system is authoritative for people — usually HR.
 
 ```PowerShell
 Install-Module Fortytwo.IAM.Core.Admin -Scope CurrentUser
@@ -21,7 +21,7 @@ Connect-IAMCore
 Get-IAMCoreConnectorTemplate
 ```
 
-If you just want something to look at, the [demo data connectors](./connectors/demodatahr.md) populate a fictional municipality and need no credentials.
+If you just want something to look at, the [demo data connectors](connectors/demodatahr.md) populate a fictional municipality and need no credentials.
 
 ### 2. Look at what arrived
 
@@ -36,7 +36,7 @@ Find-IAMCoreConnectorDataObject -ConnectorId $Connector.id -ConnectorObjectType 
 
 ### 3. Write sync rules
 
-[Sync rules](./syncrules.md) decide which connector objects matter and what they become. The usual order is org units first, then identities, then the relationships that tie them together.
+[Sync rules](sync/syncrules.md) decide which connector objects matter and what they become. The usual order is org units first, then identities, then the relationships that tie them together.
 
 Build them up one at a time and preview before committing:
 
@@ -59,11 +59,11 @@ Get-IAMCoreOrgUnit | Show-IAMCoreOrgUnitStructure
 
 ## Adding a second source
 
-Once one system is flowing, additional systems join onto what is already there rather than creating duplicates. The second connector's rules are usually [join only](./syncrules.md#provisioning) — they enrich existing identities instead of provisioning new ones — and [priority](./syncrules.md#priority-and-attribute-ownership) decides which system wins where both supply the same attribute.
+Once one system is flowing, additional systems join onto what is already there rather than creating duplicates. The second connector's rules are usually [join only](sync/syncrules.md#provisioning) — they enrich existing identities instead of provisioning new ones — and [priority](sync/syncrules.md#priority-and-attribute-ownership) decides which system wins where both supply the same attribute.
 
 ## Where to go next
 
-- [Connectors](./connectors/index.md) — the available source systems, and how to build your own
-- [Sync rules](./syncrules.md) — scope, joining, and attribute flows
-- [Core object types](./objecttypes/common.md) — what you can write to
-- [PowerShell module](./powershell-module.md) — the full cmdlet reference
+- [Connectors](connectors/index.md) — the available source systems, and how to build your own
+- [Sync rules](sync/syncrules.md) — scope, joining, and attribute flows
+- [Core object types](objecttypes/common.md) — what you can write to
+- [PowerShell module](api/iamcoreadmin-module.md) — the full cmdlet reference

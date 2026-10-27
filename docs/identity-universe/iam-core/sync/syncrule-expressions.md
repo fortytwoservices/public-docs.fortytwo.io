@@ -1,6 +1,6 @@
 # Sync rule expressions
 
-Expressions are the small building blocks that compute values inside a [sync rule](./syncrules.md). They appear in two places: in a rule's `scope`, where they must produce a boolean, and as the `value` of an attribute flow, where they must produce a value of the flow's type.
+Expressions are the small building blocks that compute values inside a [sync rule](syncrules.md). They appear in two places: in a rule's `scope`, where they must produce a boolean, and as the `value` of an attribute flow, where they must produce a value of the flow's type.
 
 Expressions nest. Most of them take one or more `input` expressions, so you compose small pieces into whatever transformation the source data needs.
 
@@ -111,7 +111,7 @@ Produces: **string**.
 
 ### externalid
 
-The connector object's external id — the identifier the source system knows the object by. For the [Entra ID SCIM connector](./connectors/entraidscim.md) this is the Entra object id.
+The connector object's external id — the identifier the source system knows the object by. For the [Entra ID SCIM connector](../connectors/entraidscim.md) this is the Entra object id.
 
 Produces: **string**. No properties.
 
@@ -877,4 +877,4 @@ Produces: **object**.
 
 ## Testing your expressions
 
-Any expression can be evaluated against a real connector object before you put it in a rule. See [testing expressions](./syncrules.md#testing-expressions).
+Any expression can be evaluated against a real connector object before you put it in a rule. See [testing expressions](syncrules.md#testing-expressions).

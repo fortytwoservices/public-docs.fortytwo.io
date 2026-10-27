@@ -1,8 +1,8 @@
-# PowerShell examples
+# IAM Core Admin Powershell Examples
 
 The module **Fortytwo.IAM.Core.Admin** exists for managing the IAM Core data through PowerShell.
 
-To install and connect see [PowerShell Module](./powershell-module.md). 
+To install and connect see [PowerShell Module](iamcoreadmin-module.md). 
 
 An EntraIDAccessTokenProfile must also be present. To attain a token credentials must be authenticated to create an active session.
 

@@ -1,4 +1,4 @@
-# API
+# API and PowerShell
 
 ## Authentication
 
@@ -216,5 +216,5 @@ Invoke-RestMethod "$Base/group-links/$($Link.data)" -Method Patch -Headers $Head
 ## Related documentation
 
 - [Group Link](./index.md) — how a link behaves
-- [Group Link design guidance](../collections/group-link.md) — composing the collections behind a link
-- [Collections API](../collections/api.md) — creating the collection a link points at
+- [Group Link design guidance](../collections/plandesign/group-link.md) — composing the collections behind a link
+- [Collections API](../collections/api/index.md) — creating the collection a link points at

@@ -1,0 +1,7 @@
+title: API and PowerShell
+
+arrange:
+  - authentication-powershell.md
+  - collections-module.md
+  - collections-examples.md
+  - ...

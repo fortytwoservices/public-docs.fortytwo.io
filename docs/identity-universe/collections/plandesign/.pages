@@ -1,0 +1,10 @@
+title: Plan and Design
+
+arrange:
+  - design-patterns.md
+  - naming-and-metadata.md
+  - criteria.md
+  - joinable.md
+  - group-link.md
+  - migration-patterns.md
+  - ...

@@ -60,23 +60,23 @@ Choosing between `Identity` and `Relationship` is the decision worth thinking ab
 
 ## Tags and attributes
 
-Collections can carry `metadata` with `tags` and free-form `attributes`, and both can be searched on. With a few dozen collections this is the difference between finding the one you want and scrolling. There are [limits](./criteria.md#metadata-limits) on how many you can set and how long they can be.
+Collections can carry `metadata` with `tags` and free-form `attributes`, and both can be searched on. With a few dozen collections this is the difference between finding the one you want and scrolling. There are [limits](plandesign/criteria.md#metadata-limits) on how many you can set and how long they can be.
 
 ## Working with collections
 
-You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](./powershell-module.md) or the [API](./api.md).
+You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](api/collections-module.md) or the [API](api/index.md).
 
-- [Criteria reference](./criteria.md) — the condition syntax, operators and filterable attributes
-- [Joinable collections reference](./joinable.md) — join policies, approval gates and the request lifecycle
+- [Criteria reference](plandesign/criteria.md) — the condition syntax, operators and filterable attributes
+- [Joinable collections reference](plandesign/joinable.md) — join policies, approval gates and the request lifecycle
 
 ## Related documentation
 
-- [Criteria collections](criteria.md)
-- [Joinable collections](joinable.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
-- [Authenticating PowerShell](authentication-powershell.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
+- [Criteria collections](plandesign/criteria.md)
+- [Joinable collections](plandesign/joinable.md)
+- [PowerShell module](api/collections-module.md)
+- [PowerShell examples](api/collections-examples.md)
+- [Authenticating PowerShell](api/authentication-powershell.md)
+- [Collection design patterns](plandesign/design-patterns.md)
+- [Group Link](plandesign/group-link.md)
+- [Collection naming and metadata](plandesign/naming-and-metadata.md)
 - [Collections troubleshooting](troubleshooting.md)

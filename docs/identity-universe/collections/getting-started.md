@@ -1,4 +1,4 @@
-# Get started
+# Getting started
 
 ## Admin consent to Fortytwo Universe
 

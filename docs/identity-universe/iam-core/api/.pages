@@ -1,0 +1,9 @@
+title: API and PowerShell
+
+arrange:
+  - authentication-powershell.md
+  - connector-api.md
+  - connector-powershell-module.md
+  - iamcoreadmin-module.md
+  - iamcoreadmin-examples.md
+  - ...

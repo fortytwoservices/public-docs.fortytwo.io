@@ -1,6 +1,6 @@
-# Joinable collections reference
+# Joinable collections
 
-A [joinable collection](./index.md#joinable-collections) is one people ask to be in, rather than one they match into. This page documents the join policy that controls who may ask and who approves, and the lifecycle a request goes through.
+A [joinable collection](../index.md#joinable-collections) is one people ask to be in, rather than one they match into. This page documents the join policy that controls who may ask and who approves, and the lifecycle a request goes through.
 
 ## The join policy
 
@@ -37,7 +37,7 @@ With `approvalRequired` set to `false` the collection is **open to join** — a 
 
 Being in **at least one** of the listed collections makes someone eligible. If `joinableBy` is omitted, or its `collectionIds` is empty, everyone is eligible.
 
-This is what makes the pattern in the [introduction](./index.md#joinable-collections) work: a [criteria collection](./criteria.md) of everyone whose `relationshipType` is `Employee` becomes the scope, so only employees see the collection and can ask to join it.
+This is what makes the pattern in the [introduction](../index.md#joinable-collections) work: a [criteria collection](criteria.md) of everyone whose `relationshipType` is `Employee` becomes the scope, so only employees see the collection and can ask to join it.
 
 ## Approval gates
 
@@ -122,20 +122,20 @@ Membership on a joinable collection is per relationship, not just per person:
 Someone holding two positions can be a member for one of them and not the other, which matters when a collection grants something tied to a particular job rather than to the person.
 
 !!! note "This differs from criteria collections"
-    A [criteria collection](./criteria.md) returns `memberIds` as plain identifiers. Only joinable collections pair the object with a relationship.
+    A [criteria collection](criteria.md) returns `memberIds` as plain identifiers. Only joinable collections pair the object with a relationship.
 
 Administrators can add and remove members directly, bypassing the request flow entirely — useful for seeding a new collection with people who already have the access it represents. In PowerShell that is `Import-JoinableCollectionMemberBatch`, which takes **IAM Core identity ids**, not Entra object ids.
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
+- [Collections](../index.md)
+- [Collections API](../api/index.md)
 - [Criteria collections](criteria.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
-- [Authenticating PowerShell](authentication-powershell.md)
+- [PowerShell module](../api/collections-module.md)
+- [PowerShell examples](../api/collections-examples.md)
+- [Authenticating PowerShell](../api/authentication-powershell.md)
 - [Collection design patterns](design-patterns.md)
 - [Group Link](group-link.md)
 - [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
+- [Collections troubleshooting](../troubleshooting.md)
 - [Collection migration patterns](migration-patterns.md)

@@ -1,6 +1,6 @@
-# Criteria reference
+# Criteria collections
 
-A [criteria collection](./index.md#criteria-collections) holds whoever matches its condition. This page documents how conditions are written.
+A [criteria collection](../index.md#criteria-collections) holds whoever matches its condition. This page documents how conditions are written.
 
 A condition is a tree. Every node is either a **group**, which combines child nodes with an operator, or a **leaf**, which tests one attribute. The root must always be a group.
 
@@ -143,7 +143,7 @@ Attribute types are `String`, `Integer`, `Boolean`, `DateTime`, `Guid`, `List`, 
 !!! tip "Core object types share one schema"
     For `Identity`, `Relationship` and `OrgUnit`, the identity, relationship and org unit attributes are merged into a single schema. That means a `Relationship` collection can filter on `identity*` and `orgUnit*` attributes as well as its own — which is how you express "employees in this part of the organisation".
 
-The IAM Core attributes are prefixed by the object they come from, so the [CoreIdentity](../iam-core/objecttypes/coreidentity.md) attribute `firstName` appears as `identityFirstName`, and the [CoreRelationship](../iam-core/objecttypes/corerelationship.md) attribute `title` appears as `relationshipTitle`.
+The IAM Core attributes are prefixed by the object they come from, so the [CoreIdentity](../../iam-core/objecttypes/coreidentity.md) attribute `firstName` appears as `identityFirstName`, and the [CoreRelationship](../../iam-core/objecttypes/corerelationship.md) attribute `title` appears as `relationshipTitle`.
 
 ### Special attributes
 
@@ -220,14 +220,14 @@ Tags and attribute keys are lower-cased and trimmed when stored; attribute value
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
+- [Collections](../index.md)
+- [Collections API](../api/index.md)
 - [Joinable collections](joinable.md)
-- [Authenticating PowerShell](authentication-powershell.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
+- [Authenticating PowerShell](../api/authentication-powershell.md)
+- [PowerShell module](../api/collections-module.md)
+- [PowerShell examples](../api/collections-examples.md)
 - [Collection design patterns](design-patterns.md)
 - [Group Link](group-link.md)
 - [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)
+- [Collections troubleshooting](../troubleshooting.md)
 - [Collection migration patterns](migration-patterns.md)

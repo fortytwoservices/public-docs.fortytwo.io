@@ -632,14 +632,14 @@ Before publishing or automating a collection, verify the following:
 
 ## Related documentation
 
-- [Collections](index.md)
-- [Collections API](api.md)
+- [Collections](../index.md)
+- [Collections API](../api/index.md)
 - [Criteria Collections](criteria.md)
 - [Joinable collections](joinable.md)
-- [Authenticating PowerShell](authentication-powershell.md)
-- [PowerShell module](powershell-module.md)
-- [PowerShell examples](powershell-examples.md)
+- [Authenticating PowerShell](../api/authentication-powershell.md)
+- [PowerShell module](../api/collections-module.md)
+- [PowerShell examples](../api/collections-examples.md)
 - [Collection design patterns](design-patterns.md)
 - [Group Link](group-link.md)
-- [Collections troubleshooting](troubleshooting.md)
+- [Collections troubleshooting](../troubleshooting.md)
 - [Collection migration patterns](migration-patterns.md)

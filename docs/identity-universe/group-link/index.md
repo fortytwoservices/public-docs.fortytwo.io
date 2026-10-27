@@ -13,7 +13,7 @@ flowchart LR
     E --> F[Application or service]
 ```
 
-This page describes how a link behaves. For how to compose the collections behind it, see [Group Link design guidance](../collections/group-link.md). For the endpoints, see [the API](./api.md).
+This page describes how a link behaves. For how to compose the collections behind it, see [Group Link design guidance](../collections/plandesign/group-link.md). For the endpoints, see [the API](./api.md).
 
 ## The link
 
@@ -50,7 +50,7 @@ Do not design a process around an exact propagation time. Validate the three lay
 
 The collection is authoritative. A member added directly to the linked group, without being in the collection, is removed again at the next alignment; a member removed directly is added back.
 
-This is the point of the link rather than a limitation of it, but it means direct group edits are not a way to grant or revoke access. Make the change in the collection model instead — see [exceptions and migration membership](../collections/group-link.md#reconciliation-of-direct-changes).
+This is the point of the link rather than a limitation of it, but it means direct group edits are not a way to grant or revoke access. Make the change in the collection model instead — see [exceptions and migration membership](../collections/plandesign/group-link.md#reconciliation-of-direct-changes).
 
 ## Members without an Entra ID account
 
@@ -81,7 +81,7 @@ An existing group usually has members who got there some other way. Before enabl
 
 [Preview](./api.md#preview) answers this without changing anything: it returns exactly who would be added and who would be removed. Read the removals first. On a production group, that list is the risk.
 
-The full checklist is in the [design guidance](../collections/group-link.md#validation-before-enabling-group-link).
+The full checklist is in the [design guidance](../collections/plandesign/group-link.md#validation-before-enabling-group-link).
 
 ## Working with Group Link
 

@@ -10,7 +10,7 @@ There are two dedicated demo data connectors for a non-existing Norwegian munici
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 ```PowerShell
 $Connector = New-IAMCoreConnector `
@@ -33,4 +33,4 @@ Write-Host "Created with id $($Connector.id)"
 
 ## Example sync rules
 
-The worked examples on the [sync rules](../syncrules.md#managing-sync-rules-with-powershell) page are written against exactly this data, so they can be used as-is against a connector created from this template — one rule each for `person`, `position` and `department`.
+The worked examples on the [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) page are written against exactly this data, so they can be used as-is against a connector created from this template — one rule each for `person`, `position` and `department`.

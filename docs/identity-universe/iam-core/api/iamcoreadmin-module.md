@@ -1,4 +1,4 @@
-# PowerShell Module
+# IAM Core Admin PowerShell Module
 
 The module **Fortytwo.IAM.Core.Admin** exists for the purposes of managing the IAM Core solution through PowerShell.
 
@@ -42,7 +42,7 @@ Connect-IAMCore -AccessTokenProfile "IAMCore"
 
 The `EntraIDAccessToken` module has a profile cmdlet per credential type — `Add-EntraIDClientCertificateAccessTokenProfile` for a certificate, `Add-EntraIDAzureVMMSIAccessTokenProfile` and `Add-EntraIDFunctionAppMSIAccessTokenProfile` for managed identities, `Add-EntraIDGitHubFederatedCredentialAccessTokenProfile` for GitHub Actions. Run `Get-Command -Module EntraIDAccessToken` for the full list.
 
-The application or user behind the token needs the appropriate roles — see [authorization](./api.md#authorization). There is no tenant parameter on the individual cmdlets; which tenant you are working in comes from the token.
+The application or user behind the token needs the appropriate roles — see [authorization](index.md#authorization). There is no tenant parameter on the individual cmdlets; which tenant you are working in comes from the token.
 
 ## Cmdlets
 
@@ -77,7 +77,7 @@ The application or user behind the token needs the appropriate roles — see [au
 | `Remove-IAMCoreSyncRule` | Delete a sync rule. It must be disabled first. |
 | `Test-IAMCoreSyncRuleExpression` | Evaluate an expression against a real connector object. |
 
-See [sync rules](./syncrules.md#managing-sync-rules-with-powershell) for worked examples.
+See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for worked examples.
 
 ### Core objects
 
@@ -184,4 +184,4 @@ Inspect the organizational tree:
 Get-IAMCoreOrgUnit | Show-IAMCoreOrgUnitStructure
 ```
 
-More examples are on the [PowerShell examples](./powershell-examples.md) page.
+More examples are on the [PowerShell examples](iamcoreadmin-examples.md) page.

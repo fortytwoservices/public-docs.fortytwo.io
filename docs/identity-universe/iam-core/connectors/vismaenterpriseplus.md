@@ -24,7 +24,7 @@ Visma has a very old fashioned approach to APIs, where they need to _install_ th
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 ```PowerShell
 $Credential = Get-Credential -Message "Input Visma clientid and clientsecret"
