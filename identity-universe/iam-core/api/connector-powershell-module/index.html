@@ -4465,10 +4465,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#connect" class="md-nav__link">
+  <a href="#authenticate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connect
+        Authenticate
       
     </span>
   </a>
@@ -4476,10 +4476,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-sync-session" class="md-nav__link">
+  <a href="#import-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The sync session
+        Import data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronize-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronize changes
       
     </span>
   </a>
@@ -4491,17 +4502,6 @@
     <span class="md-ellipsis">
       
         Cmdlets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#after-the-import" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        After the import
       
     </span>
   </a>
@@ -8513,7 +8513,7 @@
 <h2 id="installing-the-module">Installing the module<a class="headerlink" href="#installing-the-module" title="Permanent link">&para;</a></h2>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">IAM</span><span class="p">.</span><span class="n">Core</span><span class="p">.</span><span class="n">Connector</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 </span></code></pre></div>
-<h2 id="connect">Connect<a class="headerlink" href="#connect" title="Permanent link">&para;</a></h2>
+<h2 id="authenticate">Authenticate<a class="headerlink" href="#authenticate" title="Permanent link">&para;</a></h2>
 <p>A connector authenticates as an application, so create an access token profile for the app registration that the connector was created with, then connect using the connector's id:</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Add-EntraIDClientSecretAccessTokenProfile</span> <span class="p">`</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">-Name</span> <span class="s2">"MyConnector"</span> <span class="p">`</span>
@@ -8525,8 +8525,8 @@
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">Connect-Connector</span> <span class="n">-ConnectorId</span> <span class="s2">"&lt;the connector id&gt;"</span> <span class="n">-AccessTokenProfile</span> <span class="s2">"MyConnector"</span>
 </span></code></pre></div>
 <p>See <a href="../connector-api/#setting-up">setting up</a> for how the app registration and the connector are tied together.</p>
-<h2 id="the-sync-session">The sync session<a class="headerlink" href="#the-sync-session" title="Permanent link">&para;</a></h2>
-<p>The heart of the module is the sync session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.</p>
+<h2 id="import-data">Import data<a class="headerlink" href="#import-data" title="Permanent link">&para;</a></h2>
+<p>The heart of the module is the import session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Begin an import</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">Start-ConnectorSyncSession</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
@@ -8556,6 +8556,10 @@
 </div>
 <p>To see what a session is about to do before applying it:</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Get-ConnectorSyncSessionOperationStatistics</span>
+</span></code></pre></div>
+<h2 id="synchronize-changes">Synchronize changes<a class="headerlink" href="#synchronize-changes" title="Permanent link">&para;</a></h2>
+<p>Populating the connector space does not change any core objects on its own. Run a synchronization to have the <a href="../../sync/syncrules/">sync rules</a> evaluated — this is done with the <a href="../iamcoreadmin-module/">admin module</a>, not this one:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
 </span></code></pre></div>
 <h2 id="cmdlets">Cmdlets<a class="headerlink" href="#cmdlets" title="Permanent link">&para;</a></h2>
 <table>
@@ -8620,10 +8624,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="after-the-import">After the import<a class="headerlink" href="#after-the-import" title="Permanent link">&para;</a></h2>
-<p>Populating the connector space does not change any core objects on its own. Run a synchronization to have the <a href="../../sync/syncrules/">sync rules</a> evaluated — this is done with the <a href="../iamcoreadmin-module/">admin module</a>, not this one:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
-</span></code></pre></div>
 
 
 
@@ -8646,7 +8646,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2026 08:00:22 UTC">August 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 13:09:08 UTC">October 29, 2026</span>
   </span>
 
     
