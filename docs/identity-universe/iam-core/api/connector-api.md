@@ -2,7 +2,7 @@
 
 The Connector API is how an [API based connector](../connectors/index.md#api-based-connector) populates its own connector space. It lets you bring data from any system into IAM Core, whether or not Fortytwo has a first party connector for it.
 
-If you are working in PowerShell, the [Connector PowerShell Module](connector-powershell-module.md) wraps this API and handles the full-import bookkeeping for you. This page describes what it does underneath.
+If you are working in PowerShell, the [Connector PowerShell Module](connector-powershell-module.md) wraps this API and handles the full-import bookkeeping for you. We will be refering to PowerShell examples throughout this documentation.
 
 All routes below are relative to `https://api.fortytwo.io/iamcore/beta`.
 
@@ -11,7 +11,8 @@ All routes below are relative to `https://api.fortytwo.io/iamcore/beta`.
 An API based connector is tied to exactly one Entra ID application registration, and can only be written to by that application.
 
 1. **Create an app registration** in your own Entra ID.
-2. **Grant it the `iam-core.connector-data.readwrite.self` application permission** on the Fortytwo Universe enterprise application, and have an administrator consent to it. This is the only permission a connector needs.
+2. **Grant** the enterprise application Fortytwo Universe the `iam-core.connector-data.readwrite.self` application permissions and grant Admin consent.
+![Grant application permission](./media/api-permissions.png)
 3. **Create the connector** from the `API` template, giving it the application's client id:
 
     ```PowerShell
@@ -29,11 +30,17 @@ The connector will only accept writes from that exact application. If a call is 
 - the client id on the token does not match the `clientid` on the connector
 - the connector is disabled
 
-## Authentication
+## Authenticate
 
-Get a token for the scope `https://api.fortytwo.io/.default` using the client credentials flow, and send it as a bearer token. See [authentication with PowerShell](authentication-powershell.md) for the easiest way to do this.
+Get a token for the scope `https://api.fortytwo.io/.default` using the client credentials flow, and send it as a bearer token. 
 
-## The connector object
+See [authentication with PowerShell](connector-powershell-module.md#authenticate) for how to do this with PowerShell.
+
+## Import data
+
+You can use PowerShell to [import data](connector-powershell-module.md#import-data) to the connector space.
+
+### The connector object
 
 Everything in a connector space is a connector object:
 
@@ -66,7 +73,7 @@ Two constraints matter when choosing property names in `data`:
 - **Do not use `/` in property names.** Sync rules address nested data with slash-separated paths, so `names/firstname` reaches into `names`. A property with a slash in its own name cannot be addressed.
 - **Casing must be stable.** Attribute lookup is case sensitive, so a source that alternates between `firstName` and `firstname` between imports will break flows.
 
-## Endpoints
+### Endpoints
 
 | Method | Route | Description |
 |-|-|-|
@@ -98,7 +105,7 @@ GET /iamcore/beta/sync/connectors/{connectorId}/data/person/12345
 
 Objects also carry a `lastUpdated` timestamp recording when they were last written. See [lastUpdated](index.md#lastupdated).
 
-## Deleting, and how full imports work
+### Deleting, and how full imports work
 
 There is no server-side notion of a full import. **Leaving an object out of an import does not delete it** — the connector space keeps whatever it was last told, so deletions have to be explicit.
 
@@ -112,7 +119,7 @@ The [Connector PowerShell Module](connector-powershell-module.md) implements exa
 
 Deletion is not immediate. A deleted object is retained for a period so it can come back if it reappears in the source — controlled per connector by `softDeletionDays`, which defaults to 90. Within that window, re-creating an object with the same `externalId` and `objectType` restores it, **keeping its link to the core object**. That means a person who briefly disappears from an HR export does not get a brand new identity when they return. After the retention period the object is removed permanently.
 
-## Synchronizing
+## Synchronize changes
 
 Writing to the connector space does not by itself change any core objects. Once an import has finished, run a synchronization so the [sync rules](../sync/syncrules.md) are evaluated:
 
@@ -123,7 +130,7 @@ New-IAMCoreSyncJob | Wait-IAMCoreSyncJob
 !!! note "Use a full sync for API connectors"
     The `ConnectorImport` job type is for Fortytwo-hosted first party connectors, which fetch their own data. For an API based connector you have already done the importing, so what you want is `FullSyncTenant` — the default.
 
-## Checking what arrived
+## Check what arrived
 
 ```PowerShell
 # Object counts per type

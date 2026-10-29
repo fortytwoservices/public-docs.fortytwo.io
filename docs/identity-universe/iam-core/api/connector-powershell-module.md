@@ -8,7 +8,7 @@ The module **Fortytwo.IAM.Core.Connector** is for building an [API based connect
 Install-Module Fortytwo.IAM.Core.Connector -Scope CurrentUser
 ```
 
-## Connect
+## Authenticate
 
 A connector authenticates as an application, so create an access token profile for the app registration that the connector was created with, then connect using the connector's id:
 
@@ -25,9 +25,9 @@ Connect-Connector -ConnectorId "<the connector id>" -AccessTokenProfile "MyConne
 
 See [setting up](connector-api.md#setting-up) for how the app registration and the connector are tied together.
 
-## The sync session
+## Import data
 
-The heart of the module is the sync session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.
+The heart of the module is the import session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.
 
 ```PowerShell
 # Begin an import
@@ -64,10 +64,18 @@ To see what a session is about to do before applying it:
 Get-ConnectorSyncSessionOperationStatistics
 ```
 
+## Synchronize changes
+
+Populating the connector space does not change any core objects on its own. Run a synchronization to have the [sync rules](../sync/syncrules.md) evaluated — this is done with the [admin module](iamcoreadmin-module.md), not this one:
+
+```PowerShell
+New-IAMCoreSyncJob | Wait-IAMCoreSyncJob
+```
+
 ## Cmdlets
 
 | Cmdlet | Purpose |
-|-|-|
+| --- | --- |
 | `Connect-Connector` | Connect as the connector's application. Takes `-ConnectorId` and `-AccessTokenProfile`. |
 | `Get-ConnectorConfiguration` | The connector's own configuration, including any inputs configured on it. |
 | `Get-ConnectorData` | Read the current contents of the connector space. |
@@ -81,11 +89,3 @@ Get-ConnectorSyncSessionOperationStatistics
 | `Write-ConnectorVerbose`, `Write-ConnectorError` | Write to the connector's log, visible in the admin interface. |
 | `Send-ConnectorLog` | Send a log entry to IAM Core. |
 | `ConvertFrom-ConnectorXmlToPowerShellObject` | Helper for source systems that return XML. |
-
-## After the import
-
-Populating the connector space does not change any core objects on its own. Run a synchronization to have the [sync rules](../sync/syncrules.md) evaluated — this is done with the [admin module](iamcoreadmin-module.md), not this one:
-
-```PowerShell
-New-IAMCoreSyncJob | Wait-IAMCoreSyncJob
-```
