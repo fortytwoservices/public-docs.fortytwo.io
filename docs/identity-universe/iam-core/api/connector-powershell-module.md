@@ -8,7 +8,7 @@ The module **Fortytwo.IAM.Core.Connector** is for building an [API based connect
 Install-Module Fortytwo.IAM.Core.Connector -Scope CurrentUser
 ```
 
-## Authenticate
+## Authenticate and Connect
 
 A connector authenticates as an application, so create an access token profile for the app registration that the connector was created with, then connect using the connector's id:
 
@@ -27,6 +27,16 @@ See [setting up](connector-api.md#setting-up) for how the app registration and t
 
 ## Import data
 
+### First party connector
+
+The Fortytwo first party connectors have the necessary code for doing an import. All you have to do is to trigger an import job.
+
+```PowerShell
+$connector = Get-IAMCoreConnector | Where-Object {$_.name -eq 'Entra ID Inbound'}
+New-IAMCoreSyncJob -Jobtype ConnectorImport -ConnectorId $connector.id
+```
+
+### API based connector
 The heart of the module is the import session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.
 
 ```PowerShell

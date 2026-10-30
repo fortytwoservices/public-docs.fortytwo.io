@@ -30,11 +30,11 @@ The connector will only accept writes from that exact application. If a call is 
 - the client id on the token does not match the `clientid` on the connector
 - the connector is disabled
 
-## Authenticate
+## Authenticate and Connect
 
 Get a token for the scope `https://api.fortytwo.io/.default` using the client credentials flow, and send it as a bearer token. 
 
-See [authentication with PowerShell](connector-powershell-module.md#authenticate) for how to do this with PowerShell.
+See [authentication with PowerShell](connector-powershell-module.md#authenticate-and-connect) for how to do this with PowerShell.
 
 ## Import data
 

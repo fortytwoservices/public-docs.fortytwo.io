@@ -27,7 +27,7 @@ This is what admin consent looks like:
 
 ## Assign permissions
 
-Before you can see or do anything in the portal, you have to [assign permissions](./iam-admins/index.md).
+Before you can see or do anything in the portal, you have to [assign permissions](permissions/index.md).
 
 ## First glance of the Portal
 

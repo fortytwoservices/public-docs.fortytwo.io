@@ -31,7 +31,7 @@ The **ClientId** is the enterprise application **Fortytwo Universe - Prod - Powe
 
 ## Consent
 
-Enterprise application **Fortytwo Universe - Prod - PowerShell Client** requires consent. This can be provided when using the client id for the first time, or it can be provided by admin consent (this follows the same process as the [consent flow for Identity Universe WebUI](../../getting-started/index.md#admin-consent-user-consent)).
+Enterprise application **Fortytwo Universe - Prod - PowerShell Client** requires consent. This can be provided when using the client id for the first time, or it can be provided by admin consent (this follows the same process as the [consent flow for Identity Universe WebUI](../../getting-started/index.md#admin-consent)).
 
 Admin consent URL for **Fortytwo Universe - Prod - PowerShell Client**:  
 [https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f](https://login.microsoftonline.com/common/adminConsent?client_id=68bf2f1d-b9e1-4477-8b90-81314861f05f)

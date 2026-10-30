@@ -54,6 +54,7 @@ plugins:
         "Self%20Hosted%20Runners/GitHub/index.md": "marketplace-offerings/self-hosted-runners/github/index.md"
         "Self%20Hosted%20Runners/Azure%20DevOps/index.md": "marketplace-offerings/self-hosted-runners/ado/index.md"
         "Self%20Hosted%20Runners/index.md": "marketplace-offerings/self-hosted-runners/index.md"
+        identity-universe/getting-started/iam-admins/index.md: identity-universe/getting-started/permissions/index.md
 markdown_extensions:
   - toc:
       permalink: true

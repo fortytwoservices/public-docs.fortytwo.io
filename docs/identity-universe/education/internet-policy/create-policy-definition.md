@@ -44,7 +44,7 @@ The below definition is often used, for targeting all students by finding all id
 
 ## Step 3 - Create policy definition
 
-To create a new policy definition, make sure you are signed in as an [Education Administrator](../../getting-started/iam-admins/index.md) and go to the **Internet policy** feature in the [Universe portal](https://universe.fortytwo.io/education/internet-policy) and find **Manage policies**:
+To create a new policy definition, make sure you are signed in as an [Education Administrator](../../getting-started/permissions/index.md) and go to the **Internet policy** feature in the [Universe portal](https://universe.fortytwo.io/education/internet-policy) and find **Manage policies**:
 
 ![alt text](media/image-2.png)
 

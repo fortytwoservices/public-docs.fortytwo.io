@@ -2,7 +2,7 @@
 
 ## Admin consent to Fortytwo Universe
 
-Consent has to be granted by a Global Administrator, once per tenant. See [getting started](../getting-started/index.md) for details, and [Administrator permissions](../getting-started/iam-admins/index.md) for the roles that have to be assigned afterwards.
+Consent has to be granted by a Global Administrator, once per tenant. See [getting started](../getting-started/index.md) for details, and [Administrator permissions](../getting-started/permissions/index.md) for the roles that have to be assigned afterwards.
 
 ## Setting up IAM Core
 
