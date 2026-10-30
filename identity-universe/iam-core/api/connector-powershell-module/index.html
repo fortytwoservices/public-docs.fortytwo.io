@@ -3282,14 +3282,14 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../getting-started/iam-admins/" class="md-nav__link ">
+            <a href="../../../getting-started/permissions/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    Administrator permissions
+    Permissions
   
 
     
@@ -3306,7 +3306,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Administrator permissions
+    Permissions
   
 
           </label>
@@ -4465,10 +4465,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authenticate" class="md-nav__link">
+  <a href="#authenticate-and-connect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authenticate
+        Authenticate and Connect
       
     </span>
   </a>
@@ -4483,6 +4483,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Import data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-party-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First party connector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-based-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API based connector
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -8513,7 +8541,7 @@
 <h2 id="installing-the-module">Installing the module<a class="headerlink" href="#installing-the-module" title="Permanent link">&para;</a></h2>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Install-Module</span> <span class="n">Fortytwo</span><span class="p">.</span><span class="n">IAM</span><span class="p">.</span><span class="n">Core</span><span class="p">.</span><span class="n">Connector</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 </span></code></pre></div>
-<h2 id="authenticate">Authenticate<a class="headerlink" href="#authenticate" title="Permanent link">&para;</a></h2>
+<h2 id="authenticate-and-connect">Authenticate and Connect<a class="headerlink" href="#authenticate-and-connect" title="Permanent link">&para;</a></h2>
 <p>A connector authenticates as an application, so create an access token profile for the app registration that the connector was created with, then connect using the connector's id:</p>
 <div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Add-EntraIDClientSecretAccessTokenProfile</span> <span class="p">`</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">-Name</span> <span class="s2">"MyConnector"</span> <span class="p">`</span>
@@ -8526,28 +8554,34 @@
 </span></code></pre></div>
 <p>See <a href="../connector-api/#setting-up">setting up</a> for how the app registration and the connector are tied together.</p>
 <h2 id="import-data">Import data<a class="headerlink" href="#import-data" title="Permanent link">&para;</a></h2>
+<h3 id="first-party-connector">First party connector<a class="headerlink" href="#first-party-connector" title="Permanent link">&para;</a></h3>
+<p>The Fortytwo first party connectors have the necessary code for doing an import. All you have to do is to trigger an import job.</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$connector</span> <span class="p">=</span> <span class="nb">Get-IAMCoreConnector</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">name</span> <span class="o">-eq</span> <span class="s1">'Entra ID Inbound'</span><span class="p">}</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="n">-Jobtype</span> <span class="n">ConnectorImport</span> <span class="n">-ConnectorId</span> <span class="nv">$connector</span><span class="p">.</span><span class="n">id</span>
+</span></code></pre></div>
+<h3 id="api-based-connector">API based connector<a class="headerlink" href="#api-based-connector" title="Permanent link">&para;</a></h3>
 <p>The heart of the module is the import session. Rather than issuing individual creates and deletes, you declare the complete set of objects the source system currently contains, and the module compares that against the connector space to work out what actually changed.</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Begin an import</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">Start-ConnectorSyncSession</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c"># Add every object the source system currently has</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$Employee</span> <span class="k">in</span> <span class="nb">Get-MyEmployees</span><span class="p">)</span> <span class="p">{</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">Build-ConnectorObject</span> <span class="p">`</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">-ExternalId</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">Id</span> <span class="p">`</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">-ObjectType</span> <span class="s2">"person"</span> <span class="p">`</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">-Data</span> <span class="p">@{</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">id</span>     <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">Id</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="n">names</span>  <span class="p">=</span> <span class="p">@{</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                <span class="n">firstname</span> <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">FirstName</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>                <span class="n">lastname</span>  <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">LastName</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            <span class="p">}</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            <span class="n">nin</span>    <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">NationalId</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="p">}</span> <span class="p">|</span> <span class="nb">Add-ConnectorSyncSessionObject</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c"># Work out what changed, then apply it</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nv">$Operations</span> <span class="p">=</span> <span class="nb">Get-ConnectorSyncSessionOperation</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nv">$Operations</span> <span class="p">|</span> <span class="nb">Complete-ConnectorSyncSessionOperation</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Begin an import</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Start-ConnectorSyncSession</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Add every object the source system currently has</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$Employee</span> <span class="k">in</span> <span class="nb">Get-MyEmployees</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">Build-ConnectorObject</span> <span class="p">`</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">-ExternalId</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">Id</span> <span class="p">`</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">-ObjectType</span> <span class="s2">"person"</span> <span class="p">`</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">-Data</span> <span class="p">@{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>            <span class="n">id</span>     <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">Id</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            <span class="n">names</span>  <span class="p">=</span> <span class="p">@{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>                <span class="n">firstname</span> <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">FirstName</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>                <span class="n">lastname</span>  <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">LastName</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            <span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="n">nin</span>    <span class="p">=</span> <span class="nv">$Employee</span><span class="p">.</span><span class="n">NationalId</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="p">}</span> <span class="p">|</span> <span class="nb">Add-ConnectorSyncSessionObject</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c"># Work out what changed, then apply it</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nv">$Operations</span> <span class="p">=</span> <span class="nb">Get-ConnectorSyncSessionOperation</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="nv">$Operations</span> <span class="p">|</span> <span class="nb">Complete-ConnectorSyncSessionOperation</span>
 </span></code></pre></div>
 <p>Because the session is a declaration of the full current state, objects that were in the connector space but were not added to the session are deleted. This is what makes deletions work — see <a href="../connector-api/#deleting-and-how-full-imports-work">how full imports work</a>.</p>
 <div class="admonition warning">
@@ -8555,11 +8589,11 @@
 <p>If the source system fails halfway through and you only add half the objects, the missing half will be deleted. Let the import fail loudly rather than completing a session with partial data. <code>Get-ConnectorSyncSessionOperation</code> refuses an empty session unless you pass <code>-AllowEmptySession</code>, which guards against the worst case.</p>
 </div>
 <p>To see what a session is about to do before applying it:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Get-ConnectorSyncSessionOperationStatistics</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Get-ConnectorSyncSessionOperationStatistics</span>
 </span></code></pre></div>
 <h2 id="synchronize-changes">Synchronize changes<a class="headerlink" href="#synchronize-changes" title="Permanent link">&para;</a></h2>
 <p>Populating the connector space does not change any core objects on its own. Run a synchronization to have the <a href="../../sync/syncrules/">sync rules</a> evaluated — this is done with the <a href="../iamcoreadmin-module/">admin module</a>, not this one:</p>
-<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
+<div class="language-PowerShell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">New-IAMCoreSyncJob</span> <span class="p">|</span> <span class="nb">Wait-IAMCoreSyncJob</span>
 </span></code></pre></div>
 <h2 id="cmdlets">Cmdlets<a class="headerlink" href="#cmdlets" title="Permanent link">&para;</a></h2>
 <table>
@@ -8646,7 +8680,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 13:09:08 UTC">October 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 14:37:54 UTC">October 30, 2026</span>
   </span>
 
     
