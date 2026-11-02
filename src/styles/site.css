@@ -386,6 +386,159 @@ kbd {
   color: hsl(var(--accent-on-light));
 }
 
+.article-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.article-head .eyebrow {
+  margin: 0;
+}
+
+/* ---------- Page menu (copy page, open in an AI assistant) ---------- */
+
+.page-menu {
+  position: relative;
+  display: flex;
+  flex: none;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: 10px;
+  background: hsl(var(--card));
+  font-size: 13px;
+}
+
+.page-menu-copy,
+.page-menu-more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 0;
+  background: none;
+  color: hsl(var(--heading));
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.page-menu-more > summary {
+  padding: 6px 8px;
+  border-left: 1px solid hsl(var(--card-border));
+  list-style: none;
+}
+
+.page-menu-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.page-menu-copy:hover,
+.page-menu-more > summary:hover {
+  background: hsl(var(--muted) / 0.6);
+}
+
+.page-menu-copy { border-radius: 9px 0 0 9px; }
+.page-menu-more > summary { border-radius: 0 9px 9px 0; }
+
+.page-menu-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  width: 260px;
+  padding: 6px;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: 12px;
+  background: hsl(var(--card));
+  box-shadow: var(--shadow-xl);
+}
+
+.page-menu-list a {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: hsl(var(--heading));
+}
+
+.page-menu-list a:hover {
+  background: hsl(var(--muted) / 0.6);
+}
+
+.page-menu-list a > svg {
+  flex: none;
+  margin-top: 2px;
+  color: hsl(var(--muted-foreground));
+}
+
+.page-menu-list span {
+  display: grid;
+}
+
+.page-menu-list strong {
+  font-weight: 600;
+}
+
+.page-menu-list small {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+}
+
+/* ---------- On this page, on narrow screens ---------- */
+
+.toc-mobile {
+  display: none;
+  margin: 20px 0 0;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: 12px;
+  background: hsl(var(--card));
+  font-size: 14px;
+}
+
+.toc-mobile > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: hsl(var(--heading));
+  cursor: pointer;
+  list-style: none;
+}
+
+.toc-mobile > summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc-mobile > summary svg:last-child {
+  margin-left: auto;
+  transition: transform 0.2s ease-out;
+}
+
+.toc-mobile[open] > summary svg:last-child {
+  transform: rotate(180deg);
+}
+
+.toc-mobile ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 14px 12px;
+}
+
+.toc-mobile a {
+  display: block;
+  padding: 6px 0;
+  color: hsl(var(--muted-foreground));
+}
+
+.toc-mobile a.depth-3 {
+  padding-left: 14px;
+}
+
 .page-title {
   margin: 0;
   font-family: var(--font-display);
@@ -683,6 +836,10 @@ kbd {
 
   .toc {
     display: none;
+  }
+
+  .toc-mobile {
+    display: block;
   }
 }
 

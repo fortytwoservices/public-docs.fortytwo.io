@@ -39,6 +39,33 @@ addEventListener('keydown', (e) => {
 // Keep the current product's tab in view on narrow screens.
 $('.product-tab[aria-current="true"]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 
+// ---------- Page menu ----------
+const pageCopy = $<HTMLButtonElement>('.page-menu-copy');
+pageCopy?.addEventListener('click', async () => {
+  const text = fetch(pageCopy.dataset.markdown!).then((r) => r.text());
+  const label = $('span', pageCopy)!;
+  try {
+    // Safari only allows a clipboard write started inside the click, so hand it the pending text.
+    if ('ClipboardItem' in window) {
+      await navigator.clipboard.write([new ClipboardItem({ 'text/plain': text.then((t) => new Blob([t], { type: 'text/plain' })) })]);
+    } else {
+      await navigator.clipboard.writeText(await text);
+    }
+    label.textContent = 'Copied';
+  } catch {
+    label.textContent = 'Copy not allowed';
+  }
+  setTimeout(() => (label.textContent = 'Copy page'), 1600);
+});
+
+const pageMore = $<HTMLDetailsElement>('.page-menu-more');
+document.addEventListener('click', (e) => {
+  if (pageMore?.open && !pageMore.contains(e.target as Node)) pageMore.open = false;
+});
+$('.toc-mobile')?.addEventListener('click', (e) => {
+  if ((e.target as Element).closest('a')) ($('.toc-mobile') as HTMLDetailsElement).open = false;
+});
+
 // ---------- Code copy ----------
 for (const block of $$('.code-block')) {
   const pre = $('pre', block)!;
