@@ -1,0 +1,154 @@
+---
+import '../styles/site.css';
+import { products, site } from '../config/products';
+import { icon } from '../lib/icons';
+
+type Crumb = { name: string; path: string };
+type Props = {
+  title: string;
+  description?: string | null;
+  productId?: string | null;
+  crumbs?: Crumb[];
+  updated?: Date | null;
+  noindex?: boolean;
+};
+const { title, description, productId = null, crumbs = [], updated = null, noindex = false } = Astro.props;
+const product = products.find((p) => p.id === productId);
+const fullTitle = [title, product && product.name !== title ? product.name : null, title === site.title ? null : site.title]
+  .filter(Boolean)
+  .join(' · ');
+const encode = (id: string) => id.split('/').map(encodeURIComponent).join('/');
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const metaDescription = description ?? 'Documentation and user guides for Fortytwo products and managed services.';
+const shareImage = new URL('/assets/og-default.png', site.url).href;
+
+// Structured data: breadcrumbs for every doc page, and the page itself as a TechArticle.
+const jsonLd = [
+  crumbs.length > 0 && {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.path, site.url).href })),
+  },
+  crumbs.length > 0 && {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: title,
+    description: metaDescription,
+    url: canonical,
+    ...(updated && { dateModified: updated.toISOString() }),
+    publisher: { '@type': 'Organization', name: 'Fortytwo', url: 'https://www.fortytwo.io' },
+  },
+].filter(Boolean);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/assets/favicon-32x32.png" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" title="LLM-friendly index" href="/llms.txt" />
+    <meta property="og:type" content={crumbs.length > 0 ? 'article' : 'website'} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={shareImage} />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-row">
+        <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false">
+          <Fragment set:html={icon('menu', 20)} />
+        </button>
+        <a class="brand" href="/" aria-label="Fortytwo Docs home">
+          <span class="brand-logo" role="img" aria-label="Fortytwo"></span>
+          <span class="brand-label">Docs</span>
+        </a>
+        <button class="search-trigger" id="search-trigger" aria-label="Search documentation">
+          <Fragment set:html={icon('search', 16)} />
+          <span>Search docs…</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <nav class="header-actions" aria-label="External">
+          <a class="header-link" href="https://www.fortytwo.io">fortytwo.io</a>
+          <a class="icon-button" href={`https://github.com/${site.repo}`} aria-label="GitHub repository">
+            <Fragment set:html={icon('github', 18)} />
+          </a>
+          <button class="icon-button" id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon-light"><Fragment set:html={icon('moon', 18)} /></span>
+            <span class="theme-icon-dark"><Fragment set:html={icon('sun', 18)} /></span>
+          </button>
+          <a class="btn" href="https://www.fortytwo.io/contact">Contact us</a>
+        </nav>
+      </div>
+      <div class="container">
+        <nav class="product-tabs" aria-label="Products">
+          <a class="product-tab" href="/" aria-current={!product?.featured ? 'true' : undefined}>
+            <Fragment set:html={icon('layout-grid', 16)} />
+            All products
+          </a>
+          {
+            products.filter((p) => p.featured).map((p) => (
+              <a class="product-tab" href={`/${encode(p.id)}/`} aria-current={p.id === productId ? 'true' : undefined}>
+                <Fragment set:html={icon(p.icon, 16)} />
+                {p.name}
+                {p.badge && <span class="badge">{p.badge}</span>}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <span>© {new Date().getFullYear()} Fortytwo. We Build Intelligent Companies.</span>
+        <div class="footer-links">
+          <a href="/security/">Security</a>
+          <a href={`https://github.com/${site.repo}`}>GitHub</a>
+          <a href="https://www.linkedin.com/company/fortytwoio">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="search-dialog" id="search-dialog" aria-label="Search">
+      <div class="search-input-row">
+        <Fragment set:html={icon('search', 18)} />
+        <input id="search-input" type="search" placeholder="Search all Fortytwo docs" autocomplete="off" spellcheck="false" />
+        <kbd>Esc</kbd>
+      </div>
+      <div class="search-filters" id="search-filters">
+        <button class="chip" data-product="" aria-pressed="true">All products</button>
+        {products.map((p) => <button class="chip" data-product={p.name} aria-pressed="false">{p.name}</button>)}
+      </div>
+      <ul class="search-results" id="search-results" role="listbox"></ul>
+    </dialog>
+
+    <dialog class="lightbox" id="lightbox"></dialog>
+
+    <script>
+      import '../scripts/client';
+    </script>
+  </body>
+</html>

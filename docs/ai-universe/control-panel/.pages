@@ -1,0 +1,7 @@
+title: Control panel
+icon: sliders-horizontal
+arrange:
+  - home.md
+  - ai.md
+  - people.md
+  - settings.md

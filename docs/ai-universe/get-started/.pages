@@ -1,0 +1,7 @@
+title: Get started
+icon: rocket
+arrange:
+  - before-you-install.md
+  - install.md
+  - first-sign-in.md
+  - connect-github.md

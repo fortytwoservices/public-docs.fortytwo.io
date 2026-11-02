@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { icon } from '../lib/icons';
+---
+
+<Base title="Page not found" noindex>
+  <main class="container not-found">
+    <p class="eyebrow">404</p>
+    <h1 class="page-title">This page is not here</h1>
+    <p class="page-lead">It may have moved when the docs were reorganised. Search for it, or start from the product list.</p>
+    <div class="not-found-actions">
+      <button class="btn" data-open-search><Fragment set:html={icon('search', 16)} />Search the docs</button>
+      <a class="header-link" href="/">All products</a>
+    </div>
+  </main>
+</Base>
+
+<script>
+  document.querySelector('[data-open-search]')?.addEventListener('click', () => {
+    document.getElementById('search-trigger')?.click();
+  });
+</script>
+
+<style>
+  .not-found {
+    max-width: 640px;
+    padding-top: 96px;
+    padding-bottom: 120px;
+    text-align: center;
+  }
+
+  .not-found-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+</style>

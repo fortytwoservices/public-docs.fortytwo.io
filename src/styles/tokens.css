@@ -1,0 +1,102 @@
+/* Mirrors the AI Universe designsystem tokens
+   (fortytwo-ai-universe: apps/control-galaxy/client/src/styles.css + packages/shared-ui).
+   Same HSL triplets, so `hsl(var(--x) / alpha)` reads exactly like the portal's
+   Tailwind classes. Replace with @fortytwo/universe-tokens once it is published. */
+:root {
+  --background: 77 37% 96%;
+  --foreground: 176 33% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 176 33% 9%;
+  --card-border: 77 18% 86%;
+  --muted: 75 35% 89%;
+  --muted-foreground: 176 16% 23%;
+  --surface-sunken: 76 36% 93%;
+  --scrim: 176 33% 9% / 0.72;
+  --primary: 79 70% 58%;
+  --accent-on-light: 82 57% 43%;
+  --primary-foreground: 174 52% 11%;
+  --secondary: 75 35% 89%;
+  --secondary-foreground: 174 52% 11%;
+  --accent: 174 52% 11%;
+  --accent-foreground: 77 37% 96%;
+  --destructive: 0 65% 45%;
+  --border: 77 18% 86%;
+  --ring: 174 52% 11%;
+  --input-border: 77 12% 70%;
+  --heading: 174 52% 11%;
+  --brand-deep: 174 52% 11%;
+  --brand-deep-foreground: 77 37% 96%;
+  --brand-sage: 75 35% 89%;
+  --brand-beige: 40 59% 87%;
+  --brand-mint: 135 89% 83%;
+  --ai: 262 52% 40%;
+  --ai-muted: 262 60% 95%;
+
+  /* Callout tones, from shared-ui lib/status-tokens.ts (Tailwind amber/red/emerald). */
+  --tone-info-bg: hsl(var(--primary) / 0.1);
+  --tone-info-border: hsl(var(--primary) / 0.35);
+  --tone-info-text: hsl(var(--brand-deep));
+  --tone-warning-bg: rgb(245 158 11 / 0.1);
+  --tone-warning-border: rgb(245 158 11 / 0.3);
+  --tone-warning-text: #92400e;
+  --tone-error-bg: rgb(239 68 68 / 0.1);
+  --tone-error-border: rgb(239 68 68 / 0.3);
+  --tone-error-text: #b91c1c;
+  --tone-success-bg: rgb(16 185 129 / 0.1);
+  --tone-success-border: rgb(16 185 129 / 0.3);
+  --tone-success-text: #065f46;
+
+  --radius-pill: 48px;
+  --radius-feature: 28px;
+  --radius-card: 24px;
+  --radius-panel: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-soft: 0 2px 8px rgba(16, 32, 31, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgb(16 32 31 / 0.08), 0 8px 10px -6px rgb(16 32 31 / 0.06);
+
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', var(--font-sans);
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container-max: 1440px;
+  --measure-read: 760px;
+  color-scheme: light;
+}
+
+.dark {
+  --background: 200 18% 9%;
+  --foreground: 77 37% 96%;
+  --card: 200 14% 13%;
+  --card-foreground: 77 37% 96%;
+  --card-border: 200 12% 22%;
+  --muted: 200 12% 16%;
+  --muted-foreground: 200 12% 70%;
+  --surface-sunken: 200 16% 6%;
+  --scrim: 200 30% 2% / 0.82;
+  --primary: 79 70% 62%;
+  --accent-on-light: 79 70% 62%;
+  --primary-foreground: 200 18% 9%;
+  --secondary: 200 12% 20%;
+  --secondary-foreground: 77 37% 96%;
+  --accent: 79 70% 62%;
+  --accent-foreground: 200 18% 9%;
+  --destructive: 0 65% 52%;
+  --border: 200 12% 22%;
+  --ring: 79 70% 58%;
+  --input-border: 200 10% 46%;
+  --heading: 77 37% 96%;
+  --brand-sage: 75 25% 30%;
+  --brand-beige: 40 30% 35%;
+  --brand-mint: 135 60% 50%;
+  --ai: 262 70% 80%;
+  --ai-muted: 262 40% 24%;
+
+  --tone-info-text: hsl(var(--primary));
+  --tone-warning-text: #fcd34d;
+  --tone-error-text: #fca5a5;
+  --tone-success-text: #a7f3d0;
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
+}

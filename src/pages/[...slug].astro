@@ -1,0 +1,32 @@
+---
+import Doc from '../layouts/Doc.astro';
+import { getSite, type Page } from '../lib/content';
+import { products } from '../config/products';
+
+export async function getStaticPaths() {
+  const site = await getSite();
+  const pages = [...site.pages.values()].map((page) => {
+    const flat = site.flat.get(page.product.id) ?? [];
+    const i = flat.indexOf(page);
+    const top = page.vpath.split('/').slice(0, 2).join('/');
+    const section = site.dirs.get(top)?.title ?? site.pages.get(`${top}/`)?.navTitle;
+    return {
+      params: { slug: page.slug.replace(/\/$/, '') },
+      props: {
+        page,
+        prev: i > 0 ? flat[i - 1] : null,
+        next: i >= 0 && i < flat.length - 1 ? flat[i + 1] : null,
+        eyebrow: page.vpath.split('/').length > 2 && section ? section : page.product.name,
+      },
+    };
+  });
+  return pages;
+}
+
+const { page, prev, next, eyebrow } = Astro.props as { page: Page; prev: Page | null; next: Page | null; eyebrow: string };
+const site = await getSite();
+const product = products.find((p) => p.id === page.product.id)!;
+const productIndex = site.pages.get(`${product.id}/`) ?? null;
+---
+
+<Doc page={page} nav={site.nav.get(product.id) ?? []} prev={prev} next={next} eyebrow={eyebrow} productIndex={productIndex} />

@@ -1,0 +1,416 @@
+---
+import Base from '../layouts/Base.astro';
+import { products, site } from '../config/products';
+import { getSite, type NavItem } from '../lib/content';
+import { icon } from '../lib/icons';
+import { encodePath } from '../lib/markdown';
+
+const content = await getSite();
+const pageCount = (id: string) => [...content.pages.values()].filter((p) => p.product.id === id && !p.hidden).length;
+const featured = products.filter((p) => p.featured);
+const others = products.filter((p) => !p.featured);
+
+// The first few sections of a product's sidebar, as quick links on its box.
+function firstPage(item: NavItem): string | null {
+  if (item.slug) return item.slug;
+  return item.type === 'group' ? item.children.map(firstPage).find(Boolean) ?? null : null;
+}
+const quickLinks = (id: string) =>
+  (content.nav.get(id) ?? [])
+    .map((item) => ({ title: item.title, slug: firstPage(item) }))
+    .filter((l) => l.slug)
+    .slice(0, 4);
+---
+
+<Base title={site.title} description="Documentation and user guides for Fortytwo products and managed services.">
+  <main class="container home">
+    <section class="hero">
+      <p class="hero-kicker">Fortytwo documentation</p>
+      <h1>Everything you need to run our products in your own cloud.</h1>
+      <p class="hero-lead">Guides, references and how-tos for every Fortytwo product and managed service. Written by the teams who build them.</p>
+      <button class="hero-search" data-open-search>
+        <Fragment set:html={icon('search', 18)} />
+        <span>Search across all products…</span>
+        <kbd>⌘K</kbd>
+      </button>
+    </section>
+
+    <section aria-labelledby="choose">
+      <h2 class="home-heading" id="choose">Choose a product</h2>
+      <div class="featured-grid">
+        {
+          featured.map((p, i) => (
+            <div class:list={['product-box', i === 0 && 'spotlight']}>
+              <a class="product-box-main" href={`/${encodePath(p.id)}/`}>
+                <span class="card-icon" set:html={icon(p.icon, 24)} />
+                <span class="product-box-title">
+                  {p.name}
+                  {p.badge && <span class="badge">{p.badge}</span>}
+                </span>
+                <span class="product-box-body">{p.description}</span>
+              </a>
+              <ul class="quick-links">
+                {quickLinks(p.id).map((l) => (
+                  <li>
+                    <a href={`/${encodePath(l.slug!)}`}>
+                      {l.title}
+                      <Fragment set:html={icon('chevron-right', 14)} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a class="product-box-cta" href={`/${encodePath(p.id)}/`}>
+                Open {p.name} docs <Fragment set:html={icon('arrow-right', 16)} />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 class="home-heading" id="more">More products and services</h2>
+      <div class="product-grid">
+        {
+          others.map((p) => (
+            <a class="product-card" href={`/${encodePath(p.id)}/`}>
+              <span class="card-icon" set:html={icon(p.icon, 20)} />
+              <span class="product-card-title">{p.name}</span>
+              <span class="product-card-body">{p.description}</span>
+              <span class="product-card-meta">
+                {pageCount(p.id)} pages <Fragment set:html={icon('arrow-right', 14)} />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="help-row">
+      <a class="help-card" href="/security/">
+        <Fragment set:html={icon('shield-check', 20)} />
+        <span><strong>Report a vulnerability</strong>How to reach our security team, with our PGP key.</span>
+      </a>
+      <a class="help-card" href="https://www.fortytwo.io/contact">
+        <Fragment set:html={icon('message-circle', 20)} />
+        <span><strong>Talk to us</strong>Questions about a product, a contract or a deployment.</span>
+      </a>
+      <a class="help-card" href={`https://github.com/${site.repo}`}>
+        <Fragment set:html={icon('git-pull-request', 20)} />
+        <span><strong>Improve these docs</strong>Every page has an edit link. Pull requests welcome.</span>
+      </a>
+    </section>
+  </main>
+</Base>
+
+<script>
+  document.querySelector('[data-open-search]')?.addEventListener('click', () => {
+    document.getElementById('search-trigger')?.click();
+  });
+</script>
+
+<style>
+  .home {
+    padding-top: 64px;
+    padding-bottom: 96px;
+  }
+
+  .hero {
+    max-width: 760px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .hero-kicker {
+    margin: 0 0 12px;
+    font-weight: 600;
+    font-size: 14px;
+    color: hsl(var(--accent-on-light));
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    color: hsl(var(--heading));
+    text-wrap: balance;
+  }
+
+  .hero-lead {
+    margin: 18px auto 0;
+    max-width: 600px;
+    font-size: 18px;
+    color: hsl(var(--muted-foreground));
+    text-wrap: pretty;
+  }
+
+  .hero-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(520px, 100%);
+    height: 54px;
+    margin: 32px auto 0;
+    padding: 0 12px 0 20px;
+    border: 1px solid hsl(var(--input-border) / 0.6);
+    border-radius: var(--radius-pill);
+    background: hsl(var(--card));
+    color: hsl(var(--muted-foreground));
+    box-shadow: var(--shadow-xl);
+    transition: border-color 0.2s ease-out;
+  }
+
+  .hero-search:hover {
+    border-color: hsl(var(--ring) / 0.5);
+  }
+
+  .hero-search span {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .product-box {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid hsl(var(--card-border));
+    border-radius: var(--radius-feature);
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-soft);
+    transition: border-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+
+  .product-box:hover {
+    border-color: hsl(var(--primary));
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .product-box-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-box .card-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+  }
+
+  .product-box-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: hsl(var(--heading));
+  }
+
+  .product-box-body {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .quick-links {
+    flex: 1;
+    list-style: none;
+    margin: 22px 0 0;
+    padding: 14px 0 0;
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .quick-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: hsl(var(--heading));
+    opacity: 0.85;
+    transition: opacity 0.15s ease-out;
+  }
+
+  .quick-links a:hover {
+    opacity: 1;
+  }
+
+  .product-box-cta {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    background: hsl(var(--brand-deep));
+    color: hsl(var(--brand-deep-foreground));
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.2s ease-out, color 0.2s ease-out;
+  }
+
+  .product-box-cta:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  :global(.dark) .product-box-cta {
+    background: hsl(var(--secondary));
+    color: hsl(var(--foreground));
+  }
+
+  .spotlight {
+    background: hsl(var(--brand-deep));
+    border-color: hsl(var(--brand-deep));
+    --heading: var(--brand-deep-foreground);
+    --muted-foreground: 77 20% 80%;
+    --border: 174 30% 22%;
+  }
+
+  .spotlight .card-icon {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .spotlight .product-box-cta,
+  :global(.dark) .spotlight .product-box-cta {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .spotlight .product-box-cta:hover {
+    background: hsl(var(--brand-mint));
+  }
+
+  :global(.dark) .spotlight {
+    border-color: hsl(174 40% 24%);
+  }
+
+  .home-heading {
+    margin: 0 0 20px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    color: hsl(var(--heading));
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid hsl(var(--card-border));
+    border-radius: var(--radius-card);
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-soft);
+    transition: border-color 0.2s ease-out, transform 0.2s ease-out;
+  }
+
+  .product-card:hover {
+    border-color: hsl(var(--primary));
+    transform: translateY(-2px);
+  }
+
+  .product-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    color: hsl(var(--heading));
+  }
+
+  .product-card-body {
+    flex: 1;
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .product-card-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .product-card:hover .product-card-meta {
+    color: hsl(var(--heading));
+  }
+
+  .help-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .help-card {
+    display: flex;
+    gap: 14px;
+    padding: 20px;
+    border-radius: var(--radius-panel);
+    background: hsl(var(--muted) / 0.7);
+    color: hsl(var(--heading));
+    font-size: 14px;
+    line-height: 1.5;
+    transition: background 0.2s ease-out;
+  }
+
+  .help-card:hover {
+    background: hsl(var(--muted));
+  }
+
+  .help-card span {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .help-card strong {
+    display: block;
+    color: hsl(var(--heading));
+    font-weight: 600;
+  }
+
+  @media (max-width: 960px) {
+    .featured-grid,
+    .product-grid,
+    .help-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 961px) and (max-width: 1200px) {
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

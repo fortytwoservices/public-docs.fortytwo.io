@@ -1,0 +1,9 @@
+title: Apps
+icon: layout-grid
+arrange:
+  - create-an-app.md
+  - agents.md
+  - wisdom.md
+  - people.md
+  - build.md
+  - app-settings.md
