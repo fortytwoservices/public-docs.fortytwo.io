@@ -204,13 +204,15 @@ kbd {
   background: hsl(var(--foreground));
 }
 
+/* The icon sits in a span; as a grid it is centred like the other icon buttons, not on the text baseline. */
+.theme-icon-light,
+.dark .theme-icon-dark {
+  display: grid;
+}
+
 .theme-icon-dark,
 .dark .theme-icon-light {
   display: none;
-}
-
-.dark .theme-icon-dark {
-  display: block;
 }
 
 /* ---------- Product tabs ---------- */
