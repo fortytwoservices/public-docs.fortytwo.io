@@ -6,7 +6,8 @@
     "sources": "node scripts/fetch-sources.mjs",
     "dev": "npm run sources && astro dev",
     "build": "npm run sources && astro build && pagefind --site dist",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check:links": "node scripts/check-links.mjs dist"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
