@@ -846,8 +846,8 @@ Produces: **object**.
 | [`mvjoin`](#mvjoin) | String | Flatten a multi-valued string |
 | [`word`](#word) | String | Split and take one part |
 | [`substring`](#substring) | String | Extract by position |
-| [`tolower`](#tolower-toupper) | String | Lower case |
-| [`toupper`](#tolower-toupper) | String | Upper case |
+| [`tolower`](#tolower--toupper) | String | Lower case |
+| [`toupper`](#tolower--toupper) | String | Upper case |
 | [`trim`](#trim) | String | Remove surrounding whitespace |
 | [`regexreplace`](#regexreplace) | String, multi-valued string | Regular expression replace |
 | [`regexswitch`](#regexswitch) | String | Choose a value by pattern |
@@ -855,8 +855,8 @@ Produces: **object**.
 | [`tostring`](#tostring) | String | Read a string from an object |
 | [`followreferenceforstring`](#followreferenceforstring) | String | Read from the object this one points at |
 | [`findreferencingobjectforstring`](#findreferencingobjectforstring) | String | Read from the object pointing at this one |
-| [`true`](#true-false) | Boolean | Always true |
-| [`false`](#true-false) | Boolean | Always false |
+| [`true`](#true--false) | Boolean | Always true |
+| [`false`](#true--false) | Boolean | Always false |
 | [`and`](#and) | Boolean | All inputs true |
 | [`or`](#or) | Boolean | Any input true |
 | [`not`](#not) | Boolean | Invert |

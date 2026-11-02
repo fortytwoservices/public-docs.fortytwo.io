@@ -51,14 +51,22 @@ function absoluteLinks(markdown: string, page: Page, content: Site): string {
   });
 }
 
+function pageBody(page: Page, content: Site): string {
+  return absoluteLinks(mkdocsCompat(page.markdown), page, content)
+    .replace(/^\s*#\s+.*\n/, '')
+    .trim();
+}
+
+// One page as Markdown, for "Copy page" and for AI assistants reading a single page.
+export function pageMarkdown(page: Page, content: Site): string {
+  return `# ${page.title}\n\nProduct: ${page.product.name}\nSource: ${pageUrl(page)}\n\n${pageBody(page, content)}\n`;
+}
+
 export function llmsFull(content: Site): string {
   const parts = [`# ${site.title}`, '', `> Every page of ${site.url}, as Markdown.`];
   for (const product of products) {
     for (const page of visible(content, product.id)) {
-      const body = absoluteLinks(mkdocsCompat(page.markdown), page, content)
-        .replace(/^\s*#\s+.*\n/, '')
-        .trim();
-      parts.push('', '---', '', `# ${page.title}`, '', `Product: ${product.name}`, `Source: ${pageUrl(page)}`, '', body);
+      parts.push('', '---', '', `# ${page.title}`, '', `Product: ${product.name}`, `Source: ${pageUrl(page)}`, '', pageBody(page, content));
     }
   }
   return `${parts.join('\n')}\n`;

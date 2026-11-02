@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import legacyUrls from './src/integrations/legacy-urls.ts';
+import webpImages from './src/integrations/webp-images.ts';
 
 // Last commit date per docs file, so the sitemap tells search engines what actually changed.
 function gitDates() {
@@ -34,5 +35,7 @@ export default defineConfig({
       serialize: (item) => ({ ...item, lastmod: lastmod(item.url) }),
     }),
     legacyUrls(),
+    // After legacy-urls, which copies the images into the build.
+    webpImages(),
   ],
 });

@@ -12,7 +12,11 @@ npm install
 npm run dev        # http://localhost:4321, reloads as you edit
 npm run build      # the full site in dist/, with the search index
 npm run preview    # serve dist/ (search only works here)
+npm run check:links  # after a build: broken links, missing anchors, unrendered Markdown
 ```
+
+CI runs the build and the link check on every pull request. Using an AI coding assistant? It reads
+[AGENTS.md](AGENTS.md) (Claude Code through `CLAUDE.md`), which has the rules for changing the docs safely.
 
 ## Write a page
 
@@ -42,6 +46,17 @@ arrange:
   - before-you-install.md
   - install.md
   - ...          # everything not listed, alphabetically
+```
+
+A folder with many pages can be split into sidebar sections without moving files (moving a file
+changes its URL):
+
+```yaml
+title: Azure AD B2C
+sections:
+  - title: Concepts
+    icon: book-open
+    pages: [a-CIAM-IEF-introduction.md, d2-IEF.md]
 ```
 
 ### Building blocks
