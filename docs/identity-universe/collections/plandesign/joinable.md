@@ -125,17 +125,3 @@ Someone holding two positions can be a member for one of them and not the other,
     A [criteria collection](criteria.md) returns `memberIds` as plain identifiers. Only joinable collections pair the object with a relationship.
 
 Administrators can add and remove members directly, bypassing the request flow entirely — useful for seeding a new collection with people who already have the access it represents. In PowerShell that is `Import-JoinableCollectionMemberBatch`, which takes **IAM Core identity ids**, not Entra object ids.
-
-## Related documentation
-
-- [Collections](../index.md)
-- [Collections API](../api/index.md)
-- [Criteria collections](criteria.md)
-- [PowerShell module](../api/collections-module.md)
-- [PowerShell examples](../api/collections-examples.md)
-- [Authenticating PowerShell](../api/authentication-powershell.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](../troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)

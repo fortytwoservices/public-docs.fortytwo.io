@@ -55,6 +55,12 @@ plugins:
         "Self%20Hosted%20Runners/Azure%20DevOps/index.md": "marketplace-offerings/self-hosted-runners/ado/index.md"
         "Self%20Hosted%20Runners/index.md": "marketplace-offerings/self-hosted-runners/index.md"
         identity-universe/getting-started/iam-admins/index.md: identity-universe/getting-started/permissions/index.md
+        identity-universe/group-link/api.md: identity-universe/collections/api/grouplink-api.md
+        identity-universe/group-link/index.md: identity-universe/collections/plandesign/group-link-entraid.md
+        identity-universe/collections/plandesign/group-link.md: identity-universe/collections/plandesign/group-link-overview.md
+        identity-universe/collections/api/index.md: identity-universe/collections/api/collections-api.md
+        identity-universe/collections/troubleshooting.md: identity-universe/collections/troubleshooting/troubleshoot-collections.md
+        identity-universe/collections/plandesign/migration-patterns.md: identity-universe/collections/deployuse/migration-patterns.md
 markdown_extensions:
   - toc:
       permalink: true

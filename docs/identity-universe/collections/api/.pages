@@ -1,7 +1,8 @@
 title: API and PowerShell
 
 arrange:
-  - authentication-powershell.md
+  - collections-api.md
   - collections-module.md
   - collections-examples.md
+  - grouplink-api.md
   - ...

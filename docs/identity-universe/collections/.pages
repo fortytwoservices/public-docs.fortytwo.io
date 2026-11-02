@@ -3,6 +3,7 @@ title: Collections
 arrange:
   - getting-started.md
   - plandesign
+  - deployuse
   - api
-  - troubleshooting.md
+  - troubleshooting
   - ...

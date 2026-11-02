@@ -11,8 +11,8 @@ Administrators must hold the following roles to get full Identity Universe acces
 | Role | Purpose |
 | - | - |
 | IAM Core - user | |
-| IAM Core - administrator | Enables [core](../../iam-core) administration in the portal and APIs |
-| Collections - Administrator | Enables the [collections](../../collections) administration option in the portal and APIs. |
+| IAM Core - administrator | Enables [core](../../iam-core/index.md) administration in the portal and APIs |
+| Collections - Administrator | Enables the [collections](../../collections/index.md) administration option in the portal and APIs. |
 | Events - administrator | |
 | Workflows - administrator | Enables the workflows administration option in the portal and APIs. |
 | Education - administrator | Enables the education administration option in the portal and APIs.  |

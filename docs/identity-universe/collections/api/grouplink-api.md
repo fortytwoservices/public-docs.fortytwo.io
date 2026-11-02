@@ -1,12 +1,7 @@
-# API and PowerShell
+# GroupLink API
 
 ## Authentication
-
-All API endpoints are authenticated with the customer's own Entra ID, through our multi tenant application Fortytwo Universe (for how to provide admin consent, if not already in place, see [this URL](https://login.microsoftonline.com/common/adminconsent?client_id=2808f963-7bba-4e66-9eee-82d0b178f408)).
-
-This means that you can use any kind of identity to talk to our API! Users, Agents, Service Principals, Managed Service Identities, you name it. As long as you can get a token for the scope ```https://api.fortytwo.io/.default``` or the resource ```2808f963-7bba-4e66-9eee-82d0b178f408``` you are good.
-
-We strongly recommend our PowerShell module [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken) for getting one. The multi-tenant client app `68bf2f1d-b9e1-4477-8b90-81314861f05f` (**Fortytwo Universe - Prod - PowerShell Client**) allows redirect to localhost for simple and interactive sign-ins.
+Refer to [Authentication with PowerShell](../../iam-core/api/authentication-powershell.md) for details on how to obtain an access token.
 
 ```PowerShell
 # Invoke interactive sign in
@@ -26,7 +21,7 @@ Can only be assigned to users:
 
 | Role | Role value | Granted access |
 |------|------------|----------------|
-| Collection Criteria - Administrator | collection_criteria_definition-administrator | Full access to group links |
+| Collection - Administrator | collection_criteria_definition-administrator | Full access to group links |
 
 ### Applications
 
@@ -95,7 +90,7 @@ The collection and the group are both checked before the link is created, so a l
 | Status | Meaning |
 |-|-|
 | `400` | `collectionId` or `entraGroupId` is empty, or the collection does not exist |
-| `403` | The group does not exist, cannot be written, or is a [group type that cannot be linked](./index.md#groups-that-cannot-be-linked) |
+| `403` | The group does not exist, cannot be written, or is a [group type that cannot be linked](../plandesign/group-link-entraid.md#groups-that-cannot-be-linked) |
 | `409` | That Entra ID group is already linked to a collection |
 | `502` | The collection or the group could not be verified — the check failed, rather than failing the check. Retry; if it persists, Identity Universe may be missing access. |
 
@@ -130,7 +125,7 @@ The ids are Entra ID object ids. Nothing is written.
 
 Preview does not need an existing link, so it works as a dry run before linking an existing production group. Read `membersToRemove` first — on a group that already has members, that list is the risk.
 
-`membersWithoutEntraAccount` is how many members of the collection have no Entra ID account to place. While it is above zero, [no member will be removed](./index.md#members-without-an-entra-id-account).
+`membersWithoutEntraAccount` is how many members of the collection have no Entra ID account to place. While it is above zero, [no member will be removed](../plandesign/group-link-entraid.md#members-without-an-entra-id-account).
 
 ### Trigger a synchronization
 
@@ -168,7 +163,7 @@ Accepted means queued, not finished. Poll the job to find out what happened.
 
 | Field | |
 |-|-|
-| `type` | `ManualSync`, `LinkCreated` or `ScheduledSweep` — see [when a link synchronizes](./index.md#when-a-link-synchronizes) |
+| `type` | `ManualSync`, `LinkCreated` or `ScheduledSweep` — see [when a link synchronizes](../plandesign/group-link-entraid.md#when-a-link-synchronizes) |
 | `status` | `Queued`, `Running`, `Succeeded` or `Failed` |
 | `attempts` | A failed job is retried up to three times before it stays failed |
 | `added` / `removed` | Members written to the group |
@@ -212,9 +207,3 @@ Disable a link without touching the group's current membership:
 ```PowerShell
 Invoke-RestMethod "$Base/group-links/$($Link.data)" -Method Patch -Headers $Headers -ContentType "application/json" -Body (@{ state = "Disabled" } | ConvertTo-Json)
 ```
-
-## Related documentation
-
-- [Group Link](./index.md) — how a link behaves
-- [Group Link design guidance](../collections/plandesign/group-link.md) — composing the collections behind a link
-- [Collections API](../collections/api/index.md) — creating the collection a link points at

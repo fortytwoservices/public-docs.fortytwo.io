@@ -217,17 +217,3 @@ Both collection kinds accept `metadata` with `tags` and `attributes`, used for g
 | Attribute value length | 200 characters |
 
 Tags and attribute keys are lower-cased and trimmed when stored; attribute values keep their casing. Duplicates are rejected.
-
-## Related documentation
-
-- [Collections](../index.md)
-- [Collections API](../api/index.md)
-- [Joinable collections](joinable.md)
-- [Authenticating PowerShell](../api/authentication-powershell.md)
-- [PowerShell module](../api/collections-module.md)
-- [PowerShell examples](../api/collections-examples.md)
-- [Collection design patterns](design-patterns.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](../troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)

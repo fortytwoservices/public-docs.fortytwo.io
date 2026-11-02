@@ -10,7 +10,7 @@ Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 |-|-|
 | [**IAM Core**](./iam-core/index.md) | The data foundation. Source systems are brought in through [connectors](./iam-core/connectors/index.md), and [sync rules](iam-core/sync/syncrules.md) turn that raw data into identities, organizational units and relationships. |
 | [**Collections**](./collections/index.md) | Groups of people, either defined by criteria over the core data or joinable on request with an approval flow. Collections are how access is expressed. |
-| [**Group Link**](./group-link/index.md) | Keeps a Microsoft Entra ID group's membership aligned with a collection, so applications that read Entra ID groups get their answer from the collection. |
+| [**Group Link**](collections/plandesign/group-link-entraid.md) | Keeps a Microsoft Entra ID group's membership aligned with a collection, so applications that read Entra ID groups get their answer from the collection. |
 | **Workflows** | Automation that reacts to people joining or leaving a collection, for example by calling a webhook. Configured from the Administration blade. |
 
 ## How it fits together
@@ -38,6 +38,6 @@ The value of the middle step is that it happens once. Rather than every downstre
 - [**IAM administrator**](getting-started/permissions/index.md) — the roles needed to administer Identity Universe, and how to assign them
 - [**IAM Core**](./iam-core/index.md) — the data model, connectors and sync rules
 - [**Collections**](./collections/index.md) — criteria and joinable collections
-- [**Group Link**](./group-link/index.md) — connecting a collection to an Entra ID group, and the API for it
+- [**Group Link**](collections/plandesign/group-link-entraid.md) — connecting a collection to an Entra ID group, and the API for it
 
 Most things can be done in the web interface, through a PowerShell module, or through the API — see the relevant section for each.

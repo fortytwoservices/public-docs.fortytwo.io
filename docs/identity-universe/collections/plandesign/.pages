@@ -5,6 +5,6 @@ arrange:
   - naming-and-metadata.md
   - criteria.md
   - joinable.md
-  - group-link.md
-  - migration-patterns.md
+  - group-link-overview.md
+  - group-link-entraid.md
   - ...

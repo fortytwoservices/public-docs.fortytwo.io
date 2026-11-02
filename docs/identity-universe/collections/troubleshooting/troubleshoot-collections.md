@@ -1,10 +1,10 @@
-## Collection troubleshooting
+# Collections troubleshooting
 
 This guide provides a structured approach to troubleshooting Identity Universe collections across the web interface, API, PowerShell, membership evaluation, joinable request flows, and Group Link.
 
 Start at the layer where the expected state is first incorrect. Avoid changing several parts of the configuration at the same time, as this makes it harder to determine the actual cause.
 
-### Troubleshooting model
+## Troubleshooting model
 
 For collection-based access, validate each layer separately:
 
@@ -607,17 +607,3 @@ Do not include:
 - [ ] No competing process manages the same collection or group membership.
 - [ ] The target application has been validated separately from group membership.
 - [ ] Diagnostic information has been captured without secrets.
-
-## Related documentation
-
-- [Collections](index.md)
-- [Collections API](api/index.md)
-- [Criteria Collections](plandesign/criteria.md)
-- [Joinable collections](plandesign/joinable.md)
-- [Authenticating PowerShell](api/authentication-powershell.md)
-- [PowerShell module](api/collections-module.md)
-- [PowerShell examples](api/collections-examples.md)
-- [Collection design patterns](plandesign/design-patterns.md)
-- [Group Link](plandesign/group-link.md)
-- [Collection naming and metadata](plandesign/naming-and-metadata.md)
-- [Collection migration patterns](plandesign/migration-patterns.md)

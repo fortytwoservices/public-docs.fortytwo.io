@@ -64,19 +64,7 @@ Collections can carry `metadata` with `tags` and free-form `attributes`, and bot
 
 ## Working with collections
 
-You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](api/collections-module.md) or the [API](api/index.md).
+You can work with the [Identity Universe collections blade](https://universe.fortytwo.io/access/collections), the [PowerShell module](api/collections-module.md) or the [API](api/collections-api.md).
 
 - [Criteria reference](plandesign/criteria.md) — the condition syntax, operators and filterable attributes
 - [Joinable collections reference](plandesign/joinable.md) — join policies, approval gates and the request lifecycle
-
-## Related documentation
-
-- [Criteria collections](plandesign/criteria.md)
-- [Joinable collections](plandesign/joinable.md)
-- [PowerShell module](api/collections-module.md)
-- [PowerShell examples](api/collections-examples.md)
-- [Authenticating PowerShell](api/authentication-powershell.md)
-- [Collection design patterns](plandesign/design-patterns.md)
-- [Group Link](plandesign/group-link.md)
-- [Collection naming and metadata](plandesign/naming-and-metadata.md)
-- [Collections troubleshooting](troubleshooting.md)

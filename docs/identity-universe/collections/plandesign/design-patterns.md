@@ -485,40 +485,6 @@ However, avoid splitting a simple rule into many small collections when they hav
 
 The objective is not to maximize the number of collections. The objective is to make the access model understandable, reusable, and maintainable.
 
-## Naming recommendations
-
-Names should make the purpose and type of a collection clear.
-
-Suggested structure:
-
-```text
-<Collection purpose> - <Business scope> - <Access level or qualifier>
-```
-
-Examples:
-
-```text
-Employees - Finance
-Employees - Municipality A
-Requested access - Finance reporting
-Exceptions - Finance reporting - Include
-Migration - Finance reporting - Legacy membership
-Access - Finance reporting - Reader
-Access - Finance reporting - Administrator
-```
-
-Avoid names that depend only on internal abbreviations or technical identifiers.
-
-The naming convention should make it possible to distinguish:
-
-- reusable membership collections;
-- request and approval collections;
-- exception collections;
-- migration collections;
-- final access collections.
-
-For more information, see naming-and-metadata.md.
-
 ## Common anti-patterns
 
 ### One collection for several unrelated accesses
@@ -579,17 +545,3 @@ Before using a collection for access control, verify the following:
 - [ ] The expected membership has been previewed and validated.
 - [ ] The collection owner is known.
 - [ ] The corresponding Entra ID group and Group Link are documented where applicable.
-
-## Related documentation
-
-- [Collections](../index.md)
-- [Collections API](../api/index.md)
-- [Criteria Collections](criteria.md)
-- [Joinable collections](joinable.md)
-- [Authenticating PowerShell](../api/authentication-powershell.md)
-- [PowerShell module](../api/collections-module.md)
-- [PowerShell examples](../api/collections-examples.md)
-- [Group Link](group-link.md)
-- [Collection naming and metadata](naming-and-metadata.md)
-- [Collections troubleshooting](../troubleshooting.md)
-- [Collection migration patterns](migration-patterns.md)
