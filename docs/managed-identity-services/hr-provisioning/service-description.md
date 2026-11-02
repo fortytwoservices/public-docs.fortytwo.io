@@ -1,8 +1,12 @@
+---
+description: Fortytwo HR Provisioning is designed to streamline and automate the synchronization of HR data with the identity platform through the Entra ID Inbound Provisioning API.
+---
+
 # Service description
 
 At Fortytwo, we understand the critical importance of maintaining seamless integration between your Human Resources (HR) system and your identity platform with Active Directory and Entra ID, for efficient user account management. Our service, *Fortytwo HR Provisioning*, is designed to streamline and automate the synchronization of HR data with the identity platform through the [Entra ID Inbound Provisioning API](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/inbound-provisioning-api-concepts). This ensures that your user accounts remain up-to-date and aligned with HR processes, facilitating a smooth joiner-mover-leaver lifecycle process.
 
-![](media/Fortytwo_Managed_Identity_services_overview.jpg)
+![Fortytwo Managed Identity Services overview](media/Fortytwo_Managed_Identity_services_overview.jpg)
 
 ## Key features
 
@@ -26,27 +30,40 @@ At Fortytwo, we understand the critical importance of maintaining seamless integ
 
 ## Responsibility matrix
 
-| Task/Activity                          | Responsible |
-|----------------------------------------|-------------|
-| **Service Implementation**             |             |
-| Configure service settings             | Fortytwo    |
-| Establish HR system connection         | Fortytwo    |
-| Define attribute mapping               | Shared      |
-| Microsoft user licensing               | Customer    |
-| **Ongoing Operations and Support**     |             |
-| HR data quality                        | Customer    |
-| Address data discrepancies             | Customer    |
-| Monitor data synchronization           | Fortytwo    |
-| Address service issues                 | Fortytwo    |
-| Address API changes                    | Fortytwo    |
-| **Configuration Changes**              |             |
-| Update data mapping                    | Fortytwo    |
-| Adjust service settings                | Fortytwo    |
-| **Communication**                      |             |
-| Provide service updates                | Fortytwo    |
-| Share best practices                   | Fortytwo    |
-| Report issues                          | Customer    |
-| Inform end users about data processing | Customer    |
+### Service Implementation
+
+| Task/Activity | Responsible |
+|-|-|
+| Configure service settings | Fortytwo |
+| Establish HR system connection | Fortytwo |
+| Define attribute mapping | Shared |
+| Microsoft user licensing | Customer |
+
+### Ongoing Operations and Support
+
+| Task/Activity | Responsible |
+|-|-|
+| HR data quality | Customer |
+| Address data discrepancies | Customer |
+| Monitor data synchronization | Fortytwo |
+| Address service issues | Fortytwo |
+| Address API changes | Fortytwo |
+
+### Configuration Changes
+
+| Task/Activity | Responsible |
+|-|-|
+| Update data mapping | Fortytwo |
+| Adjust service settings | Fortytwo |
+
+### Communication
+
+| Task/Activity | Responsible |
+|-|-|
+| Provide service updates | Fortytwo |
+| Share best practices | Fortytwo |
+| Report issues | Customer |
+| Inform end users about data processing | Customer |
 
 ## Pricing and information
 

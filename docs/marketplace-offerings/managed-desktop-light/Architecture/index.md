@@ -1,6 +1,12 @@
+---
+description: The solution is based on a single Windows 11 multi-session host, joined to Azure AD.
+---
+
 # Architecture
 
-The solution is based on a single Windows 11 multi-session host. The host is joined to Azure AD, and users are authenticated using Azure AD. The host is not joined to any on-prem domain, and is not connected to any on-prem network. The host is not connected to any other Azure network, and is not connected to any other Azure resources.
+The solution is based on a single Windows 11 multi-session host. The host is joined to Azure AD, and users are authenticated using Azure AD.
+
+The host is not joined to any on-prem domain, and is not connected to any on-prem network. The host is not connected to any other Azure network, and is not connected to any other Azure resources.
 
 ## Network
 

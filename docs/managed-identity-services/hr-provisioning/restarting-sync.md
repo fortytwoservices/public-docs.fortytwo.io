@@ -1,37 +1,57 @@
+---
+description: The Entra ID Inbound Provisioning API maintains a "sticky join", and the "Restart provisioning" button in the Entra ID portal does not clear this sticky join.
+---
+
 # Fully restarting sync
 
 The Entra ID Inbound Provisioning API maintains a "sticky join", meaning it will statefully remember which Active Directory and Entra ID object has successfully been synced with a SCIM object.
 
 This also means that a wrongly joined user can continue to be wrongly joined, even though an attribute is switched over to another user account.
 
-The "Restart provisioning" button in the Entra ID portal does not clear this sticky join. Instead, the below steps must be done:
+:::warning
+The "Restart provisioning" button in the Entra ID portal does not clear this sticky join. Instead, the below steps must be done.
+:::
 
-- Sign into the Entra ID tenant and find the Inbound Provisioning API
-- Open a PowerShell
-- Extract your Graph access token using developer mode and set the $accesstoken variable in PowerShell:
+::::steps
+### Find the Inbound Provisioning API
 
-![](media/20240305091031.png)
+Sign into the Entra ID tenant and find the Inbound Provisioning API
 
-```PowerShell
+### Open a PowerShell
+
+### Set the access token
+
+Extract your Graph access token using developer mode and set the $accesstoken variable in PowerShell:
+
+![Graph access token in the browser developer mode](media/20240305091031.png)
+
+```powershell
 $accesstoken = "ey....=="
 ```
 
-- Find the provisioning API endpoint and copy it into the $api variable
+### Set the provisioning API endpoint
 
-![](media/20240305091214.png)
+Find the provisioning API endpoint and copy it into the $api variable
 
-```PowerShell
+![Provisioning API endpoint](media/20240305091214.png)
+
+```powershell
 $api = "https://..../bulkUpload"
 ```
 
-- Run the below PowerShell to restart sync fully:
+### Restart sync fully
 
-    ```PowerShell
-    Invoke-RestMethod -Uri ($uri -replace "/bulkUpload","/restart") -Method Post -Body '{"criteria":{"resetScope":"Full"}}' -ContentType "application/json" -Headers @{Authorization = "Bearer $accesstoken"}
-    ```
+Run the below PowerShell to restart sync fully:
 
-- The API should now show the following:
+```powershell
+Invoke-RestMethod -Uri ($uri -replace "/bulkUpload","/restart") -Method Post -Body '{"criteria":{"resetScope":"Full"}}' -ContentType "application/json" -Headers @{Authorization = "Bearer $accesstoken"}
+```
 
-![](media/20240305091456.png)
+### Check the result
+
+The API should now show the following:
+
+![The provisioning API after the full restart](media/20240305091456.png)
+::::
 
 All joins will now be re-evaluated on the next full sync cycle from the Fortytwo HR provisioning service, which will happen each night.

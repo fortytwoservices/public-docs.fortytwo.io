@@ -1,4 +1,4 @@
 # Overvåkning
 
-!!! note "Work in progress"
-
+:::note[Work in progress]
+:::

@@ -1,10 +1,20 @@
+---
+description: As a final step, you need to please subscribe to Bytt.Email through Azure Marketplace.
+---
+
 # Step 6 - Licensing and final steps
 
-After you have used one of the guides [automated configuration using PowerShell](autoconfig.md) or [configure everything manually](config-step1.md), Bytt.Email should be fully operational 🚀 
+After you have used one of the guides [automated configuration using PowerShell](autoconfig.md) or [configure everything manually](config-step1.md), Bytt.Email should be fully operational.
+
+## Check that it works
 
 - You should be able to sign into [https://bytt.email](https://bytt.email) as a user that is a member of one of the email pattern groups.
 - You should be able to access the [admin panel](https://bytt.email/admin.html) as a user that is assigned the [Bytt.Email - Administrator](./roles.md) role
 
-As a final step, you need to please subscribe through [Azure Marketplace](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/fortytwoio.changeemail). After enabling an Azure Marketplace subscription, the **UNLICENSED** message should disappear with a few minutes. ⏱️
+## Subscribe
 
+As a final step, you need to please subscribe through [Azure Marketplace](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/fortytwoio.changeemail). After enabling an Azure Marketplace subscription, the **UNLICENSED** message should disappear with a few minutes.
+
+:::tip
 Good luck, and please reach out to [hello@fortytwo.io](mailto:hello@fortytwo.io) if you run into any issues!
+:::

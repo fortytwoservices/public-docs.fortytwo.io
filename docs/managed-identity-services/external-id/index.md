@@ -1,7 +1,12 @@
+---
+description: Fortytwo's Managed External ID service provides a production-ready, enterprise-grade implementation of Microsoft Entra External ID for customer identity and access management (CIAM), delivered as a fully managed service.
+---
 
 # Fortytwo Managed Microsoft Entra External ID
 
-Fortytwo's Managed External ID service provides a production-ready, enterprise-grade implementation of Microsoft Entra External ID for customer identity and access management (CIAM), delivered as a fully managed service. This eliminates the complexity of tenant configuration, security hardening, and operational management while providing enhanced functionality and professional support.
+Fortytwo's Managed External ID service provides a production-ready, enterprise-grade implementation of Microsoft Entra External ID for customer identity and access management (CIAM), delivered as a fully managed service.
+
+This eliminates the complexity of tenant configuration, security hardening, and operational management while providing enhanced functionality and professional support.
 
 ## Prerequisites
 
@@ -118,6 +123,7 @@ Fortytwo designs this boundary during the initial workshop so the External ID te
 ## Core Services
 
 ### Identity Management
+
 - **User Registration**: Self-service sign-up with email verification
 - **Profile Management**: Customer self-service account management
 - **Password Policies**: Enterprise-grade password requirements with custom banned password lists to block organization-specific strings during password creation and reset
@@ -125,6 +131,7 @@ Fortytwo designs this boundary during the initial workshop so the External ID te
 - **Just-in-Time Password Migration**: Migrate users from legacy systems on first sign-in without bulk data migration (Preview)
 
 ### Authentication Services
+
 - **Multi-Factor Authentication**: Email one-time passcode, SMS, and passkeys/FIDO2 where supported by the selected flow
 - **Social Login**: Google, Facebook, Apple, and additional providers through supported federation
 - **Passwordless**: Email one-time passcodes and passkeys/FIDO2 where supported by the selected flow
@@ -134,6 +141,7 @@ Fortytwo designs this boundary during the initial workshop so the External ID te
 - **SSO**: Single sign-on across your application portfolio
 
 ### Security & Risk Management
+
 - **Conditional Access**: MFA, location-aware, selected-app, device-platform, and session policies
 - **Session Control**: Configurable sign-in frequency and persistent browser session policies via Conditional Access
 - **WAF Integration**: Native protection via Akamai and Cloudflare Web Application Firewall integrations
@@ -142,6 +150,7 @@ Fortytwo designs this boundary during the initial workshop so the External ID te
 - **Audit Logging**: Comprehensive security event logging
 
 ### Developer Experience
+
 - **API Partner Onboarding**: Self-service developer portal
 - **OAuth 2.0 / OIDC**: Standard protocol support
 - **Client Credentials (M2M)**: OAuth 2.0 client credentials flow for service-to-service integrations; requires M2M Premium add-on
@@ -153,18 +162,20 @@ Fortytwo designs this boundary during the initial workshop so the External ID te
 ## CheckID Passwordless Module
 
 ### Overview
+
 The CheckID module adds trusted, government-grade and payment-provider identity verification through integration with national electronic IDs, banking credentials, mobile payment systems, and custom API integrations in markets where provider APIs and local requirements support it.
 
 ### Supported Identity Providers
 
-**Nordic Countries**:
+::::tabs
+:::tab[Nordic Countries]
 - Norway: BankID, Vipps, ID-porten, MobilePay
 - Sweden: BankID, MobilePay
 - Denmark: MitID, NemID (legacy), MobilePay
 - Finland: FTN (Finnish Trust Network), MobilePay
 - Iceland: Íslykill (Audkenni)
-
-**European Coverage (via Signicat)**:
+:::
+:::tab[European Coverage (via Signicat)]
 - 35+ eID schemes across 44 countries
 - Government-issued digital IDs
 - Bank-issued identity credentials
@@ -176,104 +187,116 @@ The CheckID module adds trusted, government-grade and payment-provider identity 
 - Czech Republic: Bank iD
 - Poland: mObywatel
 - And 35+ more across EU/EEA
+:::
+:::tab[Global Coverage (via Custom API Integrations)]
+**Asia-Pacific**
 
-**Global Coverage (via Custom API Integrations)**:
-- **Asia-Pacific**: 
-  - Singapore: SingPass
-  - Japan: MyNumber
-  - Australia: myGovID
-  - India: Aadhaar (compliance-dependent)
-  - Hong Kong: iAM Smart
-  - Thailand: NDID
-  - Custom integrations where provider APIs and local requirements support them
-  
-- **Americas**:
-  - Canada: Government sign-in services
-  - USA: Login.gov, ID.me, state-level eIDs
-  - Brazil: Gov.br
-  - Mexico: e.firma
-  - Custom integrations where provider APIs and local requirements support them
-  
-- **Middle East & Africa**:
-  - UAE: UAE Pass
-  - Saudi Arabia: Absher, NAFATH
-  - South Africa: Smart ID
-  - Kenya: Huduma Namba
-  - Custom integrations where provider APIs and local requirements support them
+- Singapore: SingPass
+- Japan: MyNumber
+- Australia: myGovID
+- India: Aadhaar (compliance-dependent)
+- Hong Kong: iAM Smart
+- Thailand: NDID
+- Custom integrations where provider APIs and local requirements support them
 
-**Payment & Fintech Providers**:
+**Americas**
+
+- Canada: Government sign-in services
+- USA: Login.gov, ID.me, state-level eIDs
+- Brazil: Gov.br
+- Mexico: e.firma
+- Custom integrations where provider APIs and local requirements support them
+
+**Middle East & Africa**
+
+- UAE: UAE Pass
+- Saudi Arabia: Absher, NAFATH
+- South Africa: Smart ID
+- Kenya: Huduma Namba
+- Custom integrations where provider APIs and local requirements support them
+:::
+:::tab[Payment & Fintech Providers]
 - MobilePay (Nordic)
 - Open Banking verification (22 EU countries)
 - Bank verification APIs (global)
 - Custom payment provider integrations
+:::
+::::
 
 ### CheckID Features
 
-**Passwordless Authentication**:
+::::cards{cols=2}
+:::card{title="Passwordless Authentication" icon="key-round"}
 - Zero password management
 - Bank-grade security
 - Instant verification
 - Reduced friction
 - Global coverage via API integrations
-
-**Self-Service Onboarding**:
+:::
+:::card{title="Self-Service Onboarding" icon="user-check"}
 - Verify identity in seconds
 - No manual document checks
 - Automatic account provisioning
 - Compliance-ready verification
 - Works in supported markets where the required provider integration is available
-
-**Account Recovery**:
+:::
+:::card{title="Account Recovery" icon="rotate-ccw"}
 - Re-verify with trusted eID or payment provider
 - No helpdesk involvement
 - Instant access restoration
 - Audit trail maintained
-
-**Custom API Integration Process**:
+:::
+:::card{title="Custom API Integration Process" icon="plug"}
 - Fortytwo builds and maintains integrations
 - You specify required markets/providers
 - Standardized OIDC/OAuth interface
 - One integration point for all providers
 - Ongoing maintenance included
+:::
+::::
 
 ### CheckID Use Cases
 
-**1. Nordic B2C Applications**
+::::cards{cols=2}
+:::card{title="1. Nordic B2C Applications"}
 Enable Norwegian, Swedish, Danish, and Finnish customers to sign in with BankID, Vipps, MobilePay, or their trusted banking credentials.
-
-**2. European Market Expansion**
+:::
+:::card{title="2. European Market Expansion"}
 Support customers across 44 European countries with their national eID schemes and payment verification.
-
-**3. Global Customer Base**
+:::
+:::card{title="3. Global Customer Base"}
 Serve customers across selected global markets with locally trusted identity methods through Fortytwo's custom API integrations.
-
-**4. High-Value Transactions**
+:::
+:::card{title="4. High-Value Transactions"}
 Step-up authentication for sensitive operations using verified government IDs or payment provider credentials.
-
-**5. Regulatory Compliance**
+:::
+:::card{title="5. Regulatory Compliance"}
 Support AML/KYC workflows with bank-grade identity verification and payment provider authentication where the selected provider and jurisdiction allow it.
-
-**6. Employee/Contractor Onboarding**
+:::
+:::card{title="6. Employee/Contractor Onboarding"}
 Passwordless workforce authentication for operations in any country where you have staff.
+:::
+::::
 
 ### CheckID Integration Options
 
-**Standard Integration** (Included in CheckID Module):
+::::cards{cols=3}
+:::card{title="Standard Integration (Included in CheckID Module)"}
 - Pre-configured OIDC federation
 - BankID, Vipps, MobilePay, ID-porten support
 - Standard user flows
 - Basic monitoring
 - Up to 3 Nordic countries
-
-**Premium Integration**:
+:::
+:::card{title="Premium Integration"}
 - Full Signicat eID Hub access (35+ eIDs)
 - MobilePay across all Nordic markets
 - Custom claim mapping
 - Advanced fraud detection
 - White-label frontend
 - Up to 10 European countries
-
-**Enterprise Integration**:
+:::
+:::card{title="Enterprise Integration"}
 - **Custom API integration portfolio**
 - Fortytwo builds and maintains all integrations
 - Identity providers in supported markets
@@ -281,8 +304,11 @@ Passwordless workforce authentication for operations in any country where you ha
 - Custom compliance configurations
 - Priority support
 - Full white-label options
+:::
+::::
 
-**Custom API Integration Delivery**:
+#### Custom API Integration Delivery
+
 - Standard providers: 2-4 weeks per integration
 - Complex providers: 4-8 weeks per integration
 - Ongoing maintenance included in monthly fee
@@ -291,20 +317,23 @@ Passwordless workforce authentication for operations in any country where you ha
 
 ### Global Integration Examples
 
-**Manufacturing Company (60+ countries)**:
+#### Manufacturing Company (60+ countries)
+
 - Europe: Signicat eID Hub
 - Asia: SingPass (Singapore), MyNumber (Japan), custom India integration
 - Americas: Login.gov (USA), Gov.br (Brazil)
 - Middle East: UAE Pass, NAFATH (Saudi Arabia)
 - **Result**: Single authentication flow, locally-trusted verification worldwide
 
-**Financial Services (Regulated Markets)**:
+#### Financial Services (Regulated Markets)
+
 - Nordic: BankID, MobilePay for payments
 - EU: Open Banking verification + national eIDs
 - USA: Login.gov + bank account verification
 - Compliance with local KYC/AML in each market
 
-**IoT/Connected Devices (Global Consumer)**:
+#### IoT/Connected Devices (Global Consumer)
+
 - Local payment verification (MobilePay, Apple Pay, Google Pay)
 - Government ID fallback for each market
 - Device association with verified identity
@@ -313,6 +342,7 @@ Passwordless workforce authentication for operations in any country where you ha
 ## Supported Use Cases
 
 ### 1. Consumer Applications
+
 **Scenario**: E-commerce, SaaS, mobile apps requiring customer authentication
 
 **Features**:
@@ -326,6 +356,7 @@ Passwordless workforce authentication for operations in any country where you ha
 **Claims**: Email, name, preferences, subscription status, custom attributes
 
 ### 2. B2B Customer Portal
+
 **Scenario**: Business customers accessing services and dashboards
 
 **Features**:
@@ -338,6 +369,7 @@ Passwordless workforce authentication for operations in any country where you ha
 **Claims**: Company ID, role, permissions, business metadata
 
 ### 3. API Partner Ecosystem
+
 **Scenario**: Third-party developers building integrations
 
 **Features**:
@@ -349,6 +381,7 @@ Passwordless workforce authentication for operations in any country where you ha
 **Claims**: Developer ID, API scopes, organization, tier level
 
 ### 4. IoT & Connected Devices
+
 **Scenario**: Mobile apps controlling connected equipment
 
 **Features**:
@@ -361,6 +394,7 @@ Passwordless workforce authentication for operations in any country where you ha
 **Claims**: Device IDs, serial numbers, ownership, location
 
 ### 5. Multi-Brand Organizations
+
 **Scenario**: Multiple customer-facing brands under one company
 
 **Features**:
@@ -374,12 +408,14 @@ Passwordless workforce authentication for operations in any country where you ha
 ## Custom Branding Options
 
 ### Standard Branding (Included)
+
 - **Logo Upload**: Your company logo on sign-in pages
 - **Color Scheme**: Primary and accent colors
 - **Basic Customization**: Standard layouts and templates
 - **Email Templates**: Branded verification and notification emails
 
 ### Advanced Branding (Premium)
+
 - **Custom Domain**: login.yourcompany.com
 - **Full CSS Control**: Complete UI customization
 - **Custom Layouts**: Unique page designs
@@ -389,7 +425,8 @@ Passwordless workforce authentication for operations in any country where you ha
 
 ### Branding Elements
 
-**Sign-in Experience**:
+#### Sign-in Experience
+
 - Background images or colors
 - Custom headers and footers
 - Terms of service and privacy policy links
@@ -397,7 +434,8 @@ Passwordless workforce authentication for operations in any country where you ha
 - CheckID branding integration (if module enabled)
 - Localized provider names (BankID, MobilePay, local eIDs)
 
-**Email Communications**:
+#### Email Communications
+
 - Verification emails
 - Password reset notifications
 - Security alerts
@@ -409,7 +447,8 @@ Passwordless workforce authentication for operations in any country where you ha
 
 The managed build starts with focused design workshops before tenant configuration. The goal is to make the identity model explicit, capture the decisions that affect application integration, and avoid rebuilding B2C custom-policy behavior by accident.
 
-**Workshop Outputs**:
+#### Workshop Outputs
+
 - Journey and UX flow map for sign-up, sign-in, reset, consent, and step-up flows
 - Claims, groups, application roles, and authorization pattern decisions
 - Identity provider and CheckID/eID integration backlog
@@ -419,13 +458,15 @@ The managed build starts with focused design workshops before tenant configurati
 
 ### 6-8 Week Deployment Program
 
-**Week 0: Kickoff**
+#### Week 0: Kickoff
+
 - Access setup
 - Application inventory
 - Success measures and launch criteria
 - Existing identity and claims review
 
-**Week 1: Discovery & Design**
+#### Week 1: Discovery & Design
+
 - Requirements gathering and use case analysis
 - Identity provider selection (social, enterprise, custom, CheckID)
 - Geographic coverage assessment
@@ -435,7 +476,8 @@ The managed build starts with focused design workshops before tenant configurati
 - Brand asset collection
 - CheckID module assessment (if requested)
 
-**Weeks 2-3: Tenant Configuration**
+#### Weeks 2-3: Tenant Configuration
+
 - External ID tenant provisioning
 - Identity provider integration
 - CheckID module integration (if selected)
@@ -444,7 +486,8 @@ The managed build starts with focused design workshops before tenant configurati
 - User attribute schema design
 - Security policy configuration
 
-**Weeks 4-5: Application Integration**
+#### Weeks 4-5: Application Integration
+
 - SDK integration guidance
 - API endpoint configuration
 - CheckID authentication flows (if enabled)
@@ -453,7 +496,8 @@ The managed build starts with focused design workshops before tenant configurati
 - Developer documentation
 - QA and security testing
 
-**Weeks 6-8: Go-Live Preparation**
+#### Weeks 6-8: Go-Live Preparation
+
 - Production deployment
 - Security review and penetration testing
 - Performance testing and optimization
@@ -461,13 +505,15 @@ The managed build starts with focused design workshops before tenant configurati
 - Documentation and training delivery
 - Post-launch monitoring setup
 
-**Post-Launch: Ongoing Custom Integrations**
+#### Post-Launch: Ongoing Custom Integrations
+
 - Additional markets as you expand
 - New provider integrations on-demand
 - Continuous updates and maintenance
 - Performance optimization
 
 ### Post-Launch Support
+
 - 30-day hyper-care period
 - Weekly check-ins
 - Performance monitoring
@@ -477,7 +523,9 @@ The managed build starts with focused design workshops before tenant configurati
 
 ## Migrating from Azure AD B2C
 
-Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, and Microsoft has stated support continues until at least May 2030. Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.
+Effective May 1, 2025, Azure AD B2C is no longer available to purchase for new customers. Existing Azure AD B2C customers can continue using the service, and Microsoft has stated support continues until at least May 2030.
+
+Microsoft Entra External ID is the natural next platform for new CIAM work and planned modernization. Fortytwo handles the full migration as a managed engagement.
 
 Migration is not a lift-and-shift exercise. B2C custom policies, TrustFramework XML, claims transformations, and per-application journeys need to be assessed and rebuilt against the External ID model. The aim is to keep what maps cleanly to native External ID and add bridge patterns only for confirmed gaps.
 
@@ -526,13 +574,17 @@ We own the end-to-end migration: assessment, configuration of the new External I
 
 The right approach depends on whether your B2C configuration stores passwords in a way that is accessible at runtime.
 
-**Just-in-Time (JIT) migration** — recommended for most B2C migrations
+#### Just-in-Time (JIT) migration
+
+Recommended for most B2C migrations.
 
 Users continue signing in with their existing credentials without any interruption. On first sign-in after cutover, Fortytwo's custom authentication extension validates the entered password against the legacy system, migrates it into External ID, and clears the migration flag. Subsequent sign-ins go directly to External ID. Users never notice the migration.
 
 This approach requires Fortytwo to build and host an Azure Function that connects to the legacy credential store, secured via Azure Key Vault and managed identity. It is the default recommendation because it requires no user action and no forced password reset.
 
-**Self-service password reset (SSPR)** — simpler, user-facing
+#### Self-service password reset (SSPR)
+
+Simpler, user-facing.
 
 Users are prompted to reset their password on first sign-in after cutover. Suitable for smaller user bases or where the legacy password store is not accessible at runtime. Requires user communication before cutover.
 
@@ -551,20 +603,24 @@ JIT password migration adds approximately 1-2 weeks to any tier above, covering 
 
 ### Getting Started
 
-Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to schedule a B2C migration assessment. We will review your existing tenant, identify any feature gaps or custom policy complexity, and provide a scoped proposal.
+Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to schedule a B2C migration assessment.
+
+We will review your existing tenant, identify any feature gaps or custom policy complexity, and provide a scoped proposal.
 
 ## Security & Compliance
 
 ### Security Features
 
-**Security Monitoring**:
+#### Security Monitoring
+
 - Authentication and audit telemetry monitoring
 - Suspicious activity alerts
 - Provider health and error-rate monitoring
 - Incident response runbooks
 - CheckID verified identity assurance in supported markets (optional)
 
-**Access Controls**:
+#### Access Controls
+
 - Conditional Access policies
 - Location-based restrictions
 - MFA enforcement
@@ -572,7 +628,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - Geographic policy enforcement
 - Session controls for sign-in frequency and persistent browser sessions
 
-**Data Protection**:
+#### Data Protection
+
 - Encryption at rest and in transit
 - PII data minimization
 - GDPR-compliant data handling
@@ -581,7 +638,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Compliance Standards
 
-**Compliance Alignment**:
+#### Compliance Alignment
+
 - SOC 2-aligned controls
 - ISO 27001-aligned controls
 - GDPR-compliant data handling patterns
@@ -590,7 +648,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - eIDAS-supporting identity verification with eligible CheckID providers
 - Regional compliance support (PDPA, LGPD, etc.)
 
-**Data Residency**:
+#### Data Residency
+
 - EU data centers available
 - Nordic data centers available (Norway)
 - US data centers available
@@ -600,7 +659,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Audit & Logging
 
-**What We Monitor**:
+#### What We Monitor
+
 - All authentication attempts
 - CheckID verification events globally (if enabled)
 - Configuration changes
@@ -609,14 +669,16 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - API usage patterns
 - Geographic access patterns
 
-**What We DON'T Store**:
+#### What We DON'T Store
+
 - Passwords (hashed only)
 - Payment information
 - Unnecessary PII
 - Application data
 - Provider credentials
 
-**Retention Policies**:
+#### Retention Policies
+
 - Security logs: 90 days standard, custom retention available
 - Audit logs: 1 year
 - User activity: Configurable per compliance requirements
@@ -625,7 +687,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Service Monitoring
 
-**Health Checks**:
+#### Health Checks
+
 - Authentication endpoint availability
 - Identity provider connectivity
 - CheckID module availability globally (if enabled)
@@ -635,7 +698,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - API response times
 - Error rates and anomalies
 
-**Alerting**:
+#### Alerting
+
 - Proactive incident detection
 - Provider-specific alerts
 - Geographic availability monitoring
@@ -645,7 +709,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Performance Metrics
 
-**Key Performance Indicators**:
+#### Key Performance Indicators
+
 - Authentication success rate (target: >99.5%)
 - Sign-in latency (target: <500ms p95)
 - CheckID verification success rate globally (target: >99% if enabled)
@@ -670,7 +735,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Support Tiers
 
-**Standard Support (Included)**:
+#### Standard Support (Included)
+
 - Email support (business hours)
 - Configuration assistance
 - Integration documentation
@@ -679,7 +745,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - CheckID module support (if enabled)
 - Up to 3 custom API integrations
 
-**Premium Support**:
+#### Premium Support
+
 - 24/7 email & phone support
 - Dedicated Slack channel
 - Quarterly business reviews
@@ -689,7 +756,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 - Up to 10 custom API integrations
 - MobilePay integration support
 
-**Enterprise Support**:
+#### Enterprise Support
+
 - 24/7 phone & video support
 - Dedicated technical account manager
 - Weekly operations reviews
@@ -755,19 +823,22 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Package Examples
 
-**Startup Package** (Up to 50K MAU):
+#### Startup Package (Up to 50K MAU)
+
 - Setup: €13,800 (145,000 NOK)
 - Monthly: €2,300 (24,150 NOK)
 - Includes: Standard support, basic branding, 2 environments
 - **With CheckID Nordic**: Add €4,600 setup (48,300 NOK) + €0.05/user monthly (0.53 NOK/user)
 
-**Growth Package** (Up to 250K MAU):
+#### Growth Package (Up to 250K MAU)
+
 - Setup: €23,000 (241,500 NOK)
 - Monthly: €4,600 + usage (48,300 NOK + usage)
 - Includes: Premium support, advanced branding, 3 environments
 - **With CheckID Premium EU**: Add €9,200 setup (96,600 NOK) + €0.04/user monthly (0.42 NOK/user)
 
-**Enterprise Package** (Unlimited MAU):
+#### Enterprise Package (Unlimited MAU)
+
 - Setup: Custom
 - Monthly: Custom
 - Includes: Enterprise support, white-label, unlimited environments
@@ -775,19 +846,22 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
 
 ### Example Total Cost Scenarios
 
-**Scenario 1: Nordic SaaS with 30K MAU + MobilePay**
+#### Scenario 1: Nordic SaaS with 30K MAU + MobilePay
+
 - Base monthly: €2,300 (24,150 NOK)
 - Users: €0 (included in first 50K)
 - CheckID Nordic (BankID, Vipps, MobilePay): 30K × €0.05 = €1,500 (15,750 NOK)
 - **Total Monthly**: €3,800 (39,900 NOK)
 
-**Scenario 2: European E-commerce with 150K MAU**
+#### Scenario 2: European E-commerce with 150K MAU
+
 - Base monthly: €4,600 (48,300 NOK)
 - Users: 100K × €0.014 = €1,400 (14,700 NOK)
 - CheckID Premium (Full EU + MobilePay): 50K × €0.04 = €2,000 (21,000 NOK)
 - **Total Monthly**: €8,000 (84,000 NOK)
 
-**Scenario 3: Global Marketplace with 500K MAU (60 countries)**
+#### Scenario 3: Global Marketplace with 500K MAU (60 countries)
+
 - Base monthly: Custom (~€8,000 / 84,000 NOK)
 - Users: 450K × €0.014 = €6,300 (66,150 NOK)
 - CheckID Enterprise Global: 
@@ -796,7 +870,8 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
   - Custom APIs (10 markets): Included
 - **Total Monthly**: ~€24,900 (261,450 NOK)
 
-**Scenario 4: Manufacturing/Equipment (60 countries, employee + customer)**
+#### Scenario 4: Manufacturing/Equipment (60 countries, employee + customer)
+
 - Base monthly: Custom (~€10,000 / 105,000 NOK)
 - Employees (60K): €0.014 × 10K = €140 (1,470 NOK)
 - Customers (200K): €0.014 × 150K = €2,100 (22,050 NOK)
@@ -805,18 +880,17 @@ Contact us at [external-id@fortytwo.io](mailto:external-id@fortytwo.io) to sched
   - 15 custom API integrations for key markets
 - **Total Monthly**: ~€16,840 (176,820 NOK)
 
----
-
 ## Getting Started
 
 **Ready to simplify your customer identity management globally?**
 
-Contact: [external-id@fortytwo.io](mailto:external-id@fortytwo.io)  
-Schedule a demo: [fortytwo.io/book-a-demo](https://www.fortytwo.io/book-a-demo)  
-Technical documentation: [docs.fortytwo.io/external-id](https://docs.fortytwo.io/external-id)  
-CheckID module info: [docs.checkid.no](https://docs.checkid.no)
+- Contact: [external-id@fortytwo.io](mailto:external-id@fortytwo.io)
+- Schedule a demo: [fortytwo.io/book-a-demo](https://www.fortytwo.io/book-a-demo)
+- Technical documentation: [docs.fortytwo.io/external-id](https://docs.fortytwo.io/external-id)
+- CheckID module info: [docs.checkid.no](https://docs.checkid.no)
 
-**Next Steps**:
+### Next Steps
+
 1. Schedule discovery call
 2. Identify required geographic markets and providers
 3. Receive custom proposal with CheckID assessment
@@ -825,6 +899,6 @@ CheckID module info: [docs.checkid.no](https://docs.checkid.no)
 6. Kick off 8-week implementation
 7. Ongoing custom API integrations as you expand
 
----
-
-*All prices exclude VAT. Norwegian customers subject to 25% MVA. EU customers subject to local VAT rates. Volume discounts available for enterprise deployments. CheckID module requires separate terms with identity provider partners. Custom API integration pricing varies by provider complexity and market requirements. Contact us for detailed pricing based on your specific geographic coverage needs.*
+:::note[Pricing terms]
+All prices exclude VAT. Norwegian customers subject to 25% MVA. EU customers subject to local VAT rates. Volume discounts available for enterprise deployments. CheckID module requires separate terms with identity provider partners. Custom API integration pricing varies by provider complexity and market requirements. Contact us for detailed pricing based on your specific geographic coverage needs.
+:::

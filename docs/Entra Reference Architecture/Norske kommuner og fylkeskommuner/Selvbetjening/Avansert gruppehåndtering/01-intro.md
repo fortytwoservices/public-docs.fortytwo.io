@@ -1,3 +1,4 @@
 # Selvbetjeningsfunksjon for avansert gruppemedlemskap
 
-!!! note "Work in progress"
+:::note[Work in progress]
+:::

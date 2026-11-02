@@ -1,11 +1,9 @@
+---
+sidebarTitle: "Token validation"
+description: The best practice how to validate tokens issued by the Microsoft Identity platform.
+---
+
 # Validate OpenID Connect and OAuth 2.0 tokens
-
-## Table of contents
-
-- [Validate OpenID Connect and OAuth 2.0 tokens](#validate-openid-connect-and-oauth-20-tokens)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Validating OAuth 2.0 / OpenID Connect tokens](#validating-oauth-20-openid-connect-tokens)
 
 ## Introduction
 
@@ -19,19 +17,19 @@ There are many open-source libraries that are available for validating JWTs, dep
 
 Every custom policy created in the Identity Experience Framework has a dedicated OpenID Connect metadata endpoint. This allows apps to fetch necessary information at runtime, including amongst others endpoints, token contents, and token signing keys. For example the metadata document for the **B2C_1A_v1_signupsignin** policy in the **{tenantName}.onmicrosoft.com** tenant would be located at:
 
-```html
+```http
 https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_v1_signupsignin
 ```
 
 One of the properties of this configuration document is the *jwks_uri*, which values for the same policy can be found at:
 
-```html
+```http
 https://{tenantName}.b2clogin.com/{tenantName}.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_v1_signupsignin
 ```
 
->TIP!
->
->When using custom domain, {tenantName}.b2clogin.com, in the examples, can be replaced with the domain name.
+:::tip
+When using custom domain, {tenantName}.b2clogin.com, in the examples, can be replaced with the domain name.
+:::
 
 In order to determine which policy was used in signing an token (and where to fetch the metadata from), there are two options:
 

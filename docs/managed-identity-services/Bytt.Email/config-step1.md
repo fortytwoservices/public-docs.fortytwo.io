@@ -1,13 +1,23 @@
+---
+description: As the first step of getting access to the Bytt.Email service, you need to consent two enterprise applications in your Entra ID.
+---
+
 # Step 1 - Consenting access
 
-As the first step of getting access to the Bytt.Email service, you need to consent two enterprise applications in your Entra ID. The Fortytwo Universe app, which is our API hub, and the Bytt.Email application, which is used to sign into the frontend and accessing group information in your tenant.
+As the first step of getting access to the Bytt.Email service, you need to consent two enterprise applications in your Entra ID:
 
-!!! NOTE
-    In order to consent access in your tenant, you need one of the following roles active:
-    
-    - Global Administrator
-    - Cloud Application Administrator
-    - Application Administrator
+- The Fortytwo Universe app, which is our API hub
+- The Bytt.Email application, which is used to sign into the frontend and accessing group information in your tenant
+
+:::note
+In order to consent access in your tenant, you need one of the following roles active:
+
+- Global Administrator
+- Cloud Application Administrator
+- Application Administrator
+:::
+
+## Consent to the applications
 
 1. Consent to Fortytwo Universe, our API hub:
 

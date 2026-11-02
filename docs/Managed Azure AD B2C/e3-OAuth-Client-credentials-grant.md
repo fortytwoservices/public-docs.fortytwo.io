@@ -1,16 +1,9 @@
+---
+sidebarTitle: "Client credentials grant"
+description: Use the OAuth 2.0 client credentials grant to access web-hosted resources by using the identity of an application.
+---
+
 # OAuth 2.0 client credentials grant
-
-## Table of contents
-
-- [OAuth 2.0 client credentials grant](#oauth-20-client-credentials-grant)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Get direct authorization](#get-direct-authorization)
-    - [Access control lists](#access-control-lists)
-    - [Application permission](#application-permission)
-  - [Get a token](#get-a-token)
-    - [Successful response](#successful-response)
-  - [Use a token](#use-a-token)
 
 ## Introduction
 

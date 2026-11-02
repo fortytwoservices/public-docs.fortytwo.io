@@ -1,6 +1,12 @@
+---
+description: Entra ID dynamic membership rules for groups are awesome, but let's face it, they are simply way too limited. That's why we built a simple open source solution that enables you to build as advanced scenarios as you'd like.
+---
+
 # Entra ID Advanced Criteria Groups
 
-!!! note Documentation in progress
+:::note
+Documentation in progress
+:::
 
 Entra ID dynamic membership rules for groups are awesome, but let's face it, they are simply way too limited. That's why we built a simple open source solution that enables you to build as advanced scenarios as you'd like, while maintaining the lowest complexity possible, and the least amount of code possible.
 
@@ -8,16 +14,18 @@ Our solution runs as an [Azure Application](automation-account.md) in your Azure
 
 This magic is all powered by [our open source PowerShell module](https://www.powershellgallery.com/packages/AdvancedCriteriaBasedGroups), that you can also use on your own.
 
+## Why use this solution
+
 Let's have a look at why you would want to use this solution:
 
-You want to have a group with | Entra ID? | This solution
--|-|-
-Active users | ✅ | ✅
-Users with company equals Contoso | ✅ | ✅
-Users member of another group | ✅ | ✅
-Users with an attribute that ends with a value | | ✅
-Users with an attribute that matches a regular expression | | ✅
-Users member of another group, and having company equals Contoso | | ✅
-Users member of three groups at the same time | | ✅
-Users member of another group, but not member of a second group | | ✅
-Users that has not signed in the last 90 days | | ✅
+| You want to have a group with | Entra ID? | This solution |
+|-|-|-|
+| Active users | Yes | Yes |
+| Users with company equals Contoso | Yes | Yes |
+| Users member of another group | Yes | Yes |
+| Users with an attribute that ends with a value | | Yes |
+| Users with an attribute that matches a regular expression | | Yes |
+| Users member of another group, and having company equals Contoso | | Yes |
+| Users member of three groups at the same time | | Yes |
+| Users member of another group, but not member of a second group | | Yes |
+| Users that has not signed in the last 90 days | | Yes |

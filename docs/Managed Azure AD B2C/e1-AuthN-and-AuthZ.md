@@ -1,18 +1,9 @@
+---
+sidebarTitle: "Authentication and authorization"
+description: The Microsoft Identity platform supports the authentication protocol standard OAuth 2.0 and the added identity layer OpenID Connect.
+---
+
 # Authentication and Authorization
-
-## Table of contents
-
-- [Authentication and Authorization](#authentication-and-authorization)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [The basics](#the-basics)
-  - [OAuth 2.0 and OpenID Connect flows](#oauth-20-and-openid-connect-flows)
-  - [OpenID Connect](#openid-connect)
-  - [Policies](#policies)
-  - [Tokens](#tokens)
-  - [OAuth 2.0 Grants](#oauth-20-grants)
-  - [Which OAuth 2.0 flow should I use](#which-oauth-20-flow-should-i-use)
-  - [Debugging OpenID Connect and OAuth 2.0](#debugging-openid-connect-and-oauth-20)
 
 ## Introduction
 
@@ -100,9 +91,9 @@ This guide focuses on Authorization Code Grant, Implicit Grant and Client Creden
 
 The below figure serves as a *map* for selecting the applicable grant type for the given scenario.
 
->NOTE!
->
->Remember that [Implicit Grant](./e4-OAuth-Implicit-grant.md) is replaced by the [Authorization Code Grant extension Proof Key for Code Exchange (PKCE)](./e2-OAuth-AuthZ-code-grant.md#5-authorization-code-grant-extension-proof-key-for-code-exchange-pkce) to prevent certain attacks and securely perform OAuth exchanges.
+:::note
+Remember that [Implicit Grant](./e4-OAuth-Implicit-grant.md) is replaced by the [Authorization Code Grant extension Proof Key for Code Exchange (PKCE)](./e2-OAuth-AuthZ-code-grant.md#5-authorization-code-grant-extension-proof-key-for-code-exchange-pkce) to prevent certain attacks and securely perform OAuth exchanges.
+:::
 
 ![OAuth flows](media/OAuthFlows.png)
 

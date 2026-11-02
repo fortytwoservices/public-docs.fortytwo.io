@@ -1,13 +1,9 @@
+---
+sidebarTitle: "Custom policy files"
+description: Template listing the custom policy files that make up the User Journeys in the TEST environment.
+---
+
 # TEST - tenant.onmicrosoft.com - custom policy files
-
-## Table of contents
-
-- [TEST - tenant.onmicrosoft.com - custom policy files](#test-tenantonmicrosoftcom-custom-policy-files)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [v1 policies](#v1-policies)
-  - [v2 policies?](#v2-policies)
-  - [Foundational policy files](#foundational-policy-files)
 
 ## Introduction
 
@@ -15,11 +11,13 @@ The Identity Experience Framework uses custom policies, which are very flexible 
 
 All User Journeys have been configured for **tenant-wide** Single Sign-On support.
 
->TIP!
->
->All implementations use the [**custom domain**](https://learn.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-custom-policy) functionality.
->>When using custom domain, {tenantName}.b2clogin.com, in the examples, can be replaced with the domain name.
->Both domains are active and functioning, but use one at a time as Single Sign-On does not work across different domains.
+:::tip
+All implementations use the [**custom domain**](https://learn.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-custom-policy) functionality.
+
+When using custom domain, {tenantName}.b2clogin.com, in the examples, can be replaced with the domain name.
+
+Both domains are active and functioning, but use one at a time as Single Sign-On does not work across different domains.
+:::
 
 ## v1 policies
 

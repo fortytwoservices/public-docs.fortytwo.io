@@ -1,20 +1,9 @@
+---
+sidebarTitle: "Pipeline: push branding"
+description: Management of custom branding files, the manual way with a PowerShell script or the automated way with Azure DevOps repositories and pipelines.
+---
+
 # Pipeline deployment custom branding
-
-## Table of contents
-
-- [Pipeline deployment custom branding](#pipeline-deployment-custom-branding)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Upload files using Azure DevOps pipeline](#upload-files-using-azure-devops-pipeline)
-    - [Pipeline execution](#pipeline-execution)
-      - [Development pipeline](#development-pipeline)
-      - [Test and Production pipelines](#test-and-production-pipelines)
-  - [How to work with an Azure DevOps repository](#how-to-work-with-an-azure-devops-repository)
-  - [Recommended procedure](#recommended-procedure)
-    - [Checking in files to git repository with Visual Studio Code](#checking-in-files-to-git-repository-with-visual-studio-code)
-    - [Branch out from the **main** branch](#branch-out-from-the-main-branch)
-      - [Branching - graphical user interface](#branching-graphical-user-interface)
-      - [Branching - terminal / shell](#branching-terminal-shell)
 
 ## Introduction
 
@@ -44,10 +33,10 @@ There are pipelines created for uploading / publishing of branding files to all 
 - Automatically triggered
 - Manually triggered
 
->NOTE!
->
->All pipelines are configured to require approval before running.  
->Members of project group **Contributors** can all approve runs, ***including*** their own.
+:::note
+All pipelines are configured to require approval before running.
+Members of project group **Contributors** can all approve runs, ***including*** their own.
+:::
 
 #### Development pipeline
 
@@ -97,7 +86,7 @@ The following (recommended) [procedure](#recommended-procedure) uses an Azure De
 
 ## Recommended procedure
 
-1. Branch out from the **main** branch (using [graphical user interface](#branching-graphical-user-interface) or [shell / terminal](#branching-terminal-shell))
+1. Branch out from the **main** branch (using [graphical user interface](#branching---graphical-user-interface) or [shell / terminal](#branching---terminal--shell))
 1. Make code changes in the new branch
     1. If environment is **Development**, it is convenient to [manually upload files](./d5-Pipeline-branding-policies.md#uploading-custom-branding-files)
     1. Eventually, manual upload files will only be possible in **Development** as all changes to **Test** and **Production** should be fully automated
@@ -122,9 +111,9 @@ How to [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-G
 
 In [Visual Studio Code](https://code.visualstudio.com/) create a new branch by following these steps:
 
->TIP!
->
->First clone the project repository (this will create a local folder)
+:::tip
+First clone the project repository (this will create a local folder)
+:::
 
 #### Branching - graphical user interface
 
@@ -143,15 +132,15 @@ In [Visual Studio Code](https://code.visualstudio.com/) create a new branch by f
 
 By supplying the **-c** parameter the git switch command creates and switches to the branch:
 
-1. git switch -c <new branch name\>
+1. `git switch -c <new branch name>`
 1. Make changes
-1. git add **.** (or **git add \***) (adds all changes, single files can be select instead)
-1. git commit -m "<commit message\>"
-1. git status (see which files are committed)
-1. git push -u origin <branch name\>  
-(The **-u** == **--set-upstream** and is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
+1. `git add .` (or `git add *`) (adds all changes, single files can be select instead)
+1. `git commit -m "<commit message>"`
+1. `git status` (see which files are committed)
+1. `git push -u origin <branch name>`
+   (The **-u** == **--set-upstream** and is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
 1. Create **pull request** (PR) in Azure DevOps
 1. Approve and merge PR
-1. git checkout main
-1. git pull
-1. git branch -d <new branch name\> (deletes local branch, optional, but recommended)
+1. `git checkout main`
+1. `git pull`
+1. `git branch -d <new branch name>` (deletes local branch, optional, but recommended)

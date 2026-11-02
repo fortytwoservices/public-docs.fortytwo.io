@@ -1,3 +1,7 @@
+---
+description: Test the self hosted runner with an example GitHub workflow.
+---
+
 # Step 3 - Testing the self hosted runner
 
 The following is an example pipeline using the pool we just created:
@@ -22,6 +26,6 @@ jobs:
 
 We can see that the pipeline is working just fine:
 
-![](media/2023-09-15_14-19-38.png)
+![The workflow run completed](media/2023-09-15_14-19-38.png)
 
 That's it, you now have an agent pool in Github, that will automatically be updated whenever the Microsoft Hosted Runners are updated (through our image). Have fun!
