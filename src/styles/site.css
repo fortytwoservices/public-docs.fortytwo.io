@@ -670,7 +670,9 @@ kbd {
 
 /* ---------- Mobile ---------- */
 
-.menu-button {
+.menu-button,
+.drawer-products,
+.sidebar-mobile-only {
   display: none;
 }
 
@@ -697,9 +699,27 @@ kbd {
     display: inline-grid;
   }
 
+  .drawer-products,
+  .sidebar-mobile-only {
+    display: block;
+  }
+
+  .drawer-products {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .sidebar-mobile-only .drawer-products {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
   .sidebar {
     position: fixed;
-    inset: 113px 0 0 0;
+    inset: var(--header-height, 113px) 0 0 0;
+    overscroll-behavior: contain;
     z-index: 30;
     height: auto;
     padding: 20px 16px 48px;
@@ -710,6 +730,10 @@ kbd {
 
   body.nav-open .sidebar {
     transform: none;
+  }
+
+  body.nav-open {
+    overflow: hidden;
   }
 
   .search-trigger {

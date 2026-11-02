@@ -15,10 +15,29 @@ $('#theme-toggle')?.addEventListener('click', () => {
 
 // ---------- Mobile nav ----------
 const menu = $('#menu-button');
-menu?.addEventListener('click', () => {
-  const open = document.body.classList.toggle('nav-open');
-  menu.setAttribute('aria-expanded', String(open));
+const header = $('.site-header');
+
+function setNav(open: boolean) {
+  document.body.classList.toggle('nav-open', open);
+  menu?.setAttribute('aria-expanded', String(open));
+  menu?.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+}
+
+// The drawer opens below the header, whose height depends on the viewport.
+const syncHeaderHeight = () => document.documentElement.style.setProperty('--header-height', `${header?.offsetHeight ?? 113}px`);
+syncHeaderHeight();
+addEventListener('resize', syncHeaderHeight);
+
+menu?.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
+$('#sidebar')?.addEventListener('click', (e) => {
+  if ((e.target as Element).closest('a')) setNav(false);
 });
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setNav(false);
+});
+
+// Keep the current product's tab in view on narrow screens.
+$('.product-tab[aria-current="true"]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 
 // ---------- Code copy ----------
 for (const block of $$('.code-block')) {

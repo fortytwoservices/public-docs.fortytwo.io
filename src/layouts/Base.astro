@@ -2,6 +2,7 @@
 import '../styles/site.css';
 import { products, site } from '../config/products';
 import { icon } from '../lib/icons';
+import DrawerProducts from '../components/DrawerProducts.astro';
 
 type Crumb = { name: string; path: string };
 type Props = {
@@ -11,8 +12,9 @@ type Props = {
   crumbs?: Crumb[];
   updated?: Date | null;
   noindex?: boolean;
+  hasSidebar?: boolean;
 };
-const { title, description, productId = null, crumbs = [], updated = null, noindex = false } = Astro.props;
+const { title, description, productId = null, crumbs = [], updated = null, noindex = false, hasSidebar = false } = Astro.props;
 const product = products.find((p) => p.id === productId);
 const fullTitle = [title, product && product.name !== title ? product.name : null, title === site.title ? null : site.title]
   .filter(Boolean)
@@ -76,7 +78,7 @@ const jsonLd = [
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false">
+        <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
           <Fragment set:html={icon('menu', 20)} />
         </button>
         <a class="brand" href="/" aria-label="Fortytwo Docs home">
@@ -118,6 +120,16 @@ const jsonLd = [
         </nav>
       </div>
     </header>
+
+    {
+      !hasSidebar && (
+        <aside class="sidebar sidebar-mobile-only" id="sidebar" aria-label="Products">
+          <nav>
+            <DrawerProducts current={productId} />
+          </nav>
+        </aside>
+      )
+    }
 
     <slot />
 

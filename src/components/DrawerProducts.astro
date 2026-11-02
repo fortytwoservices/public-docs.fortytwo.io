@@ -1,0 +1,29 @@
+---
+import { products } from '../config/products';
+import { icon } from '../lib/icons';
+import { encodePath } from '../lib/markdown';
+
+// Only shown in the mobile drawer, where the header's product tabs are too cramped.
+type Props = { current: string | null };
+const { current } = Astro.props;
+---
+
+<div class="nav-section drawer-products">
+  <p class="nav-section-title">
+    <span set:html={icon('layout-grid', 16)} />
+    All products
+  </p>
+  <ul class="nav-list">
+    {
+      products.map((p) => (
+        <li>
+          <a class="nav-link" href={`/${encodePath(p.id)}/`} aria-current={p.id === current ? 'page' : undefined}>
+            <span class="nav-icon" set:html={icon(p.icon, 16)} />
+            {p.name}
+            {p.badge && <span class="badge">{p.badge}</span>}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
