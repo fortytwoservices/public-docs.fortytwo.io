@@ -1,0 +1,23 @@
+title: Azure AD B2C
+sections:
+  - title: Concepts
+    icon: book-open
+    pages: [a-CIAM-IEF-introduction.md, d2-IEF.md, e1-AuthN-and-AuthZ.md]
+  - title: Integrate an application
+    icon: plug
+    pages: [b-Application-integration.md, c1-Creating-an-app-registration.md]
+  - title: Protocols
+    icon: network
+    pages: [e2-OAuth-AuthZ-code-grant.md, e3-OAuth-Client-credentials-grant.md, e4-OAuth-Implicit-grant.md, e5-Token-validation.md, e6-Nonce.md, e8-Debug-OIDC-and-OAuth.md, e9a-SAML.md, e9b-SAML-app-integration.md]
+  - title: Branding and custom policies
+    icon: palette
+    pages: [d3-Custom-branding.md, d4-Custom-policies.md, d5-Pipeline-branding-policies.md, d6-Pipeline-push-branding.md, d9-Pipeline-branding-pipeline-config.md]
+  - title: DEV environment
+    icon: flask-conical
+    pages: [c2-DEV-App-registrations.md, f1-DEV-User-Journeys.md, f2-DEV-Custom-policy-files.md]
+  - title: TEST environment
+    icon: clipboard-check
+    pages: [c3-TEST-App-registrations.md, g1-TEST-User-Journeys.md, g2-TEST-Custom-policy-files.md]
+  - title: PROD environment
+    icon: server
+    pages: [c4-PROD-App-registrations.md, h1-PROD-User-Journeys.md, h2-PROD-Custom-policy-files.md]

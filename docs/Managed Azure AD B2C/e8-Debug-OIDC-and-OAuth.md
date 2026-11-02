@@ -1,8 +1,9 @@
-# Debugging OpenID Connect and OAuth 2.0
+---
+sidebarTitle: "Debug OIDC and OAuth"
+description: A couple of community tools that may prove useful for debugging OpenID Connect and OAuth 2.0.
+---
 
-- [Debugging OpenID Connect and OAuth 2.0](#debugging-openid-connect-and-oauth-20)
-  - [Introduction](#introduction)
-  - [How to debug](#how-to-debug)
+# Debugging OpenID Connect and OAuth 2.0
 
 ## Introduction
 

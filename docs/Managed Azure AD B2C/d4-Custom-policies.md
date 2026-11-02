@@ -1,17 +1,9 @@
+---
+sidebarTitle: "Custom policies"
+description: Custom policies builds on top of the Identity Experience Framework (IEF) and enables the creation of User Journeys tailor-made for any organizational need.
+---
+
 # Identity Experience Framework custom policies
-
-## Table of contents
-
-- [Identity Experience Framework custom policies](#identity-experience-framework-custom-policies)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Custom policy files](#custom-policy-files)
-  - [Uploading policies to the Identity Experience Framework](#uploading-policies-to-the-identity-experience-framework)
-    - [B2C-PolicyManagement.ps1](#b2c-policymanagementps1)
-      - [Script pre-requisites](#script-pre-requisites)
-      - [Script availability](#script-availability)
-        - [Script execution](#script-execution)
-        - [Script variables](#script-variables)
 
 ## Introduction
 
@@ -21,7 +13,9 @@ Custom policies leverage [XML](./d2-IEF.md#custom-policies) syntax. The advantag
 
 ## Custom policy files
 
-One or more [custom policy files](./f2-DEV-Custom-policy-files.md#v1-policies) make out a **User Journey**. Custom policy files for a **User Journey** are usually split into a few separate files, based on configuration. This makes them easier to handle and read and simplifies the search for content split into separate files.
+One or more [custom policy files](./f2-DEV-Custom-policy-files.md#v1-policies) make out a **User Journey**.
+
+Custom policy files for a **User Journey** are usually split into a few separate files, based on configuration. This makes them easier to handle and read and simplifies the search for content split into separate files.
 
 When a **User Journey** is triggered, all custom policy files required will be fetched and parsed as one file.
 But as this happens *under the hood*, it is easier for the developer to store the code (configuration) in separate files.
@@ -35,6 +29,7 @@ A custom policy configuration must have the following sections / files:
 ## Uploading policies to the Identity Experience Framework
 
 There are several ways of uploading policy files to the IEF.
+
 The simplest (and most intuitive) is to use the Azure Portal, open the Azure AD B2C resource then the Identity Experience Framework blade and select **Upload custom policy**.
 
 ![Upload policy file from portal](media/polUpload.png)
@@ -49,39 +44,43 @@ By calling the [Microsoft Graph API](https://learn.microsoft.com/graph/api/resou
 
 The reason for the Powershell script B2C-PolicyManagement is to be able to easily upload custom policy files from a local client and get the same result as when uploading policy files through an automated pipeline.
 
+:::note
 This script requires the Azure AD Preview PowerShell module to be installed.
+:::
 
 #### Script pre-requisites
 
 An authenticated session with the B2C tenant using an account with requisite privileges.
+
 Both Connect-AzAccount (recommended, but requires Az.Account PowerShell module) and Connect-AzureAD can be used to establish a session.
 
 #### Script availability
 
 The script is [available on GitHub](https://github.com/timpeteren/bravotocharlie/blob/main/B2C-PolicyManagement.ps1).
 
-##### Script execution
+#### Script execution
 
 The script can be executed without any input parameters, but the in-script variable [Placeholders](#script-variables) must be configured, or else the script will throw '*... - not a valid placeholder ...*'.
 
-```PowerShell
+```powershell
 B2C-PolicyManagement
 ```
 
-This is a snippet from the script documentation, second .EXAMPLE.  
+This is a snippet from the script documentation, second .EXAMPLE.
+
 One or multiple policy files can be added as input parameters.
 
 Use `-DeployFolder` to override the creation of a default **Deploy** folder in the current working directory.
 
-```PowerShell
+```powershell
 B2C-PolicyManagement -PolicyFiles .\3-b2c_1a_v2_signupsignin.xml, .\4-b2c_1a_v2_passwordreset.xml -DeployFolder MinDeploy
 ```
 
-##### Script variables
+#### Script variables
 
 The `$Placeholders` list variable must be filled out for the script to run successfully.
 
-```PowerShell
+```powershell
 $Placeholders = @{
     "PLACEHOLDER_TENANTNAME"                  = ""
     "PLACEHOLDER_TENANTID"                    = ""

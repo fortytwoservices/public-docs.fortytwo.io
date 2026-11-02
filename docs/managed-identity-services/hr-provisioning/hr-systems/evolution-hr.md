@@ -1,14 +1,18 @@
+---
+description: In order for Fortytwo to connect to Evolution HR, we require a Client ID and Client secret configured under API access.
+---
+
 # Evolution HR
 
 ## Required HR configuration
 
-In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access, to access the [this API](https://4human-api-doc-prod.s3.eu-west-1.amazonaws.com/prod/index.html#/). Please provide this to your Fortytwo contact during the initial phase of implementation.
+In order for Fortytwo to connect to the HR system, we require a **Client ID** and **Client secret** configured under API access, to access [this API](https://4human-api-doc-prod.s3.eu-west-1.amazonaws.com/prod/index.html#/). Please provide this to your Fortytwo contact during the initial phase of implementation.
 
 ## Schema used for attribute mapping
 
-The service sendes each employee as a standard SCIM representation to the Entra ID Inbound Provisioning API. The below is a full example of the payload we send, and can be used to define attribute mapping in the customer tenant:
+The service sends each employee as a standard SCIM representation to the Entra ID Inbound Provisioning API. The below is a full example of the payload we send, and can be used to define attribute mapping in the customer tenant:
 
-```JSON
+```json
 {
   "displayName": "Alma Nakken",
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {

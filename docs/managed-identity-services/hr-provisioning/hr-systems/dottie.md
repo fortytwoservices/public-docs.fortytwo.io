@@ -1,3 +1,7 @@
+---
+description: In order for Fortytwo to connect to Dottie, we require a Client ID and Client secret configured under API access.
+---
+
 # Dottie
 
 ## Required HR configuration
@@ -6,31 +10,33 @@ In order for Fortytwo to connect to the HR system, we require a **Client ID** an
 
 ## How to create Client ID and Secret in Dottie
 
-- Go to Settings -> Integrations on [this url](https://app.dottie.no/settings/integrations/api)
-- Click "New API User".
+1. Go to Settings -> Integrations on [this url](https://app.dottie.no/settings/integrations/api)
 
-![Select New API User](../media/dottie_api_1.png)
+2. Click "New API User".
 
-- Click "Create new".
-- Take a note of "Client ID" and "API Key" and click "Close".
+    ![Select New API User](../media/dottie_api_1.png)
 
-![Note down keys](../media/dottie_api_2.png)
+3. Click "Create new".
 
-- Now, Edit the user you just created. (You might need to refresh the browser to see it)
+4. Take a note of "Client ID" and "API Key" and click "Close".
 
-![Edit newly created user](../media/dottie_api_3.png)
+    ![Note down keys](../media/dottie_api_2.png)
 
-- Add the role "Toppleder/Top Leader". and click "Close" and "Close".
+5. Now, Edit the user you just created. (You might need to refresh the browser to see it)
 
-![Agg topleader role](../media/dottie_api_4.png)
+    ![Edit newly created user](../media/dottie_api_3.png)
 
-- Done. Give the keys to your Fortytwo contact person.
+6. Add the role "Toppleder/Top Leader". and click "Close" and "Close".
+
+    ![Add topleader role](../media/dottie_api_4.png)
+
+7. Done. Give the keys to your Fortytwo contact person.
 
 ## Schema used for attribute mapping
 
-The service sendes each employee as a standard SCIM representation to the Entra ID Inbound Provisioning API. The below is a full example of the payload we send, and can be used to define attribute mapping in the customer tenant:
+The service sends each employee as a standard SCIM representation to the Entra ID Inbound Provisioning API. The below is a full example of the payload we send, and can be used to define attribute mapping in the customer tenant:
 
-```JSON
+```json
 {
   "displayName": "Alma Nakken",
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {

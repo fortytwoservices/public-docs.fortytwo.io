@@ -1,27 +1,9 @@
-# Azure AD B2C: Integrate SAML based applications
+---
+sidebarTitle: "SAML app integration"
+description: Using Security Assertion Markup Language 2.0 it is possible to integrate with SAML-based applications using custom policies.
+---
 
-- [Azure AD B2C: Integrate SAML based applications](#azure-ad-b2c-integrate-saml-based-applications)
-  - [Introduction](#introduction)
-  - [The two scenarios](#the-two-scenarios)
-    - [Identity Experience Framework as a SAML **Service provider** (SP)](#identity-experience-framework-as-a-saml-service-provider-sp)
-    - [Identity Experience Framework as a SAML **Identity provider** (IdP)](#identity-experience-framework-as-a-saml-identity-provider-idp)
-  - [Configure Identity Experience Framework as a SAML Identity provider](#configure-identity-experience-framework-as-a-saml-identity-provider)
-    - [Create self-signed certificate](#create-self-signed-certificate)
-    - [Use an existing certificate signed by a trusted certificate authority](#use-an-existing-certificate-signed-by-a-trusted-certificate-authority)
-    - [Upload the certificate(s) to the Identity Experience Framework](#upload-the-certificates-to-the-identity-experience-framework)
-    - [Claims provider](#claims-provider)
-    - [Technical profile](#technical-profile)
-      - [SAML Token Issuer](#saml-token-issuer)
-      - [Metadata](#metadata)
-      - [CryptographicKeys](#cryptographickeys)
-    - [User Journey](#user-journey)
-      - [SAML Sign In User Journey](#saml-sign-in-user-journey)
-    - [Execution Policy](#execution-policy)
-      - [SAML relying party](#saml-relying-party)
-  - [SAML Service Provider (SP) configuration](#saml-service-provider-sp-configuration)
-    - [SAML SP metadata](#saml-sp-metadata)
-    - [SAML SP issuer](#saml-sp-issuer)
-    - [SAML URL / SAML Endpoint / Login URL](#saml-url-saml-endpoint-login-url)
+# Azure AD B2C: Integrate SAML based applications
 
 ## Introduction
 
@@ -108,7 +90,9 @@ Export-PfxCertificate -Cert ($certStore + "\" + $thumbprint) -FilePath $pfxCertF
 
 ### Upload the certificate(s) to the Identity Experience Framework
 
->SAML uses both an **assertion signing** and a **message signing** certificate. We could have uploaded two different certificates, but do not want to add unnecessary complexity so we reuse the same certificate in both containers.
+:::note
+SAML uses both an **assertion signing** and a **message signing** certificate. We could have uploaded two different certificates, but do not want to add unnecessary complexity so we reuse the same certificate in both containers.
+:::
 
 - In your B2C tenant, go to **Azure AD B2C > Identity Experience Framework > Policy Keys**
 
@@ -316,7 +300,7 @@ In the **<OutputClaims\>** tag we configure the claims we wish include in the SA
 | OutputClaim  | displayName | Optional. |
 | OutputClaim  | userPrincpalName | Optional. |
 
- Examples of commonly used user claims:  **givenName**, **surname**, **email**, **identityProvider**.
+Examples of commonly used user claims:  **givenName**, **surname**, **email**, **identityProvider**.
 
 The **<SubjectNamingInfo\>** tag sets the claim that uniquely identifies the user in the SAML token, which is the **oid** claim:
 
@@ -324,30 +308,32 @@ The **<SubjectNamingInfo\>** tag sets the claim that uniquely identifies the use
 | -         | -     | -       |
 | SubjectNamingInfo  | oid  | Do not modify. Value is mapped to that of the **objectId** claim by configuring **OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid"**. This claim is required as it is the unique identifier of the user in the B2C Azure AD. |
 
->If a case arises where the user unique identifier claim changes, rather look to modify the **OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid"** and not the **SubjectNamingInfo ClaimType="oid"**.
+:::tip
+If a case arises where the user unique identifier claim changes, rather look to modify the **OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid"** and not the **SubjectNamingInfo ClaimType="oid"**.
+:::
 
 ## SAML Service Provider (SP) configuration
 
 These are the URLs / endpoints that might be required on the SAML SP side. If the SP cannot get the certificate(s) from metadata, you will need to export the public part of the certificate(s), and provide this to the SP manually.
 
->TIP!
->
->When using a custom domain, {tenantName}.b2clogin.com can be replaced with the domain name.
+:::tip
+When using a custom domain, {tenantName}.b2clogin.com can be replaced with the domain name.
+:::
 
 ### SAML SP metadata
 
-```html
+```http
 https://{tenantName}.b2clogin.com/te/{tenantName}.onmicrosoft.com/B2C_1A_v1_SAML_SignIn/Samlp/metadata
 ```
 
 ### SAML SP issuer
 
-```html
+```http
 https://{tenantName}.b2clogin.com/te/{tenantName}.onmicrosoft.com/B2C_1A_v1_SAML_SignIn
 ```
 
 ### SAML URL / SAML Endpoint / Login URL
 
-```html
+```http
 https://{tenantName}.b2clogin.com/te/{tenantName}.onmicrosoft.com/B2C_1A_v1_SAML_SignIn/Samlp/sso/login
 ```

@@ -1,11 +1,18 @@
+---
+description: How to connect to Managed Desktop Light from the Azure Virtual Desktop client.
+---
+
 # End user Documentation for Managed Desktop Light
 
 ## Pre-requisites
 
 The Azure Virtual Desktop client is available for Windows, MacOS, iOS, Android and HTML5.
+
 The client is available from this page: [Azure Virtual Desktop clients](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-windows?tabs=subscribe "Azure Virtual Desktop clients")
 
-**_NB!_** Printing is **_NOT_** supported in the HTML5 client.
+:::warning[NB!]
+Printing is **_NOT_** supported in the HTML5 client.
+:::
 
 ## Introduction
 
@@ -14,7 +21,9 @@ Connecting from the Azure Virtual Desktop client is quite simple, you click on s
 ### Connecting
 
 ![First startup](media/remotedesktopapp1.png "Remote Desktop App")
+
 ![Authenticate](media/login.png "Login")
+
 ![Available resources](media/resources.png "Resources")
 
 The first time you login to the sessionDesktop, you will be asked to authenticate again. You will also be asked to grant the Azure Virtual User Login permission to the sessionDesktop. This is needed to be able to login to the sessionDesktop.

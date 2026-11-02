@@ -1,3 +1,4 @@
 # On-Prem AD integrasjon
 
-!!! note "Work in progress"
+:::note[Work in progress]
+:::

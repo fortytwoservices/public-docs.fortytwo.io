@@ -1,13 +1,9 @@
+---
+sidebarTitle: "Identity Experience Framework"
+description: The Identity Experience Framework supports custom policies, which are developed using Extensible Markup Language (XML).
+---
+
 # The Identity Experience Framework
-
-## Table of contents
-
-- [The Identity Experience Framework](#the-identity-experience-framework)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Custom policies](#custom-policies)
-  - [Environments](#environments)
-  - [User Journey testing](#user-journey-testing)
 
 ## Introduction
 
@@ -20,14 +16,19 @@ User flows are getting a new home in [Microsoft Entra External ID for customers]
 Identity Experience Framework custom policies are developed using Extensible Markup Language (XML).
 The custom policies are constructed from a hierarchical chain contained within the [TrustFrameworkPolicy](https://learn.microsoft.com/azure/active-directory-b2c/trustframeworkpolicy) element.
 
-The XML code is usually split into (at least) three files, a base policy file, an extension policy file and a relying party (execution policy) file.
+The XML code is usually split into (at least) three files:
+
+- a base policy file
+- an extension policy file
+- a relying party (execution policy) file
+
 If there is a requirement to support other languages than English, all the [LocalizedResources](https://learn.microsoft.com/azure/active-directory-b2c/language-customization?pivots=b2c-custom-policy#provide-language-specific-labels) references would be organized in a dedicated language file that extends the chain by one member, base, **language**, extension and execution policy.
 
 When a User Journey is triggered, the code from all chained XML-formatted files are merged according to the [inheritance model](https://learn.microsoft.com/azure/active-directory-b2c/custom-policy-overview#inheritance-model).
 
 ## Environments
 
-Each environment make out it's own Identity Platform and are configured using CI/CD (continous integration/deployment).
+Each environment make out it's own Identity Platform and are configured using CI/CD (continuous integration/deployment).
 
 - DEV - [\<tenant>.onmicrosoft.com](./f1-DEV-User-Journeys.md) (placeholder for DEV template)
 - TEST - [\<tenant>.onmicrosoft.com](./g1-TEST-User-Journeys.md) (placeholder for TEST template)

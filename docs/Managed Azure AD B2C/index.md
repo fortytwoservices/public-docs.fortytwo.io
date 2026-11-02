@@ -1,17 +1,8 @@
+---
+description: Documentation for the Managed Azure AD B2C solution that is available in the Azure Marketplace.
+---
+
 # Getting started
-
-## Table of contents
-
-- [Getting started](#getting-started)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Quickstart](#quickstart)
-  - [The intent](#the-intent)
-  - [Modern authentication](#modern-authentication)
-  - [The pieces of the puzzle](#the-pieces-of-the-puzzle)
-  - [The magic is in the making](#the-magic-is-in-the-making)
-  - [Templates](#templates)
-  - [What are you waiting for?](#what-are-you-waiting-for)
 
 ## Introduction
 
@@ -19,7 +10,7 @@ Here lies the documentation for the Managed Azure AD B2C solution that is availa
 
 ## Quickstart
 
- Go to [Customer Identity Access Management and the Identity Experience Framework](./a-CIAM-IEF-introduction.md) to go through the B2C Identity Platform documentation.
+Go to [Customer Identity Access Management and the Identity Experience Framework](./a-CIAM-IEF-introduction.md) to go through the B2C Identity Platform documentation.
 
 ## The intent
 
@@ -41,11 +32,15 @@ For a complete integration there are various parts that must be in place:
 
 ## The magic is in the making
 
-Putting all of this together usually takes some time and past experience always helps. So, in order to speed up this process we have here gathered and organized the essential information in one place.  
+Putting all of this together usually takes some time and past experience always helps. So, in order to speed up this process we have here gathered and organized the essential information in one place.
+
 This tells the complete integration story, from start to finish. However, the tenant specific details such as User Journeys, app registration identifiers, secrets, and more, is found in the tenant of the Identity Platform.
 
-***Remember***, for a successful integration, the tenant specific settings must be used, which should be safely stored in your environment.
-The integration documentation is recommended to keep close to the Identity platform code, preferably in the same repository. This ensures that all relevant information is easy to find and that it (hopefully) gets continously updated.
+:::tip[Remember]
+For a successful integration, the tenant specific settings must be used, which should be safely stored in your environment.
+:::
+
+The integration documentation is recommended to keep close to the Identity platform code, preferably in the same repository. This ensures that all relevant information is easy to find and that it (hopefully) gets continuously updated.
 
 ## Templates
 
@@ -55,8 +50,7 @@ For every environment there will be a unique set of parameters and configuration
 
 There are templates for app registrations, User Journeys and custom policy files.
 
-Fill in the templates and store the documents with the code (best practice).  
-This documentation is a vital part of each Identity Platform.
+Fill in the templates and store the documents with the code (best practice). This documentation is a vital part of each Identity Platform.
 
 The tenant specific configuration is required for users that are about to integrate an application with the Identity Platform.
 

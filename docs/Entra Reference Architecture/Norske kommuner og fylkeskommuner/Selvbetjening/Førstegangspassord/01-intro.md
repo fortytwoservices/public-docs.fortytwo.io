@@ -1,3 +1,4 @@
 # Selvbetjeningsfunksjon for håndtering av elevpassord
 
-!!! note "Work in progress"
+:::note[Work in progress]
+:::

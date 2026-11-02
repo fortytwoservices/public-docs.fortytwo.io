@@ -1,3 +1,4 @@
 # Selvbetjeningsfunksjon for styring av internettilgang
 
-!!! note "Work in progress"
+:::note[Work in progress]
+:::

@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, posix } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import matter from 'gray-matter';
+import { parse as parseYaml } from 'yaml';
 import { products, site, type Product } from '../config/products';
 import { encodePath, renderMarkdown, type Heading } from './markdown';
 
@@ -99,7 +100,8 @@ function lastUpdated(): Map<string, Date> {
   return dates;
 }
 
-type PagesFile = { title?: string; icon?: string; arrange?: string[]; hide?: boolean };
+type Section = { title: string; icon?: string; pages: string[] };
+type PagesFile = { title?: string; icon?: string; arrange?: string[]; hide?: boolean; sections?: Section[] };
 
 function readPagesFile(dirAbs: string): PagesFile {
   const file = join(dirAbs, '.pages');
@@ -123,6 +125,9 @@ function readPagesFile(dirAbs: string): PagesFile {
       inArrange = true;
     }
   }
+  // Sections group a flat folder in the sidebar without moving files, so URLs stay the same.
+  const { sections } = parseYaml(readFileSync(file, 'utf8')) ?? {};
+  if (Array.isArray(sections)) out.sections = sections;
   return out;
 }
 
@@ -254,12 +259,30 @@ function navFor(dir: string, files: FileEntry[], byVpath: Map<string, Page>, dir
 
   items.sort((a, b) => a.order - b.order || collator.compare(a.key, b.key));
 
-  const arrange = dirs.get(dir)?.arrange;
-  if (!arrange) return items.map((i) => i.item);
+  const ordered = arrangeItems(items, dirs.get(dir)?.arrange);
+  const sections = dirs.get(dir)?.sections;
+  if (!sections) return ordered.map((i) => i.item);
+  const grouped = new Set<string>();
+  const groups: NavItem[] = sections.map((section) => {
+    const children = section.pages.flatMap((name) => {
+      const found = ordered.find((i) => i.key === name);
+      if (!found) return [];
+      grouped.add(found.key);
+      return [found.item];
+    });
+    return { type: 'group', title: section.title, slug: null, icon: section.icon ?? null, children };
+  });
+  return [...ordered.filter((i) => !grouped.has(i.key)).map((i) => i.item), ...groups.filter((g) => g.type === 'group' && g.children.length)];
+}
+
+type Keyed = { key: string; order: number; item: NavItem };
+
+function arrangeItems(items: Keyed[], arrange: string[] | undefined): Keyed[] {
+  if (!arrange) return items;
   const placed = new Set<string>();
   const pick = (name: string) => items.find((i) => i.key === name || i.key === name.replace(/\/$/, ''));
-  const head: NavItem[] = [];
-  const tail: NavItem[] = [];
+  const head: Keyed[] = [];
+  const tail: Keyed[] = [];
   let afterRest = false;
   for (const name of arrange) {
     if (name === '...') {
@@ -269,9 +292,9 @@ function navFor(dir: string, files: FileEntry[], byVpath: Map<string, Page>, dir
     const found = pick(name);
     if (!found) continue;
     placed.add(found.key);
-    (afterRest ? tail : head).push(found.item);
+    (afterRest ? tail : head).push(found);
   }
-  const rest = items.filter((i) => !placed.has(i.key)).map((i) => i.item);
+  const rest = items.filter((i) => !placed.has(i.key));
   return [...head, ...rest, ...tail];
 }
 
