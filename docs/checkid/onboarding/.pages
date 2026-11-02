@@ -1,0 +1,8 @@
+title: Onboarding
+icon: log-in
+arrange:
+  - first-time-setup.md
+  - phishing-resistant-setup.md
+  - identity-providers.md
+  - passkey-supported-devices.md
+  - ...

@@ -1,0 +1,7 @@
+title: Get started
+icon: rocket
+arrange:
+  - what-is-checkid.md
+  - end-user-walkthrough.md
+  - how-the-flow-works.md
+  - ...

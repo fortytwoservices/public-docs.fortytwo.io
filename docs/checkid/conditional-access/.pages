@@ -1,0 +1,7 @@
+title: Conditional Access
+icon: shield-check
+arrange:
+  - authentication-strength.md
+  - approved-or-protected-app.md
+  - onboarding-group.md
+  - ...
