@@ -1,4 +1,5 @@
 import { posix } from 'node:path';
+import sharp from 'sharp';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
@@ -21,6 +22,8 @@ export type LinkContext = {
   dir: string;
   resolvePage: (vpath: string) => string | null;
   isDir: (vpath: string) => boolean;
+  // Local file behind a site path such as `checkid/media/x.png`, used to read image sizes.
+  assetFile: (vpath: string) => string | null;
 };
 
 export type Rendered = { html: string; title: string | null; titleId: string | null; summary: string | null; headings: Heading[] };
@@ -103,6 +106,25 @@ function directives() {
         case 'steps':
           box('div', ['steps']);
           break;
+        case 'screens':
+          box('div', ['screens']);
+          break;
+        // A device screenshot that already has its own phone frame, so it is not put in a browser frame.
+        // `side` puts a small phone next to the text instead, for step-by-step explanations.
+        case 'screen': {
+          const stage = { type: 'paragraph', data: { hName: 'div', hProperties: { className: ['screen-stage'] } }, children: [{ type: 'image', url: attrs.src, alt: attrs.title ?? '' }] };
+          if ('side' in attrs) {
+            box('div', ['screen-side']);
+            node.children = [{ type: 'blockquote', data: { hName: 'div', hProperties: { className: ['screen-text'] } }, children: node.children }, stage];
+            break;
+          }
+          box('figure', ['screen']);
+          node.children = [
+            stage,
+            { type: 'blockquote', data: { hName: 'figcaption' }, children: [{ type: 'paragraph', data: { hName: 'strong' }, children: [{ type: 'text', value: attrs.title ?? '' }] }, ...node.children] },
+          ];
+          break;
+        }
         default:
           box('div', [name]);
       }
@@ -175,10 +197,41 @@ function links(ctx: LinkContext) {
   return (tree: HRoot) => {
     visit(tree, 'element', (node: Element) => {
       if (node.tagName === 'a' && typeof node.properties.href === 'string') node.properties.href = rewrite(node.properties.href);
-      if (node.tagName === 'img' && typeof node.properties.src === 'string') node.properties.src = rewrite(node.properties.src);
+      if ((node.tagName === 'img' || node.tagName === 'video') && typeof node.properties.src === 'string') node.properties.src = rewrite(node.properties.src);
     });
   };
 }
+
+// Screenshots are mostly taken on retina screens, so a wide one is shown at half its
+// pixel size, and nothing is taller than MAX_HEIGHT. Width and height also stop layout shift.
+const RETINA_FROM = 1000;
+const MAX_HEIGHT = 640;
+const sizeCache = new Map<string, Promise<{ width?: number; height?: number }>>();
+
+function sizes(ctx: LinkContext) {
+  return async (tree: HRoot) => {
+    const imgs: Element[] = [];
+    visit(tree, 'element', (node: Element) => {
+      if (node.tagName === 'img' && typeof node.properties.src === 'string' && node.properties.src.startsWith('/') && !node.properties.width) imgs.push(node);
+    });
+    await Promise.all(
+      imgs.map(async (node) => {
+        const file = ctx.assetFile(decodeURIComponent(String(node.properties.src).slice(1)));
+        if (!file) return;
+        if (!sizeCache.has(file)) sizeCache.set(file, sharp(file).metadata().catch(() => ({})));
+        const { width, height } = await sizeCache.get(file)!;
+        if (!width || !height) return;
+        let scale = width >= RETINA_FROM ? 0.5 : 1;
+        scale = Math.min(scale, MAX_HEIGHT / height);
+        node.properties.width = Math.round(width * scale);
+        node.properties.height = Math.round(height * scale);
+      }),
+    );
+  };
+}
+
+// Below this width an image is a button, logo or icon, not a screenshot, so it gets no frame.
+const FRAME_FROM = 480;
 
 function images() {
   return (tree: HRoot) => {
@@ -189,7 +242,8 @@ function images() {
       const caption = node.properties.title as string | undefined;
       // An image alone in a paragraph is a screenshot: frame it like the portal's BrowserFrame.
       const alone = parent?.tagName === 'p' && parent.children.filter((c: any) => !(c.type === 'text' && !c.value.trim())).length === 1;
-      if (!caption && !alone) return;
+      const small = Number(node.properties.width) < FRAME_FROM;
+      if (!caption && (!alone || small)) return;
       delete node.properties.title;
       const figure: Element = {
         type: 'element',
@@ -281,6 +335,7 @@ export async function renderMarkdown(source: string, ctx: LinkContext): Promise<
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(links, ctx)
+    .use(sizes, ctx)
     .use(images)
     .use(rehypeShiki, {
       themes: { light: 'light-plus', dark: 'github-dark' },
