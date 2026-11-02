@@ -35,6 +35,13 @@ export const products: Product[] = [
     badge: 'New',
   },
   {
+    id: 'checkid',
+    featured: true,
+    name: 'CheckID',
+    description: 'Onboard new employees with an ID they already trust, such as BankID, and no temporary passwords.',
+    icon: 'scan-face',
+  },
+  {
     id: 'identity-universe',
     featured: true,
     name: 'Identity Universe',

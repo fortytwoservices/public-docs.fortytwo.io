@@ -12,6 +12,7 @@ import { encodePath, renderMarkdown, type Heading } from './markdown';
 const ROOT = process.cwd();
 const DOCS = join(ROOT, 'docs');
 const SOURCES = join(ROOT, '.sources');
+const PUBLIC = join(ROOT, 'public');
 const IGNORED = new Set(['.DS_Store', '.pages', '.source.json']);
 
 export type FileEntry = { vpath: string; abs: string; product: Product | null; editUrl: string | null };
@@ -154,6 +155,7 @@ async function build(): Promise<Site> {
   }
   const markdown = files.filter((f) => /\.mdx?$/.test(f.vpath) && f.product);
   const slugs = new Map(markdown.map((f) => [f.vpath, slugFor(f.vpath)]));
+  const assets = new Map(files.filter((f) => !/\.mdx?$/.test(f.vpath)).map((f) => [f.vpath, f.abs]));
   const dates = lastUpdated();
   const hiddenDir = (vpath: string) => {
     for (let d = posix.dirname(vpath); d !== '.'; d = posix.dirname(d)) if (dirs.get(d)?.hide) return true;
@@ -169,6 +171,7 @@ async function build(): Promise<Site> {
         dir: posix.dirname(f.vpath),
         resolvePage: (v) => slugs.get(v) ?? null,
         isDir: (v) => dirs.has(v),
+        assetFile: (v) => assets.get(v) ?? (existsSync(join(PUBLIC, v)) ? join(PUBLIC, v) : null),
       });
       const name = posix.basename(f.vpath);
       const dirName = posix.basename(posix.dirname(f.vpath));

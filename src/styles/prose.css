@@ -13,6 +13,10 @@
   margin: 0 0 20px;
 }
 
+.prose :where(.screens, .screen-side) {
+  margin: 0 0 32px;
+}
+
 .prose :where(h2, h3, h4) {
   position: relative;
   font-family: var(--font-display);
@@ -162,6 +166,20 @@
   font-family: inherit;
 }
 
+/* Long commands wrap instead of scrolling. The hanging indent shows a wrapped
+   line is still one line, which matters in shells. */
+.prose pre.shiki {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.prose pre.shiki .line {
+  display: inline-block;
+  width: 100%;
+  padding-left: 4ch;
+  text-indent: -4ch;
+}
+
 .shiki,
 .shiki span {
   color: var(--shiki-light);
@@ -214,6 +232,10 @@ pre.mermaid {
 
 pre.mermaid[data-processed] {
   color: inherit;
+}
+
+pre.mermaid[data-processed] {
+  cursor: zoom-in;
 }
 
 /* ---------- Tables ---------- */
@@ -467,6 +489,10 @@ details.callout[open] > summary.callout-title {
   border-radius: 16px;
   background: hsl(var(--card));
   box-shadow: var(--shadow-xl);
+  /* The frame hugs the image, so a tall or small screenshot is not blown up to full width. */
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .frame-body::before {
@@ -493,11 +519,15 @@ details.callout[open] > summary.callout-title {
   display: none;
 }
 
+.prose img.zoomable {
+  cursor: zoom-in;
+}
+
 .frame img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 0;
-  cursor: zoom-in;
 }
 
 .frame figcaption {
@@ -521,6 +551,20 @@ details.callout[open] > summary.callout-title {
   background: hsl(var(--scrim));
 }
 
+.lightbox-diagram {
+  width: 92vw;
+  padding: 32px;
+  border-radius: 16px;
+  background: hsl(var(--card));
+}
+
+.lightbox-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 84vh;
+}
+
 .lightbox img {
   display: block;
   max-width: 96vw;
@@ -533,4 +577,108 @@ details.callout[open] > summary.callout-title {
   .card-grid[data-cols='3'] {
     --cols: 1;
   }
+}
+
+/* ---------- Device screens ---------- */
+
+.screens {
+  counter-reset: screen;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+
+.screen {
+  counter-increment: screen;
+  margin: 0;
+}
+
+.screen-stage {
+  display: grid;
+  place-items: center;
+  margin: 0 0 14px;
+  padding: 28px 14%;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: var(--radius-panel);
+  background: radial-gradient(120% 80% at 50% 0%, hsl(var(--brand-deep) / 0.08), transparent 70%), hsl(var(--muted) / 0.5);
+}
+
+.dark .screen-stage {
+  background: radial-gradient(120% 80% at 50% 0%, hsl(var(--brand-mint) / 0.1), transparent 70%), hsl(var(--card));
+}
+
+.screen-side {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 28px;
+  align-items: start;
+}
+
+.screen-side .screen-stage {
+  margin: 0;
+  padding: 18px 22px;
+}
+
+.screen-text > :first-child { margin-top: 0; }
+.screen-text > :last-child { margin-bottom: 0; }
+
+.screen-stage img {
+  width: 100%;
+  height: auto;
+  border: 0;
+  filter: drop-shadow(0 12px 24px hsl(var(--brand-deep) / 0.18));
+  transition: transform 0.25s ease-out;
+}
+
+.screen:hover .screen-stage img {
+  transform: translateY(-4px);
+}
+
+.screen figcaption {
+  font-size: 14px;
+  line-height: 1.55;
+  color: hsl(var(--muted-foreground));
+}
+
+.screen figcaption > * {
+  margin: 0;
+}
+
+.screen figcaption strong {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: hsl(var(--heading));
+}
+
+.screen figcaption strong::before {
+  content: counter(screen);
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.demo-video {
+  display: block;
+  width: 100%;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: var(--radius-panel);
+  background: #000;
+}
+
+@media (max-width: 720px) {
+  .screens { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
+  .screen-stage { padding: 18px 10%; }
+  .screen-side { grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; }
+  .screen-side .screen-stage { padding: 10px 12px; }
 }

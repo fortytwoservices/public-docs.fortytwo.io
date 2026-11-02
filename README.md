@@ -76,10 +76,24 @@ Each `###` heading is a numbered step.
 ::::
 
 ![Alt text for the screenshot](/screenshots/ai-universe/home.png "Optional caption")
+
+::::screens
+:::screen{src="media/step-1.webp" title="Verify your identity"}
+A gallery of phone screenshots, numbered, with a caption under each.
+:::
+::::
+
+::::screen{src="media/step-1.webp" side}
+Text on the left, a small phone screenshot on the right.
+::::
 ```
 
 A container holding other containers needs one more colon than its children. An image on its own
-line is drawn in a browser frame and opens full size on click.
+line is drawn in a browser frame. Every image and Mermaid diagram opens full size on click.
+
+Images get their display size at build time: a screenshot 1000 px or wider is treated as a retina
+capture and shown at half size, nothing is taller than 640 px, and an image under 480 px wide
+(a button or logo) gets no frame.
 
 The MkDocs syntax in older pages (`!!! note`, `??? tip`, `=== "Tab"`) still works, so nothing has
 to be rewritten.

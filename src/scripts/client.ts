@@ -79,12 +79,18 @@ for (const tabs of $$('.tabs')) {
   (list.firstElementChild as HTMLButtonElement | null)?.click();
 }
 
-// ---------- Screenshot lightbox ----------
+// ---------- Image lightbox ----------
+// Every image in a page opens bigger, except one that links to another page.
 const lightbox = $<HTMLDialogElement>('#lightbox');
-for (const img of $$<HTMLImageElement>('.frame img')) {
-  img.addEventListener('click', () => {
+const IMAGE_FILE = /\.(png|jpe?g|gif|webp|avif|svg)$/i;
+for (const img of $$<HTMLImageElement>('.prose img')) {
+  const link = img.closest('a');
+  if (link && !IMAGE_FILE.test(new URL(link.href).pathname)) continue;
+  img.classList.add('zoomable');
+  img.addEventListener('click', (e) => {
     if (!lightbox) return;
-    lightbox.replaceChildren(Object.assign(document.createElement('img'), { src: img.currentSrc, alt: img.alt }));
+    e.preventDefault();
+    lightbox.replaceChildren(Object.assign(document.createElement('img'), { src: img.currentSrc || img.src, alt: img.alt }));
     lightbox.showModal();
   });
 }
@@ -93,6 +99,20 @@ lightbox?.addEventListener('click', () => lightbox.close());
 // ---------- Mermaid ----------
 const diagrams = $$('pre.mermaid');
 diagrams.forEach((d) => (d.dataset.source = d.textContent ?? ''));
+
+// Diagrams open bigger too. Mermaid caps the svg at its natural width, so the copy drops that cap.
+for (const d of diagrams) {
+  d.addEventListener('click', () => {
+    const svg = d.querySelector('svg');
+    if (!lightbox || !svg) return;
+    const copy = svg.cloneNode(true) as SVGElement;
+    copy.style.maxWidth = '';
+    copy.removeAttribute('width');
+    lightbox.replaceChildren(Object.assign(document.createElement('div'), { className: 'lightbox-diagram' }));
+    lightbox.firstElementChild!.append(copy);
+    lightbox.showModal();
+  });
+}
 
 async function renderMermaid(rerender = false) {
   if (!diagrams.length) return;
