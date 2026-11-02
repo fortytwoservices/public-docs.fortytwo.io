@@ -3,8 +3,11 @@
 // Usage: node scripts/check-links.mjs [dist]
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { parse } from 'parse5';
 
 const root = process.argv[2] ?? 'dist';
+// Text inside these is code or not shown, so Markdown-looking text there is fine.
+const NOT_PROSE = new Set(['pre', 'code', 'script', 'style', 'template']);
 
 function walk(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((d) => (d.isDirectory() ? walk(join(dir, d.name)) : [join(dir, d.name)]));
@@ -17,12 +20,6 @@ function target(path) {
   return file;
 }
 
-const idCache = new Map();
-function ids(file) {
-  if (!idCache.has(file)) idCache.set(file, new Set([...readFileSync(file, 'utf8').matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])));
-  return idCache.get(file);
-}
-
 const decode = (s) => {
   try {
     return decodeURIComponent(s);
@@ -31,34 +28,58 @@ const decode = (s) => {
   }
 };
 
+// One pass over the parsed page: element ids, link targets and the visible prose text.
+function read(file) {
+  const page = { ids: new Set(), links: [], prose: [], redirect: false };
+  const visit = (node, inProse) => {
+    if (node.nodeName === '#text') {
+      if (inProse) page.prose.push(node.value);
+      return;
+    }
+    for (const { name, value } of node.attrs ?? []) {
+      if (name === 'id') page.ids.add(value);
+      if (name === 'href' || name === 'src') page.links.push(value);
+      if (name === 'http-equiv' && value.toLowerCase() === 'refresh') page.redirect = true;
+    }
+    const prose = inProse && !NOT_PROSE.has(node.nodeName);
+    for (const child of node.childNodes ?? []) visit(child, prose);
+  };
+  visit(parse(readFileSync(file, 'utf8')), true);
+  page.prose = page.prose.join('\n');
+  return page;
+}
+
+const cache = new Map();
+const pageAt = (file) => {
+  if (!cache.has(file)) cache.set(file, read(file));
+  return cache.get(file);
+};
+
 const problems = [];
 const pages = walk(root).filter((f) => f.endsWith('.html'));
-for (const page of pages) {
-  const html = readFileSync(page, 'utf8');
-  const where = `/${relative(root, page).replace(/index\.html$/, '')}`;
-  // Redirect stubs and the 404 page only point at pages checked elsewhere.
-  if (html.includes('http-equiv="refresh"')) continue;
+for (const file of pages) {
+  const page = pageAt(file);
+  const where = `/${relative(root, file).replace(/index\.html$/, '')}`;
+  // Redirect stubs only point at pages that are checked themselves.
+  if (page.redirect) continue;
 
-  for (const m of html.matchAll(/\s(?:href|src)="([^"]*)"/g)) {
-    const url = m[1].replace(/&amp;/g, '&');
-    if (!url.startsWith('/') || url.startsWith('//')) {
-      if (url.startsWith('#') && url.length > 1 && !ids(page).has(decode(url.slice(1)))) problems.push(`${where}: missing anchor ${url}`);
+  for (const url of page.links) {
+    if (url.startsWith('#')) {
+      if (url.length > 1 && !page.ids.has(decode(url.slice(1)))) problems.push(`${where}: missing anchor ${url}`);
       continue;
     }
+    if (!url.startsWith('/') || url.startsWith('//')) continue;
     const [pathPart, hash] = url.split('#');
-    const file = target(decode(pathPart.split('?')[0]));
-    if (!existsSync(file)) {
+    const linked = target(decode(pathPart.split('?')[0]));
+    if (!existsSync(linked)) {
       problems.push(`${where}: broken link ${url}`);
       continue;
     }
-    if (hash && file.endsWith('.html') && !ids(file).has(decode(hash))) problems.push(`${where}: missing anchor ${url}`);
+    if (hash && linked.endsWith('.html') && !pageAt(linked).ids.has(decode(hash))) problems.push(`${where}: missing anchor ${url}`);
   }
 
-  const text = html
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<(pre|code|script|style)[\s\S]*?<\/\1>/g, '');
-  if (/\]\((?:\.|\/|https?:)[^)\s]*\)/.test(text)) problems.push(`${where}: unrendered Markdown link`);
-  if (/(^|>)\s*:::/m.test(text)) problems.push(`${where}: unrendered ::: block`);
+  if (/\]\((?:\.|\/|https?:)[^)\s]*\)/.test(page.prose)) problems.push(`${where}: unrendered Markdown link`);
+  if (/(^|\n)\s*:::/.test(page.prose)) problems.push(`${where}: unrendered ::: block`);
 }
 
 if (problems.length) {
