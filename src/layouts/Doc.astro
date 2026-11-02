@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import SidebarItems from '../components/SidebarItems.astro';
+import DrawerProducts from '../components/DrawerProducts.astro';
 import type { NavItem, Page } from '../lib/content';
 import { icon } from '../lib/icons';
 import { encodePath } from '../lib/markdown';
@@ -20,7 +21,7 @@ const crumbs = [
 const updated = page.updated?.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<Base title={page.title} description={page.summary} productId={page.product.id} crumbs={crumbs} updated={page.updated}>
+<Base title={page.title} description={page.summary} productId={page.product.id} crumbs={crumbs} updated={page.updated} hasSidebar>
   <div class="container docs-grid">
     <aside class="sidebar" id="sidebar" aria-label={`${page.product.name} navigation`}>
       <nav>
@@ -53,6 +54,7 @@ const updated = page.updated?.toLocaleDateString('en-GB', { day: 'numeric', mont
             </div>
           ))
         }
+        <DrawerProducts current={page.product.id} />
       </nav>
     </aside>
 
