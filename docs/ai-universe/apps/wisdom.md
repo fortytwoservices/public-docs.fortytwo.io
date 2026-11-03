@@ -35,6 +35,20 @@ On an app's **Wisdom** tab, **Preview and Try it** shows the whole document its 
 
 **Import** brings in instructions your teams already have: Claude Code skills (`SKILL.md`), agent files, Cursor rules (`.mdc`) or plain Markdown. You review each one before anything is saved.
 
+## From the coding tool
+
+A connected assistant receives the merged document when it connects (see [Connect your coding assistant](coding-assistant.md)). Some items arrive as a list and are fetched only when needed:
+
+- **Skills** are named sets of steps for a kind of task. The assistant fetches one with `skills_get` when a task matches.
+- **Agents** are named specialists, each with its own instructions. The assistant fetches one with `agents_get`.
+- **Knowledge** is found by search, not sent up front. `knowledge_search` searches all three layers. `knowledge_add` saves a lesson for this app, under the name of the person who is signed in, and it shows on the app's **Wisdom** tab.
+
+:::tip[Search with keywords]
+Search knowledge by keyword, not by question. `designsystem` or `migration` finds the right entries; a full sentence often finds nothing.
+:::
+
+These agents are the assistant's specialists while it builds. The agent your people talk to in the app is a different thing, set up on the app's [Agents](agents.md) tab.
+
 ## Examples
 
 - *Always write user-facing text in Norwegian Bokmål.*
