@@ -3,5 +3,6 @@ icon: sliders-horizontal
 arrange:
   - home.md
   - ai.md
+  - models.md
   - people.md
   - settings.md

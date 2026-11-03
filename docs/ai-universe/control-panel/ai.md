@@ -17,6 +17,8 @@ Until at least one model is added, agents have nothing to run on. To add one, tu
 
 **Gateway settings** holds the technical side of the AI gateway: the models it serves, token limits and how long records are kept.
 
+To add a model, choose where inference is processed, or set the primary model, see [Models](models.md).
+
 ## Safety rules
 
 Every question and reply is checked for four kinds of harmful content: hate, violence, sexual content and self-harm. Choose how strict the check is:

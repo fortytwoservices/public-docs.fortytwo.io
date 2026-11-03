@@ -37,6 +37,22 @@ An administrator approves the plan. Nothing happens before that.
 
 Your apps keep running throughout.
 
+## When an upgrade fails
+
+If a step fails, including a check after the roll, the platform goes back to the version it ran before and keeps your data. The **Upgrade** page says whether that restore completed, and if it did not, what is needed.
+
+There is no manual rollback to perform. Do not deploy an older version by hand: that skips the database and infrastructure checks an upgrade makes, and older versions are removed from the registry over time.
+
+:::details[An upgrade that has stopped making progress]
+An open upgrade holds the deploy job, so while it is open, later upgrades and changes to alerts, tags and network settings wait. A platform administrator can close a stuck upgrade from the **Upgrade** page, as failed. Closing asks for a reason and for the version typed out, and records who closed it and why.
+
+Closing undoes nothing: whatever the upgrade already deployed stays deployed. The platform refuses to close it while a deploy or a database update is still running, or while it cannot tell whether one is.
+:::
+
+## Deployments from before general availability
+
+Upgrades start from the first generally available release. A deployment installed before it cannot be upgraded from the control panel: the upgrade refuses before it changes anything. Uninstall it and [install](../get-started/install.md) the current release fresh.
+
 ## Apps and the platform libraries
 
 Your apps use Fortytwo's libraries for sign-in, the AI gateway and their runtime. When a new version is out, Dependabot offers the update as a pull request in each app's repository, and the app's team merges it when it suits them.
