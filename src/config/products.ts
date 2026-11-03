@@ -91,7 +91,7 @@ export const redirects: Record<string, string> = {
   'Self%20Hosted%20Runners/GitHub/index.md': 'marketplace-offerings/self-hosted-runners/github/index.md',
   'Self%20Hosted%20Runners/Azure%20DevOps/index.md': 'marketplace-offerings/self-hosted-runners/ado/index.md',
   'Self%20Hosted%20Runners/index.md': 'marketplace-offerings/self-hosted-runners/index.md',
-  'identity-universe/getting-started/iam-admins/index.md': 'identity-universe/getting-started/permissions/index.md',
+  'identity-universe/get-started/iam-admins/index.md': 'identity-universe/get-started/permissions/index.md',
   'identity-universe/group-link/api.md': 'identity-universe/collections/api/grouplink-api.md',
   'identity-universe/group-link/index.md': 'identity-universe/collections/plandesign/group-link-entraid.md',
   'identity-universe/collections/plandesign/group-link.md': 'identity-universe/collections/plandesign/group-link-overview.md',

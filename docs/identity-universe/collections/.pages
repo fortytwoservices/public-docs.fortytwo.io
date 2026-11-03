@@ -2,7 +2,7 @@ icon: users
 title: Collections
 
 arrange:
-  - getting-started.md
+  - get-started.md
   - plandesign
   - deployuse
   - api

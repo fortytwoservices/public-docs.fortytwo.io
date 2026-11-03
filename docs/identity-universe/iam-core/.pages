@@ -2,7 +2,7 @@ icon: database
 title: IAM Core
 
 arrange:
-  - getting-started.md
+  - get-started.md
   - connectors
   - sync
   - objecttypes
