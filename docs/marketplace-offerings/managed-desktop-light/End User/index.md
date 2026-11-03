@@ -20,9 +20,14 @@ Connecting with Windows App is quite simple: you sign in with your Entra ID acco
 :::tab[Windows]
 1. Install [Windows App from the Microsoft Store](https://apps.microsoft.com/detail/9N1F85V9T8BN) and open it.
 2. Select **Sign in**. If you are signed in to a managed Windows device with your work account, you are signed in automatically.
+
+   ![Sign in to Windows App](media/windows-app-signin.png "Sign in")
+
 3. The first time, go through the tour and select **Done**, or select **Skip**.
 4. Select the **Devices** tab to see the sessionDesktop.
 5. Select **Connect** on the sessionDesktop.
+
+   ![The sessionDesktop on the Devices tab](media/windows-app-devices.png "Devices")
 :::
 :::tab[macOS]
 1. Install [Windows App from the Mac App Store](https://aka.ms/macOSWindowsApp) and open it.
@@ -47,12 +52,19 @@ Connecting with Windows App is quite simple: you sign in with your Entra ID acco
 1. Go to [windows.cloud.microsoft](https://windows.cloud.microsoft/) and sign in with your Entra ID account.
 2. The first time, go through the tour and select **Done**, or select **Skip**.
 3. Select the **Devices** tab to see the sessionDesktop.
+
+   ![The sessionDesktop in the web browser](media/web-devices.png "Devices")
+
 4. Select **Connect** on the sessionDesktop. It opens in a new browser tab.
 5. Choose which local devices and features to use in **In Session Settings**, then select **Connect**.
+
+   ![In Session Settings](media/web-in-session-settings.png "In Session Settings")
 :::
 ::::
 
 The first time you login to the sessionDesktop, you will be asked to authenticate again. You will also be asked to allow the remote desktop connection to the sessionDesktop. This is needed to be able to login to the sessionDesktop.
+
+![Allow remote desktop connection](media/windows-app-allow-connection.png "Allow remote desktop connection")
 
 :::tip
 Pin the sessionDesktop to the **Favorites** tab to find it faster next time.
@@ -62,7 +74,11 @@ Pin the sessionDesktop to the **Favorites** tab to find it faster next time.
 
 In Windows App on Windows, you can adjust the settings for the sessionDesktop: select the ellipses (**...**) on the sessionDesktop card, then select **Settings**, and toggle **Use default settings** to off.
 
+![The menu on the sessionDesktop card](media/windows-app-card-menu.png "Settings")
+
 If you ie. want to have the sessionDesktop in just a window, and not full screen, select **Single display** under **Display configuration** and turn off **Start in full screen**.
+
+![Open in a window instead of full screen](media/windows-app-display-settings.png "Display settings")
 
 To use more than one monitor, select **All displays** to use every monitor, or **Select displays** to choose which ones.
 
@@ -74,6 +90,9 @@ You can use your local clipboard, drives and printers in the sessionDesktop:
 
 - **Clipboard:** copy and paste text, images and files between your own device and the sessionDesktop.
 - **Drives:** your local drives show up as network drives in File Explorer in the sessionDesktop. In the web browser, you get a virtual drive with an **Uploads** and a **Downloads** folder instead, and you can drag files into the session window to upload them.
+
+  ![File transfer in the web browser](media/web-file-transfer.png "File transfer")
+
 - **Printers:** print to your local printer from the sessionDesktop. In the web browser, printing opens the print dialog of your browser.
 
 See [Redirect local devices, audio, and folders in Windows App](https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams) for details per platform.
