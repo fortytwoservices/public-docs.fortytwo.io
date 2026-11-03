@@ -54,7 +54,7 @@ CoreIdentity has no date or multi-valued attributes — those appear on [CoreRel
 
 ## The Entra attributes
 
-The `entra*` attributes are not something an HR system provides. They are filled in by an [Entra ID connector](../connectors/entraidscim.md) that joins to an identity another connector already created.
+The `entra*` attributes are not something an HR system provides. They are filled in by an [Entra ID inbound connector](../connectors/entraidinbound.md) that joins to an identity another connector already created.
 
 `entraObjectId` matters most: it is the link between a signed-in session and the CoreIdentity, so a person cannot use most Identity Universe features until it is populated.
 

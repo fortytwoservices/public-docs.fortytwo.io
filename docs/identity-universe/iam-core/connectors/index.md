@@ -22,12 +22,6 @@ After a first party connector is created, it has the state "Created", until the 
 
 An API based connector is a connector where you as the customer can populate data from any system, using our [Connector API](../api/connector-api.md) or our [Connector PowerShell Module](../api/connector-powershell-module.md) (Which uses the API...). From a [syncrule](../sync/syncrules.md) standpoint, these connectors work as any first party connector. It is only the way the connector space is actually populated that differs from the first party connectors.
 
-### Entra ID SCIM connector
-
-An [Entra ID SCIM connector](./entraidscim.md) is a connector where Entra ID can send data about users, in order to populate certain attributes on [CoreIdentities](../objecttypes/coreidentity.md), such as ```EntraObjectId```, which is required for users to access most features (used to identity the link between a signed in session and the [CoreIdentity](../objecttypes/coreidentity.md)).
-
-From a [syncrule](../sync/syncrules.md) standpoint, these connectors work as any other connector.
-
 ## Available connectors
 
 Which connectors are enabled varies per tenant. Run `Get-IAMCoreConnectorTemplate` to see the ones available to you, along with the exact inputs each expects.
@@ -53,8 +47,7 @@ Which connectors are enabled varies per tenant. Run `Get-IAMCoreConnectorTemplat
 
 | Connector | Purpose |
 |-|-|
-| [Entra ID SCIM](./entraidscim.md) | Entra ID pushes user data in, populating `entraObjectId` and related attributes |
-| [Entra ID Inbound](./entraidinbound.md) | IAM Core reads users from Entra ID |
+| [Entra ID Inbound](./entraidinbound.md) | IAM Core reads users from Entra ID, populating `entraObjectId` and related attributes |
 
 ### Other
 

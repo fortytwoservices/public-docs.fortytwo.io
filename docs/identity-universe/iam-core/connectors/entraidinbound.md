@@ -10,13 +10,14 @@ It is expected that you already have an inbound HR connector configured and runn
 - [Admin consent our read access app](https://login.microsoftonline.com/common/adminconsent?client_id=2fcb40bf-98fd-499c-b47f-935aaa071984)
 
 ## Create connector
+You can create the connector either in the [Identity Universe Portal](#create-connector-in-the-identity-universe-portal) or with [PowerShell](#create-connector-using-powershell).
 
 ### Create connector in the Identity Universe Portal
 
 1. Navigate to the Identity Universe portal. Go to **Identity Hub** and select **+ Add Connector**.
 2. Select the **Entra ID Inbound** connector template from the list. Click **Next**.
 
-    ![Entra ID inbound connector step 2](./media/EntraID-AddConnector1.png)
+    ![Entra ID inbound connector step 1](./media/EntraID-AddConnector1.png)
 
 3. Optionally, add a user filter and click **Next**.
 
@@ -24,12 +25,13 @@ It is expected that you already have an inbound HR connector configured and runn
 
 4. Confirm the connector settings and click **Create connector**.
     
-    ![Entra ID inbound connector step 2](./media/EntraID-AddConnector3.png)
+    ![Entra ID inbound connector step 3](./media/EntraID-AddConnector3.png)
 
 ### Create connector using PowerShell
 
-
-!!! note "Please follow the [Authenticating PowerShell](../api/authentication-powershell.md) documentation in order to have a working PowerShell connection"
+:::info
+Please follow the [Authenticating PowerShell](../api/authentication-powershell.md) documentation in order to have a working PowerShell connection
+:::
 
 Create a new connector using the below cmdlet:
 

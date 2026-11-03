@@ -149,7 +149,7 @@ If the join flows match **more than one** core object, the object is not synchro
 Resolving an ambiguity usually means correcting the source data, or deleting the duplicate core object.
 
 !!! tip "Joining on `id`"
-    The core object's own `id` may be used as a join target, which is how a connector that already knows the IAM Core id (such as the [Entra ID SCIM connector](../connectors/entraidscim.md)) connects directly. `id` may **only** be used as a join flow — you cannot use it as an ordinary target attribute.
+    The core object's own `id` may be used as a join target, which is how a connector that already knows the IAM Core id (such as the [Entra ID inbound connector](../connectors/entraidinbound.md)) connects directly. `id` may **only** be used as a join flow — you cannot use it as an ordinary target attribute.
 
 ## Provisioning
 
