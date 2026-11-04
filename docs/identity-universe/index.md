@@ -8,7 +8,7 @@ Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 
 | | |
 |-|-|
-| [**IAM Core**](./iam-core/index.md) | The data foundation. Source systems are brought in through [connectors](./iam-core/connectors/index.md), and [sync rules](iam-core/sync/syncrules.md) turn that raw data into identities, organizational units and relationships. [Organization Galaxy](./iam-core/organization-galaxy.md) adds organization-scoped workflows for identities beyond HR. |
+| [**IAM Core**](./iam-core/index.md) | The data foundation. Source systems are brought in through [connectors](./iam-core/connectors/index.md), and [sync rules](iam-core/sync/syncrules.md) turn that raw data into identities, organizational units and relationships. [Organization](./iam-core/organization.md) adds organization-scoped workflows for identities beyond HR. |
 | [**Collections**](./collections/index.md) | Groups of people, either defined by criteria over the core data or joinable on request with an approval flow. Collections are how access is expressed. |
 | [**Group Link**](collections/plandesign/group-link-entraid.md) | Keeps a Microsoft Entra ID group's membership aligned with a collection, so applications that read Entra ID groups get their answer from the collection. |
 | **Workflows** | Automation that reacts to people joining or leaving a collection, for example by calling a webhook. Configured from the Administration blade. |
