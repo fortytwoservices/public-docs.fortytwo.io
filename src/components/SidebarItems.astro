@@ -1,0 +1,46 @@
+---
+import type { NavItem } from '../lib/content';
+import { icon } from '../lib/icons';
+import { encodePath } from '../lib/markdown';
+
+type Props = { items: NavItem[]; current: string };
+const { items, current } = Astro.props;
+
+const contains = (item: NavItem): boolean =>
+  item.slug === current || (item.type === 'group' && item.children.some(contains));
+---
+
+<ul class="nav-list">
+  {
+    items.map((item) =>
+      item.type === 'page' ? (
+        <li>
+          <a class="nav-link" href={`/${encodePath(item.slug)}`} aria-current={item.slug === current ? 'page' : undefined}>
+            {item.icon && <span class="nav-icon" set:html={icon(item.icon, 16)} />}
+            {item.title}
+          </a>
+        </li>
+      ) : (
+        <li>
+          <details class="nav-group" open={contains(item)}>
+            <summary>
+              {item.icon && <span class="nav-icon" set:html={icon(item.icon, 16)} />}
+              {item.title}
+              <span class="chevron" set:html={icon('chevron-right', 14)} />
+            </summary>
+            <ul class="nav-list">
+              {item.slug && (
+                <li>
+                  <a class="nav-link" href={`/${encodePath(item.slug)}`} aria-current={item.slug === current ? 'page' : undefined}>
+                    Overview
+                  </a>
+                </li>
+              )}
+              <Astro.self items={item.children} current={current} />
+            </ul>
+          </details>
+        </li>
+      ),
+    )
+  }
+</ul>

@@ -33,11 +33,11 @@ A CoreOrgUnit is a part of the organisation: a company, a department, a school, 
 
 The `education*` attributes exist for schools and are usually only populated when the source is a student information system.
 
-`educationStartDate` and `educationEndDate` are the only dates on an org unit, and they are ordinary attributes — nothing expires a class when its end date passes. To have a teaching group disappear at the end of the year, scope the sync rule that creates it, the same way [relationships](corerelationship.md#dates-and-validity) are handled. [`lastdatetime` and `nextdatetime`](../syncrule-expressions.md#lastdatetime) express an annual cycle without needing the dates edited each year.
+`educationStartDate` and `educationEndDate` are the only dates on an org unit, and they are ordinary attributes — nothing expires a class when its end date passes. To have a teaching group disappear at the end of the year, scope the sync rule that creates it, the same way [relationships](corerelationship.md#dates-and-validity) are handled. [`lastdatetime` and `nextdatetime`](../sync/syncrule-expressions.md#lastdatetime) express an annual cycle without needing the dates edited each year.
 
 ## Building the tree
 
-`parent` is what turns a flat list of units into a hierarchy. It is set with [`asreference`](../syncrule-expressions.md#asreference), pointing at the parent's own connector object:
+`parent` is what turns a flat list of units into a hierarchy. It is set with [`asreference`](../sync/syncrule-expressions.md#asreference), pointing at the parent's own connector object:
 
 ```powershell
 @{
@@ -57,7 +57,7 @@ The `education*` attributes exist for schools and are usually only populated whe
 
 The top of the tree is simply a unit whose source record has no parent value — the reference resolves to nothing and the unit sits at the root.
 
-You can inspect the resulting tree with `Show-IAMCoreOrgUnitStructure` from the [PowerShell module](../powershell-module.md), which is the quickest way to confirm that a hierarchy came out the way you expected.
+You can inspect the resulting tree with `Show-IAMCoreOrgUnitStructure` from the [PowerShell module](../api/iamcoreadmin-module.md), which is the quickest way to confirm that a hierarchy came out the way you expected.
 
 ## Managers and deputies
 

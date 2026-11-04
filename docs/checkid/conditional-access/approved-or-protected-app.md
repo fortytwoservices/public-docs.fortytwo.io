@@ -1,0 +1,14 @@
+---
+sidebarTitle: "Approved or protected app"
+description: If you have a conditional access policy that always require compliant device, you will run into issues where the user cannot register a passkey during onboarding.
+---
+
+# Require Approved or Protected App Policy
+
+If you have a conditional access policy that always require compliant device, you will run into issues where the user cannot register a passkey during onboarding.
+
+To work around this issue, [Microsoft has documented some methods](https://learn.microsoft.com/entra/identity/authentication/how-to-support-authenticator-passkey#users-who-cant-register-passkeys-because-of-require-approved-client-app-or-require-app-protection-policy-conditional-access-grant-controls).
+
+:::tip
+CheckID supports the **Allow the exemption for only a limited period of time** workaround through the [Onboarding Group](./onboarding-group.md) feature.
+:::

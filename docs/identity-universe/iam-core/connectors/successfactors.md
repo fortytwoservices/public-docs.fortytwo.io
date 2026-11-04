@@ -96,6 +96,6 @@ The usual mapping is:
 - **FOCompany** (or another foundation object matching your structure) → a [CoreOrgUnit](../objecttypes/coreorgunit.md)
 - **EmpEmployment** or **EmpJob** → a [CoreRelationship](../objecttypes/corerelationship.md)
 
-Because person data is split across `PerPerson`, `PerPersonal` and `User`, more than one rule usually writes to the same identity. Give each a distinct [priority](../syncrules.md#priority-and-attribute-ownership) so it is clear which one wins where they overlap.
+Because person data is split across `PerPerson`, `PerPersonal` and `User`, more than one rule usually writes to the same identity. Give each a distinct [priority](../sync/syncrules.md#priority-and-attribute-ownership) so it is clear which one wins where they overlap.
 
-See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for complete worked examples.
+See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for complete worked examples.

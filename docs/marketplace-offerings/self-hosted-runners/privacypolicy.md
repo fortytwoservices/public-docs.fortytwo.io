@@ -1,3 +1,7 @@
+---
+description: How Fortytwo collects, uses, and shares information when you use our Self-Hosted Runners Windows and Ubuntu Virtual Machine images.
+---
+
 # Privacy Policy for Self-Hosted Runners (Windows and Ubuntu)
 
 **Effective Date:** January 1, 2026

@@ -1,0 +1,10 @@
+icon: users
+title: Collections
+
+arrange:
+  - get-started.md
+  - plandesign
+  - deployuse
+  - api
+  - troubleshooting
+  - ...

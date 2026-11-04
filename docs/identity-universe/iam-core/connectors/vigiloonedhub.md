@@ -15,7 +15,7 @@ A [first party connector](./index.md#first-party-connector) that imports schools
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 ```PowerShell
 $Connector = New-IAMCoreConnector `
@@ -77,7 +77,7 @@ Flow it into a `custom/` attribute with a `multivaluedstring` flow:
 }
 ```
 
-Since the connector has already assembled the URNs, no rewriting is needed on the way in. If you do need to reshape them, [`multivalueregexreplace`](../syncrule-expressions.md#multivalueregexreplace) transforms each value in place.
+Since the connector has already assembled the URNs, no rewriting is needed on the way in. If you do need to reshape them, [`multivalueregexreplace`](../sync/syncrule-expressions.md#multivalueregexreplace) transforms each value in place.
 
 ## Example sync rules
 
@@ -88,6 +88,6 @@ The usual mapping is:
 - **student** and **teacher** → [CoreIdentities](../objecttypes/coreidentity.md)
 - **studentmember** and **teachermember** → [CoreRelationships](../objecttypes/corerelationship.md), using `sourcedId` to reference the person and `classSourcedId` to reference the class
 
-Only active classes are imported, so a class that is closed in Vigilo stops appearing and the memberships that pointed at it fall out of [scope](../syncrules.md#scope) on the next synchronization, removing the relationships. This is usually enough to keep the picture current without scoping on dates yourself — note that a class carries references to its academic terms rather than resolved start and end dates, so date-based scoping would mean resolving the term first.
+Only active classes are imported, so a class that is closed in Vigilo stops appearing and the memberships that pointed at it fall out of [scope](../sync/syncrules.md#scope) on the next synchronization, removing the relationships. This is usually enough to keep the picture current without scoping on dates yourself — note that a class carries references to its academic terms rather than resolved start and end dates, so date-based scoping would mean resolving the term first.
 
-See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for complete worked examples.
+See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for complete worked examples.

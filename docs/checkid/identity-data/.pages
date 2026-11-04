@@ -1,0 +1,8 @@
+title: Identity data and controls
+icon: database
+arrange:
+  - custom-security-attributes.md
+  - time-stamping.md
+  - password-blacklist.md
+  - password-agent.md
+  - ...

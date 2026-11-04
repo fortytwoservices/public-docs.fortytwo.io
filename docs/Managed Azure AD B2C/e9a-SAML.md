@@ -1,10 +1,9 @@
-# Security Assertion Markup Language 2.0 (SAML)
+---
+sidebarTitle: "SAML 2.0"
+description: SAML is a standard for exchanging authentication and authorization data between security domains.
+---
 
-- [Security Assertion Markup Language 2.0 (SAML)](#security-assertion-markup-language-20-saml)
-  - [Introduction](#introduction)
-  - [The basics](#the-basics)
-  - [Token and claims](#token-and-claims)
-  - [Identity Experience Framework SAML integration](#identity-experience-framework-saml-integration)
+# Security Assertion Markup Language 2.0 (SAML)
 
 ## Introduction
 

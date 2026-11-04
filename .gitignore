@@ -1,3 +1,7 @@
-site/
+node_modules/
+dist/
+.astro/
+.sources/
 .DS_Store
-.history
+.cache/
+.claude/

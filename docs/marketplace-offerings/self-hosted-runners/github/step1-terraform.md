@@ -1,7 +1,12 @@
+---
+description: Deploy the Virtual Machine Scale Set for the self hosted runners using the published Terraform module.
+---
+
 # Step 1b - Configuring the Virtual Machine Scale Set using Terraform
 
-!!! note "Rename of organization"
-    Due to the renaming of Company, the Github organization has changed name from "amestofortytwo" to "fortytwoservices". Pre-existing Terraform code would need to change that in code.
+:::note[Rename of organization]
+Due to the renaming of Company, the Github organization has changed name from "amestofortytwo" to "fortytwoservices". Pre-existing Terraform code would need to change that in code.
+:::
 
 ## Prereqs
 
@@ -10,33 +15,34 @@
 
 ## Deployment
 
-We have published [this Terraform module](https://registry.terraform.io/modules/fortytwoservices/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./step1-manual.md) instead, but it should be fairly easy for most people. 
+We have published [this Terraform module](https://registry.terraform.io/modules/fortytwoservices/selfhostedrunnervmss/azurerm) for simplified deployment. If you are not familiar with using Terraform, consider using the [manual method](./step1-manual.md) instead, but it should be fairly easy for most people.
 
-Start by creating an empty folder with a single file ```main.tf```, with the below content, and running ther ```terraform.ps1``` code line by line:
+Start by creating an empty folder with a single file `main.tf`, with the below content, and running the `terraform.ps1` code line by line:
 
-=== ":octicons-file-code-16: `main.tf`"
+::::tabs
+:::tab[main.tf]
+```hcl
+provider "azurerm" {
+  features {}
+}
 
-    ```hcl
-    provider "azurerm" {
-      features {}
-    }
-
-    module "vmss" {
-      source                         = "fortytwoservices/selfhostedrunnervmss/azurerm"
-      operating_system               = "ubuntu"       # windows or ubuntu
-      runner_platform                = "github"       # azure_devops or github
-    }
-    ```
-
-=== ":octicons-file-code-16: `terraform.ps1`"
-
-    ```PowerShell
-    az login
-    az account set --subscription "<your subscription id>"
-    az vm image terms accept --offer self_hosted_runner_github --plan ubuntu-latest --publisher amestofortytwoas1653635920536
-    az vm image terms accept --offer self_hosted_runner_github --plan windows-latest --publisher amestofortytwoas1653635920536
-    terraform init
-    terraform apply
-    ```
+module "vmss" {
+  source                         = "fortytwoservices/selfhostedrunnervmss/azurerm"
+  operating_system               = "ubuntu"       # windows or ubuntu
+  runner_platform                = "github"       # azure_devops or github
+}
+```
+:::
+:::tab[terraform.ps1]
+```powershell
+az login
+az account set --subscription "<your subscription id>"
+az vm image terms accept --offer self_hosted_runner_github --plan ubuntu-latest --publisher amestofortytwoas1653635920536
+az vm image terms accept --offer self_hosted_runner_github --plan windows-latest --publisher amestofortytwoas1653635920536
+terraform init
+terraform apply
+```
+:::
+::::
 
 [Continue to step 2 - Configuring the virtual machine scale set for auto registration](./step2.md)

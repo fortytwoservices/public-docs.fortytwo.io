@@ -1,8 +1,12 @@
+---
+description: Examples of advanced criteria groups built with the AdvancedCriteriaBasedGroups PowerShell module.
+---
+
 # Examples
 
 ## Users with an attribute that ends with a value
 
-```PowerShell
+```powershell
 # Connect to the Microsoft Graph using Automation Account user assigned identity
 Connect-AdvancedCriteriaBasedGroups
 
@@ -18,7 +22,7 @@ Complete-AdvancedCriteriaBasedGroup
 
 ## Users with an attribute that matches a regular expression
 
-```PowerShell
+```powershell
 # Connect to the Microsoft Graph using Automation Account user assigned identity
 Connect-AdvancedCriteriaBasedGroups
 
@@ -37,7 +41,7 @@ Complete-AdvancedCriteriaBasedGroup -Verbose
 
 ## Users member of another group, and having company equals Contoso
 
-```PowerShell
+```powershell
 # Connect to the Microsoft Graph using Automation Account user assigned identity
 Connect-AdvancedCriteriaBasedGroups
 
@@ -55,11 +59,13 @@ Complete-AdvancedCriteriaBasedGroup
 
 ## Users member of three groups at the same time
 
+:::note
 Todo
+:::
 
 ## Users member of another group, but not member of a second group
 
-```PowerShell
+```powershell
 # Connect to the Microsoft Graph using Automation Account user assigned identity, but we can actually disable the user cache, as we have a special cmdlet for this member of one group but not another group scenario - which is way faster. :)
 Connect-AdvancedCriteriaBasedGroups -DoNotCacheAllUsers
 
@@ -75,7 +81,7 @@ Write-AdvancedCriteriaBasedGroupMemberOfButNotMemberOfGroup `
 
 ## Users that has not signed in the last 90 days
 
-```PowerShell
+```powershell
 # Connect to the Microsoft Graph using Automation Account user assigned identity. In order to get the signInActivity property, we need to tell the module to fetch it into the cache. This requires the auditlog.read.all permission.
 Connect-AdvancedCriteriaBasedGroups -Properties signInActivity
 

@@ -1,3 +1,7 @@
+---
+description: Thank you for your interest in our HR Provisioning service. In order to onboard to the service, the following steps are required.
+---
+
 # Onboarding
 
 Thank you for your interest in our HR Provisioning service. In order to onboard to the service, the following steps are required:
@@ -12,7 +16,10 @@ Thank you for your interest in our HR Provisioning service. In order to onboard 
 | 6       | Fortytwo       | Go-live of provisioning |
 | Ongoing | Fortytwo       | Operations |
 
-## Step 1 - Consent to Fortytwo app for HR Provisioning
+## Customer steps
+
+::::steps
+### Consent to Fortytwo app for HR Provisioning
 
 Navigate to [this url](https://login.microsoftonline.com/common/adminconsent?client_id=ddf53ad4-f0fb-47a3-874f-ac7a733010b2) and sign in as a Global Administrator in order to consent to Fortytwo accessing your tenant. We need the following permissions:
 
@@ -22,38 +29,39 @@ Navigate to [this url](https://login.microsoftonline.com/common/adminconsent?cli
 | SynchronizationData-User.Upload | Required in order to send data to the inbound provisioning API.                                                         |
 | User.Read.All                   | Required for user joining and determining the consequence of enabling synchronization.                                  |
 
-
-## Step 2 - If using Active Directory, Install the Microsoft Entra Provisioning Agent
+### If using Active Directory, Install the Microsoft Entra Provisioning Agent
 
 Follow the [Microsoft documentation](https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/how-to-install) for installing the Microsoft Entra Provisioning Agent.
 
-## Step 3 - Create Provisioning API instance
+### Create Provisioning API instance
 
-### Provisioning to Active Directory
+#### Provisioning to Active Directory
 
-### Provisioning to Entra ID (Cloud only)
+#### Provisioning to Entra ID (Cloud only)
 
-- Sign into the [Entra Portal](https://entra.microsoft.com/) as a Global Administrator
-- Under **Enterprise applications** click **New application**
+1. Sign into the [Entra Portal](https://entra.microsoft.com/) as a Global Administrator
 
-![](media/20240116123957.png)
+2. Under **Enterprise applications** click **New application**
 
-- Search for **API-Driven Provisioning** and select the one named **API-driven provisioning to Microsoft Entra ID**
+    ![New application under Enterprise applications](media/20240116123957.png)
 
-![](media/20240116124036.png)
+3. Search for **API-Driven Provisioning** and select the one named **API-driven provisioning to Microsoft Entra ID**
 
-- Give the application a logical name, such as **Contoso HR Inbound Provisioning** and click **Create**
+    ![API-driven provisioning to Microsoft Entra ID](media/20240116124036.png)
 
-![](media/20240116124144.png)
+4. Give the application a logical name, such as **Contoso HR Inbound Provisioning** and click **Create**
 
-- When the application has been created, go to **Provisioning** in the left menu and click **Get started**
+    ![Naming the provisioning application](media/20240116124144.png)
 
-![](media/20240116124330.png)
+5. When the application has been created, go to **Provisioning** in the left menu and click **Get started**
 
-- Switch **Provisioning mode** to **Automatic** and click **Save**
+    ![Get started under Provisioning](media/20240116124330.png)
 
-![](media/20240116124436.png)
+6. Switch **Provisioning mode** to **Automatic** and click **Save**
 
-- Go back to the **Overview**, still under *Provisioning*, copy the **Provisioning API Endpoint** and send to your Fortytwo contact.
+    ![Provisioning mode set to Automatic](media/20240116124436.png)
 
-![](media/20240126144746.png)
+7. Go back to the **Overview**, still under *Provisioning*, copy the **Provisioning API Endpoint** and send to your Fortytwo contact.
+
+    ![Provisioning API Endpoint on the Overview page](media/20240126144746.png)
+::::

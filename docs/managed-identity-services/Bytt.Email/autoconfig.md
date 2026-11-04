@@ -1,13 +1,19 @@
+---
+description: Automatically configure everything. The following PowerShell can be run as a global administrator.
+---
+
 # Automatically configure everything
 
-The following PowerShell can be run as a global administrator: 
+The following PowerShell can be run as a global administrator:
 
-```PowerShell
+```powershell
 Install-Module Microsoft.Graph.Authentication, Microsoft.Graph.Applications, Microsoft.Graph.Groups, Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Identity.DirectoryManagement, Fortytwo.ByttEmail.Installation -Scope CurrentUser -Force
 Import-Module Fortytwo.ByttEmail.Installation
 
 Install-ByttEmail
 ```
+
+## What the script does
 
 The script will do the following:
 
@@ -19,21 +25,24 @@ The script will do the following:
 
 Hopefully, it should look like this after running:
 
-![](media/20251013104936.png)
+![Result after running Install-ByttEmail](media/20251013104936.png)
 
-After the script have been completed successfully, there are a few tasks that needs to be completed:
+## After the script
 
-# 1 - Add users to the groups that was created
+After the script have been completed successfully, there are a few tasks that needs to be completed.
+
+::::steps
+### Add users to the groups that was created
 
 The script have created a set of groups, all prefixed with **Bytt.Email pattern**:
 
-![](media/20251013083100.png)
+![Groups prefixed with Bytt.Email pattern](media/20251013083100.png)
 
-These have all been configured with a set of default email patterns for these domains, and users need to be members of these groups in order to get the different email patterns. Please see details in [configuration step 2](config-step2.md), on how these groups might be configured. 
-
+These have all been configured with a set of default email patterns for these domains, and users need to be members of these groups in order to get the different email patterns. Please see details in [configuration step 2](config-step2.md), on how these groups might be configured.
 
 The groups are by default created as criteria based groups, with all enabled users with that same upn suffix as members. This might not be what you want, but is suitable for many customers.
 
-# 2 - AD Agent
+### AD Agent
 
 If you have Active Directory synchronized user, [configure the AD agent](config-step5.md)
+::::

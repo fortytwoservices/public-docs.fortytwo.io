@@ -1,35 +1,44 @@
+---
+description: Patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.
+---
+
 # Step 2 - Configuring email/accountname patterns
 
 Patterns for Bytt.Email are configured through Entra ID groups with extension properties in your tenant.
 
+## Pattern attributes
+
 By consenting to Bytt.Email, you now have three new multivalued string attributes available for cloud managed groups in your tenant:
 
-| Attribute | Description 
+| Attribute | Description |
 |-|-|
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_aliaspatterns | Patterns available as email alias only |
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_signinnamepatterns | Patterns available as sign-in name only |
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns | Patterns available both as sign-in name and alias |
 | extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns | Patterns available for accountnames |
 
-In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set. If a user is a member of multiple email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.
+In order to override the default email patterns available to your users, you can add users as member of a group with one or more of these attributes set.
 
-It is also possible to set priority by appending a '|\<digit\>' to the end of each pattern.
-Lower digits means higher priority.
-I.E
-```JSON
+If a user is a member of multiple email pattern groups, they are merged. When displayed to the user, the resulting email addresses are sorted in order of length, with any address with a number before the @ is sorted last.
+
+It is also possible to set priority by appending a '|\<digit\>' to the end of each pattern. Lower digits means higher priority. I.E
+
+```json
 {
     "{firstname1,2}{lastname-1,3}|10" # This will have higher priority than the one below
     "{firstname1,3}{lastname-1,2}|20"
 }
 ```
 
+:::note
 Microsoft does not provide a user interface for these types of properties. The attributes can be set by using [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) or by using the Microsoft Graph PowerShell module.
+:::
 
 ## Create email pattern group using PowerShell
 
-This will create a group for a domain in the ```$domain``` variable, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.
+This will create a group for a domain in the `$domain` variable, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.
 
-```PowerShell
+```powershell
 Connect-MgGraph -scopes group.readwrite.all
 $domain = "yourdomain.com"
 New-MgGroup -DisplayName "Email patterns - $domain" -MailEnabled:$false -SecurityEnabled:$true -MailNickname "$(new-guid)".Substring(0,8) -AdditionalProperties @{
@@ -50,11 +59,11 @@ New-MgGroup -DisplayName "Email patterns - $domain" -MailEnabled:$false -Securit
 
 This will create a group with patterns only available as sign-in name / primary email address. A simple way to configure groups in this manner, is to use the [Microsoft Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer). Remember to sign in, instead of using the sample tenant for Graph Explorer.
 
-```
+```http
 POST https://graph.microsoft.com/v1.0/groups/
 ```
 
-```JSON
+```json
 {
     "displayName": "Email pattern - 1",
     "securityEnabled": true,
@@ -78,7 +87,7 @@ POST https://graph.microsoft.com/v1.0/groups/
 
 This will create a group for accountnames, with some example patterns. The patterns will be available both as a sign-in name and as an email alias.
 
-```PowerShell
+```powershell
 Connect-MgGraph -scopes group.readwrite.all
 New-MgGroup -DisplayName "Accountname patterns - All Users" -MailEnabled:$false -SecurityEnabled:$true -MailNickname "$(new-guid)".Substring(0,8) -AdditionalProperties @{
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_accountnamepatterns" = @(
@@ -98,11 +107,11 @@ New-MgGroup -DisplayName "Accountname patterns - All Users" -MailEnabled:$false 
 
 This will create a group with patterns accountnames. A simple way to configure groups in this manner, is to use the [Microsoft Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer). Remember to sign in, instead of using the sample tenant for Graph Explorer.
 
-```
+```http
 POST https://graph.microsoft.com/v1.0/groups/
 ```
 
-```JSON
+```json
 {
     "displayName": "Accountname pattern - 1",
     "securityEnabled": true,
@@ -125,11 +134,11 @@ POST https://graph.microsoft.com/v1.0/groups/
 
 This will create a group with patterns accountnames, with priority set.
 
-```
+```http
 POST https://graph.microsoft.com/v1.0/groups/
 ```
 
-```JSON
+```json
 {
     "displayName": "Accountname pattern - 1",
     "securityEnabled": true,
@@ -180,7 +189,7 @@ POST https://graph.microsoft.com/v1.0/groups/
 | {mailnickname}             | The mailNickname attribute of the user             |
 | {currentsuffix}            | The current UPN suffix of the user                 |
 
-We also allow for extracing the first *n* characters of the placeholders, through the {&lt;placeholder&gt;,*n*} pattern:
+We also allow for extracting the first *n* characters of the placeholders, through the {&lt;placeholder&gt;,*n*} pattern:
 
 | Placeholder       | Replaced with                                                     |
 |-------------------|-------------------------------------------------------------------|
@@ -193,37 +202,37 @@ A user that is a member of *Example Group 1* and *Example Group 2*, with the con
 
 | Option | Alias | Sign-in name |
 |-|-|-|
-| {firstname1}.{lastname-1}@contoso.com | ✅ | ✅ |
-| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | ✅ | ✅ |
-| {firstname1}.{lastname-1}@nwtraders.com | ✅ | ✅ |
-| {firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com | ✅ | ✅ |
+| {firstname1}.{lastname-1}@contoso.com | Yes | Yes |
+| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | Yes | Yes |
+| {firstname1}.{lastname-1}@nwtraders.com | Yes | Yes |
+| {firstname1}.{firstname2,1}.{lastname-1}@nwtraders.com | Yes | Yes |
 
 A user that is a member of only *Example Group 1* will get these options:
 
 | Option | Alias | Sign-in name |
 |-|-|-|
-| {firstname1}.{lastname-1}@contoso.com | ✅ | ✅ |
-| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | ✅ | ✅ |
+| {firstname1}.{lastname-1}@contoso.com | Yes | Yes |
+| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | Yes | Yes |
 
 A user that is member of only *Example Group 3* will get these options (will only be able to add aliases):
 
 | Option | Alias | Sign-in name |
 |-|-|-|
-| {firstname1}.{lastname-1}@test.com | ✅ | |
-| {firstname1}.{firstname2,1}.{lastname-1}@test.com | ✅ | |
+| {firstname1}.{lastname-1}@test.com | Yes | |
+| {firstname1}.{firstname2,1}.{lastname-1}@test.com | Yes | |
 
 A user that is member of *Example Group 1* and *Example Group 3* will get these options:
 
 | Option | Alias | Sign-in name |
 |-|-|-|
-| {firstname1}.{lastname-1}@contoso.com | ✅ | ✅ |
-| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | ✅ | ✅ |
-| {firstname1}.{lastname-1}@test.com | ✅ | |
-| {firstname1}.{firstname2,1}.{lastname-1}@test.com | ✅ |  |
+| {firstname1}.{lastname-1}@contoso.com | Yes | Yes |
+| {firstname1}.{firstname2,1}.{lastname-1}@contoso.com | Yes | Yes |
+| {firstname1}.{lastname-1}@test.com | Yes | |
+| {firstname1}.{firstname2,1}.{lastname-1}@test.com | Yes |  |
 
 ### Example Group 1
 
-```JSON
+```json
 {
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns": [
         "{firstname1}.{lastname-1}@contoso.com",
@@ -234,7 +243,7 @@ A user that is member of *Example Group 1* and *Example Group 3* will get these 
 
 ### Example Group 2
 
-```JSON
+```json
 {
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_patterns": [
         "{firstname1}.{lastname-1}@nwtraders.com",
@@ -245,7 +254,7 @@ A user that is member of *Example Group 1* and *Example Group 3* will get these 
 
 ### Example Group 3
 
-```JSON
+```json
 {
     "extension_34ee8edbd2ff4ee9bac373b53303e00f_aliaspatterns": [
         "{firstname1}.{lastname-1}@test.com",

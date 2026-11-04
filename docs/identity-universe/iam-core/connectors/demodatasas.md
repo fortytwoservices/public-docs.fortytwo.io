@@ -10,7 +10,7 @@ There are two dedicated demo data connectors for a non-existing Norwegian munici
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 ```PowerShell
 $Connector = New-IAMCoreConnector `
@@ -34,4 +34,4 @@ Write-Host "Created with id $($Connector.id)"
 
 ## Example sync rules
 
-Groups become [CoreOrgUnits](../objecttypes/coreorgunit.md), students and teachers become [CoreIdentities](../objecttypes/coreidentity.md), and members become [CoreRelationships](../objecttypes/corerelationship.md) tying the two together. See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for the shape of each.
+Groups become [CoreOrgUnits](../objecttypes/coreorgunit.md), students and teachers become [CoreIdentities](../objecttypes/coreidentity.md), and members become [CoreRelationships](../objecttypes/corerelationship.md) tying the two together. See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for the shape of each.

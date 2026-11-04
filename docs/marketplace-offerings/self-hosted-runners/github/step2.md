@@ -1,23 +1,29 @@
+---
+description: Configure the virtual machine scale set to auto register the instances as GitHub self hosted runners.
+---
+
 # Step 2 - Configuring the virtual machine scale set for auto registration
 
-Now the the VMSS is up and running, we are ready to configure the Github runner.
+Now the VMSS is up and running, we are ready to configure the Github runner.
 
 ## Get a PAT from Github for either repo or organization
 
-If you are registering the runners for a private repo, the PAT needs to have access to "repo". If you are registering the runners for an organization, the PAT needs to have access to "admin:org".
-To register a PAT, go to "Settings" -> "Developer settings" -> "Personal access tokens" -> "Tokens (classic) and click "Generate new token".
+- If you are registering the runners for a private repo, the PAT needs to have access to "repo".
+- If you are registering the runners for an organization, the PAT needs to have access to "admin:org".
 
-### Organization runners
+To register a PAT, go to "Settings" -> "Developer settings" -> "Personal access tokens" -> "Tokens (classic)" and click "Generate new token".
 
-![Alt text](media/step2.png)
-
-### Organization runners on private repo
-
-![Alt text](media/step2-1.png)
-
-### Personal repository runners
-
-![](media/2023-09-15_13-50-27.png)
+::::tabs
+:::tab[Organization runners]
+![PAT scopes for organization runners](media/step2.png)
+:::
+:::tab[Organization runners on private repo]
+![PAT scopes for organization runners on a private repo](media/step2-1.png)
+:::
+:::tab[Personal repository runners]
+![PAT scopes for personal repository runners](media/2023-09-15_13-50-27.png)
+:::
+::::
 
 ## For Ubuntu Self-hosted Runners
 
@@ -42,10 +48,9 @@ az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG
 
 Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
 
-![](media/2023-09-15_13-53-43.png)
+![Scaling the VMSS instance count](media/2023-09-15_13-53-43.png)
 
-### Configure the VMSS to auto register (Legacy way)
-
+:::details[Configure the VMSS to auto register (Legacy way)]
 Run the following with az-cli to configure an extension on the VMSS that will auto register the runner with Github. Replace the variables with your correct information.
 
 ```bash
@@ -63,7 +68,8 @@ az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG
 
 Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
 
-![](media/2023-09-15_13-53-43.png)
+![Scaling the VMSS instance count](media/2023-09-15_13-53-43.png)
+:::
 
 ## For Windows Self-hosted Runners
 
@@ -89,15 +95,15 @@ az vmss extension set --vmss-name $VMSS --name customScript --resource-group $RG
 
 Scale up the VMSS to at least 1 instance. This can be done in the Azure Portal or with az-cli. Currently you would need to manually scale the number of instances of the VMSS to the number you want.
 
-![](media/2023-09-15_13-53-43.png)
+![Scaling the VMSS instance count](media/2023-09-15_13-53-43.png)
 
 ## Advanced configuration examples for the VMSS
 
 ### Offboard Github runner upon termination events/scale-down (Linux)
 
-If you the Github runner instance to offboard itself from Github upon termination events/scale-down, you will need to enable termination notifications on the VMSS. This can be done with the following in the portal:
+If you want the Github runner instance to offboard itself from Github upon termination events/scale-down, you will need to enable termination notifications on the VMSS. This can be done with the following in the portal:
 
-![Alt text](media/step2-2.png)
+![Termination notifications enabled on the VMSS](media/step2-2.png)
 
 Also the Terraform module has a variable for this:
 
@@ -109,8 +115,6 @@ Also the Terraform module has a variable for this:
 
 After the previous has been done, you should be able to verify within the organization or the repository that the runner is registered.
 
-![](media/2023-09-15_14-12-59.png)
+![The registered runner in GitHub](media/2023-09-15_14-12-59.png)
 
 [Continue to step 3 - Testing the self hosted runner](./step3.md)
-
-

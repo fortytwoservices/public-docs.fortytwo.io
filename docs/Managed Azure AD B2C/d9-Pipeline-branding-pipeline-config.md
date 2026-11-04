@@ -1,34 +1,9 @@
+---
+sidebarTitle: "Pipeline configuration"
+description: Azure DevOps pipelines are used for deploying the B2C user interface (branding) and policy files (User Journeys).
+---
+
 # Branding policies pipeline configuration
-
-## Table of contents
-
-- [Branding policies pipeline configuration](#branding-policies-pipeline-configuration)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Pipelines](#pipelines)
-    - [Pipeline execution](#pipeline-execution)
-      - [The automated way](#the-automated-way)
-      - [The manual way](#the-manual-way)
-    - [Azure DevOps Pipelines Environments](#azure-devops-pipelines-environments)
-    - [Azure DevOps Pipelines Library](#azure-devops-pipelines-library)
-      - [Azure DevOps Pipelines variable group - content deployment](#azure-devops-pipelines-variable-group---content-deployment)
-    - [Branding](#branding)
-    - [Upload branding files via Azure DevOps pipeline](#upload-branding-files-via-azure-devops-pipeline)
-      - [Development pipeline - branding](#development-pipeline---branding)
-      - [Test and Production pipelines - branding](#test-and-production-pipelines---branding)
-    - [Policies](#policies)
-      - [Polices - Dev](#polices---dev)
-      - [Polices - Test](#polices---test)
-      - [Polices - Prod](#polices---prod)
-    - [Upload policy files via Azure DevOps pipeline](#upload-policy-files-via-azure-devops-pipeline)
-      - [Development pipelines - policies](#development-pipelines---policies)
-      - [Test and Production pipelines - policies](#test-and-production-pipelines---policies)
-  - [How to work with an Azure DevOps repository](#how-to-work-with-an-azure-devops-repository)
-  - [Recommended procedure](#recommended-procedure)
-    - [Checking in files to git repository with Visual Studio Code](#checking-in-files-to-git-repository-with-visual-studio-code)
-    - [Branch out from the **main** branch](#branch-out-from-the-main-branch)
-      - [Branching - graphical user interface](#branching---graphical-user-interface)
-      - [Branching - terminal / shell](#branching---terminal--shell)
 
 ## Introduction
 
@@ -68,10 +43,10 @@ The configuration of pipelines triggers can be split into two categories:
 - Automatically triggered
 - Manually triggered
 
->NOTE!
->
->All pipelines are configured to require approval before running.  
->Members of project group **Contributors** can all approve runs, ***including*** their own.
+:::note
+All pipelines are configured to require approval before running.
+Members of project group **Contributors** can all approve runs, ***including*** their own.
+:::
 
 #### The automated way
 
@@ -106,10 +81,10 @@ The environments have **Approvals and checks** configured as follows:
 - Approvers: \[IdentityPlatform]\Contributors
 - Allow approvers to approve their own runs
 
->NOTE!
->
->*All approvers must approve* does **not** mean that every member of the group must approve.  
->This can be confusing, but when using groups for approval, a single approval is sufficient.
+:::note
+*All approvers must approve* does **not** mean that every member of the group must approve.
+This can be confusing, but when using groups for approval, a single approval is sufficient.
+:::
 
 ### Azure DevOps Pipelines Library
 
@@ -127,11 +102,11 @@ These credentials are loaded during pipeline execution and are necessary to perf
 
 The ***content*** variable group holds credentials for the app registration used for content deployment for the specified environment.
 
->IMPORTANT!
->
->Using an app registration client_id and client_secret means that if the secret expires the pipeline will stop working.  
->It is important that secret management (key rotation) is established to avoid deployment disruption.  
->The app registration resides in the **resource** tenant and it is granted permission in the B2C tenant using admin consent.
+:::warning[Important]
+Using an app registration client_id and client_secret means that if the secret expires the pipeline will stop working.
+It is important that secret management (key rotation) is established to avoid deployment disruption.
+The app registration resides in the **resource** tenant and it is granted permission in the B2C tenant using admin consent.
+:::
 
 Variable **CONTENT_DEPLOYMENT_APP_REGISTRATION_CLIENTID** refers to an app registration in the **resource** tenant.  
 Variable **CONTENT_DEPLOYMENT_APP_REGISTRATION_CLIENTSECRET** must be provided with the client_id for the pipeline to successfully authenticate with the Graph API and issue a token that must be presented when uploading files.
@@ -224,9 +199,9 @@ Only Identity developers will know what v2 (and v3) polices are available, and s
 
 #### Polices - Test
 
->NOTE!
->
->Policy files in Test and Prod environments are *promoted* from the repository **Development\Policies - vX** folder.
+:::note
+Policy files in Test and Prod environments are *promoted* from the repository **Development\Policies - vX** folder.
+:::
 
 Two DevOps pipelines are configured for uploading two sets of policy files to the **Test** environment.
 
@@ -240,9 +215,9 @@ Policies **v2** may be useful to allow testing of new features or quick bugfix t
 
 #### Polices - Prod
 
->NOTE!
->
->Policy files in Test and Prod environments are *promoted* from the repository **Development\Policies - vX** folder.
+:::note
+Policy files in Test and Prod environments are *promoted* from the repository **Development\Policies - vX** folder.
+:::
 
 One DevOps pipeline is configured for uploading policy files to the **Prod** environment.
 
@@ -336,9 +311,9 @@ How to [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-G
 
 In [Visual Studio Code](https://code.visualstudio.com/) create a new branch by following these steps:
 
->TIP!
->
->First clone the project repository (this will create a local folder).
+:::tip
+First clone the project repository (this will create a local folder).
+:::
 
 #### Branching - graphical user interface
 
@@ -357,15 +332,15 @@ In [Visual Studio Code](https://code.visualstudio.com/) create a new branch by f
 
 By supplying the **-c** parameter the git switch command creates and switches to the branch:
 
-1. git switch -c <new branch name\>
+1. `git switch -c <new branch name>`
 1. Make changes
-1. git add **.** (or **git add \***) (adds all changes, single files can be select instead)
-1. git commit -m "<commit message\>"
-1. git status (see which files are committed)
-1. git push --set-upstream origin <branch name\>  
-(The **-u** == **--set-upstream** and is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
+1. `git add .` (or `git add *`) (adds all changes, single files can be select instead)
+1. `git commit -m "<commit message>"`
+1. `git status` (see which files are committed)
+1. `git push --set-upstream origin <branch name>`
+   (The **-u** == **--set-upstream** and is a one-time operation to create the new branch in Azure DevOps, new commits only need **git push**)
 1. Create **pull request** (PR) in Azure DevOps
 1. Approve and merge PR
-1. git checkout main
-1. git pull
-1. git branch -d <new branch name\> (deletes local branch, optional, but recommended)
+1. `git checkout main`
+1. `git pull`
+1. `git branch -d <new branch name>` (deletes local branch, optional, but recommended)

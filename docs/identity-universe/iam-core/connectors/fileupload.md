@@ -2,7 +2,7 @@
 
 Certain first party based connectors is based on uploading files, because the source systems generate files on a schedule rather than having APIs. In order for this to be available, a connector template with ```file upload enabled``` must be used.
 
-The [Fortytwo.IAM.Core.Connector PowerShell module](../connector-powershell-module.md) has support for uploading files, and required Entra ID authentication. Authenticating to the IAM Core connector APIs is done with a service principal, and is documented in the [authentication documentation](../authentication-powershell.md).
+The [Fortytwo.IAM.Core.Connector PowerShell module](../api/connector-powershell-module.md) has support for uploading files, and required Entra ID authentication. Authenticating to the IAM Core connector APIs is done with a service principal, and is documented in the [authentication documentation](../api/authentication-powershell.md).
 
 After completing the authentication documentation, add permissions as follows:
 
@@ -11,11 +11,11 @@ After completing the authentication documentation, add permissions as follows:
 - Select **Application permissions** and choose **iam-core.connector-data.readwrite.self**
 - After clicking **Add permission**, click **Grant admin consent** and make sure things look like this:
 
-![](../media/image-5.png)
+![](media/image-19.png)
 
 ## Example run.ps1
 
-!!! note "The below steps, requires that you have completed the [authentication documentation](../authentication-powershell.md) and the above steps for adding permissions."
+!!! note "The below steps, requires that you have completed the [authentication documentation](../api/authentication-powershell.md) and the above steps for adding permissions."
 
 Create the following run.ps1 file on your server, and update the placeholders:
 

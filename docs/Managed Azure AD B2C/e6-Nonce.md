@@ -1,13 +1,9 @@
+---
+sidebarTitle: "Nonce"
+description: When using the implicit grant, a cryptographic nonce must be sent on authentication requests in order to mitigate replay attacks.
+---
+
 # Nonce: Mitigate replay attacks when using implicit grant
-
-## Table of contents
-
-- [Nonce: Mitigate replay attacks when using implicit grant](#nonce-mitigate-replay-attacks-when-using-implicit-grant)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Generate a cryptographically random nonce](#generate-a-cryptographically-random-nonce)
-  - [Persist nonces across requests](#persist-nonces-across-requests)
-  - [Validate the **id\_token**](#validate-the-id_token)
 
 ## Introduction
 
@@ -22,7 +18,7 @@ Modern browsers can use the Web [Crypto API](https://www.w3.org/TR/WebCryptoAPI/
 
 Here is a JavaScript code example on how to generate a  **nonce** value:
 
-```JavaScript
+```javascript
 function randomString(length) {
     var bytes = new Uint8Array(length);
     var random = window.crypto.getRandomValues(bytes);
@@ -44,7 +40,7 @@ The generated **nonce** must be persisted in your web application using any of t
 
 Example:
 
-```JavaScript
+```javascript
 window.localStorage.setItem('nonce', randomString(16));
 ```
 
@@ -52,7 +48,7 @@ window.localStorage.setItem('nonce', randomString(16));
 
 Once an **id_token** has been received, this token must be validated and decoded as usual. Its **nonce** claim must contain the exact same value that was sent in the request. If not, authentication should be rejected by the application.
 
-```JavaScript
+```javascript
 var jwt = '...'; // validated and decoded ID token body
 if (jwt.nonce === window.localStorage.getItem('nonce')) {
     // Nonce is OK
@@ -61,6 +57,4 @@ if (jwt.nonce === window.localStorage.getItem('nonce')) {
 }
 ```
 
-Source:
-
-[Auth0 - Mitigate replay attacks when using the Implicit Grant](https://auth0.com/docs/get-started/authentication-and-authorization-flow/mitigate-replay-attacks-when-using-the-implicit-flow)
+Source: [Auth0 - Mitigate replay attacks when using the Implicit Grant](https://auth0.com/docs/get-started/authentication-and-authorization-flow/mitigate-replay-attacks-when-using-the-implicit-flow)

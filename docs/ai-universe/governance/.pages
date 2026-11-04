@@ -1,0 +1,7 @@
+title: Governance
+icon: scale
+arrange:
+  - security-and-data.md
+  - cost.md
+  - compliance.md
+  - vulnerabilities.md

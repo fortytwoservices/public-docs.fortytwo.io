@@ -1,18 +1,26 @@
+---
+description: Fortytwo's referansearkitektur for Identity and Access Management (IAM) / Identity Governance and Administration (IGA) for norske kommuner og fylkeskommuner, basert på Microsoft Entra ID.
+---
+
 # Norske kommuner og fylkeskommuner
 
-!!! note "Content in Norwegian"
-    The content in this subsection is in Norwegian, as it is targeted to Norwegian municipalities
+:::note[Content in Norwegian]
+The content in this subsection is in Norwegian, as it is targeted to Norwegian municipalities
+:::
 
-!!! note "Ikke ferdig"
-    Denne dokumentasjonen er ikke ferdig, og bør ansees som work in progress
+:::note[Ikke ferdig]
+Denne dokumentasjonen er ikke ferdig, og bør ansees som work in progress
+:::
 
 Velkommen til Fortytwo's referansearkitektur for Identity and Access Management (IAM) / Identity Governance and Administration (IGA) for norske kommuner og fylkeskommuner. Denne siden er utformet som en veiledning og en blueprint som kan benyttes for å styrke og sikre digitale identiteter og tilgang til informasjonssystemer i offentlige enheter og baserer seg på bruk av Microsoft Entra ID som kjernekomponent.
 
 Helt overordnet og oppsummert er arkitekturen lagt opp til å benytte Entra ID fullt ut, med valgfritt Active Directory med brukere og grupper provisjonert via Entra ID. Det er ingen andre IAM-produkter involvert i designet.
 
-![](media/20231117110306.png)
+![Overordnet arkitektur med Entra ID som kjernekomponent](media/20231117110306.png)
 
-I dagens digitale landskap står kommuner og fylkeskommuner overfor stadig økende kompleksitet når det gjelder administrasjon av identiteter og tilgangsstyring. Å balansere behovet for å gi ansatte, elever og innbyggere effektiv tilgang til nødvendige ressurser, samtidig som sikkerheten opprettholdes og uten å bygge opp en enorm teknisk gjeld i form av forskjellige tekniske løsninger, er en utfordrende oppgave. Denne referansearkitekturen tar sikte på å adressere nettopp dette, ved å tilby en strukturert tilnærming til design, implementering og forvaltning av IAM.
+I dagens digitale landskap står kommuner og fylkeskommuner overfor stadig økende kompleksitet når det gjelder administrasjon av identiteter og tilgangsstyring.
+
+Å balansere behovet for å gi ansatte, elever og innbyggere effektiv tilgang til nødvendige ressurser, samtidig som sikkerheten opprettholdes og uten å bygge opp en enorm teknisk gjeld i form av forskjellige tekniske løsninger, er en utfordrende oppgave. Denne referansearkitekturen tar sikte på å adressere nettopp dette, ved å tilby en strukturert tilnærming til design, implementering og forvaltning av IAM.
 
 Vi inviterer deg til å utforske denne arkitekturen og ta det i bruk som en ressurs i arbeidet med å styrke og forbedre IAM-praksisen for offentlige enheter i Norge.
 

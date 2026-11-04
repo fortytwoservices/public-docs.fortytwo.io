@@ -14,7 +14,7 @@ A [first party connector](./index.md#first-party-connector) that imports people,
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 The client secret is a secret rather than an ordinary input, so it goes in `-Secrets`:
 
@@ -49,7 +49,7 @@ A newly created connector stays in the state `Created` until the first party con
 | organization | `id` | The organizational structure |
 | tenantUser | `id` | User accounts in Simployer |
 
-Person data is spread across several object types, which is worth knowing when writing [sync rules](../syncrules.md): the national identity number lives on `personIdentityIdentifier` rather than on `person`. Use [`findreferencingobjectforstring`](../syncrule-expressions.md#findreferencingobjectforstring) to reach it from the person, or [`followreferenceforstring`](../syncrule-expressions.md#followreferenceforstring) to go the other way.
+Person data is spread across several object types, which is worth knowing when writing [sync rules](../sync/syncrules.md): the national identity number lives on `personIdentityIdentifier` rather than on `person`. Use [`findreferencingobjectforstring`](../sync/syncrule-expressions.md#findreferencingobjectforstring) to reach it from the person, or [`followreferenceforstring`](../sync/syncrule-expressions.md#followreferenceforstring) to go the other way.
 
 To see the real shape of an object before writing rules against it:
 
@@ -66,4 +66,4 @@ The usual mapping is:
 - **organization** → a [CoreOrgUnit](../objecttypes/coreorgunit.md), provisioning enabled
 - **employment** → a [CoreRelationship](../objecttypes/corerelationship.md), referencing the identity and the org unit
 
-See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for complete worked examples of all three.
+See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for complete worked examples of all three.

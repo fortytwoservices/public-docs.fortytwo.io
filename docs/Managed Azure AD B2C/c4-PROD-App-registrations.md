@@ -1,17 +1,9 @@
+---
+sidebarTitle: "App registrations"
+description: Template listing the app registrations that are used in application integrations in the PROD environment.
+---
+
 # PROD - tenant.onmicrosoft.com - app registrations
-
-## Table of contents
-
-- [PROD - tenant.onmicrosoft.com - app registrations](#prod---tenantonmicrosoftcom---app-registrations)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Management](#management)
-    - [Developers and operators](#developers-and-operators)
-    - [Infrastructure as Code](#infrastructure-as-code)
-      - [App registrations owned by company IaC](#app-registrations-owned-by-company-iac)
-      - [App registrations with secrets](#app-registrations-with-secrets)
-  - [App registrations matrix](#app-registrations-matrix)
-  - [App registration secrets](#app-registration-secrets)
 
 ## Introduction
 
@@ -85,8 +77,11 @@ Applications needing a client_secret:
 
 Look to [app registration secrets](#app-registration-secrets) for details on application secret management.
 
-Secret management is ***imperative*** as secrets need to be cycled regularly to minimize the risk of credential compromise.  
+:::warning
+Secret management is ***imperative*** as secrets need to be cycled regularly to minimize the risk of credential compromise.
+
 A functioning regular secret change strategy is important because applications must have access to a valid secret at run-time to start the application.
+:::
 
 The most common placement for secrets is Azure Key Vault, where access policies and managed identities can be used to restrict and grant access to sensitive data.
 
@@ -104,7 +99,7 @@ Creating a streamlined process for the handling of sensitive app registration in
 
 There will be Azure Key Vaults for applications that require client secrets for interaction.
 
- Name | Type | Azure Key Vault | Client ID | Environment | Comments |
+| Name | Type | Azure Key Vault | Client ID | Environment | Comments |
 | - | - | - | - | - | - |
 | companyApp - web app - prod | Web App | URIx | <appId\> | Prod | |
 | company - iac - identity | N/A | URIx | <appId\> | Prod | Owned by company, service principal for running IaC (may be stored in Key Vault / DevOps library variable group) |

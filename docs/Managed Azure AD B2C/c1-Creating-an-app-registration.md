@@ -1,21 +1,9 @@
+---
+sidebarTitle: "Create an app registration"
+description: To create an app registration some information about the app must be provided, depending on the type of application.
+---
+
 # Creating or requesting an app registration
-
-## Table of contents
-
-- [Creating or requesting an app registration](#creating-or-requesting-an-app-registration)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Platform app registrations](#platform-app-registrations)
-    - [What type of application are you integrating / developing](#what-type-of-application-are-you-integrating--developing)
-      - [If the application is a *Web app* the following information must be provided](#if-the-application-is-a-web-app-the-following-information-must-be-provided)
-      - [If the app is a single-page application please provide the following](#if-the-app-is-a-single-page-application-please-provide-the-following)
-      - [If is is a Web API this information is required](#if-is-is-a-web-api-this-information-is-required)
-      - [And if it is a **Native client** this information is required](#and-if-it-is-a-native-client-this-information-is-required)
-  - [Application registration form](#application-registration-form)
-    - [Create / request app registration form](#create--request-app-registration-form)
-    - [App registration answer form with information to configured in the application](#app-registration-answer-form-with-information-to-configured-in-the-application)
-    - [Example with two sample apps - create / request app registration](#example-with-two-sample-apps---create--request-app-registration)
-    - [Example with two sample apps - response after app registrations have been created](#example-with-two-sample-apps---response-after-app-registrations-have-been-created)
 
 ## Introduction
 
@@ -31,7 +19,7 @@ As a rule of thumb, all environments should have the same app registrations, wit
 
 ## Platform app registrations
 
-Below are the four main application types and what properties they need configured:
+Below are the four main application types and what properties they need configured.
 
 ### What type of application are you integrating / developing
 
@@ -50,12 +38,14 @@ Below are the four main application types and what properties they need configur
 
 Once an app registration is created a **secret** (client_secret) will be provisioned, which must be provided by the application when calling the Microsoft Identity Platform **/authorize** endpoint.
 
->IMPORTANT!
->
->If using Infrastructure-as-Code (IaC) principles the app registration **client_secret** can be put into an Azure Key Vault for safe keeping.  
->App registration secrets can only be viewed (once) and must be copied ***immediately*** after resource creation.
+:::warning[Important]
+If using Infrastructure-as-Code (IaC) principles the app registration **client_secret** can be put into an Azure Key Vault for safe keeping.
+
+App registration secrets can only be viewed (once) and must be copied ***immediately*** after resource creation.
+:::
 
 The implementation of **Proof Key for Code Exchange (PKCE)** is supported (and recommended to use) for single-page apps (SPA), which are often JavaScript-based.
+
 However, mobile, desktop and now also web apps (confidential clients), as described in [Application types for Microsoft identity platform](https://learn.microsoft.com/azure/active-directory/develop/v2-app-types#single-page-apps-javascript) are recommended to implement PKCE.
 
 #### If the app is a single-page application please provide the following
@@ -65,18 +55,21 @@ However, mobile, desktop and now also web apps (confidential clients), as descri
 - What **redirect_uri** (reply URL) should be allowed for returning tokens
 - What **API permissions** (resources), if any, and scopes does the application need access to
 
->IMPORTANT!
->
->For single-page apps, **avoid** using **Implicit flow**.  
->This authentication method should not be used in production (nor any) environments.  
->It's highly recommended to also [avoid enabling it in DEV](https://learn.microsoft.com/azure/active-directory/develop/v2-app-types#authorization-code-flow-vs-implicit-flow) as [authorization code flow with PKCE](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) is the secure and recommended approach.
+:::warning[Important]
+For single-page apps, **avoid** using **Implicit flow**.
+
+This authentication method should not be used in production (nor any) environments.
+
+It's highly recommended to also [avoid enabling it in DEV](https://learn.microsoft.com/azure/active-directory/develop/v2-app-types#authorization-code-flow-vs-implicit-flow) as [authorization code flow with PKCE](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) is the secure and recommended approach.
+:::
 
 When developing in JavaScript, make sure to use MSAL.js **2.x** (at a minimum) package as versions prior to 2.x ONLY support the implicit code flow.
 
 The quote below is from the Microsoft Docs article [Tutorial: Sign in users and call the Microsoft Graph API from a JavaScript SPA using auth code flow](https://learn.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code):
 
->*MSAL.js 2.x improves on MSAL.js 1.0 by supporting the authorization code flow in the browser instead of the implicit grant flow.*  
->*MSAL.js 2.x does NOT support the implicit flow.*
+> *MSAL.js 2.x improves on MSAL.js 1.0 by supporting the authorization code flow in the browser instead of the implicit grant flow.*
+>
+> *MSAL.js 2.x does NOT support the implicit flow.*
 
 See [here](https://tools.ietf.org/html/rfc7636) for detailed information on the **Proof Key for Code Exchange by OAuth Public Clients** standard.
 
@@ -93,7 +86,7 @@ See [here](https://tools.ietf.org/html/rfc7636) for detailed information on the 
 - What **API permissions** (resource) and scopes does the application need access to
 - What **redirect_uri** (reply URL) should be allowed for returning tokens
 
-A redirect_uri for native apps using **Microsoft Authentication Library** may look like
+A redirect_uri for native apps using **Microsoft Authentication Library** may look like:
 
 - msal**APPID**://auth
 - urn:ieft:wg.oauth:2.0:oob

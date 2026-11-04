@@ -13,7 +13,7 @@ The school year is worked out automatically — it runs from 1 August to 30 June
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 ```PowerShell
 $Connector = New-IAMCoreConnector `

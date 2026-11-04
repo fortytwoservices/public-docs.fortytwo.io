@@ -1,3 +1,7 @@
+---
+description: If you believe you have found a security vulnerability in any of our services, products, or sites, we encourage you to let us know immediately.
+---
+
 # Report a Security Issue
 
 If you believe you have found a security vulnerability in any of our services, products, or sites, we encourage you to let us know immediately. We investigate all reports and do our best to quickly fix valid issues.

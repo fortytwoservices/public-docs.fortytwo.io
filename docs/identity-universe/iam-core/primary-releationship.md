@@ -21,11 +21,11 @@ any of these are true:
 
 In the [portal](https://universe.fortytwo.io), go to **Collections** in the left menu, and choose **Create collection**:
 
-![alt text](media/image-6.png)
+![alt text](media/image-pr-1.png)
 
 In the **Collection details** choose to target the **Object Type** of **Relationship**, and create a criteria:
 
-![alt text](media/image-7.png)
+![alt text](media/image-pr-2.png)
 
 Save the collection.
 
@@ -35,11 +35,11 @@ In this step, we will create a connector for the primary relationship feature. T
 
 In the [portal](https://universe.fortytwo.io), go to **Identity hub** in the left menu, and choose **Add connector**, and select **Primary relationship**:
 
-![alt text](media/image-8.png)
+![alt text](media/image-pr-3.png)
 
 Give the connector a name and choose the **Candidate Collection** that you just created.
 
-![alt text](media/image-9.png)
+![alt text](media/image-pr-4.png)
 
 # Step 3
 
@@ -108,4 +108,4 @@ New-IAMCoreSyncRule `
 
 After this is enabled, the users should be able to select their primary relationship, and it should appear in the connector space as guids, where you will see that the external id is the id of the identity and the relationship is the id of the relationship:
 
-![alt text](media/image-10.png)
+![alt text](media/image-pr-5.png)

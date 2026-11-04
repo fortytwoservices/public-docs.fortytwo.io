@@ -1,14 +1,9 @@
+---
+sidebarTitle: "User journeys"
+description: Template listing the User Journeys (execution policies) available in the PROD environment.
+---
+
 # PROD - tenant.onmicrosoft.com - user journeys
-
-## Table of contents
-
-- [PROD - tenant.onmicrosoft.com - user journeys](#prod---tenantonmicrosoftcom---user-journeys)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Execution policies (User Journeys)](#execution-policies-user-journeys)
-  - [Single Sign-On](#single-sign-on)
-  - [Localization](#localization)
-  - [User Journey - signupsignin](#user-journey---signupsignin)
 
 ## Introduction
 

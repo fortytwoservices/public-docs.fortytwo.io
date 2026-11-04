@@ -15,7 +15,7 @@ There is nothing else to configure — the API host is fixed, so no hostname, cl
 
 ## Creating a connector using PowerShell
 
-!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../powershell-module.md)"
+!!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
 Because the access token is a secret rather than an ordinary input, it goes in `-Secrets` and not `-Configuration`:
 
@@ -49,7 +49,7 @@ Each import is a full export of the following resources. The external id of each
 | cost-center | Cost centres |
 | organization | The organization itself |
 
-To see what an individual object actually looks like before writing [sync rules](../syncrules.md) against it:
+To see what an individual object actually looks like before writing [sync rules](../sync/syncrules.md) against it:
 
 ```PowerShell
 Find-IAMCoreConnectorDataObject -ConnectorId $Connector.id -ConnectorObjectType "employee" |
@@ -66,4 +66,4 @@ The mapping you need depends on how your organisation uses Alexis HR, but the us
 - **department** (or **company**) → a [CoreOrgUnit](../objecttypes/coreorgunit.md), provisioning enabled
 - **employment** → a [CoreRelationship](../objecttypes/corerelationship.md), referencing the identity and the org unit
 
-See [sync rules](../syncrules.md#managing-sync-rules-with-powershell) for complete worked examples of all three.
+See [sync rules](../sync/syncrules.md#managing-sync-rules-with-powershell) for complete worked examples of all three.

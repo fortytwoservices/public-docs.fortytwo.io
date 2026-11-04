@@ -1,25 +1,36 @@
+---
+description: Documentation for the Managed Azure AD B2C solution that is available in the Azure Marketplace.
+---
+
 # Getting started
-
-## Table of contents
-
-- [Getting started](#getting-started)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Quickstart](#quickstart)
-  - [The intent](#the-intent)
-  - [Modern authentication](#modern-authentication)
-  - [The pieces of the puzzle](#the-pieces-of-the-puzzle)
-  - [The magic is in the making](#the-magic-is-in-the-making)
-  - [Templates](#templates)
-  - [What are you waiting for?](#what-are-you-waiting-for)
 
 ## Introduction
 
 Here lies the documentation for the Managed Azure AD B2C solution that is available in the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/amestofortytwoas1653635920536.b2c?tab=overview).
 
+## Where to start
+
+::::cards{cols=3}
+:::card{title="B2C and the Identity Experience Framework" icon="book-open" href="./a-CIAM-IEF-introduction.md"}
+The Microsoft Identity Experience Framework (IEF) allows for full flexibility of the Microsoft Identity B2C platform.
+:::
+:::card{title="Application integration" icon="plug" href="./b-Application-integration.md"}
+How to integrate an application with the Identity platform, from app registrations and custom policies to authentication and integration examples.
+:::
+:::card{title="Authorization code grant" icon="network" href="./e2-OAuth-AuthZ-code-grant.md"}
+The authorization code grant enables apps to securely acquire access_tokens, which can be used to access resources that are secured by an authorization server.
+:::
+:::card{title="Custom branding" icon="palette" href="./d3-Custom-branding.md"}
+The sign-in pages can be maintained in an Azure storage account container.
+:::
+:::card{title="App registrations" icon="flask-conical" href="./c2-DEV-App-registrations.md"}
+Template listing the app registrations that are used in application integrations in the DEV environment.
+:::
+::::
+
 ## Quickstart
 
- Go to [Customer Identity Access Management and the Identity Experience Framework](./a-CIAM-IEF-introduction.md) to go through the B2C Identity Platform documentation.
+Go to [Customer Identity Access Management and the Identity Experience Framework](./a-CIAM-IEF-introduction.md) to go through the B2C Identity Platform documentation.
 
 ## The intent
 
@@ -41,11 +52,15 @@ For a complete integration there are various parts that must be in place:
 
 ## The magic is in the making
 
-Putting all of this together usually takes some time and past experience always helps. So, in order to speed up this process we have here gathered and organized the essential information in one place.  
+Putting all of this together usually takes some time and past experience always helps. So, in order to speed up this process we have here gathered and organized the essential information in one place.
+
 This tells the complete integration story, from start to finish. However, the tenant specific details such as User Journeys, app registration identifiers, secrets, and more, is found in the tenant of the Identity Platform.
 
-***Remember***, for a successful integration, the tenant specific settings must be used, which should be safely stored in your environment.
-The integration documentation is recommended to keep close to the Identity platform code, preferably in the same repository. This ensures that all relevant information is easy to find and that it (hopefully) gets continously updated.
+:::tip[Remember]
+For a successful integration, the tenant specific settings must be used, which should be safely stored in your environment.
+:::
+
+The integration documentation is recommended to keep close to the Identity platform code, preferably in the same repository. This ensures that all relevant information is easy to find and that it (hopefully) gets continuously updated.
 
 ## Templates
 
@@ -55,8 +70,7 @@ For every environment there will be a unique set of parameters and configuration
 
 There are templates for app registrations, User Journeys and custom policy files.
 
-Fill in the templates and store the documents with the code (best practice).  
-This documentation is a vital part of each Identity Platform.
+Fill in the templates and store the documents with the code (best practice). This documentation is a vital part of each Identity Platform.
 
 The tenant specific configuration is required for users that are about to integrate an application with the Identity Platform.
 

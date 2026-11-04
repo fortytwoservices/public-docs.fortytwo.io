@@ -1,16 +1,9 @@
+---
+sidebarTitle: "User journeys"
+description: Template listing the User Journeys (execution policies) available in the DEV environment.
+---
+
 # DEV - tenant.onmicrosoft.com - user journeys
-
-## Table of contents
-
-- [DEV - tenant.onmicrosoft.com - user journeys](#dev---tenantonmicrosoftcom---user-journeys)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Execution policies (User Journeys)](#execution-policies-user-journeys)
-  - [Single Sign-On](#single-sign-on)
-  - [Localization](#localization)
-  - [User Journey - signupsignin](#user-journey---signupsignin)
-  - [User Journey - passwordreset](#user-journey---passwordreset)
-  - [User Journey - profileedit](#user-journey---profileedit)
 
 ## Introduction
 

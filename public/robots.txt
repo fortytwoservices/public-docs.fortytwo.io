@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Plain-text versions for AI crawlers and indexers: /llms.txt and /llms-full.txt
+Sitemap: https://docs.fortytwo.io/sitemap-index.xml

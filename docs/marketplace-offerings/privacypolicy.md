@@ -1,3 +1,7 @@
+---
+description: This Privacy Policy applies to the products and services we offer on the Microsoft AppSource and Azure Marketplace, as well as our related websites.
+---
+
 # Privacy Policy
 
 **Effective Date:** March 3, 2026
@@ -11,8 +15,11 @@ We collect personal information from you in a number of different ways, primaril
 - **Information you give us:** This is information you provide by registering to use our offerings, interacting with our listings, requesting support, or corresponding with us by phone, e-mail, or otherwise. This may include your first name, last name, company name, job title, phone number, email address, and organizational details.
 - **Support and Feedback:** Information provided during support requests, feedback submissions, or troubleshooting.
 
-**IMPORTANT: Self-Hosted Offerings vs. Hosted Services**
-For our self-hosted marketplace offerings (products you deploy and manage within your own environment or infrastructure), **we do not collect any telemetry, usage data, or personal information from the software itself.** We only collect information from our offerings if they are explicitly hosted and managed by us (SaaS offerings), or if you directly provide that information to us (e.g., through billing, marketplace transactions, or support inquiries).
+:::warning[Important: Self-Hosted Offerings vs. Hosted Services]
+For our self-hosted marketplace offerings (products you deploy and manage within your own environment or infrastructure), **we do not collect any telemetry, usage data, or personal information from the software itself.**
+
+We only collect information from our offerings if they are explicitly hosted and managed by us (SaaS offerings), or if you directly provide that information to us (e.g., through billing, marketplace transactions, or support inquiries).
+:::
 
 ## 2. How We Use the Information We Collect
 
@@ -35,7 +42,7 @@ We may disclose your information to third parties:
 
 ## 4. How Do We Protect Your Information
 
-We are concerned about protecting the confidentiality of your personal information. We have security measures in place—including administrative, physical, and electronic measures—to protect against the loss, exposure, misuse, or alteration of the information we have collected from you. No transmission over the internet is completely secure, but we do our best to protect your personal data once we have received it.
+We are concerned about protecting the confidentiality of your personal information. We have security measures in place, including administrative, physical, and electronic measures, to protect against the loss, exposure, misuse, or alteration of the information we have collected from you. No transmission over the internet is completely secure, but we do our best to protect your personal data once we have received it.
 
 ## 5. Your Rights
 

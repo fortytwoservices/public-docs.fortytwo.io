@@ -1,0 +1,6 @@
+title: Operations
+icon: wrench
+arrange:
+  - upgrades.md
+  - support.md
+  - glossary.md

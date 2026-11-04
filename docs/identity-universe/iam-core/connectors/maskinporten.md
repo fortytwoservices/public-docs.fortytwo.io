@@ -42,9 +42,11 @@ Use the following information:
 
 <hr />
 
+### Adding keys
+
 After adding the application, use **add your own public keys ("Egne public nøkler")**. 
 
-To get your JWKS, submit the below form with your Entra tenant ID, which you can find at [whatismytenantid.com](https://www.whatismytenantid.com/)
+To be as secure as possible, we use separate keys per tenant. In order to get your keys, submit the below form with your Entra tenant ID, which you can find at [whatismytenantid.com](https://www.whatismytenantid.com/)
 
 <form action="https://prod-22.norwayeast.logic.azure.com:443/workflows/99f74391cd854a02b5446d804f273759/triggers/When_an_HTTP_request_is_received/paths/invoke" method="GET" target="_blank">
     <input type="hidden" name="api-version" value="2016-10-01">
@@ -55,11 +57,13 @@ To get your JWKS, submit the below form with your Entra tenant ID, which you can
     <input type="submit" value="Get JWKS">
 </form>
 
-![alt text](media/image-4.png)
+All the keys must be added to your client in Maskinporten using the *Add key (Legg til nøkkel)* feature:
 
-It should now look something like this:
+![alt text](media/image-20.png)
 
-![alt text](media/image-5.png)
+After you have added keys, it should look something like this:
+
+![alt text](media/image-21.png)
 
 <hr />
 
