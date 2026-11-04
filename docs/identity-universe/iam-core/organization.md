@@ -1,6 +1,6 @@
 # Organization
 
-Organizations need to manage identities that do not arrive through HR, including people from other sources and non-human identities. Organization provides organization-scoped workflows to add and maintain these records, organize them in the organizational structure, and manage their relationships. It is part of Identity Universe and works with IAM Core: Organization manages its source records, while IAM Core remains the shared data foundation used by the rest of the platform.
+Organizations need to manage people who do not arrive through their HR system, such as external hires and contractors. Organization provides workflows to add and maintain these records, place them in the organizational structure, and manage their relationships. It is part of Identity Universe and works with IAM Core: Organization manages its source records, while IAM Core remains the shared data foundation used by the rest of the platform.
 
 ## The records
 
@@ -13,7 +13,7 @@ Organizations need to manage identities that do not arrive through HR, including
 
 The distinction between an identity record and a relationship matters. One record may hold different positions in different parts of the organization; details and dates that belong to a position are recorded on each relationship, not on the identity record.
 
-The API currently represents these records as `SourcePerson`; it does not define separate human and non-human record types. Relationship types configure which supported person fields are required, and IAM Core connector and sync-rule configuration determines how the source data is mapped. Check that model and mapping against the needs of a non-human identity use case before relying on it.
+The API represents these records as `SourcePerson` and does not provide a separate identity type. Relationship types configure which person fields are required, while IAM Core connector and sync-rule configuration determines how the source data is mapped.
 
 ## How it fits with IAM Core
 
