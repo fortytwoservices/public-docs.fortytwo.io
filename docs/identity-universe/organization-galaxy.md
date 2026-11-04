@@ -39,4 +39,4 @@ In org-unit workflow responses, the national identity number (NIN) is not return
 
 ## Working with Organization Galaxy
 
-Organization Galaxy exposes these workflows through its public API. The [Organization Galaxy repository README](https://github.com/fortytwoservices/fortytwo-galaxy-organization) describes the API clients and local development setup. For the shared identity model and synchronization configuration, see [IAM Core](./iam-core/index.md).
+Organization Galaxy exposes the organization workflows through its public API. An internal API supports source-data integration and tenant synchronization. The [Organization Galaxy repository README](https://github.com/fortytwoservices/fortytwo-galaxy-organization) describes the API clients and local development setup. For the shared identity model and synchronization configuration, see [IAM Core](./iam-core/index.md).
