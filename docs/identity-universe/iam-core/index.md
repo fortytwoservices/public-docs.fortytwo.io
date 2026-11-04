@@ -43,4 +43,5 @@ You can work with the [Synchronization admin interface](https://universe.fortytw
 - [Synchronization](sync/index.md) — how imports and full sync jobs run
 - [Sync rules](sync/syncrules.md) — turning connector data into core objects
 - [Sync rule expressions](sync/syncrule-expressions.md) — the expression reference
+- [Organization Galaxy](organization-galaxy.md) — organization-scoped workflows for identities beyond HR
 - [Core object types](objecttypes/common.md) — the data model in detail

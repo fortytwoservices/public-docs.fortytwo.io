@@ -17,7 +17,7 @@ The API currently represents these records as `SourcePerson`; it does not define
 
 ## How it fits with IAM Core
 
-Organization Galaxy sends its source org units, people and relationships to an IAM Core connector. The connector and its [sync rules](./iam-core/syncrules.md) determine how those records are matched and represented as Core objects. A record in Organization Galaxy does not by itself define the final Core data; that is the job of the IAM Core configuration.
+Organization Galaxy sends its source org units, people and relationships to an IAM Core connector. The connector and its [sync rules](./sync/syncrules.md) determine how those records are matched and represented as Core objects. A record in Organization Galaxy does not by itself define the final Core data; that is the job of the IAM Core configuration.
 
 Relationship types use IAM Core collections to limit the identities and org units that can participate in a workflow. This lets the organization define its workflow rules while relying on the shared identity and organizational data in IAM Core.
 
@@ -39,4 +39,4 @@ In org-unit workflow responses, the national identity number (NIN) is not return
 
 ## Working with Organization Galaxy
 
-Organization Galaxy exposes the organization workflows through its public API. An internal API supports source-data integration and tenant synchronization. The [Organization Galaxy repository README](https://github.com/fortytwoservices/fortytwo-galaxy-organization) describes the API clients and local development setup. For the shared identity model and synchronization configuration, see [IAM Core](./iam-core/index.md).
+Organization Galaxy exposes the organization workflows through its public API. An internal API supports source-data integration and tenant synchronization. The [Organization Galaxy repository README](https://github.com/fortytwoservices/fortytwo-galaxy-organization) describes the API clients and local development setup. For the shared identity model and synchronization configuration, see [IAM Core](./index.md) and [sync rules](./sync/syncrules.md).

@@ -4,6 +4,7 @@ title: IAM Core
 arrange:
   - get-started.md
   - connectors
+  - organization-galaxy.md
   - sync
   - objecttypes
   - primary-releationship.md
