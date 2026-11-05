@@ -15,7 +15,8 @@ Administrators must hold the following roles to get full Identity Universe acces
 | Collections - Administrator | Enables the [collections](../../collections/index.md) administration option in the portal and APIs. |
 | Events - administrator | |
 | Workflows - administrator | Enables the workflows administration option in the portal and APIs. |
-| Education - administrator | Enables the education administration option in the portal and APIs.  |
+| Organization - administrator | Enables the [organization](../../organization/index.md) administration option in the portal and APIs. |
+| Education - administrator | Enables the [education](../../education/iam-core-attributes.md) administration option in the portal and APIs. |
 
 ### User assignments
 

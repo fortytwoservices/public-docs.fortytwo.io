@@ -1,5 +1,7 @@
 # GroupLink API
 
+[Swagger](https://api.fortytwo.io/group-link/swagger/index.html)
+
 ## Authentication
 Refer to [Authentication with PowerShell](../../iam-core/api/authentication-powershell.md) for details on how to obtain an access token.
 

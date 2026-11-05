@@ -1,0 +1,7 @@
+icon: users
+title: Organization
+
+arrange:
+  - index.md
+  - api
+  - ...

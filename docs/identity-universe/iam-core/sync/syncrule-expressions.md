@@ -111,7 +111,7 @@ Produces: **string**.
 
 ### externalid
 
-The connector object's external id — the identifier the source system knows the object by. For the [Entra ID SCIM connector](../connectors/entraidscim.md) this is the Entra object id.
+The connector object's external id — the identifier the source system knows the object by. For the [Entra ID inbound connector](../connectors/entraidinbound.md) this is the Entra object id.
 
 Produces: **string**. No properties.
 
