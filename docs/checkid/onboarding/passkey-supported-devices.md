@@ -11,6 +11,4 @@ Passkeys are supported on modern phones, tablets and computers with a recent ope
 | -- | -- |
 | iPhone | iOS 17 and newer |
 | iPad | iPadOS 17 and newer |
-| Mac | macOS Ventura (13) and newer |
 | Android Phone | Android 14 and newer |
-| Windows PC | Windows 10 and newer |
