@@ -1,5 +1,5 @@
 ---
-description: Name it, say what it should do, answer four compliance questions. The platform sets up the repository, the cloud resources, sign-in and the AI in about a minute.
+description: Pick a starter, name it, answer four compliance questions and name the person who oversees it. The platform sets up the repository, the cloud resources, sign-in and the AI in about a minute.
 icon: circle-plus
 ---
 
@@ -19,16 +19,31 @@ Choose **Create an app** on the home page or on the **Apps** page.
 
 ## Fill it in
 
-::::steps
-### Name it and say what it should do
+The dialog has three steps: **Start from**, **Name it** and **Details**. **Next** and **Back** move between them, and a step opens only once the steps before it are filled in.
 
-**Name** becomes the app's address. The dialog shows it as you type, for example `https://meeting-notes.ai.yourcompany.com`. The address cannot be changed later, so choose the name with care.
+::::steps
+### Start from
+
+Pick what the app starts as. Search the starters, or narrow them with the categories above the cards. Choose a card to see what it includes.
+
+| Starter | What you get |
+|-|-|
+| **Web app** | A signed-in web app that people use in their browser. It comes with the shared look, an AI helper wired to the platform and a small sample task list that shows how a feature is built, ready to replace with your own. |
+| **Empty app** | No pages, only the platform connection with its coding guidance and shared knowledge, tests and a small landing page. Pick it when your team builds its own front end elsewhere or needs a service that runs in the background. |
+
+The starter cannot change after the app is created, but everything in the app can. Until you choose **Create it**, **Change** at the top of the dialog takes you back to pick another one.
+
+:::note[Apps that are a set of actions for other AI tools]
+New apps can no longer be created as a set of actions for other AI tools. Apps created that way before keep working as they are.
+:::
+
+### Name it
+
+**Name** becomes the app's address. The dialog shows it as you type, for example `https://meeting-notes.ai.yourcompany.com`. The address cannot be changed later, so choose the name with care. A name can be at most 120 characters.
 
 **What should it do?** is one or two plain sentences. It is also what the app's agent starts out knowing about its job.
 
-![The Create an app dialog with a name filled in](/screenshots/ai-universe/create-app-dialog-name.webp)
-
-### Answer what it handles
+### Details
 
 These four questions fill in the app's entry in your [AI system register](../governance/compliance.md). Each is required, but *Not assessed yet* is an allowed answer you can change later.
 
@@ -39,21 +54,16 @@ These four questions fill in the app's entry in your [AI system register](../gov
 | **Who uses it** | Your own staff, or people outside the organisation too. |
 | **EU AI Act risk** | The risk category under the EU AI Act. |
 
-**Human oversight** is optional: who reviews what the app does, and how often.
+**Human oversight** is the person accountable for what the app does. It starts as you, the creator, when your sign-in is in your organisation's directory. To pick someone else, type at least three characters of their name or email and choose them from the list, which shows up to ten matches. Leaving it empty is allowed. When a person is named, **How they review it** is an optional note, for example *checks a sample of conversations every week*. See [Human oversight](../governance/compliance.md#human-oversight).
 
-![The compliance questions answered](/screenshots/ai-universe/create-app-dialog-register-answered.webp)
-
-### Check the other options
+**Cost group** is the department the app's AI spend is reported under.
 
 Most apps can leave **Other options** as they are. Open it to choose:
 
 | Option | Choices |
 |-|-|
-| **Kind** | *A web page people can open* (the default), *No web page, works behind the scenes*, or *A set of actions for other AI tools*. |
 | **Stores data** | Whether the app gets its own database. |
 | **Has an AI helper** | Whether the app gets an agent. |
-
-![Other options expanded](/screenshots/ai-universe/create-app-dialog-other-options.webp)
 
 ### Create it
 
