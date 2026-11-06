@@ -5,7 +5,7 @@ icon: life-buoy
 
 # Troubleshoot an install
 
-The installer, `fortytwo-setup`, explains every stop in its own output. When a run ends, it prints **What this run left you**: what broke, what needs an action from you, and what is only informational. Read that block first. This page covers the stops support sees most often, with the command for each.
+The installer, `fortytwo-setup`, explains every stop in its own output. When a run ends, it prints **What this run left you**: what broke, what needs an action from you, and what is only informational. When a run stops, the reason comes last, after that block. Read both. This page covers the stops support sees most often, with the command for each.
 
 :::tip[Start with a read-only report]
 `fortytwo-setup --diagnose -g <resource group>` prints a report on a deployment that will not install. It creates, changes and deletes nothing. Where it finds a remedy it prints the command and labels it safe or destructive, and you decide whether to run it. Send the whole output to Fortytwo support with any question.
@@ -17,13 +17,17 @@ The installer, `fortytwo-setup`, explains every stop in its own output. When a r
 
 **Cause.** A step failed, or the session ended. Everything created up to that step is kept in the resource group.
 
-**What to do.** Fix what the error names, then run the installer again against the same resource group:
+**What to do.** The reason for the stop is printed at the very end of the output, after the **What this run left you** summary. Fix what it names, then run the installer again.
+
+Interactively, re-run against the same resource group and the installer resumes from what it recorded:
 
 ```bash
 fortytwo-setup -g <resource group>
 ```
 
-The installer reads the deployment's own record, so you do not type the values again, and no secret it can read is regenerated. Copy the command the installer prints rather than typing your own: it adds `--default-access` and `--allowed-ips` when you set them, because those are not recorded.
+It reads the deployment's own record, so you do not type the values again, and no secret it can read is regenerated. Copy the command the installer prints rather than typing your own: it adds `--default-access` and `--allowed-ips` when you set them, because those are not recorded.
+
+Unattended, with `--non-interactive`, the short command is not enough: the installer checks for every required value before it reads the record, and stops with *Cannot start a non-interactive install*. Re-run the original full command with the same values instead. It resumes from the step that stopped.
 
 Resume with the same installer version that stopped. The stop message names it. A newer installer refuses to continue an install started by an older one, because the templates and the images it deploys are one version.
 
@@ -86,7 +90,7 @@ Before it deploys anything, the installer checks that PostgreSQL and the AI mode
 fortytwo-setup -g <resource group> --postgres-sku Standard_D2s_v3
 ```
 
-A flag you pass on a re-run takes precedence over the recorded value. The same setting can come from the `FORTYTWO_POSTGRES_SKU` environment variable.
+A flag you pass on a re-run takes precedence over the recorded value. For an unattended install, add the flag to the original full command. The same setting can come from the `FORTYTWO_POSTGRES_SKU` environment variable.
 
 :::warning[Avoid the smallest size]
 `Standard_B1ms` is accepted but leaves only 35 usable database connections. The platform can use them all up while it rolls out a new version. The installer warns when you choose it.
@@ -242,6 +246,8 @@ az ad app owner add --id <application (client) id> --owner-object-id <your objec
 | Region | `--region` | `FORTYTWO_REGION` |
 | App domain | `--galaxy-domain` | `FORTYTWO_GALAXY_DOMAIN` |
 | Subscription, when your login sees more than one | `--subscription` | `FORTYTWO_SUBSCRIPTION` |
+
+This also holds when you resume a stopped unattended install: run the same full command again, not only `-g <resource group>`.
 
 Also pass `--alert-email` or set `FORTYTWO_ALERT_EMAIL`. An unattended install without one warns and installs with no alerts at all. The certificate password is read only from `FORTYTWO_GALAXY_CERT_PASSWORD`, so it never appears in the shell history.
 
