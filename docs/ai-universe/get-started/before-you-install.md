@@ -5,27 +5,27 @@ icon: clipboard-check
 
 # Before you install
 
-AI Universe is installed into your own Azure subscription by someone in your organisation, usually together with Fortytwo. Have these ready before you start.
+AI Universe is installed into your own Azure subscription by someone in your organisation, after buying it on Microsoft Marketplace. See [Install AI Universe](install.md). Have these ready before you start.
 
 ## Checklist
 
 ::::steps
 ### A dedicated Azure subscription
 
-The platform creates a resource group for every app, so give it a subscription of its own. Pick the Azure region you want your data in, for example Sweden Central or Norway East.
+The platform creates a resource group for every app, so give it a subscription of its own. This is strongly recommended, not required. The subscription must be in the tenant you bought AI Universe in. Pick the Azure region you want your data in, for example Sweden Central or Norway East.
 
 ### The right person signed in
 
 Whoever runs the installer needs, for the duration of the install:
 
-- **Owner** on that subscription
+- **Owner** on that subscription, or **Contributor** plus **User Access Administrator**
 - **Global Administrator** or **Privileged Role Administrator** in Entra ID
 
 The installer grants Microsoft Graph admin consent once, which is why it needs the Entra role. It stops before changing anything if either role is missing.
 
 ### A domain for your apps
 
-Every app gets its own address under a domain you choose, such as `hr-assistant.ai.yourcompany.com`. Decide on the domain (here `ai.yourcompany.com`) before installing.
+Every app gets its own address under a domain you choose, such as `hr-assistant.ai.yourcompany.com`. Decide on the domain (here `ai.yourcompany.com`) before installing. During the install you add one NS record for it at your DNS provider.
 
 :::warning[Choose the domain carefully]
 Changing the app domain later means every app has to be set up again. Pick one you intend to keep.
