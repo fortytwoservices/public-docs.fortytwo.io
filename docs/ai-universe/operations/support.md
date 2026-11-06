@@ -27,6 +27,8 @@ Contact your Fortytwo representative, or reach us through [fortytwo.io](https://
 - the support bundle from **Logs for Fortytwo**
 - if an install failed, the output of `fortytwo-setup --diagnose -g <resource group>`
 
+If an install stopped or stalled, [Troubleshoot an install](../get-started/troubleshoot-install.md) may already have the fix.
+
 Fortytwo has no access to your deployment. We may ask you to share your screen or run a command for us.
 
 ## Security issues

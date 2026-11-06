@@ -53,7 +53,7 @@ The installer asks which subscription to install into. When it asks, add one NS 
 
 ### Leave it running
 
-The install takes 20 to 45 minutes. If it stops, or Cloud Shell disconnects, paste the same command again and it carries on.
+The install takes 20 to 45 minutes. If it stops, or Cloud Shell disconnects, paste the same command again and it carries on. If it stops with an error, see [Troubleshoot an install](troubleshoot-install.md).
 ::::::
 
 ## When it finishes

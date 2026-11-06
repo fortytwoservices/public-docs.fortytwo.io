@@ -45,5 +45,5 @@ Every app's code lives in its own repository. After the install you connect the 
 The installer creates everything inside the subscription you give it: networking, the control panel, the kernel, the AI gateway, a PostgreSQL database, a Key Vault, a container registry and Microsoft Foundry for the models. Nothing is reachable from the internet except through the Application Gateway and its web application firewall.
 
 :::tip
-If an install stops part-way, `fortytwo-setup --diagnose -g <resource group>` gives a read-only report of what is wrong. It changes nothing. Send the whole output to Fortytwo support.
+If an install stops part-way, `fortytwo-setup --diagnose -g <resource group>` gives a read-only report of what is wrong. It changes nothing. Send the whole output to Fortytwo support. Common stops and their fixes are in [Troubleshoot an install](troubleshoot-install.md).
 :::
