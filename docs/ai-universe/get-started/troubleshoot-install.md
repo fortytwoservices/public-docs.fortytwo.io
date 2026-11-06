@@ -104,6 +104,22 @@ A flag you pass on a re-run takes precedence over the recorded value. The same s
 az provider register -n Microsoft.Web --wait
 ```
 
+## Role assignment is refused although you are Owner
+
+**Symptom.** The infrastructure deploy fails with `AuthorizationFailed` on `Microsoft.Authorization/roleAssignments/write`, usually naming the `platformProvisioningRoles` deployment, even though you are Owner of the subscription.
+
+**Cause.** Your Owner or User Access Administrator role assignment carries a condition that forbids assigning Owner, User Access Administrator or Role Based Access Control Administrator. This is Microsoft's pattern for constrained delegation. By default the installer assigns Role Based Access Control Administrator to the platform at subscription scope, so the condition blocks it.
+
+The installer's first step already warns when it sees a condition on your role assignments, and prints a command that shows it:
+
+```bash
+az role assignment list --assignee "$(az ad signed-in-user show --query id -o tsv)" --include-inherited --query "[?condition!=null].{role:roleDefinitionName,condition:condition}"
+```
+
+**What to do.** Run the same install command again with `--custom-provisioning-role` added. It resumes in the same resource group, with no uninstall needed. The platform then gets a custom role instead of the built-in one, which such a condition normally allows. Creating that role definition needs `Microsoft.Authorization/roleDefinitions/write`, which Owner and User Access Administrator include, because the condition limits role assignments, not role definitions.
+
+This does not help when the condition only allows a fixed list of roles: the installer says so in its warning. In that case, ask whoever owns the condition to widen it, or have someone whose role assignment has no condition run the install.
+
 ## Your Azure sign-in is about to expire
 
 **Symptom.** The installer warns *Your Azure token expires in ~N min* or *Your Azure session looks stale*, or a step fails with *Azure session is not valid*.
