@@ -1,5 +1,5 @@
 ---
-description: An app's own settings. Its details and owner, model and agent, keys, size, cost, logs, compliance entry, and removing it.
+description: An app's own settings. Its details and owner, model and agent, keys, size, cost, logs, compliance entry, links to other apps, API permissions, and removing it.
 icon: settings
 ---
 
@@ -20,7 +20,9 @@ Open an app and choose the **Settings** tab.
 | **Cost** | What this app has spent on AI. |
 | **Logs** | The app's own logs, for troubleshooting. |
 | **Compliance** | The app's entry in the [AI system register](../governance/compliance.md). |
-| **Repository name**, **Links** | Where the code lives, and links shown with the app. |
+| **Repository name** | Where the code lives. |
+| **App links** | Which tools of other apps in your AI Universe this app may use, and which apps may use this one. See [App links](app-links.md). |
+| **API permissions** | APIs outside your AI Universe, such as Microsoft Graph, that this app may call. An Entra admin grants consent. |
 | **Infrastructure** | The Azure resources behind the app. For IT. |
 | **Remove** | Take the app out of service. |
 

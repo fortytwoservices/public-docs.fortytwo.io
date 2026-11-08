@@ -23,8 +23,8 @@ The **Settings** tab holds the settings for the platform as a whole. Settings fo
 
 | Section | What it is |
 |-|-|
-| **App links** | Let one app's agent call chosen tools in another app, in one direction only. |
-| **API permissions** | Which APIs in your Entra tenant apps may call. Each app requests what it needs, and an Entra admin grants consent. |
+| **App links** | Every link between apps: which app may use which tools of another. Each app's admin requests and approves links on the app's own settings. See [App links](../apps/app-links.md). |
+| **API permissions** | Which APIs outside your AI Universe, such as Microsoft Graph, apps may call. Each app requests what it needs, and an Entra admin grants consent. Apps inside your AI Universe use App links instead. |
 | **Agents** | Every agent across every app, and what each one is allowed to do. |
 | **Add-ons** | Optional parts of the platform you can install without waiting for a release, such as Studio. |
 | **Branding** | Your colours and logo, shown in the **Designsystem**. |
