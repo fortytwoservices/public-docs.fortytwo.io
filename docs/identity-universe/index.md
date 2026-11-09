@@ -1,6 +1,6 @@
 # Identity Universe
 
-Identity Universe is Fortytwo's identity and access management platform. It takes the data your organisation already keeps about its people — in HR systems, student information systems, and elsewhere — builds one consistent picture of who everyone is and what they do, and uses that picture to decide who gets access to what.
+Identity Universe is Fortytwo's Identity Governance and Administration (IGA) platform. It takes the information your organisation already keeps about its people — in HR systems, ERP systems, CRMs, student information systems, and elsewhere — builds one consistent picture of who everyone is and what they do, and uses that picture to decide who gets access to what.
 
 Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 
