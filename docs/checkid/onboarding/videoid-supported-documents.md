@@ -12,86 +12,166 @@ Signicat VideoID is one of the identity providers available in CheckID. The tabl
 Passports are not supported. Most passports don't include a national identity number, which CheckID needs to verify the user.
 :::
 
-| Country | ID card | Driver licence |
+| Country | Category | Document |
 | --- | --- | --- |
-| Albania | Identity Card |  |
-| Algeria | Identity Card |  |
-| Andorra | Residence Permit | Driver license |
-| Argentina | Identity Card | Driver License |
-| Armenia | Identity Card |  |
-| Australia |  | Driver License |
-| Austria | Identity Card<br>Residence Permit | Driver License |
-| Bahamas |  | Driver License |
-| Bahrain | Identity Card |  |
-| Belgium | Identity Card<br>Residence Permit | Driver License |
-| Bolivia | Identity Card |  |
-| Bosnia and Herzegovina | Identity Card |  |
-| Bulgaria | Identity Card<br>Residence Permit | Driver License |
-| Chile | Identity Card<br>Residence Permit |  |
-| China | Identity Card |  |
-| Colombia | Identity document<br>Residence Permit | Driver License |
-| Costa Rica | Identity Card | Driver License |
-| Croatia | Identity Card<br>Resident Permit | Driver License |
-| Cyprus | Identity Card<br>Residence Permit |  |
-| Czech Republic |  | Driver License |
-| Czechia | Czech ID Card v. 2012<br>Czech ID Card v.2003<br>Residence Permit |  |
-| Denmark |  | Driver License |
-| Dominican Republic | Identity Card | Driver License |
-| Ecuador | Identity Card |  |
-| Egypt | Identity Card |  |
-| El Salvador | Identity Card |  |
-| Estonia | Identity Card |  |
-| Federal Republic of Brazil | Identity Card | Driver License |
-| Finland | Identity Card | Driver license |
-| France | CNI<br>CNIe<br>Residence Permit | Driver License<br>French Old Book Driver License |
-| Georgia | Identity Card<br>Residence Permit |  |
-| Germany | Identity Card<br>Old identity card (issued until October 2010)<br>Residence Permit | Driver license |
-| Greece | Electronic Identity Card<br>Identity Card | Driver License |
-| Guatemala | Identity Card |  |
-| Hong Kong | Identity Card<br>Residence Permit |  |
-| Hungary | Identity Card<br>Residence Permit | Driver License |
-| India | Identity Card |  |
-| Indonesia | Identity Card |  |
-| Ireland | Residence Permit | Driver License |
-| Italy | Identity Card<br>Old 1994 Identity Card<br>Residence Permit | Driver License |
-| Japan |  | Driver License |
-| Kosovo | Identity Card |  |
-| Kuwait | Identity Card |  |
-| Latvia | Identity Card |  |
-| Liechtenstein | Identity Card |  |
-| Lithuania | Identity Card | Driver License |
-| Luxembourg | Identity Card<br>Residence Permit | Driver License |
-| Macedonia | Identity Card |  |
-| Malta | Identity Card<br>Residence Permit |  |
-| Mexico | Identity Card<br>Residence Permit | Driver License |
-| Moldova | Identity Card |  |
-| Morocco | Identity Card |  |
-| Netherlands | Identity Card<br>Residence Permit | Driver License |
-| Norway | Identity Card |  |
-| Pakistan | Identity Card<br>Origin Identity Card |  |
-| Panama | Identity Card<br>Identity Card Youth<br>Residence Permit | Driver License |
-| Paraguay | Identity Card |  |
-| Peru | Identity Card<br>Residence Permit | Driver License |
-| Philippines | Identity Card<br>Postal Identity Card<br>Professional ID Card<br>Social Security System Card | Driver License |
-| Poland | Identity Card<br>Residence Permit | Driver License |
-| Portugal | Identity Card<br>Residence Permit | Driver License |
-| Puerto Rico |  | Driver License |
-| Republic of Honduras | Identity Card |  |
-| Romania | Biometric Identity Card<br>Identity Card<br>Residence Card<br>Residence Permit | Driver License |
-| Serbia | Identity Card |  |
-| Singapore | Identity Card<br>Residence Permit<br>Work Permit |  |
-| Slovakia | Identity Card |  |
-| Slovenia | Identity Card<br>Residence Permit | Driver license |
-| Spain | EU Resident Permit<br>Identity Card<br>Resident Permit | Driver License |
-| State of Israel | Identity Card | Driver License |
-| Sweden | Identity Card<br>Residence Permit<br>Tax Card | Driver License |
-| Switzerland | Identity Card<br>Residence Permit<br>Residence Permit - Book format | Driver License |
-| Thailand | Identity Card |  |
-| Turkey | Identity Card |  |
-| Ukraine | Identity Card |  |
-| United Arab Emirates | Identity Card<br>Resident Identity Card |  |
-| United Kingdom | Residence Permit | Driver License |
-| United States of America |  | Driver License |
-| Uruguay | Identity Card |  |
-| Venezuela |  | Driver License |
-| Vietnam | Identity Card | Driver License |
+| Albania | ID card | Identity Card |
+| Algeria | ID card | Identity Card |
+| Andorra | Driver licence | Driver license |
+| Andorra | ID card | Residence Permit |
+| Argentina | Driver licence | Driver License |
+| Argentina | ID card | Identity Card |
+| Armenia | ID card | Identity Card |
+| Australia | Driver licence | Driver License |
+| Austria | Driver licence | Driver License |
+| Austria | ID card | Identity Card |
+| Austria | ID card | Residence Permit |
+| Bahamas | Driver licence | Driver License |
+| Bahrain | ID card | Identity Card |
+| Belgium | Driver licence | Driver License |
+| Belgium | ID card | Identity Card |
+| Belgium | ID card | Residence Permit |
+| Bolivia | ID card | Identity Card |
+| Bosnia and Herzegovina | ID card | Identity Card |
+| Bulgaria | Driver licence | Driver License |
+| Bulgaria | ID card | Identity Card |
+| Bulgaria | ID card | Residence Permit |
+| Chile | ID card | Identity Card |
+| Chile | ID card | Residence Permit |
+| China | ID card | Identity Card |
+| Colombia | Driver licence | Driver License |
+| Colombia | ID card | Identity document |
+| Colombia | ID card | Residence Permit |
+| Costa Rica | Driver licence | Driver License |
+| Costa Rica | ID card | Identity Card |
+| Croatia | Driver licence | Driver License |
+| Croatia | ID card | Identity Card |
+| Croatia | ID card | Resident Permit |
+| Cyprus | ID card | Identity Card |
+| Cyprus | ID card | Residence Permit |
+| Czech Republic | Driver licence | Driver License |
+| Czechia | ID card | Czech ID Card v. 2012 |
+| Czechia | ID card | Czech ID Card v.2003 |
+| Czechia | ID card | Residence Permit |
+| Denmark | Driver licence | Driver License |
+| Dominican Republic | Driver licence | Driver License |
+| Dominican Republic | ID card | Identity Card |
+| Ecuador | ID card | Identity Card |
+| Egypt | ID card | Identity Card |
+| El Salvador | ID card | Identity Card |
+| Estonia | ID card | Identity Card |
+| Federal Republic of Brazil | Driver licence | Driver License |
+| Federal Republic of Brazil | ID card | Identity Card |
+| Finland | Driver licence | Driver license |
+| Finland | ID card | Identity Card |
+| France | Driver licence | Driver License |
+| France | Driver licence | French Old Book Driver License |
+| France | ID card | CNI |
+| France | ID card | CNIe |
+| France | ID card | Residence Permit |
+| Georgia | ID card | Identity Card |
+| Georgia | ID card | Residence Permit |
+| Germany | Driver licence | Driver license |
+| Germany | ID card | Identity Card |
+| Germany | ID card | Old identity card (issued until October 2010) |
+| Germany | ID card | Residence Permit |
+| Greece | Driver licence | Driver License |
+| Greece | ID card | Electronic Identity Card |
+| Greece | ID card | Identity Card |
+| Guatemala | ID card | Identity Card |
+| Hong Kong | ID card | Identity Card |
+| Hong Kong | ID card | Residence Permit |
+| Hungary | Driver licence | Driver License |
+| Hungary | ID card | Identity Card |
+| Hungary | ID card | Residence Permit |
+| India | ID card | Identity Card |
+| Indonesia | ID card | Identity Card |
+| Ireland | Driver licence | Driver License |
+| Ireland | ID card | Residence Permit |
+| Italy | Driver licence | Driver License |
+| Italy | ID card | Identity Card |
+| Italy | ID card | Old 1994 Identity Card |
+| Italy | ID card | Residence Permit |
+| Japan | Driver licence | Driver License |
+| Kosovo | ID card | Identity Card |
+| Kuwait | ID card | Identity Card |
+| Latvia | ID card | Identity Card |
+| Liechtenstein | ID card | Identity Card |
+| Lithuania | Driver licence | Driver License |
+| Lithuania | ID card | Identity Card |
+| Luxembourg | Driver licence | Driver License |
+| Luxembourg | ID card | Identity Card |
+| Luxembourg | ID card | Residence Permit |
+| Macedonia | ID card | Identity Card |
+| Malta | ID card | Identity Card |
+| Malta | ID card | Residence Permit |
+| Mexico | Driver licence | Driver License |
+| Mexico | ID card | Identity Card |
+| Mexico | ID card | Residence Permit |
+| Moldova | ID card | Identity Card |
+| Morocco | ID card | Identity Card |
+| Netherlands | Driver licence | Driver License |
+| Netherlands | ID card | Identity Card |
+| Netherlands | ID card | Residence Permit |
+| Norway | ID card | Identity Card |
+| Pakistan | ID card | Identity Card |
+| Pakistan | ID card | Origin Identity Card |
+| Panama | Driver licence | Driver License |
+| Panama | ID card | Identity Card |
+| Panama | ID card | Identity Card Youth |
+| Panama | ID card | Residence Permit |
+| Paraguay | ID card | Identity Card |
+| Peru | Driver licence | Driver License |
+| Peru | ID card | Identity Card |
+| Peru | ID card | Residence Permit |
+| Philippines | Driver licence | Driver License |
+| Philippines | ID card | Identity Card |
+| Philippines | ID card | Postal Identity Card |
+| Philippines | ID card | Professional ID Card |
+| Philippines | ID card | Social Security System Card |
+| Poland | Driver licence | Driver License |
+| Poland | ID card | Identity Card |
+| Poland | ID card | Residence Permit |
+| Portugal | Driver licence | Driver License |
+| Portugal | ID card | Identity Card |
+| Portugal | ID card | Residence Permit |
+| Puerto Rico | Driver licence | Driver License |
+| Republic of Honduras | ID card | Identity Card |
+| Romania | Driver licence | Driver License |
+| Romania | ID card | Biometric Identity Card |
+| Romania | ID card | Identity Card |
+| Romania | ID card | Residence Card |
+| Romania | ID card | Residence Permit |
+| Serbia | ID card | Identity Card |
+| Singapore | ID card | Identity Card |
+| Singapore | ID card | Residence Permit |
+| Singapore | ID card | Work Permit |
+| Slovakia | ID card | Identity Card |
+| Slovenia | Driver licence | Driver license |
+| Slovenia | ID card | Identity Card |
+| Slovenia | ID card | Residence Permit |
+| Spain | Driver licence | Driver License |
+| Spain | ID card | EU Resident Permit |
+| Spain | ID card | Identity Card |
+| Spain | ID card | Resident Permit |
+| State of Israel | Driver licence | Driver License |
+| State of Israel | ID card | Identity Card |
+| Sweden | Driver licence | Driver License |
+| Sweden | ID card | Identity Card |
+| Sweden | ID card | Residence Permit |
+| Sweden | ID card | Tax Card |
+| Switzerland | Driver licence | Driver License |
+| Switzerland | ID card | Identity Card |
+| Switzerland | ID card | Residence Permit |
+| Switzerland | ID card | Residence Permit - Book format |
+| Thailand | ID card | Identity Card |
+| Turkey | ID card | Identity Card |
+| Ukraine | ID card | Identity Card |
+| United Arab Emirates | ID card | Identity Card |
+| United Arab Emirates | ID card | Resident Identity Card |
+| United Kingdom | Driver licence | Driver License |
+| United Kingdom | ID card | Residence Permit |
+| United States of America | Driver licence | Driver License |
+| Uruguay | ID card | Identity Card |
+| Venezuela | Driver licence | Driver License |
+| Vietnam | Driver licence | Driver License |
+| Vietnam | ID card | Identity Card |
