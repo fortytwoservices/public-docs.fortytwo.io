@@ -17,21 +17,25 @@ Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 ## How it fits together
 
 ```mermaid
-flowchart LR
-    A[HR system] --> C
-    B[Student information system] --> C
-    D[Entra ID] --> C
-    C[Connectors] --> E[IAM Core]
-    E --> F[Collections]
-    F --> G[Workflows]
-    F --> I[Group Link]
-    I --> H[Access in target systems]
-    F --> H
+flowchart TD
+    A[HR system] --> C1
+    B[Student information system] --> C2
+    D[Entra ID] --> C3
+    C1[Connector with sync rules] --> IAMCore[IAM Core]
+    C2[Connector with sync rules] --> IAMCore[IAM Core]
+    C3[Connector with sync rules] --> IAMCore[IAM Core]
+    IAMCore --> Collections[Collections]
+    Collections --> G[Workflows]
+    Collections --> I[Group Link]
+    I --> EntraID[Entra ID]
+    IAMCore --> OutboundConnector[Outbound connector]
+    OutboundConnector --> EntraID
+    EntraID --> AD[AD]
+    IAMCore --> Education[Education]
+    Education --> EntraID
 ```
 
-Data flows in one direction. A source system owns its data and pushes it into a connector; sync rules decide what that means in terms of identities and organizational structure; collections group those identities; and access follows from collection membership.
-
-The value of the middle step is that it happens once. Rather than every downstream system needing its own opinion about who counts as an employee, that question is answered in one place and everything else builds on the answer.
+Information primarly flows in one direction, from source systems who owns the information, into Fortytwo Universe and out to Entra ID, AD, Google or other connected systems. Sync rules are used to interpret the source system data, translating it into a common schema in IAM Core based on identity, relationships and org units. The IAM Core is consumed by [Collections](./collections/index.md), [Education](./education/index.md) and other services.
 
 ## Where to start
 
