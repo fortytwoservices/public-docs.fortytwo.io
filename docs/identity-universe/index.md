@@ -1,6 +1,6 @@
 # Identity Universe
 
-Identity Universe is Fortytwo's Identity Governance and Administration (IGA) platform. It takes the information your organisation already keeps about its people — in HR systems, ERP systems, CRMs, student information systems, and elsewhere — builds one consistent picture of who everyone is and what they do, and uses that picture to decide who gets access to what.
+Identity Universe is Fortytwo's Identity Governance and Administration (IGA) platform. It takes the information your organisation already keeps about its people — in HR systems, ERP systems, CRMs, student information systems, and elsewhere — and builds one consistent picture of who everyone is and what they do, and uses that picture to decide who gets access to what.
 
 Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 
@@ -12,6 +12,7 @@ Sign in at [universe.fortytwo.io](https://universe.fortytwo.io).
 | [**Collections**](./collections/index.md) | Groups of people, either defined by criteria over the core data or joinable on request with an approval flow. Collections are how access is expressed. |
 | [**Group Link**](collections/plandesign/group-link-entraid.md) | Keeps a Microsoft Entra ID group's membership aligned with a collection, so applications that read Entra ID groups get their answer from the collection. |
 | **Workflows** | Automation that reacts to people joining or leaving a collection, for example by calling a webhook. Configured from the Administration blade. |
+| [**Education**](education/index.md) | Education specific features, such as student access policies and delegated password reset. |
 
 ## How it fits together
 
