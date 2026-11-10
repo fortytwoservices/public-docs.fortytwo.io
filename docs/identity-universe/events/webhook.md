@@ -43,8 +43,10 @@ This allows the Fortytwo Universe events service to invoke the LogicApp without 
 
 ![alt text](media/image-1.png)
 
-When copying the url of your LogicApp, you will see the three query parameters *sp*, *sv* and *sig* being added. These must be removed:
+When copying the url of your LogicApp, you will see the three query parameters *sp*, *sv* and *sig* being added. These must be removed (actually, they don't, but we force you to do so in order to be as secure as possible 😉):
 
-[https://prod-14.norwayeast.logic.azure.com:443/workflows/77cf2d9f2bdf41cb977de860cd601be3/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01<s>&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=c55rRC959lDdI7XcKthSyY9LIQ2dm-dhvfBggG2f-tg</s>](https://prod-14.norwayeast.logic.azure.com:443/workflows/77cf2d9f2bdf41cb977de860cd601be3/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=c55rRC959lDdI7XcKthSyY9LIQ2dm-dhvfBggG2f-tg)
+[https://prod-14.norwayeast.logic.azure.com:443/workflows/
+77cf2d9f2bdf41cb977de860cd601be3/triggers/When_an_HTTP_request_is_received/
+paths/invoke?api-version=2016-10-01<s>&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=c55rRC959lDdI7XcKthSyY9LIQ2dm-dhvfBggG2f-tg</s>](https://prod-14.norwayeast.logic.azure.com:443/workflows/77cf2d9f2bdf41cb977de860cd601be3/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=c55rRC959lDdI7XcKthSyY9LIQ2dm-dhvfBggG2f-tg)
 
 4. Last, when configuring a workflow, use the modified URL and remember to verify
