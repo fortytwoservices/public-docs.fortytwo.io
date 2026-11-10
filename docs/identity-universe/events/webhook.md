@@ -11,8 +11,9 @@ We recommend always using authentication for webhook uris, such as when calling 
 When using Entra ID authentication, a JWT will be presented in the authorization header to the webhook uri. The JWT will have the following properties:
 
 - **Issued by your tenant**
-- The **appid** claim will be 8f230876-83e7-44cc-b4e4-fe902b01f975 (**Fortytwo Universe - Workflows**)
-- Audience will by default be **https://management.azure.com**, but you can provide any valid scope (which must match an application in your tenant) 
+- The **appid** claim will be **8f230876-83e7-44cc-b4e4-fe902b01f975** 
+    - This is the app **Fortytwo Universe - Workflows**
+- Audience will by default be **https://management.azure.com**, but you can provide any valid scope (which must match an application in your tenant)
 
 ### LogicApp
 
