@@ -40,7 +40,7 @@ Information primarly flows in one direction, from source systems who owns the in
 ## Where to start
 
 - [**Get started**](./get-started/index.md) — signing in, consent, and a tour of the pages you will see as a user
-- [**IAM administrator**](get-started/permissions/index.md) — the roles needed to administer Identity Universe, and how to assign them
+- [**Roles and permissions**](get-started/permissions/index.md) — the roles needed to administer Identity Universe, and how to assign them
 - [**IAM Core**](./iam-core/index.md) — the data model, connectors and sync rules
 - [**Collections**](./collections/index.md) — criteria and joinable collections
 - [**Group Link**](collections/plandesign/group-link-entraid.md) — connecting a collection to an Entra ID group, and the API for it
