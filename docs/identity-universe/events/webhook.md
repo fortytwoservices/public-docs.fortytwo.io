@@ -2,12 +2,17 @@
 
 ## Authentication
 
-:::tip[LogicApp]
-    This example is using LogicApps, but can be used by other services 
-    such as Azure Functions.
+:::tip
+This example is using LogicApps, but can be used by other services such as Azure Functions.
 :::
 
 We recommend always using authentication for webhook uris, such as when calling LogicApps. By this, we mean that there should be no shared access signature or similar put in the url, but instead an Entra ID access token should be accepted.
+
+When using Entra ID authentication, a JWT will be presented in the authorization header to the webhook uri. The JWT will have the following properties:
+
+- **Issued by your tenant**
+- The **appid** claim will be 8f230876-83e7-44cc-b4e4-fe902b01f975 (**Fortytwo Universe - Workflows**)
+- Audience will by default be **https://management.azure.com**, but you can provide any valid scope (which must match an application in your tenant) 
 
 ### LogicApp
 
