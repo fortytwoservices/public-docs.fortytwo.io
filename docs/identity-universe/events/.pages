@@ -3,4 +3,4 @@ title: Events
 
 arrange:
   - index.md
-  - workflows-authentication.md
+  - webhook-authentication.md

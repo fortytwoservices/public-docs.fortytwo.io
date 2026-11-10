@@ -1,7 +1,8 @@
-# Workflow authentication
+# Webhook authentication
 
 :::tip[LogicApp]
-    This example is using LogicApps, but can be used by other services such as Azure Functions.
+    This example is using LogicApps, but can be used by other services 
+    such as Azure Functions.
 :::
 
 We recommend always using authentication for webhook uris, such as when calling LogicApps. By this, we mean that there should be no shared access signature or similar put in the url, but instead an Entra ID access token should be accepted.
