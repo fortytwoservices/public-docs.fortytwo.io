@@ -1,6 +1,6 @@
 # Workflow authentication
 
-:::top[LogicApp]
+:::tip[LogicApp]
     This example is using LogicApps, but can be used by other services such as Azure Functions.
 :::
 
