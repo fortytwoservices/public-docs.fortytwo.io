@@ -3,4 +3,4 @@ title: Events
 
 arrange:
   - index.md
-  - webhook-authentication.md
+  - webhook.md
