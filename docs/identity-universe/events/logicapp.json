@@ -1,0 +1,134 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logicAppName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the LogicApp to create."
+            }
+        },
+        "tenantId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Entra ID tenant ID used to validate the token issuer."
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2019-05-01",
+            "name": "[parameters('logicAppName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "state": "Enabled",
+                "accessControl": {
+                    "triggers": {
+                        "openAuthenticationPolicies": {
+                            "policies": {
+                                "FortytwoUniverse": {
+                                    "type": "AAD",
+                                    "claims": [
+                                        {
+                                            "name": "iss",
+                                            "value": "[concat('https://sts.windows.net/', parameters('tenantId'), '/')]"
+                                        },
+                                        {
+                                            "name": "aud",
+                                            "value": "https://management.azure.com"
+                                        },
+                                        {
+                                            "name": "appid",
+                                            "value": "a215ca40-216b-49aa-ac23-f5256a8d6555"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "metadata": {
+                        "notes": {}
+                    },
+                    "triggers": {
+                        "When_an_HTTP_request_is_received": {
+                            "type": "Request",
+                            "kind": "Http"
+                        }
+                    },
+                    "actions": {
+                        "If_test,_return_true": {
+                            "actions": {
+                                "TestResponse": {
+                                    "type": "Response",
+                                    "kind": "Http",
+                                    "inputs": {
+                                        "statusCode": 200,
+                                        "body": {}
+                                    }
+                                },
+                                "Terminate": {
+                                    "runAfter": {
+                                        "TestResponse": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Terminate",
+                                    "inputs": {
+                                        "runStatus": "Succeeded"
+                                    }
+                                }
+                            },
+                            "runAfter": {},
+                            "else": {
+                                "actions": {}
+                            },
+                            "expression": {
+                                "and": [
+                                    {
+                                        "equals": [
+                                            "@triggerBody()?['isTest']",
+                                            true
+                                        ]
+                                    }
+                                ]
+                            },
+                            "type": "If"
+                        },
+                        "Not_Implemented_Response": {
+                            "runAfter": {
+                                "If_test,_return_true": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                                "statusCode": 400,
+                                "body": "Not implemented"
+                            }
+                        }
+                    },
+                    "outputs": {},
+                    "parameters": {
+                        "$connections": {
+                            "type": "Object",
+                            "defaultValue": {}
+                        }
+                    }
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {}
+                    }
+                }
+            }
+        }
+    ]
+}
