@@ -12,7 +12,7 @@ There is no user interface provided by Microsoft to manually grant graph permiss
 
 1. If you have not already done so, consent to the **Fortytwo Universe - Workflows** application:
 
-https://login.microsoftonline.com/common/adminconsent?client_id=8f230876-83e7-44cc-b4e4-fe902b01f975
+https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49aa-ac23-f5256a8d6555
 
 2. Make sure your last open browser is signed into the Azure Portal as a global administrator.
 
@@ -26,7 +26,7 @@ Add-EntraIDInteractiveUserAccessTokenProfile
 4. Locate the **object id** of your Managed Service Identity and run the below code in PowerShell:
 
 ```PowerShell
-$EventsApp = Invoke-RestMethod 'https://graph.microsoft.com/v1.0/servicePrincipals?$filter=appId eq ''8f230876-83e7-44cc-b4e4-fe902b01f975''' -Headers (GATH)
+$EventsApp = Invoke-RestMethod 'https://graph.microsoft.com/v1.0/servicePrincipals?$filter=appId eq ''a215ca40-216b-49aa-ac23-f5256a8d6555''' -Headers (GATH)
 New-EntraIDAppPermission -ResourceApplicationId 00000003-0000-0000-c000-000000000000 -Permission mail.send -ObjectId $EventsApp.value.id
 ```
 
