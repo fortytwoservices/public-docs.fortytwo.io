@@ -40,97 +40,17 @@ To configure a LogicApp in the most secure way, follow the below steps:
 
 https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49aa-ac23-f5256a8d6555
 
-2. Create your LogicApp using the consumption model:
+2. Deploy our minimum LogicApp to Azure using our template
+
+[![](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdocs.fortytwo.io%2Fidentity-universe%2Fevents%2Flogicapp-minimum.json)
+
+Skip to step 6.
+
+3. If you chose not to use our template, create your LogicApp using the consumption model.
 
 ![alt text](media/image.png)
 
-You can have this as a simple starting point using code view, when creating the content of your LogicApp:
-
-```JSON
-{
-    "definition": {
-        "metadata": {
-            "notes": {}
-        },
-        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-        "contentVersion": "1.0.0.0",
-        "triggers": {
-            "When_an_HTTP_request_is_received": {
-                "type": "Request",
-                "kind": "Http"
-            }
-        },
-        "actions": {
-            "If_test,_return_true": {
-                "actions": {
-                    "TestResponse": {
-                        "type": "Response",
-                        "kind": "Http",
-                        "inputs": {
-                            "statusCode": 200,
-                            "body": {}
-                        }
-                    },
-                    "Terminate": {
-                        "runAfter": {
-                            "TestResponse": [
-                                "Succeeded"
-                            ]
-                        },
-                        "type": "Terminate",
-                        "inputs": {
-                            "runStatus": "Succeeded"
-                        }
-                    }
-                },
-                "runAfter": {},
-                "else": {
-                    "actions": {}
-                },
-                "expression": {
-                    "and": [
-                        {
-                            "equals": [
-                                "@triggerBody()?['isTest']",
-                                true
-                            ]
-                        }
-                    ]
-                },
-                "type": "If"
-            },
-            "Not_Implemented_Response": {
-                "runAfter": {
-                    "If_test,_return_true": [
-                        "Succeeded"
-                    ]
-                },
-                "type": "Response",
-                "kind": "Http",
-                "inputs": {
-                    "statusCode": 400,
-                    "body": "Not implemented"
-                }
-            }
-        },
-        "outputs": {},
-        "parameters": {
-            "$connections": {
-                "type": "Object",
-                "defaultValue": {}
-            }
-        }
-    },
-    "parameters": {
-        "$connections": {
-            "type": "Object",
-            "value": {}
-        }
-    }
-}
-```
-
-3. Under **Authorization**, add the following policy:
+4. If you chose not to use our template, open the LogicApp, find **Authorization**, and add the following policy:
 
 ![alt text](media/image-9.png)
 
@@ -142,9 +62,11 @@ You can have this as a simple starting point using code view, when creating the 
 
 This allows the Fortytwo Universe events service to invoke the LogicApp without needing any shared access signature in the url.
 
-3. After adding a HTTP trigger, copy the url:
+5. If you chose not to use our template, add an HTTP trigger
 
 ![alt text](media/image-1.png)
+
+6. Copy the url of the HTTP trigger of the LogicApp
 
 When copying the url of your LogicApp, you will see the three query parameters *sp*, *sv* and *sig* being added. These must be removed (actually, they don't, but we force you to do so in order to be as secure as possible 😉):
 
@@ -154,7 +76,7 @@ paths/invoke?api-version=2016-10-01<s>
 &sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0
 &sig=c55rRC959lDdI7XcKthSyY9LIQ2dm-dhvfBggG2f-tg</s>](https://prod-14.norwayeast.logic.azure.com:443/workflows/77cf2d9f2bdf41cb977de860cd601be3/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01)
 
-4. Last, when configuring a workflow, use the modified URL and remember to verify that the webhook works, and that the LogicApp is indeed triggered:
+6. Last, when configuring a workflow, use the modified URL and remember to verify that the webhook works, and that the LogicApp is indeed triggered:
 
 ![alt text](media/image-10.png)
 
