@@ -44,6 +44,92 @@ https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49
 
 ![alt text](media/image.png)
 
+You can have this as a simple starting point using code view, when creating the content of your LogicApp:
+
+```JSON
+{
+    "definition": {
+        "metadata": {
+            "notes": {}
+        },
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "When_an_HTTP_request_is_received": {
+                "type": "Request",
+                "kind": "Http"
+            }
+        },
+        "actions": {
+            "If_test,_return_true": {
+                "actions": {
+                    "TestResponse": {
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                            "statusCode": 200,
+                            "body": {}
+                        }
+                    },
+                    "Terminate": {
+                        "runAfter": {
+                            "TestResponse": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Terminate",
+                        "inputs": {
+                            "runStatus": "Succeeded"
+                        }
+                    }
+                },
+                "runAfter": {},
+                "else": {
+                    "actions": {}
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@triggerBody()?['isTest']",
+                                true
+                            ]
+                        }
+                    ]
+                },
+                "type": "If"
+            },
+            "Not_Implemented_Response": {
+                "runAfter": {
+                    "If_test,_return_true": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                    "statusCode": 400,
+                    "body": "Not implemented"
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {}
+        }
+    }
+}
+```
+
 3. Under **Authorization**, add the following policy:
 
 ![alt text](media/image-9.png)
