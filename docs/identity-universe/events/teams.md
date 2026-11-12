@@ -112,7 +112,12 @@ When the app is installed, a person gets this welcome message:
 
 A team gets a welcome that says the app can post in its channels when a workflow says so.
 
-Anyone can write `status` to the app to check that it is installed and can deliver messages. Anything else written to it gets a short explanation of what the app does.
+Two commands help when a message does not arrive:
+
+- **`status`**, in a person's chat with the app, checks that workflow messages can reach that person. If the app had not recorded the chat, it records it and says so. In a team, it says how many of the team's channels the app can post in.
+- **`channels`**, in a team, lists the channels the app can post in. These are the channels offered under **Send to a channel** in a workflow.
+
+Both give the organization's tenant id. Anything else written to the app gets a short explanation of what it does.
 
 ## When a message does not arrive
 
@@ -120,7 +125,7 @@ The app tries again when Teams is busy. When it gives up, the message is recorde
 
 | Reason | What to do |
 |-|-|
-| The app is not installed for the recipient | Install the app for that person, or add it to that team (see [Install the app](#install-the-app)) |
+| The app is not installed for the recipient | Install the app for that person, or add it to that team (see [Install the app](#install-the-app)). If it is installed, have the person write `status` to the app, or write `channels` in the team |
 | Teams refused the message | Check that the person or the channel still exists and that the app is still added there |
 | Teams did not take it after every attempt | Teams was unavailable for a long time. The next message is tried again as usual |
 
