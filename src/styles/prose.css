@@ -267,6 +267,10 @@ pre.mermaid[data-processed] {
   vertical-align: top;
 }
 
+.prose :is(th, td) > code {
+  overflow-wrap: normal;
+}
+
 .prose tr:last-child td {
   border-bottom: 0;
 }
