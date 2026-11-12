@@ -37,3 +37,31 @@ Secrets are kept in Azure Key Vault and referenced from there. They are never st
 ## Least privilege
 
 Each part of the platform runs with its own managed identity and only the permissions it needs. The identity that runs approved repairs, for example, can only read and start the platform's jobs.
+
+## Permissions the platform holds
+
+The platform runs as a managed identity in your subscription. These are the permissions it is given at install. Your Entra and Azure administrators can review each one before granting it.
+
+### Microsoft Graph
+
+Three application permissions, granted with admin consent:
+
+| Permission | Why |
+|-|-|
+| `Application.ReadWrite.OwnedBy` | Creates and maintains an app registration for every app, and gives people and groups access to it. It can only change app registrations the platform owns, never other apps in your tenant. |
+| `User.ReadBasic.All` | Shows names and email addresses when you choose who may use an app. Basic profile only. |
+| `GroupMember.Read.All` | Lets you give access to an app through your existing Entra groups. |
+
+The platform does not read mail, files, calendars, Teams or SharePoint. An app that needs one of those asks for it separately under [API permissions](../control-panel/settings.md), and an Entra administrator decides.
+
+### Azure
+
+| Role | Scope | Why |
+|-|-|-|
+| Contributor | The platform's resource group | Runs and upgrades the platform. |
+| Contributor | Each app's resource group | Creates and updates the app's resources. The platform creates a resource group for every app and grants itself Contributor on it. |
+| Role Based Access Control Administrator | The subscription | Gives each app's own identity the roles it needs. A condition limits it to those roles, so it cannot grant Owner or any other role. |
+
+Because the platform can create resource groups and grant itself Contributor on them, its access amounts to Contributor on the whole subscription. Give it a [dedicated subscription](../get-started/before-you-install.md#checklist), and the boundary is that subscription: nothing else in your tenant is in reach.
+
+People who create apps in the control panel get no Azure access at all. The platform builds every app from the same template, in the app's own resource group.

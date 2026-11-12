@@ -21,7 +21,7 @@ Whoever runs the installer needs, for the duration of the install:
 - **Owner** on that subscription, or **Contributor** plus **User Access Administrator**
 - **Global Administrator** or **Privileged Role Administrator** in Entra ID
 
-The installer grants Microsoft Graph admin consent once, which is why it needs the Entra role. It stops before changing anything if either role is missing.
+The installer grants Microsoft Graph admin consent once, which is why it needs the Entra role. It stops before changing anything if the subscription role is missing. Without the Entra role, install in [handoff mode](troubleshoot-install.md#you-are-not-an-entra-administrator): an Entra administrator finishes the grants afterwards by running a script the installer writes. [Permissions the platform holds](../governance/security-and-data.md#permissions-the-platform-holds) lists what is granted.
 
 ### A domain for your apps
 
