@@ -1,28 +1,65 @@
 # Visma Enterprise Plus
 
-Visma has a very old fashioned approach to APIs, where they need to _install_ the API on a per customer basis, and the API is xml based. After getting the API installed, the below configuration inputs are privided by Visma:
+Visma has a very oldfashioned approach to APIs, where they need to _install_ the API on a per customer basis (for a fee, of course), and the API is xml based. After getting the API installed, the below configuration inputs are provided by Visma:
 
 ## Configuration inputs
+
+![Example screenshot](media/image-11.png)
+
+### Company ID
+
+|||
+|-|-|
+| Description         | The company in Visma Enterprise that the connector will get data for. If you have multiple companies, add multiple connectors. |
+| Technical / API name| companyid|
+| Example value:      | 1 |
+
+### FQDN
+
+|||
+|-|-|
+| Description         | The fully qualified domain name of the API |
+| Technical / API name| fqdn|
+| Example value:      | utkanten-kommune.enterprise.visma.no|
+
+### Client ID
+
+|||
+|-|-|
+| Description         | The client id of the connection|
+| Technical / API name| clientid|
+| Example value:      | Kommune_Fortytwo|
+
+### Client Secret
+
+|||
+|-|-|
+| Description         | The secret of the client id |
+| Technical / API name| clientsecret|
+| Example value:      | Abc123|
+
+<!-- 
+# kk
 
 | Input | Description | Example value |
 |-|-|-|
 | clientid | Client ID for the customer | Kommune_Fortytwo |
-| clientsecret | The key of the client created | N/A |
+| clientsecret | The key of the client created | Abc123 |
 | fqdn | The hostname of the API | x-kommune.enterprise.visma.no |
 | companyid | The company in Visma Enterprise that the connector will get data for. If you have multiple companies, add multiple connectors. | 1 |
-| toporgname | Optional. Overrides the display name of the top node of the organization chart. Without it, the name from Visma is used. | Hareid kommune |
+| toporgname | Optional. Overrides the display name of the top node of the organization chart. Without it, the name from Visma is used. | Utkanten kommune |
 
-`clientsecret` is a secret rather than an ordinary input, so it is passed with `-Secrets` rather than `-Configuration`.
+`clientsecret` is a secret rather than an ordinary input, so it is passed with `-Secrets` rather than `-Configuration`. -->
 
 ## Connector object types
 
 | Object type | Contents |
 |-|-|
 | person | Employees, including starters and terminated employees |
-| position | Their positions |
+| position | The positions of the employees |
 | unit | The organization chart, including a synthetic root node with the external id `chart` |
 
-## Creating a connector using PowerShell
+<!-- ## Creating a connector using PowerShell
 
 !!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
 
@@ -317,8 +354,8 @@ New-IAMCoreSyncRule `
     -ProvisioningEnabled:$true `
     -Priority 101 `
     -InboundAttributeFlows $InboundAttributeFlows
-```
+``` -->
 
-## External documentation
+<!-- ## External documentation
 
-- [API for Visma Enterprise](https://community.visma.com/t5/API-for-Visma-Enterprise/ct-p/NO_UN_API_Enterprise)
+- [API for Visma Enterprise](https://community.visma.com/t5/API-for-Visma-Enterprise/ct-p/NO_UN_API_Enterprise) -->
