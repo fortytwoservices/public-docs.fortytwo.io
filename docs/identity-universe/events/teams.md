@@ -96,14 +96,14 @@ The title can be up to 150 characters, the message up to 4,000 and the button te
 
 | Trigger | A person from the event |
 |-|-|
-| When a member joins or leaves | The member, when every chosen collection is built from a rule and they are all collections of users or all collections of identities |
+| When a member joins or leaves | The member, when every chosen collection is built from a rule, all of users or all of identities |
 | When a student is added to or removed from a policy | The student |
 | When a Licensing event happens | The license holder, or for a reclaim the license holder's manager |
 | When a Teams message cannot be delivered | The person who did not get the message |
-| When a request to join changes | The person who asked to join. For an approval also the approver, and for a rejection the person who rejected the request |
+| When a request to join changes | The person who asked to join, the approver or the person who rejected the request, whichever every chosen event names |
 | When identity attributes change | The identity that changed |
 
-Request events, identity events and collections of identities name people by their Universe ID. Teams delivers to a person's Microsoft Entra account, so that account is looked up when the workflow runs. A person without one is left out and named in the workflow run's outcome. Everyone else still gets the message.
+Some events name people by their **Universe ID** rather than their Entra account: access requests, identity changes and collections of identities. Fortytwo Universe looks up each person's Entra account when the workflow runs. Someone without one does not get the message, and is named in the run's outcome; everyone else still gets it.
 
 ## What people see in Teams
 
