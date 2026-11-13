@@ -73,9 +73,11 @@ Send to a person, a channel, or both:
 
 ### Write the message
 
-Write the **Title** and the **Message**. The buttons above the message make text bold or italic, add a link, or turn lines into a bulleted or numbered list.
+Write the **Title** and the **Message**. The buttons above the message make text bold or italic, add a link, or turn lines into a bulleted or numbered list. The last button, **Add an emoji**, opens a row of emoji: select one to put it where the cursor is, in the title, the message or the button text.
 
 To put a value from the event into the message, select it under **Insert from the event**. It goes in where the cursor is, written as `{{Name}}`, and is replaced by the event's value when the workflow runs. Ids and the event's own details are under **More values**.
+
+When the event is about a person in the Universe ID, the list also has that person's display name, first name, last name, email and user principal name, for example `{{RequesterDisplayName}}` or `{{CoreObjectEmail}}`. This applies to the identity that changed, and to the person who asked to join, approved or rejected a request. The values are looked up when the workflow runs. If the person cannot be found, the message is not sent and the reason is recorded in the workflow run's outcome.
 
 Optionally select **Add a button**. The button opens an `https://` link, which can also be a value from the event, such as the link a person uses to keep a license.
 
@@ -94,11 +96,14 @@ The title can be up to 150 characters, the message up to 4,000 and the button te
 
 | Trigger | A person from the event |
 |-|-|
-| When a member joins or leaves | The member, when every chosen collection is a collection of users built from a rule |
+| When a member joins or leaves | The member, when every chosen collection is built from a rule and they are all collections of users or all collections of identities |
 | When a student is added to or removed from a policy | The student |
 | When a Licensing event happens | The license holder, or for a reclaim the license holder's manager |
 | When a Teams message cannot be delivered | The person who did not get the message |
-| When a request to join changes, When identity attributes change | No one: these events name people by their Universe ID, which Teams cannot deliver to. Choose one specific person or a channel instead |
+| When a request to join changes | The person who asked to join. For an approval also the approver, and for a rejection the person who rejected the request |
+| When identity attributes change | The identity that changed |
+
+Request events, identity events and collections of identities name people by their Universe ID. Teams delivers to a person's Microsoft Entra account, so that account is looked up when the workflow runs. A person without one is left out and named in the workflow run's outcome. Everyone else still gets the message.
 
 ## What people see in Teams
 
@@ -121,7 +126,7 @@ Both give the organization's tenant id. Anything else written to the app gets a 
 
 ## When a message does not arrive
 
-The app tries again when Teams is busy. When it gives up, the message is recorded as not delivered, with the reason:
+The app tries again when Teams is busy or unavailable: up to twelve times, spread over half an hour or more. When it gives up, the message is recorded as not delivered, with the reason:
 
 | Reason | What to do |
 |-|-|
@@ -129,7 +134,12 @@ The app tries again when Teams is busy. When it gives up, the message is recorde
 | Teams refused the message | Check that the person or the channel still exists and that the app is still added there |
 | Teams did not take it after every attempt | Teams was unavailable for a long time. The next message is tried again as usual |
 
-You can find these in two places:
+Two things are worth knowing about how messages are delivered:
+
+- **One chat or channel gets at most one message every two seconds.** A burst of several hundred messages to the same channel therefore takes several minutes to arrive. Other chats and channels are not held up by it.
+- **A message can, in rare cases, arrive twice.** If Teams took a message but its answer was lost on the way back, the app sends it again instead of risking that it never arrived.
+
+You can find the messages that were not delivered in two places:
 
 - **The audit log** shows **Teams message sent**, **Teams message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Teams bot**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
 - **A workflow can react to it.** The trigger **When a Teams message cannot be delivered** starts a workflow each time a message is given up on, for example to tell an operations channel or to call a webhook.
