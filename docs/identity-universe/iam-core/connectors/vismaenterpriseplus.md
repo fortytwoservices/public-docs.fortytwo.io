@@ -59,6 +59,448 @@ Visma has a very oldfashioned approach to APIs, where they need to _install_ the
 | position | The positions of the employees |
 | unit | The organization chart, including a synthetic root node with the external id `chart` |
 
+## Example sync rules
+
+The below sections contain example attribute flows for sync rules:
+
+### Position
+
+|||
+|-|-|
+| Connector object type | position |
+| Core object type | relationship |
+
+```JSON
+[
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "PositionInfo/PositionCode/Name"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "title",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "constant",
+      "value": "position"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "type",
+    "nullFlow": false
+  },
+  {
+    "$type": "datetime",
+    "value": {
+      "$type": "todatetime",
+      "input": {
+        "$type": "attribute",
+        "attribute": "PositionStartDate"
+      },
+      "format": null
+    },
+    "targetAttributeName": "startDate",
+    "nullFlow": false
+  },
+  {
+    "$type": "datetime",
+    "value": {
+      "$type": "todatetime",
+      "input": {
+        "$type": "regexswitch",
+        "value": {
+          "$type": "attribute",
+          "attribute": "PositionEndDate"
+        },
+        "default": {
+          "$type": "attribute",
+          "attribute": "PositionEndDate"
+        },
+        "cases": [
+          {
+            "pattern": "0001-01-01T00:00:00",
+            "value": {
+              "$type": "null"
+            }
+          }
+        ]
+      },
+      "format": null
+    },
+    "targetAttributeName": "endDate",
+    "nullFlow": false
+  },
+  {
+    "$type": "reference",
+    "value": {
+      "$type": "asreference",
+      "objectType": "unit",
+      "referencedAttribute": null,
+      "input": {
+        "$type": "attribute",
+        "attribute": "Chart/Unit/Id"
+      }
+    },
+    "targetAttributeName": "orgUnit",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "externalid"
+    },
+    "joinPriority": 1,
+    "targetAttributeName": "anchor1",
+    "nullFlow": false
+  },
+  {
+    "$type": "reference",
+    "value": {
+      "$type": "asreference",
+      "objectType": "person",
+      "referencedAttribute": null,
+      "input": {
+        "$type": "attribute",
+        "attribute": "PersonIdHrm"
+      }
+    },
+    "targetAttributeName": "identity",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "Employment/EmployeeId"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "employeeId",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "PositionInfo/PositionType/Value"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "subType",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "PositionInfo/PublicPositionCode/Value"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "positionCode",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "Employment/Category/Description"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "category",
+    "nullFlow": false
+  },
+  {
+    "$type": "double",
+    "value": {
+      "$type": "attribute",
+      "attribute": "PositionPercentage"
+    },
+    "targetAttributeName": "employmentPercentage",
+    "nullFlow": false
+  },
+  {
+    "$type": "reference",
+    "value": {
+      "$type": "asreference",
+      "objectType": "person",
+      "referencedAttribute": null,
+      "input": {
+        "$type": "attribute",
+        "attribute": "Chart/Unit/Manager/Id"
+      }
+    },
+    "targetAttributeName": "manager",
+    "nullFlow": false
+  }
+]
+```
+
+## Person
+
+|||
+|-|-|
+| Connector object type | person |
+| Core object type | identity |
+
+```JSON
+[
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "FamilyName"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "lastName",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "GivenName"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "firstName",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "ContactInfo/MobilePhone"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "mobile",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "join",
+      "inputs": [
+        {
+          "$type": "attribute",
+          "attribute": "GivenName"
+        },
+        {
+          "$type": "constant",
+          "value": " "
+        },
+        {
+          "$type": "attribute",
+          "attribute": "FamilyName"
+        }
+      ]
+    },
+    "joinPriority": null,
+    "targetAttributeName": "displayName",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "Ssn"
+    },
+    "joinPriority": 1,
+    "targetAttributeName": "nin",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "ContactInfo/PrivateMobilePhone"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "privateMobile",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "ContactInfo/PrivateEmail"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "privateEmail",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "PostalAddress/CountryCode"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "countryCode",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "ContactInfo/WorkPhone"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "custom/workPhone",
+    "nullFlow": false
+  }
+]
+```
+
+## Unit
+
+|||
+|-|-|
+| Connector object type | unit |
+| Core object type | orgUnit |
+
+```JSON
+[
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "Name"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "displayName",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "constant",
+      "value": "company"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "type",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "attribute",
+      "attribute": "UnitType"
+    },
+    "joinPriority": null,
+    "targetAttributeName": "subType",
+    "nullFlow": false
+  },
+  {
+    "$type": "reference",
+    "value": {
+      "$type": "asreference",
+      "objectType": "unit",
+      "referencedAttribute": "Kode",
+      "input": {
+        "$type": "attribute",
+        "attribute": "Parentid"
+      }
+    },
+    "targetAttributeName": "parent",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "externalid"
+    },
+    "joinPriority": 1,
+    "targetAttributeName": "anchor1",
+    "nullFlow": false
+  },
+  {
+    "$type": "reference",
+    "value": {
+      "$type": "asreference",
+      "objectType": "person",
+      "referencedAttribute": "PersonIdHrm",
+      "input": {
+        "$type": "attribute",
+        "attribute": "Manager/Id"
+      }
+    },
+    "targetAttributeName": "manager",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "join",
+      "inputs": [
+        {
+          "$type": "constant",
+          "value": "HA "
+        },
+        {
+          "$type": "attribute",
+          "attribute": "Name"
+        }
+      ]
+    },
+    "joinPriority": null,
+    "targetAttributeName": "custom/prefixDisplayName",
+    "nullFlow": false
+  },
+  {
+    "$type": "string",
+    "value": {
+      "$type": "join",
+      "inputs": [
+        {
+          "$type": "constant",
+          "value": "HA"
+        },
+        {
+          "$type": "externalid"
+        }
+      ]
+    },
+    "joinPriority": null,
+    "targetAttributeName": "custom/extensionAttribute12",
+    "nullFlow": false
+  },
+  {
+    "$type": "multivaluedreference",
+    "value": {
+      "$type": "asmultivaluedreference",
+      "objectType": "person",
+      "referencedAttribute": null,
+      "input": {
+        "$type": "tostrings",
+        "attribute": "Id",
+        "input": {
+          "$type": "multivaluedobjectattribute",
+          "attribute": "EmployeesProperty",
+          "input": {
+            "$type": "whereattributev2",
+            "attribute": {
+              "$type": "constant",
+              "value": "Id"
+            },
+            "value": {
+              "$type": "constant",
+              "value": "7"
+            },
+            "input": {
+              "$type": "multivaluedobjectattribute",
+              "attribute": "Roles",
+              "input": null
+            }
+          }
+        }
+      }
+    },
+    "targetAttributeName": "deputies",
+    "nullFlow": false
+  }
+]
+```
+
 <!-- ## Creating a connector using PowerShell
 
 !!! note "You must first ```Connect-IAMCore```, as per [the documentation](../api/iamcoreadmin-module.md)"
