@@ -236,7 +236,7 @@ The below sections contain example attribute flows for sync rules:
 ]
 ```
 
-## Person
+### Person
 
 |||
 |-|-|
@@ -341,7 +341,7 @@ The below sections contain example attribute flows for sync rules:
 ]
 ```
 
-## Unit
+### Unit
 
 |||
 |-|-|
