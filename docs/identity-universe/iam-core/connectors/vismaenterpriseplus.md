@@ -337,16 +337,6 @@ The below sections contain example attribute flows for sync rules:
     "joinPriority": null,
     "targetAttributeName": "countryCode",
     "nullFlow": false
-  },
-  {
-    "$type": "string",
-    "value": {
-      "$type": "attribute",
-      "attribute": "ContactInfo/WorkPhone"
-    },
-    "joinPriority": null,
-    "targetAttributeName": "custom/workPhone",
-    "nullFlow": false
   }
 ]
 ```
@@ -425,43 +415,6 @@ The below sections contain example attribute flows for sync rules:
       }
     },
     "targetAttributeName": "manager",
-    "nullFlow": false
-  },
-  {
-    "$type": "string",
-    "value": {
-      "$type": "join",
-      "inputs": [
-        {
-          "$type": "constant",
-          "value": "HA "
-        },
-        {
-          "$type": "attribute",
-          "attribute": "Name"
-        }
-      ]
-    },
-    "joinPriority": null,
-    "targetAttributeName": "custom/prefixDisplayName",
-    "nullFlow": false
-  },
-  {
-    "$type": "string",
-    "value": {
-      "$type": "join",
-      "inputs": [
-        {
-          "$type": "constant",
-          "value": "HA"
-        },
-        {
-          "$type": "externalid"
-        }
-      ]
-    },
-    "joinPriority": null,
-    "targetAttributeName": "custom/extensionAttribute12",
     "nullFlow": false
   },
   {
