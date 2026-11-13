@@ -99,7 +99,7 @@ The title can be up to 150 characters, the message up to 4,000 and the button te
 | When a member joins or leaves | The member, when every chosen collection is built from a rule, all of users or all of identities |
 | When a student is added to or removed from a policy | The student |
 | When a Licensing event happens | The license holder, or for a reclaim the license holder's manager |
-| When a Teams message cannot be delivered | The person who did not get the message |
+| When a message cannot be delivered | The person who did not get the message, when it was a Teams message |
 | When a request to join changes | The person who asked to join, the approver or the person who rejected the request, whichever every chosen event names |
 | When identity attributes change | The identity that changed |
 
@@ -141,12 +141,12 @@ Two things are worth knowing about how messages are delivered:
 
 You can find the messages that were not delivered in two places:
 
-- **The audit log** shows **Teams message sent**, **Teams message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Teams bot**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
-- **A workflow can react to it.** The trigger **When a Teams message cannot be delivered** starts a workflow each time a message is given up on, for example to tell an operations channel or to call a webhook.
+- **The audit log** shows **Message sent**, **Message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Notifications**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
+- **A workflow can react to it.** The trigger **When a message cannot be delivered**, under **Notifications**, starts a workflow each time a Teams message or an [email](./email.md) is given up on, for example to tell an operations channel or to call a webhook.
 
 ![The trigger When a Teams message cannot be delivered, under Teams](./media/teams-message-failed-trigger.png)
 
-It is safe to answer with another Teams message: if that message fails too, it does not start the workflow again.
+It is safe to answer with another Teams message or an email: if that one fails too, it does not start the workflow again.
 
 ## Remove the app
 

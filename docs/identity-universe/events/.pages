@@ -5,3 +5,5 @@ arrange:
   - index.md
   - webhook.md
   - teams.md
+  - email.md
+  - grant-access-to-send-emails-through-microsoft-365.md
