@@ -22,6 +22,7 @@ Identity Universe consists of several components. To get full functionality, you
 | [Bytt.Email](https://login.microsoftonline.com/common/adminConsent?client_id=34ee8edb-d2ff-4ee9-bac3-73b53303e00f)                             | **Optional** Allows the bytt.email services access to read email addresses and sAMAccountNames in order to store history and check for uniqueness |
 | [Fortytwo Universe - Education](https://login.microsoftonline.com/common/adminconsent?client_id=a4cde9df-633f-42e9-882b-9f3bd3f23979)          | **Optional** Used only for customers using the Education features available in Identity Universe |
 | [Fortytwo Universe - Group Provisioning](https://login.microsoftonline.com/common/adminconsent?client_id=baedddcc-eaca-485e-8c74-bef4e209cd85) | **Optional** Used by the Group Link feature to write group memberships |
+| [Fortytwo Universe - Workflows](https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49aa-ac23-f5256a8d6555) | **Optional** Used by the workflows feature to invoke authenticated webhook calls (such as LogicApps) and sending emails through Microsoft 365 |
 
 This is what admin consent looks like:
 
