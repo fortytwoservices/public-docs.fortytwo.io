@@ -15,4 +15,6 @@ The following workflow steps are available:
 | [Slack message](./slack.md) | Sends a message in Slack to a channel, to people or both, in a workspace you have connected |
 | [Email](./email.md) | Sends an email from a mailbox in your own Microsoft 365, to typed addresses or to the people the event is about |
 
+Every step can have [conditions](./conditions.md), so it runs only when a value from the event is empty, is not empty, or is one of the values you list.
+
 Fortytwo Universe do not provide a full generic workflow builder, as we instead recommend invoking LogicApps through a Webhook.
