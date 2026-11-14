@@ -95,7 +95,7 @@ Three things are worth knowing about how emails are delivered:
 You can find the emails that were not delivered in two places:
 
 - **The audit log** shows **Message sent** and **Message not delivered**, from the source **Notifications**. Open an event to see who the email was for, which mailbox it was sent from and why it failed. See [Audit log](../auditlog/index.md).
-- **A workflow can react to it.** The trigger **When a message cannot be delivered** starts a workflow each time an email or a Teams message is given up on, for example to tell an operations channel or to call a webhook.
+- **A workflow can react to it.** The trigger **When a message cannot be delivered** starts a workflow each time an email, a [Teams message](./teams.md) or a [Slack message](./slack.md) is given up on, for example to tell an operations channel or to call a webhook.
 
 ## Stop sending
 

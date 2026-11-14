@@ -142,11 +142,11 @@ Two things are worth knowing about how messages are delivered:
 You can find the messages that were not delivered in two places:
 
 - **The audit log** shows **Message sent**, **Message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Notifications**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
-- **A workflow can react to it.** The trigger **When a message cannot be delivered**, under **Notifications**, starts a workflow each time a Teams message or an [email](./email.md) is given up on, for example to tell an operations channel or to call a webhook.
+- **A workflow can react to it.** The trigger **When a message cannot be delivered**, under **Notifications**, starts a workflow each time a Teams message, a [Slack message](./slack.md) or an [email](./email.md) is given up on, for example to tell an operations channel or to call a webhook.
 
-![The trigger When a Teams message cannot be delivered, under Teams](./media/teams-message-failed-trigger.png)
+![The trigger When a message cannot be delivered, under Notifications](./media/message-failed-trigger.png)
 
-It is safe to answer with another Teams message or an email: if that one fails too, it does not start the workflow again.
+It is safe to answer with another Teams message, an email or a Slack message: if that one fails too, it does not start the workflow again.
 
 ## Remove the app
 
