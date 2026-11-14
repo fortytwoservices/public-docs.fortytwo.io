@@ -12,5 +12,7 @@ The following workflow steps are available:
 |-|-|
 | [Webhook](./webhook.md) | Starts a LogicApp, Function app, Lambda, etc. |
 | [Teams message](./teams.md) | Sends a message in Microsoft Teams to a person, a channel or both, through the Fortytwo Universe app |
+| [Slack message](./slack.md) | Sends a message in Slack to a channel, to people or both, in a workspace you have connected |
+| [Email](./email.md) | Sends an email from a mailbox in your own Microsoft 365, to typed addresses or to the people the event is about |
 
 Fortytwo Universe do not provide a full generic workflow builder, as we instead recommend invoking LogicApps through a Webhook.
