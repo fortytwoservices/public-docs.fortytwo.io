@@ -29,7 +29,7 @@ You need:
 
 A connection is added once. Workflows then choose it by name.
 
-1. Open **Workflows** and select **SMS connections**.
+1. Open **Workflows** and select **Connections** > **SMS connections**.
 2. Select **Add connection**.
 3. Fill in the form and select **Save connection**.
 
