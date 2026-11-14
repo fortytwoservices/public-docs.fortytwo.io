@@ -7,5 +7,6 @@ arrange:
   - teams.md
   - slack.md
   - email.md
+  - sms.md
   - conditions.md
   - grant-access-to-send-emails-through-microsoft-365.md
