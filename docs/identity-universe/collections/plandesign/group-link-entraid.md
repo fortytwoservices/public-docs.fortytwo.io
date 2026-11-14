@@ -5,7 +5,7 @@ Group Link connects an Identity Universe collection to a Microsoft Entra ID grou
 The collection decides who should be a member. Group Link makes the Entra ID group say the same thing, so applications and services that already read Entra ID groups — for access control, licensing, or role assignment — get their answer from the collection without knowing anything about Identity Universe.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Criteria collection] --> C
     B[Joinable collection] --> C
     C[Access collection] --> D[Group Link]
