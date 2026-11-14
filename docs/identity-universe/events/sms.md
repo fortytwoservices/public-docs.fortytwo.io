@@ -40,7 +40,7 @@ A connection is added once. Workflows then choose it by name.
 | **Name** | What the connection is called where a workflow chooses it. |
 | **Provider** | Twilio, LINK Mobility or Sveve. The fields further down change to what that provider needs. |
 | **Kind of sender** and **Sender** | What the SMS comes from. A name is up to 11 letters (a to z), digits and spaces, and nobody can answer it. A phone number is written with a plus and the country code. Some providers also take a short number, or a sender you have set up with them, such as a Twilio Messaging Service. |
-| **Default country code** | Put before a phone number written without one. With 47, the number 912 34 567 becomes +47 912 34 567. |
+| **Default country code** | Put before a phone number written without one. With 47, the number 912 34 567 becomes +47 912 34 567. A number that starts with a zero is read only for countries that leave that zero out abroad, such as Sweden and Finland: with 46, the number 070-123 45 67 becomes +46 70 123 45 67. For any other country, write such a number with its country code, or it is refused as not being a phone number. |
 | **Most SMS a day** | Past this number, SMS are refused until midnight UTC. It protects your account from a workflow that goes wrong. |
 | The provider's own fields | The details from the table above. |
 
