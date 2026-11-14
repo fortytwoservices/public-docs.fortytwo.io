@@ -1,71 +1,139 @@
+---
+description: Let Fortytwo Universe send email from chosen mailboxes in your Microsoft 365, and from no others, with role based access control for applications in Exchange Online.
+sidebarTitle: Grant access to send email
+---
+
 # Grant access to send emails through Microsoft 365
 
-Fortytwo Universe allows you to use your own email addresses in Microsoft 365 as sender addresses for emails. This means that your users can see sender like **noreply@contoso.com**, which is a known domain, and you will have no issues with spam filters blocking our email.
+Fortytwo Universe allows you to use your own email addresses in Microsoft 365 as sender addresses for emails. This means that your users see a sender like **noreply@contoso.com**, which is a known domain, and you will have no issues with spam filters blocking the email.
 
-There are a few steps required to grant Fortytwo Universe access to send emails. This is a one time thing, and you do not need to do this again. 
+There are a few steps required to grant Fortytwo Universe access to send emails. They are done once per mailbox.
 
-Our service do not request the Graph permission ```Mail.Send``` by default, both because not all customers use this service, and because if you grant this permission without adding the application access policy as described below, we can send emails as *anyone*, which is not something we want.
+The permission is given **in Exchange Online, for the mailboxes you choose**, with [Role Based Access Control for Applications](https://learn.microsoft.com/en-us/exchange/permissions-exo/application-rbac). Fortytwo Universe does not ask for the Microsoft Graph permission `Mail.Send` in Microsoft Entra ID, because that permission lets an application send as *anyone* in your organization.
 
-## Step 1 - Grant graph permission
+:::warning
+Do not grant the Microsoft Graph permission `Mail.Send` to **Fortytwo Universe - Workflows** in Microsoft Entra ID. Permissions given in Microsoft Entra ID and in Exchange Online add up, so with that permission the application can send from every mailbox, whatever you limit it to below. If it was granted earlier, see [If Mail.Send was granted in Microsoft Entra ID](#if-mailsend-was-granted-in-microsoft-entra-id).
+:::
 
-There is no user interface provided by Microsoft to manually grant graph permissions to multi tenant applications. This must be done using [Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0&tabs=http), or using our [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken) PowerShell module.
+## Before you start
 
-1. If you have not already done so, consent to the **Fortytwo Universe - Workflows** application:
+You need:
 
+- a **Global administrator** or **Privileged role administrator**, to consent to the application;
+- an **Exchange administrator**, who is a member of the **Organization Management** role group, for the steps in Exchange Online;
+- the [Exchange Online PowerShell module](https://learn.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell);
+- the address of each mailbox Fortytwo Universe may send from.
+
+## Grant the access
+
+::::steps
+### Consent to the application
+
+If you have not already done so, consent to the **Fortytwo Universe - Workflows** application:
+
+```text
 https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49aa-ac23-f5256a8d6555
-
-2. Make sure your last open browser is signed into the Azure Portal as a global administrator.
-
-3. Run the below PowerShell to sign in
-
-```PowerShell
-Install-Module EntraIDAccessToken -Scope CurrentUser
-Add-EntraIDInteractiveUserAccessTokenProfile
 ```
 
-4. Locate the **object id** of your Managed Service Identity and run the below code in PowerShell:
+The application now appears under **Enterprise applications** in the Microsoft Entra admin center.
 
-```PowerShell
-$EventsApp = Invoke-RestMethod 'https://graph.microsoft.com/v1.0/servicePrincipals?$filter=appId eq ''a215ca40-216b-49aa-ac23-f5256a8d6555''' -Headers (GATH)
-New-EntraIDAppPermission -ResourceApplicationId 00000003-0000-0000-c000-000000000000 -Permission mail.send -ObjectId $EventsApp.value.id
-```
+### Find the application's object ID
 
-![alt text](media/image-4.png)
+In the Microsoft Entra admin center, open **Enterprise applications** and select **Fortytwo Universe - Workflows**. Copy its **Object ID**. The **Application ID** is `a215ca40-216b-49aa-ac23-f5256a8d6555`.
 
-5. After this, you should see the permission listed on the **Fortytwo Universe - Workflows** app
+![The Object ID of the Fortytwo Universe - Workflows enterprise application](media/image-6.png)
 
-![alt text](media/image-5.png)
+:::note
+Use the object ID from **Enterprise applications**. The one under **App registrations** is a different value and does not work.
+:::
 
-## Step 2 - Application access policy
+### Connect to Exchange Online
 
-An important step to limit the Mail.Read access is to use [Role Based Access Control for Applications in Exchange Online](https://learn.microsoft.com/en-us/exchange/permissions-exo/application-rbac).
-
-1. Connect to Exchange Online PowerShell:
-
-```PowerShell
+```powershell
 Connect-ExchangeOnline
 ```
 
-2. Create a Restrictive Management Scope
+### Tell Exchange Online about the application
 
-Define a scope that filters down to only the specific mailboxes Fortytwo Universe is allowed to send from. Replace target-mailbox@yourdomain.com with your allowed sender address:
+Replace the object ID with the one you copied:
 
-```PowerShell
-New-ManagementScope -Name "Limit-Fortytwo-Universe-MailSend-Scope" -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'target-mailbox@yourdomain.com'"
+```powershell
+New-ServicePrincipal -AppId "a215ca40-216b-49aa-ac23-f5256a8d6555" -ObjectId "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -DisplayName "Fortytwo Universe - Workflows"
 ```
 
-3. Get the **object id** of the **Fortytwo Universe - Workflows** enterprise app:
+### Say which mailboxes it may send from
 
-![alt text](media/image-6.png)
+Create a management scope that covers only the mailboxes Fortytwo Universe is allowed to send from. Replace the address with your sender address:
 
-4. Create the role assignment in Exchange:
-
-```PowerShell
-New-RoleAssignment -Role "Application Mail.Send" -SecurityPrincipal "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -CustomResourceScope "Limit-Fortytwo-Universe-MailSend-Scope" 
+```powershell
+New-ManagementScope -Name "Fortytwo-Universe-MailSend-Scope" -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'noreply@contoso.com'"
 ```
 
-5. Verify permissions
+For several mailboxes, join the addresses with `-or`:
 
-```PowerShell
-Test-ServicePrincipalAuthorization -Identity "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -Resource "target-mailbox@yourdomain.com"
+```powershell
+New-ManagementScope -Name "Fortytwo-Universe-MailSend-Scope" -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'noreply@contoso.com' -or PrimarySmtpAddress -eq 'servicedesk@contoso.com'"
 ```
+
+### Give the permission for those mailboxes
+
+```powershell
+New-ManagementRoleAssignment -App "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -Role "Application Mail.Send" -CustomResourceScope "Fortytwo-Universe-MailSend-Scope"
+```
+
+### Check it
+
+Test a mailbox that is allowed and one that is not:
+
+```powershell
+Test-ServicePrincipalAuthorization -Identity "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -Resource "noreply@contoso.com" | Format-Table
+Test-ServicePrincipalAuthorization -Identity "OBJECT_ID_OF_FORTYTWO_UNIVERSE_WORKFLOWS_APP" -Resource "someone.else@contoso.com" | Format-Table
+```
+
+`InScope` is `True` for the mailbox you allowed and `False` for any other.
+::::
+
+:::note
+Exchange Online keeps an application's permissions in a cache. A change can take between 30 minutes and two hours to apply to emails that are sent. The test command above does not use the cache, so it shows the result at once.
+:::
+
+You can now use the mailbox as **Send from** in a workflow's **Send email** action. See [Email](./email.md).
+
+## Add or remove a mailbox later
+
+Change the management scope. The role assignment keeps pointing at it:
+
+```powershell
+Set-ManagementScope -Identity "Fortytwo-Universe-MailSend-Scope" -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'noreply@contoso.com' -or PrimarySmtpAddress -eq 'hr@contoso.com'"
+```
+
+## Take the permission away
+
+Remove the role assignment. Fortytwo Universe can then send from no mailbox:
+
+```powershell
+Get-ManagementRoleAssignment -Role "Application Mail.Send" | Where-Object { $_.CustomResourceScope -eq "Fortytwo-Universe-MailSend-Scope" } | Remove-ManagementRoleAssignment
+```
+
+## If Mail.Send was granted in Microsoft Entra ID
+
+An earlier version of this page asked you to grant the Microsoft Graph permission `Mail.Send` to the application in Microsoft Entra ID before limiting it in Exchange Online. Microsoft documents that the two add up: a permission granted in Microsoft Entra ID applies to every mailbox, and a scope in Exchange Online does not narrow it.
+
+If you followed those steps, remove the permission in Microsoft Entra ID once the role assignment above is in place:
+
+1. In the Microsoft Entra admin center, open **Enterprise applications** > **Fortytwo Universe - Workflows** > **Permissions**.
+2. If **Mail.Send** is listed under Microsoft Graph, select **Review permissions** and follow the instructions to revoke it, or remove it with Microsoft Graph PowerShell:
+
+```powershell
+Connect-MgGraph -Scopes "AppRoleAssignment.ReadWrite.All", "Application.Read.All"
+
+$application = Get-MgServicePrincipal -Filter "appId eq 'a215ca40-216b-49aa-ac23-f5256a8d6555'"
+$graph = Get-MgServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'"
+$mailSend = $graph.AppRoles | Where-Object { $_.Value -eq "Mail.Send" }
+
+Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $application.Id |
+    Where-Object { $_.AppRoleId -eq $mailSend.Id } |
+    ForEach-Object { Remove-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $application.Id -AppRoleAssignmentId $_.Id }
+```
+
+Then run the check under [Grant the access](#grant-the-access) again. Sending keeps working for the mailboxes in the scope.
