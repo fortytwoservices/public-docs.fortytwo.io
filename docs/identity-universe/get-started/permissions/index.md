@@ -129,7 +129,7 @@ Your application can now access the Fortytwo Universe API by requesting an acces
 
 ### How to assign - Managed service identity
 
-Microsoft has not made it easy to add application permissions to Managed Service Identities. This must be done using [Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0&tabs=http), or using our PowerShell module.
+Microsoft has not made it easy to add application permissions to Managed Service Identities (because these applications have no app registration experience available). This must be done using [Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0&tabs=http), or using our [PowerShell module](https://www.powershellgallery.com/packages/EntraIDAccessToken).
 
 1. Make sure your last open browser is signed into the Azure Portal as a global administrator or application administrator.
 
