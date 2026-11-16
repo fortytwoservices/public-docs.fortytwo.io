@@ -33,13 +33,9 @@ The application will now appear under **Enterprise applications** in the Microso
 
 ### Find the application's object ID
 
-In the Microsoft Entra admin center, open **Enterprise applications** and select **Fortytwo Universe - Workflows**. Copy its **Object ID**. The **Application ID** is `a215ca40-216b-49aa-ac23-f5256a8d6555`.
+In the Microsoft Entra admin center, open **Enterprise applications** and select **Fortytwo Universe - Workflows**. Copy its **Object ID**. The **Application ID** is always `a215ca40-216b-49aa-ac23-f5256a8d6555`.
 
 ![The Object ID of the Fortytwo Universe - Workflows enterprise application](media/image-6.png)
-
-:::note
-Use the object ID from **Enterprise applications**. The one under **App registrations** is a different value and does not work.
-:::
 
 ### Connect to Exchange Online
 
