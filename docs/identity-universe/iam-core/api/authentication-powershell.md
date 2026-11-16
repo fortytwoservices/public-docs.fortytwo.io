@@ -12,6 +12,10 @@ This means that you can use any kind of identity to talk to our API! Users, Agen
 
 ### PowerShell module EntraIDAccessToken
 
+```PowerShell
+Install-Module -Name EntraIDAccessToken
+```
+
 Authentication is handled using the Fortytwo PowerShell module **EntraIDAccessToken**, available through PowerShell Gallery. Using the Fortytwo [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken) PowerShell module is the way all Fortytwo PowerShell modules authenticate with the Fortytwo Universe.
 
 EntraIDAccessToken has multiple ways of creating an **access token profile** using the ```Add-EntraID*AccessTokenProfile``` cmdlets (replace **\*** with preferred method). The available cmdlets are documented [here](https://github.com/fortytwoservices/powershell-module-entraidaccesstoken).

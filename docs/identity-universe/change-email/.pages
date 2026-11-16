@@ -1,0 +1,8 @@
+icon: mail
+title: Change email
+
+arrange:
+  - index.md
+  - plandesign
+  - deployuse
+  - ...

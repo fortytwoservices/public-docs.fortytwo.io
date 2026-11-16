@@ -4,6 +4,8 @@ description: Bytt.Email is a service that allows end users to change their own e
 
 # Bytt.Email
 
+This is for the managed service Bytt.Email. For the feature inside Identity Universe, see [Change email](../../identity-universe/change-email/index.md).
+
 [Bytt.Email](https://bytt.email) is a service that allows end users to change their own email address and UPN, both in Entra ID and Active Directory, based on [predefined patterns](./config-step2.md).
 
 The service also has [an API](https://api.fortytwo.io/changeemail/swagger/index.html), that can be used for [generating email addresses for your IAM solution](./using-the-api-in-your-automations.md).
