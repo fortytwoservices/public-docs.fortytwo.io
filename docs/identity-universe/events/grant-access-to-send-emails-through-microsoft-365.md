@@ -27,11 +27,9 @@ You need:
 
 If you have not already done so, consent to the **Fortytwo Universe - Workflows** application:
 
-```text
 https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49aa-ac23-f5256a8d6555
-```
 
-The application now appears under **Enterprise applications** in the Microsoft Entra admin center.
+The application will now appear under **Enterprise applications** in the Microsoft Entra admin center.
 
 ### Find the application's object ID
 
