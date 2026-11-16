@@ -42,7 +42,7 @@ This is done once per workspace.
 ::::steps
 ### Open Slack workspaces
 
-In Fortytwo Universe, open **Administration** > **Workflows** and select **Slack workspaces**.
+In Fortytwo Universe, open **Administration** > **Workflows** and select **Connections** > **Slack workspaces**.
 
 ### Start the connection
 
