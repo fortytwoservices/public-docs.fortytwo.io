@@ -32,6 +32,25 @@ This is done once per mailbox, by an Exchange administrator. Follow [Grant acces
 A change to what the application may do in Exchange Online can take up to two hours to apply. An email sent before that is refused.
 :::
 
+## List your email senders
+
+List the mailboxes your workflows send from once, and a workflow chooses its sender from that list. This step is optional: without a list, the address is typed in each workflow.
+
+1. Open **Administration** > **Workflows** and select **Connections** > **Email senders**.
+2. Select **Add sender**.
+3. Enter the mailbox's **Email address** and, if you like, a **Name** that says what it is for, such as HR.
+4. Select **Save sender**.
+
+![The email senders page, with a new sender being added](./media/email-senders.png)
+
+To check a sender, use **Try a sender** on the same page: choose the sender, type an address whose inbox you can read, and select **Send test email**. If the email has not arrived within a minute, the audit log shows why Microsoft 365 refused it.
+
+:::note
+The list gives a mailbox no permission. Each mailbox must still be allowed as described under [Let Fortytwo Universe send from a mailbox](#let-fortytwo-universe-send-from-a-mailbox).
+:::
+
+To change a sender's name, select **Rename**. The address cannot be changed: remove the sender and add the new one. **Remove** takes a sender off the list. Workflows that already send from it keep doing so.
+
 ## Send an email from a workflow
 
 ::::steps
@@ -45,7 +64,7 @@ Under **Actions**, select **Send email**.
 
 ### Choose the sender and the recipients
 
-- **Send from**: the mailbox the email is sent from. It must be one you have allowed.
+- **Send from**: the mailbox the email is sent from. It must be one you have allowed. When you have [listed your email senders](#list-your-email-senders), you choose among them; otherwise you type the address.
 - **To**: up to ten recipients. Each is an email address you type, or a value from the event that holds an address, such as `{{UserMail}}` or `{{RequesterEmail}}`. The values of that kind that the trigger's events carry are listed under **Add from the event**.
 
 Each recipient gets an email of their own and does not see the others.
