@@ -8,6 +8,7 @@ Every core object — [CoreIdentity](coreidentity.md), [CoreRelationship](corere
 |-|-|-|
 | string | id | The identifier of the core object (Guid) |
 | string | joinScope | The join scope used by [sync rules](../sync/syncrules.md) |
+| string | source | Generic string useful for tracking source of authority |
 | string | anchor1 | Generic anchor useful for synchronizing objects |
 | string | anchor2 | Generic anchor useful for synchronizing objects |
 | string | anchor3 | Generic anchor useful for synchronizing objects |
