@@ -50,10 +50,11 @@ Use the object ID from **Enterprise applications**. The one under **App registra
 ### Connect to Exchange Online
 
 ```powershell
+Install-Module ExchangeOnlineManagement -scope CurrentUser
 Connect-ExchangeOnline
 ```
 
-### Tell Exchange Online about the application
+### Tell Exchange Online about the Fortytwo Universe application
 
 Replace the object ID with the one you copied:
 
@@ -114,26 +115,3 @@ Remove the role assignment. Fortytwo Universe can then send from no mailbox:
 ```powershell
 Get-ManagementRoleAssignment -Role "Application Mail.Send" | Where-Object { $_.CustomResourceScope -eq "Fortytwo-Universe-MailSend-Scope" } | Remove-ManagementRoleAssignment
 ```
-
-## If Mail.Send was granted in Microsoft Entra ID
-
-An earlier version of this page asked you to grant the Microsoft Graph permission `Mail.Send` to the application in Microsoft Entra ID before limiting it in Exchange Online. Microsoft documents that the two add up: a permission granted in Microsoft Entra ID applies to every mailbox, and a scope in Exchange Online does not narrow it.
-
-If you followed those steps, remove the permission in Microsoft Entra ID once the role assignment above is in place:
-
-1. In the Microsoft Entra admin center, open **Enterprise applications** > **Fortytwo Universe - Workflows** > **Permissions**.
-2. If **Mail.Send** is listed under Microsoft Graph, select **Review permissions** and follow the instructions to revoke it, or remove it with Microsoft Graph PowerShell:
-
-```powershell
-Connect-MgGraph -Scopes "AppRoleAssignment.ReadWrite.All", "Application.Read.All"
-
-$application = Get-MgServicePrincipal -Filter "appId eq 'a215ca40-216b-49aa-ac23-f5256a8d6555'"
-$graph = Get-MgServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'"
-$mailSend = $graph.AppRoles | Where-Object { $_.Value -eq "Mail.Send" }
-
-Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $application.Id |
-    Where-Object { $_.AppRoleId -eq $mailSend.Id } |
-    ForEach-Object { Remove-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $application.Id -AppRoleAssignmentId $_.Id }
-```
-
-Then run the check under [Grant the access](#grant-the-access) again. Sending keeps working for the mailboxes in the scope.
