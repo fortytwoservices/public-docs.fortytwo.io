@@ -50,7 +50,7 @@ We recommend using Entra security groups for assigning these roles to make acces
     ![Fortytwo Universe add group/role](media/fortytwouniverseaddrole.png)
 
 :::tip[PIM for Groups]
-    You can configure two different Entra ID groups for your administrators, one for reader and one for administrator, where the administrator group is enabled with PIM for Groups. This allows you to have reader permissions to Identity Universe permanently, while needing to elevate up to administrator permissions.
+You can configure two different Entra ID groups for your administrators, one for reader and one for administrator, where the administrator group is enabled with PIM for Groups. This allows you to have reader permissions to Identity Universe permanently, while needing to elevate up to administrator permissions.
 :::
 
 ## Application roles
