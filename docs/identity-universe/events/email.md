@@ -99,4 +99,4 @@ You can find the emails that were not delivered in two places:
 
 ## Stop sending
 
-Remove the action from the workflow, or switch the workflow off. To take away the permission, remove the role assignment in Exchange Online described under [Grant access](./grant-access-to-send-emails-through-microsoft-365.md#take-the-permission-away).
+Remove the action from the workflow, or switch the workflow off. To take away the permission, remove the role assignment in Exchange Online described under [Grant access](./grant-access-to-send-emails-through-microsoft-365.md).
