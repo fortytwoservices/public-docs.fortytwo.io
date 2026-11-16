@@ -11,10 +11,6 @@ There are a few steps required to grant Fortytwo Universe access to send emails.
 
 The permission is given **in Exchange Online, for the mailboxes you choose**, with [Role Based Access Control for Applications](https://learn.microsoft.com/en-us/exchange/permissions-exo/application-rbac). Fortytwo Universe does not ask for the Microsoft Graph permission `Mail.Send` in Microsoft Entra ID, because that permission lets an application send as *anyone* in your organization.
 
-:::warning
-Do not grant the Microsoft Graph permission `Mail.Send` to **Fortytwo Universe - Workflows** in Microsoft Entra ID. Permissions given in Microsoft Entra ID and in Exchange Online add up, so with that permission the application can send from every mailbox, whatever you limit it to below. If it was granted earlier, see [If Mail.Send was granted in Microsoft Entra ID](#if-mailsend-was-granted-in-microsoft-entra-id).
-:::
-
 ## Before you start
 
 You need:
