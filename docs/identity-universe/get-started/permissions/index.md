@@ -105,7 +105,7 @@ $roles | ? allowed_member_types -contains "Application" | ? state -eq "prod" |% 
 
 ### How to assign - App registration
 
-:::tip
+:::note
 Techincal explanation on how to sign in with an app registration, creating it etc. is out of scope for this documentation
 :::
 
