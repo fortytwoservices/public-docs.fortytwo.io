@@ -13,6 +13,8 @@ icon: languages
 | **Control panel** | Where administrators and app owners manage the platform and their apps. |
 | **Agent** | The AI your people talk to in an app. |
 | **Wisdom** | Rules and know-how for AI coding assistants, written once and shared with every app. |
+| **API connection** | An API in your Entra tenant, or an app of your deployment, that a platform admin has made available for apps to request. |
+| **API Link** | Access one app holds on an API connection, requested by its owner and approved before it works. |
 | **AI gateway** | The single route every AI call takes, where safety rules apply and usage is recorded. |
 | **Safety rules** | The checks every question and reply passes through, also called guardrails. |
 | **Pause all AI** | The switch that stops every agent and tool in every app, without deleting anything. |

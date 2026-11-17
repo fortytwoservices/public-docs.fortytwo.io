@@ -32,6 +32,8 @@ The **Settings** tab holds the settings for the platform as a whole. Settings fo
 | **Feature flags** | Experimental and beta features that ship switched off, for you to turn on. |
 | **Release notes** | What changed in each version, in plain language. |
 
+When [API Connections](api-connections.md) is turned on for your deployment, it replaces **App links** and **API permissions**. It is in preview.
+
 ## Technical
 
 Marked **IT**, for whoever runs the platform:
