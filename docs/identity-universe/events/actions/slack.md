@@ -53,7 +53,7 @@ Select **Connect a workspace**. Slack opens in the same browser tab. If you are 
 Slack lists what the app asks for. Select **Allow**. Slack sends you back to Fortytwo Universe, and the workspace appears on the list.
 ::::
 
-![The Slack workspaces page with one connected workspace](./media/slack-workspaces.png)
+![The Slack workspaces page with one connected workspace](./../media/slack-workspaces.png)
 
 :::note
 The approval must be finished within 15 minutes, by the person who started it. Otherwise Fortytwo Universe refuses it and you start again from **Connect a workspace**.
@@ -105,7 +105,7 @@ The **Preview** beside the form shows roughly how the message looks in Slack, wi
 **Send test message** sends the message, as written, to the channel and to the addresses you typed. A test has no event, so it needs a channel or at least one typed address.
 ::::
 
-![The Send Slack message action: the workspace, the channel, a person from the event, the title, the message, values from the event, a button and the preview](./media/send-slack-message-action.png)
+![The Send Slack message action: the workspace, the channel, a person from the event, the title, the message, values from the event, a button and the preview](./../media/send-slack-message-action.png)
 
 The title can be up to 150 characters, the message up to 4,000 and the button text up to 40. One action writes to at most 50 people once the event's values are filled in.
 

@@ -1,0 +1,11 @@
+icon: square-chart-gantt
+title: Actions
+
+arrange:
+  - webhook.md
+  - teams.md
+  - slack.md
+  - email.md
+  - grant-access-to-send-emails-through-microsoft-365.md  
+  - sms.md
+  
