@@ -48,11 +48,11 @@ Skip to step 6.
 
 3. If you chose not to use our template, create your LogicApp using the consumption model.
 
-![alt text](./../media/image.png)
+![alt text](../media/image.png)
 
 4. If you chose not to use our template, open the LogicApp, find **Authorization**, and add the following policy:
 
-![alt text](./../media/image-9.png)
+![alt text](../media/image-9.png)
 
 | Claim | Value | 
 |-|-|
@@ -64,7 +64,7 @@ This allows the Fortytwo Universe events service to invoke the LogicApp without 
 
 5. If you chose not to use our template, add an HTTP trigger
 
-![alt text](./../media/image-1.png)
+![alt text](../media/image-1.png)
 
 6. Copy the url of the HTTP trigger of the LogicApp
 
@@ -78,7 +78,7 @@ paths/invoke?api-version=2016-10-01<s>
 
 7. Last, when configuring a workflow, use the modified URL and remember to verify that the webhook works, and that the LogicApp is indeed triggered:
 
-![alt text](./../media/image-10.png)
+![alt text](../media/image-10.png)
 
 ### Authentication deep dive example
 
@@ -86,32 +86,32 @@ In this example we will use https://webhooktest.net/ in order to demonstrate wha
 
 1. Create a new endpoint in the webhook tester: 
 
-![alt text](./../media/image-11.png)
+![alt text](../media/image-11.png)
 
 2. Create an app registration in Entra ID
 
-![alt text](./../media/image-12.png)
+![alt text](../media/image-12.png)
 
 3. Under **Expose an API**, add an Application ID URI. You can use the default, or something with a domain name:
 
-![alt text](./../media/image-13.png)
+![alt text](../media/image-13.png)
 
 In this example, we chose the default ```api://93eae805-6c8e-43a1-9238-9172cb625943```, which means that the scope we will be requesting a token for is ```api://93eae805-6c8e-43a1-9238-9172cb625943/.default```.
 
 4. Go to your webhook configuration in Fortytwo Universe and paste your url from webhooktest.net, choose **Entra ID** for authentication, insert the scope of your app and click **Test webhook**:
 
-![alt text](./../media/image-14.png)
+![alt text](../media/image-14.png)
 
 5. In webhooktest.net, we can now see that the webhook was called with an authorization header, which we can use https://jwt.ms to decode:
 
-![alt text](./../media/image-15.png)
+![alt text](../media/image-15.png)
 
-![alt text](./../media/image-16.png)
+![alt text](../media/image-16.png)
 
 6. You'll notice that by default, the ```ver``` claim is ```1.0```, meaning we have a v1 token. In order to switch to a v2 token, we can configure the app registration manifest:
 
-![alt text](./../media/image-17.png)
+![alt text](../media/image-17.png)
 
 7. After the update, you may have to wait for 1 hour until the cache of Fortytwo Universe expires, before a new **Test webhook**. After this, we can see the ```ver```of the token updated to ```2.0```:
 
-![alt text](./../media/image-18.png)
+![alt text](../media/image-18.png)

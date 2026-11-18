@@ -7,7 +7,7 @@ sidebarTitle: Teams message
 
 The **Fortytwo Universe** app for Microsoft Teams delivers the messages your workflows send. A workflow can tell a person in a chat, post in a team's channel, or both, when something happens in Identity Universe: a license is about to be reclaimed, an access request is waiting, a student was added to a policy.
 
-![The Fortytwo Universe app icon](./../media/fortytwo-universe-app-icon.png)
+![The Fortytwo Universe app icon](../media/fortytwo-universe-app-icon.png)
 
 You decide what is sent, to whom and when, under **Workflows** in Fortytwo Universe. The app only delivers those messages.
 
@@ -88,7 +88,7 @@ The **Preview** beside the form shows the message as it arrives in Teams, with *
 **Send test message** sends the message, as written, to the channel and the specific person you chose. A test has no event, so a test needs a channel or one specific person.
 ::::
 
-![The Send Teams message action: recipients, title, message, values from the event, a button and the preview](./../media/send-teams-message-action.png)
+![The Send Teams message action: recipients, title, message, values from the event, a button and the preview](../media/send-teams-message-action.png)
 
 The title can be up to 150 characters, the message up to 4,000 and the button text up to 40.
 
@@ -144,7 +144,7 @@ You can find the messages that were not delivered in two places:
 - **The audit log** shows **Message sent**, **Message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Notifications**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
 - **A workflow can react to it.** The trigger **When a message cannot be delivered**, under **Notifications**, starts a workflow each time a Teams message, a [Slack message](./slack.md) or an [email](./email.md) is given up on, for example to tell an operations channel or to call a webhook.
 
-![The trigger When a message cannot be delivered, under Notifications](./../media/message-failed-trigger.png)
+![The trigger When a message cannot be delivered, under Notifications](../media/message-failed-trigger.png)
 
 It is safe to answer with another Teams message, an email or a Slack message: if that one fails too, it does not start the workflow again.
 
