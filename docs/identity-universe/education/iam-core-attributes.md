@@ -1,6 +1,6 @@
 # IAM Core attributes
 
-In order to use the education features, [IAM Core](./../iam-core/index.md) must be populated with data from the school information system(s) you have through [connectors](../iam-core/connectors/index.md). The connectors all come with pre made synchronization rules that will support the education features, but if you  in case, here all required attributes:
+In order to use the education features, [IAM Core](../iam-core/index.md) must be populated with data from the school information system(s) you have through [connectors](../iam-core/connectors/index.md). The connectors all come with pre made synchronization rules that will support the education features, but if you  in case, here all required attributes:
 
 ## Student -> Core Identity
 

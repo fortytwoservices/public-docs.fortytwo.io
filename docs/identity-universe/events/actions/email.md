@@ -41,7 +41,7 @@ List the mailboxes your workflows send from once, and a workflow chooses its sen
 3. Enter the mailbox's **Email address** and, if you like, a **Name** that says what it is for, such as HR.
 4. Select **Save sender**.
 
-![The email senders page, with a new sender being added](./media/email-senders.png)
+![The email senders page, with a new sender being added](../media/email-senders.png)
 
 To check a sender, use **Try a sender** on the same page: choose the sender, type an address whose inbox you can read, and select **Send test email**. If the email has not arrived within a minute, the audit log shows why Microsoft 365 refused it.
 
@@ -86,7 +86,7 @@ The **Preview** beside the form shows roughly how the email looks, with **Exampl
 **Send test email** sends the email, as written, to the addresses you typed. A test has no event, so it needs at least one typed address.
 ::::
 
-![The Send email action: the sender, two recipients, the subject, the message, values from the event, a button and the preview](./media/send-email-action.png)
+![The Send email action: the sender, two recipients, the subject, the message, values from the event, a button and the preview](../media/send-email-action.png)
 
 The subject can be up to 150 characters, the message up to 4,000 and the button text up to 40. One action sends to at most 50 addresses once the event's values are filled in.
 
