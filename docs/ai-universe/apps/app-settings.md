@@ -21,7 +21,7 @@ Open an app and choose the **Settings** tab.
 | **Logs** | The app's own logs, for troubleshooting. |
 | **Compliance** | The app's entry in the [AI system register](../governance/compliance.md). |
 | **Repository name**, **Links** | Where the code lives, and links shown with the app. |
-| **API Links** | Which APIs and other apps this app uses, and which apps use it. In preview. See [API Links](api-links.md). |
+| **API assignments** | The permissions this app has on Microsoft Graph and other Entra APIs, and their consent state. Platform admins only. See [API assignments](../control-panel/api-assignments.md). |
 | **Infrastructure** | The Azure resources behind the app. For IT. |
 | **Remove** | Take the app out of service. |
 

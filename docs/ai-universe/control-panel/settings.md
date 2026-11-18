@@ -23,7 +23,6 @@ The **Settings** tab holds the settings for the platform as a whole. Settings fo
 
 | Section | What it is |
 |-|-|
-| **App links** | Let one app's agent call chosen tools in another app, in one direction only. |
 | **API permissions** | Which APIs in your Entra tenant apps may call. Each app requests what it needs, and an Entra admin grants consent. |
 | **Agents** | Every agent across every app, and what each one is allowed to do. |
 | **Add-ons** | Optional parts of the platform you can install without waiting for a release, such as Studio. |
@@ -31,8 +30,6 @@ The **Settings** tab holds the settings for the platform as a whole. Settings fo
 | **Spend** | AI spend by app, by model and by department. |
 | **Feature flags** | Experimental and beta features that ship switched off, for you to turn on. |
 | **Release notes** | What changed in each version, in plain language. |
-
-When [API Connections](api-connections.md) is turned on for your deployment, it replaces **App links** and **API permissions**. It is in preview.
 
 ## Technical
 
