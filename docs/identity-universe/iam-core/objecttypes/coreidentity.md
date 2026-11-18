@@ -1,12 +1,16 @@
 # CoreIdentity
 
-A CoreIdentity is a person: an employee, a student, a consultant, an agent. It holds what is true about the human being regardless of what they do — their name, their contact details, their accounts.
+A CoreIdentity is not a person. It can be an employee, a student, a consultant, an agent or something else - or a person - it is really up to you as a customer. The point is that a single person _can_ have multiple CoreIdentities, if this is what you want. Maybe you have teachers that also take a few classes? This might be a situation where you want them to have both a teacher and a student account, which means that the person should have two CoreIdentities.
 
-What a person *does* belongs on a [CoreRelationship](corerelationship.md) instead. Someone who holds two positions is one CoreIdentity with two relationships, not two identities.
+The CoreIdentity holds information such as names and contact details, as well as information about the Entra user of the identity. There should be a 1:1 or 1:0 relationship between CoreIdentity and Entra ID account. A single identity should only have one account.
+
+What a person, student or consultant *does* belongs on a [CoreRelationship](corerelationship.md). As an example, someone who holds two positions in your company will have one CoreIdentity, but two relationships that ties their CoreIdentity to different [CoreOrgUnits](coreorgunit.md).
 
 ## Default attributes
 
-!!! tip "All [common attributes](common.md) are available as well"
+:::tip
+All [common attributes](common.md) are available as well
+:::
 
 | Type   | Attribute                           | Description                                                        |
 |--------|-------------------------------------|--------------------------------------------------------------------|
@@ -28,7 +32,7 @@ What a person *does* belongs on a [CoreRelationship](corerelationship.md) instea
 
 ## Primary relationship
 
-A person with several [relationships](corerelationship.md) — two part-time positions, or a job alongside an elected role — has no inherent "main" one. `primaryRelationship` is where you record which it is, so that downstream systems have a single answer for questions like which department to show or which manager to route an approval to.
+A person with several [relationships](corerelationship.md) — two part-time positions, or a job alongside an elected role — has no inherent "main" one. The attribute `primaryRelationship` is where you record which it is, so that downstream systems have a single answer for questions like which department to show or which manager to route an approval to.
 
 It is set with a `reference` attribute flow, pointing at the connector object that becomes the relationship:
 
@@ -48,7 +52,7 @@ It is set with a `reference` attribute flow, pointing at the connector object th
 }
 ```
 
-This only works if the source system says which position is primary. Where it does not, leave the attribute unset rather than guessing.
+This only works if the source system says which position is primary. Where it does not, leave the attribute unset rather than guessing. Instead, use the [primary relationship feature](../primary-releationship.md) for leaving the selection of primary up to your users.
 
 CoreIdentity has no date or multi-valued attributes — those appear on [CoreRelationship](corerelationship.md) and [CoreOrgUnit](coreorgunit.md).
 
