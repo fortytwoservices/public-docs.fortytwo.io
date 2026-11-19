@@ -52,7 +52,7 @@ Three application permissions, granted with admin consent:
 | `User.ReadBasic.All` | Shows names and email addresses when you choose who may use an app. Basic profile only. |
 | `GroupMember.Read.All` | Lets you give access to an app through your existing Entra groups. |
 
-The platform does not read mail, files, calendars, Teams or SharePoint. An app that needs one of those asks for it separately under [API permissions](../control-panel/settings.md), and an Entra administrator decides.
+The platform does not read mail, files, calendars, Teams or SharePoint.
 
 ### Azure
 
