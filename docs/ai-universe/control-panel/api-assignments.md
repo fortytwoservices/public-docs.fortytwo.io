@@ -1,5 +1,5 @@
 ---
-description: Assign permissions on Microsoft Graph and other Entra APIs to an app, see each permission's consent state, and call the API from the app's code.
+description: Assign permissions on Microsoft Graph and other Entra APIs to an app, see each permission's consent state, remove an assignment, and call the API from the app's code.
 icon: key-round
 sidebarTitle: API assignments
 ---
@@ -8,13 +8,30 @@ sidebarTitle: API assignments
 
 An assignment gives one app permissions on one enterprise app in your Entra tenant. An enterprise app is any app in Entra that exposes an API, for example Microsoft Graph. A permission is a delegated scope or an application role of that enterprise app.
 
-A platform admin assigns the permissions in the control panel. The platform writes them to the app's own app registration in Entra. A tenant admin gives consent in Entra. The app then calls the API directly, with a token for its own identity.
+A platform admin assigns the permissions in the control panel. The platform writes them to the required permissions of the app's own app registration in Entra, and stores no copy: Entra is the only record. A tenant admin gives consent in Entra. The app then calls the API directly, with a token for its own identity.
 
 ## Where to find it
 
-Open an app, choose the **Settings** tab, then **API assignments**. The section is shown to platform admins only.
+Both places are shown to platform admins only.
 
-The section lists every enterprise app the app has permissions on, read from the required permissions of the app's registration in Entra. Each enterprise app shows its name, its app id, and a **Microsoft** badge when Microsoft publishes it. Each permission shows its display name, its value (such as `User.Read`), its kind and its consent state.
+- **Settings > API assignments** in the control panel, in the **Platform** group. The page lists every app in the deployment with its assignments.
+- **Settings > API assignments** in an app. Open the app, choose the **Settings** tab, then **API assignments**. The section lists the assignments of that app.
+
+### Every app
+
+The **API assignments** page shows one card for each app. Each card has:
+
+- the app's name, and **Open app settings**, which opens the **API assignments** section of that app;
+- **Grant consent in Entra**, when at least one of the app's permissions is **Not granted**;
+- the app's assignments, as described below.
+
+When the platform cannot read one app from Entra, that app's card says why and lists no assignment. The other apps are still listed.
+
+### One app
+
+The **API assignments** section of an app lists every enterprise app the app has permissions on, read from the required permissions of the app's registration in Entra. Every entry is listed, also one written in the Entra admin center.
+
+Each enterprise app shows its name, its app id, and a **Microsoft** badge when Microsoft publishes it. Each permission shows its display name, its value (such as `User.Read`), its kind and its consent state.
 
 | Kind | What the app does with it |
 |-|-|
@@ -25,38 +42,50 @@ The section lists every enterprise app the app has permissions on, read from the
 |-|-|
 | **Granted** | Entra has consent for the permission. The app gets tokens that contain it. |
 | **Not granted** | The permission is assigned, but Entra has no consent for it yet. |
-| **Consent unknown** | The platform did not check consent, because the enterprise app was not read from Entra or no longer exposes the permission. |
+| **Consent unknown** | The platform did not check consent, because the enterprise app was not read from Entra or has no enabled permission with that id. |
 
 When the platform cannot read the assignments from Entra, the section says why. The list is then unknown, not empty.
 
 ## Assign permissions
 
-1. Choose **Add an assignment**.
-2. Search the enterprise apps by the start of the display name, for example `Microsoft Graph`. The list shows only enterprise apps that expose at least one permission, each with its publisher and the number of delegated and application permissions.
-3. Choose **Show permissions** on the enterprise app. Search the permissions by value or display name, for example `User.Read`. Permissions marked **Admin consent** need consent from a tenant admin before they work. **Open in Entra** opens the enterprise app in Entra.
-4. Choose the permissions the app needs and assign them.
+1. Choose **Add an assignment**, in the app's section or on the **API assignments** page.
+2. On the **API assignments** page, select the app first and choose **Next**. An app without an Entra app registration shows **No Entra app registration** and cannot be selected.
+3. Search the enterprise apps by a word of the display name: `Graph` finds `Microsoft Graph`. With no search text, Microsoft Graph is listed first. The list shows only enterprise apps that expose at least one permission, each with its publisher and the number of delegated and application permissions. The platform reads at most the first 500 enterprise apps in Entra; when Entra has more, the dialog says so, and a longer search narrows the list.
+4. Choose **Show permissions** on the enterprise app. The dialog lists every permission of the enterprise app. Filter the list by value or display name, for example `User.Read`, and by kind with **All**, **Delegated** or **Application**. Permissions marked **Admin consent** need consent from a tenant admin before they work. **Open in Entra** opens the enterprise app in Entra.
+5. Select the permissions the app needs and choose **Assign**.
 
-The platform adds the permissions to the required permissions of the app's registration in Entra, and then:
+The platform adds the selected permissions to the required permissions of the app's registration in Entra, and keeps every other entry unchanged. Then:
 
 - For an application role, the platform also creates the app role assignment when the platform's own identity is an owner of the enterprise app. The permission is then **Granted** straight away.
-- For an application role on an enterprise app the platform does not own, such as Microsoft Graph, the permission stays **Not granted** until a tenant admin gives consent.
+- For an application role on an enterprise app the platform does not own, such as Microsoft Graph, the permission stays **Not granted** until a tenant admin gives consent. The dialog shows why, with **Grant consent in Entra**.
 - For a delegated scope, the permission stays **Not granted** until a tenant admin gives consent. The platform never consents to a delegated scope.
+
+The dialog then shows the assignment as read from Entra after the change. Assigning a permission the app already has changes nothing.
+
+The platform assigns nothing, and shows the reason, when:
+
+- the app has no Entra app registration yet;
+- the required permissions of the app's registration hold an entry the platform cannot read in full (no `resourceAppId`, or a permission with no id or a type other than `Scope` or `Role`). The platform writes the whole list, so it does not write over an entry it would lose. Fix or remove that entry in Entra, then assign again.
+
+Each assignment is recorded in the platform's config change log with the platform admin who made it. Entra's own audit log names the platform's identity as the writer.
 
 ## Give consent in Entra
 
-When at least one permission is **Not granted**, the section shows the **Grant consent in Entra** button and how many permissions are not granted. The button opens the API permissions page of the app's registration in Entra, where a tenant admin grants admin consent.
+When at least one permission is **Not granted**, the control panel shows the **Grant consent in Entra** button and how many permissions are not granted. The button opens the API permissions page of the app's registration in Entra, where a tenant admin chooses **Grant admin consent**. For Microsoft Graph permissions that is a Global Administrator or a Privileged Role Administrator.
 
-The control panel reads the consent state again each time the section is opened. A permission shows **Granted** once Entra has the consent.
+The control panel reads the consent state again each time the page or the section is opened. A permission shows **Granted** once Entra has the consent.
 
 ## Remove an assignment
 
-Removing an assignment takes every permission on that enterprise app away from the app:
+In the app's **API assignments** section, choose **Remove** on the enterprise app and confirm. Removing an assignment takes every permission on that enterprise app away from the app. To keep some of them, remove the assignment and assign those permissions again.
 
-- The platform deletes the app role assignments it can delete.
+- The platform deletes the app role assignments it can delete, before it changes the required permissions.
 - The platform removes the enterprise app's scopes and roles from the required permissions of the app's registration.
-- Consent the platform cannot delete stays in Entra: a delegated consent granted for the whole tenant, and an app role assignment on an enterprise app the platform does not own. The platform lists each one, with the Microsoft Graph PowerShell command a tenant admin runs to delete it.
+- Consent the platform cannot delete stays in Entra: a delegated consent granted for the whole tenant, and an app role assignment on an enterprise app the platform does not own. The control panel lists each one under **Grants the platform identity cannot delete**, with the reason and the Microsoft Graph PowerShell command a tenant admin runs to delete it. **Copy the PowerShell command** copies it.
 
-After the removal, the section no longer lists the enterprise app, even while such consent is still in Entra. Run the listed commands to take the consent away completely.
+After the removal, the section no longer lists the enterprise app, even while such consent is still in Entra. Entra keeps issuing tokens with that consent to the app until a tenant admin runs the listed commands. Removing the same assignment again lists the commands again.
+
+Each removal is recorded in the platform's config change log with the platform admin who made it.
 
 ## Call the API from the app
 
