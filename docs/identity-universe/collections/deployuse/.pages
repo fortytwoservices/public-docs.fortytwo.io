@@ -3,4 +3,6 @@ title: Deploy and Use
 arrange:
   - migration-patterns.md
   - group-link-deploy.md
+  - group-link-entrapermissions.md
+  - group-link-iu.md
   - ...
