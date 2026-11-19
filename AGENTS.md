@@ -34,7 +34,9 @@ CI runs the build and the link check on every pull request and fails on any prob
   `sidebarTitle` frontmatter instead of moving files.
 - **Images and other files keep their paths too.** Every non-Markdown file under `docs/` is served at
   its own path, because other sites link to them directly. Do not move, rename or overwrite them.
-  The build adds WebP copies by itself; do not convert files by hand.
+  The build adds WebP copies by itself; do not convert files by hand. The one exception is
+  `docs/identity-universe/events/actions/teams-app/`: its two zip files keep their names, and the Teams app's
+  release workflows in `fortytwo-universe-notifications` replace their contents through a pull request here.
 - **Old MkDocs redirects** live in `redirects` in `src/config/products.ts`. Keep them.
 - **Heading text is an anchor.** Changing a heading changes its `#id`. Search `docs/` for links to that
   anchor and update them, then run the link check.
