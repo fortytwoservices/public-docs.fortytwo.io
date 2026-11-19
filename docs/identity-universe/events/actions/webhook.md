@@ -42,7 +42,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=a215ca40-216b-49
 
 2. Deploy our minimum LogicApp to Azure using our template
 
-[![](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdocs.fortytwo.io%2Fidentity-universe%2Fevents%2Flogicapp-minimum.json)
+[![](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdocs.fortytwo.io%2Fidentity-universe%2Fevents%2Factions%2Flogicapp-minimum.json)
 
 Skip to step 6.
 

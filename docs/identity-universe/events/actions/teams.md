@@ -17,7 +17,7 @@ You need:
 
 - a **Teams administrator** in your organization, to add the app;
 - a person with the **Workflow - administrator** role in Fortytwo Universe, to build the workflows (see [Permissions](../get-started/permissions/index.md));
-- the app package, a zip file named `fortytwo-universe-teams-prod-<version>.zip`, which you get from Fortytwo.
+- the app package, a zip file you download below.
 
 ### What the app can do in your tenant
 
@@ -25,6 +25,16 @@ You need:
 - It can only post where it is installed: for a person who has the app, or in a team the app is added to.
 - It only posts what your own workflows ask for.
 - It does not read your chats or channels. It only sees what is written directly to it, and answers that with a short help text.
+
+## Download the app
+
+Download the app package and keep it as a zip file. You upload it to Teams in the next step; do not unpack it.
+
+[Download the Fortytwo Universe app for Teams](./teams-app/fortytwo-universe-teams.zip) (`fortytwo-universe-teams.zip`). The link always gives the latest version, so you can use it again for an update: in the Teams admin center, open **Teams apps** > **Manage apps**, select **Fortytwo Universe** and select **Upload file**.
+
+:::details[Fortytwo's development environment]
+Only for tenants connected to Fortytwo's development environment, not for production use: [Fortytwo Universe (Dev)](./teams-app/fortytwo-universe-teams-dev.zip) (`fortytwo-universe-teams-dev.zip`). It is a separate app with its own name, so it can be installed beside the production app.
+:::
 
 ## Install the app
 
