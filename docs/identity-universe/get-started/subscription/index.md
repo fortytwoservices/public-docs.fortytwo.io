@@ -4,7 +4,7 @@ description: The Identity Universe plans, what an active core identity is, how t
 
 # Subscription
 
-Identity Universe is bought in Azure Marketplace, and the **Subscription** page in Universe shows what your organization has bought and, when the plan has a price per identity, what was counted and billed. You find it under **Administration** at `/subscription`, and it is visible to users with the **Billing - administrator** role. See [Permissions](../permissions/index.md#user-roles) for how to assign it.
+Identity Universe is bought in Azure Marketplace, and the **Subscription** page in Universe shows what your organization has bought and, when the plan has a price per identity, what was counted and billed. You find it under **Administration** at `/subscription`, and it is visible to users with the **Subscription - administrator** role. See [Permissions](../permissions/index.md#user-roles) for how to assign it.
 
 Until your organization has an active plan, Universe shows the notice "No active license for this organization". See [Get started](../index.md) for buying a plan.
 

@@ -34,7 +34,7 @@ This is what admin consent looks like:
 
 ## Assign permissions
 
-Before you can see or do anything in the portal, you have to [assign permissions](permissions/index.md). To see your subscription and what is billed, assign **Billing - administrator** as well, see [Subscription](subscription/index.md).
+Before you can see or do anything in the portal, you have to [assign permissions](permissions/index.md). To see your subscription and what is billed, assign **Subscription - administrator** as well, see [Subscription](subscription/index.md).
 
 ## Add your first connector
 
