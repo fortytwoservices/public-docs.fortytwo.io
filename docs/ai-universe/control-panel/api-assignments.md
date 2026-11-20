@@ -14,18 +14,20 @@ A platform admin assigns the permissions in the control panel. The platform writ
 
 Both places are shown to platform admins only.
 
-- **Settings > API assignments** in the control panel, in the **Platform** group. The page lists every app in the deployment with its assignments.
+- **Settings > API assignments** in the control panel, in the **Platform** group. The page lists every permission assigned to the apps in the deployment.
 - **Settings > API assignments** in an app. Open the app, choose the **Settings** tab, then **API assignments**. The section lists the assignments of that app.
 
 ### Every app
 
-The **API assignments** page shows one card for each app. Each card has:
+The **API assignments** page is a table with one row for each assigned permission. The columns are:
 
-- the app's name, and **Open app settings**, which opens the **API assignments** section of that app;
-- **Grant consent in Entra**, when at least one of the app's permissions is **Not granted**;
-- the app's assignments, as described below.
+- **App**, which opens the **API assignments** section of that app;
+- **Enterprise app**;
+- **Permission**, with its value (such as `User.Read`) and its display name;
+- **Kind** and **Consent**, as described below, with **Grant consent in Entra** on a permission that is **Not granted**;
+- **Remove**, which removes the assignment that holds the permission.
 
-When the platform cannot read one app from Entra, that app's card says why and lists no assignment. The other apps are still listed.
+An app with no assignment, or with no Entra app registration, has no row. When the platform cannot read an app from Entra, a notice above the table names the app and the reason. That app's assignments are unknown, not empty, and the other apps are still listed.
 
 ### One app
 
@@ -52,7 +54,7 @@ When the platform cannot read the assignments from Entra, the section says why. 
 2. On the **API assignments** page, select the app first and choose **Next**. An app without an Entra app registration shows **No Entra app registration** and cannot be selected.
 3. Search the enterprise apps by a word of the display name: `Graph` finds `Microsoft Graph`. With no search text, Microsoft Graph is listed first. The list shows only enterprise apps that expose at least one permission, each with its publisher and the number of delegated and application permissions. The platform reads at most the first 500 enterprise apps in Entra; when Entra has more, the dialog says so, and a longer search narrows the list.
 4. Choose **Show permissions** on the enterprise app. The dialog lists every permission of the enterprise app. Filter the list by value or display name, for example `User.Read`, and by kind with **All**, **Delegated** or **Application**. Permissions marked **Admin consent** need consent from a tenant admin before they work. **Open in Entra** opens the enterprise app in Entra.
-5. Select the permissions the app needs and choose **Assign**.
+5. Select the permissions the app needs and choose **Assign**. One Assign adds at most 50 permissions.
 
 The platform adds the selected permissions to the required permissions of the app's registration in Entra, and keeps every other entry unchanged. Then:
 
@@ -77,7 +79,7 @@ The control panel reads the consent state again each time the page or the sectio
 
 ## Remove an assignment
 
-In the app's **API assignments** section, choose **Remove** on the enterprise app and confirm. Removing an assignment takes every permission on that enterprise app away from the app. To keep some of them, remove the assignment and assign those permissions again.
+Choose **Remove** on the enterprise app in the app's **API assignments** section, or on a row of the **API assignments** page, and confirm. Removing an assignment takes every permission on that enterprise app away from the app, also on the **API assignments** page, where Remove is on one permission's row. To keep some of them, remove the assignment and assign those permissions again.
 
 - The platform deletes the app role assignments it can delete, before it changes the required permissions.
 - The platform removes the enterprise app's scopes and roles from the required permissions of the app's registration.
