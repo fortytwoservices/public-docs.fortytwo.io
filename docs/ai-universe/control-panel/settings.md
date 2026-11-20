@@ -23,7 +23,7 @@ The **Settings** tab holds the settings for the platform as a whole. Settings fo
 
 | Section | What it is |
 |-|-|
-| **App links** | Let one app's agent call chosen tools in another app, in one direction only. |
+| **API assignments** | Every app with the permissions it is assigned on Microsoft Graph and other Entra APIs, and their consent state. Platform admins only. See [API assignments](api-assignments.md). |
 | **API permissions** | Which APIs in your Entra tenant apps may call. Each app requests what it needs, and an Entra admin grants consent. |
 | **Agents** | Every agent across every app, and what each one is allowed to do. |
 | **Add-ons** | Optional parts of the platform you can install without waiting for a release, such as Studio. |
