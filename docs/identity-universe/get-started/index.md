@@ -4,9 +4,13 @@
 
 Go here to access Fortytwo Identity Universe: [https://universe.fortytwo.io](https://universe.fortytwo.io)
 
-### Get your tenant white listed
+### Buy a plan in Azure Marketplace
 
-First, contact Fortytwo so we can whitelist your Entra tenant. Make sure to have your tenant ID ready. If you have multiple tenants, we would need all your IDs; each tenant would be its own instance.
+Your organization is licensed by buying a plan of Identity Universe in Azure Marketplace. Search for "Identity Universe" by Fortytwo in Azure Marketplace, choose the plan that fits you and buy it with the Azure subscription of your organization. The organization is licensed at once, there is no waiting for Fortytwo.
+
+There are two plans: a flat fee, or a flat fee plus a price per active core identity. Read [Subscription](subscription/index.md) for what each plan means and how the count is taken.
+
+Until a plan is bought, Universe shows the notice "No active license for this organization", and a new organization without a license cannot add its first connector. Nothing else in Universe is locked.
 
 ### Admin consent
 
@@ -30,7 +34,11 @@ This is what admin consent looks like:
 
 ## Assign permissions
 
-Before you can see or do anything in the portal, you have to [assign permissions](permissions/index.md).
+Before you can see or do anything in the portal, you have to [assign permissions](permissions/index.md). To see your subscription and what is billed, assign **Billing - administrator** as well, see [Subscription](subscription/index.md).
+
+## Add your first connector
+
+When the roles are in place, sign in and add your first connector in Identity Hub. Adding the first connector is what sets your organization up in the identity engine. No one at Fortytwo has to do anything for it.
 
 ## First glance of the Portal
 

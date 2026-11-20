@@ -14,6 +14,7 @@ In order for you as an organization to be able to delegate only the minimum requ
 
 | Role | Purpose |
 |-|-|
+| Billing - administrator | Grants access to read the organization's Identity Universe subscription, the counted core identities and what was billed, see [Subscription](../subscription/index.md) |
 | Bytt.Email - administrator | Grants access to managing email settings, such as email patterns |
 | Bytt.Email - reader | Grants access to read email settings, such as email patterns |
 | Bytt.Email - user | Grants the user access to change their email address and alias |
