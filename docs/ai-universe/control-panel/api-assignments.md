@@ -95,7 +95,7 @@ Each removal is recorded in the platform's config change log with the platform a
 
 ## The skill for the app's coding agent
 
-Each assignment writes a skill into the app's own guidance, so the coding agent that works on the app knows the permission exists and how to call the API. The skill is named `api-<app id>`, after the enterprise app's app id, and is titled **Call <enterprise app> from this app**. It lists every permission the app has on that enterprise app, each with the exact `getAccessToken` call described in [Call the API from the app](#call-the-api-from-the-app):
+Each assignment writes a skill into the app's own guidance, so the coding agent that works on the app knows the permission exists and how to call the API. The skill is named `api-<app id>`, after the enterprise app's app id, and is titled **Call &lt;enterprise app&gt; from this app**. It lists every permission the app has on that enterprise app, each with the exact `getAccessToken` call described in [Call the API from the app](#call-the-api-from-the-app):
 
 - a delegated permission, as the signed-in user: `getAccessToken({ scopes: ['<app id>/<value>'], as: req })`;
 - an application permission, as the app itself: `getAccessToken({ scopes: ['<app id>/.default'] })`.
