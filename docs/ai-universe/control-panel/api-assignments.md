@@ -62,7 +62,9 @@ The platform adds the selected permissions to the required permissions of the ap
 - For an application role on an enterprise app the platform does not own, such as Microsoft Graph, the permission stays **Not granted** until a tenant admin gives consent. The dialog shows why, with **Grant consent in Entra**.
 - For a delegated scope, the permission stays **Not granted** until a tenant admin gives consent. The platform never consents to a delegated scope.
 
-The dialog then shows the assignment as read from Entra after the change. Assigning a permission the app already has changes nothing.
+The dialog then shows the assignment as read from Entra after the change. Assigning a permission the app already has changes nothing in Entra.
+
+The platform also writes a skill for the app's coding agent, described in [The skill for the app's coding agent](#the-skill-for-the-apps-coding-agent).
 
 The platform assigns nothing, and shows the reason, when:
 
@@ -85,9 +87,26 @@ Choose **Remove** on the enterprise app in the app's **API assignments** section
 - The platform removes the enterprise app's scopes and roles from the required permissions of the app's registration.
 - Consent the platform cannot delete stays in Entra: a delegated consent granted for the whole tenant, and an app role assignment on an enterprise app the platform does not own. The control panel lists each one under **Grants the platform identity cannot delete**, with the reason and the Microsoft Graph PowerShell command a tenant admin runs to delete it. **Copy the PowerShell command** copies it.
 
+The platform also deletes the app's skill for that enterprise app. When the removal fails in Entra, the skill stays, as the permissions do.
+
 After the removal, the section no longer lists the enterprise app, even while such consent is still in Entra. Entra keeps issuing tokens with that consent to the app until a tenant admin runs the listed commands. Removing the same assignment again lists the commands again.
 
 Each removal is recorded in the platform's config change log with the platform admin who made it.
+
+## The skill for the app's coding agent
+
+Each assignment writes a skill into the app's own guidance, so the coding agent that works on the app knows the permission exists and how to call the API. The skill is named `api-<app id>`, after the enterprise app's app id, and is titled **Call <enterprise app> from this app**. It lists every permission the app has on that enterprise app, each with the exact `getAccessToken` call described in [Call the API from the app](#call-the-api-from-the-app):
+
+- a delegated permission, as the signed-in user: `getAccessToken({ scopes: ['<app id>/<value>'], as: req })`;
+- an application permission, as the app itself: `getAccessToken({ scopes: ['<app id>/.default'] })`.
+
+The skill also tells the agent to send the token as `Authorization: Bearer <token>`, and that `getAccessToken` throws `AccessTokenError` with `failure` `rejected` while a permission has no admin consent.
+
+- Assigning more permissions of the same enterprise app rewrites the same skill with the whole list. An edit made to the skill's text in the app's guidance is replaced by the next assignment; topics added to it are kept.
+- Removing the assignment deletes the skill.
+- Assignments made before this version have no skill. Assign one of the permissions again, even one the app already has, and the skill is written.
+
+The assignment succeeds even when the skill is not written, for example when the organization's guidance already has a skill with the same name, or the guidance cannot be read at that moment. Assign again to write it.
 
 ## Call the API from the app
 
