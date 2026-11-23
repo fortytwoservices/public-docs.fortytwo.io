@@ -33,7 +33,7 @@ A connection is added once. Workflows then choose it by name.
 2. Select **Add connection**.
 3. Fill in the form and select **Save connection**.
 
-![The form for a new SMS connection](media/workflow-sms-connection.png)
+![The form for a new SMS connection](../media/workflow-sms-connection.png)
 
 | | |
 |-|-|
@@ -54,7 +54,7 @@ You can add several connections, for instance one for each sender name.
 2. Select **Send SMS**.
 3. Choose the **SMS connection**.
 
-![The Send SMS action with its preview](media/send-sms-action.png)
+![The Send SMS action with its preview](../media/send-sms-action.png)
 
 ### Choose who gets it
 

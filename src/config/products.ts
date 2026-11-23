@@ -98,4 +98,10 @@ export const redirects: Record<string, string> = {
   'identity-universe/collections/api/index.md': 'identity-universe/collections/api/collections-api.md',
   'identity-universe/collections/troubleshooting.md': 'identity-universe/collections/troubleshooting/troubleshoot-collections.md',
   'identity-universe/collections/plandesign/migration-patterns.md': 'identity-universe/collections/deployuse/migration-patterns.md',
+  'identity-universe/events/webhook.md': 'identity-universe/events/actions/webhook.md',
+  'identity-universe/events/teams.md': 'identity-universe/events/actions/teams.md',
+  'identity-universe/events/slack.md': 'identity-universe/events/actions/slack.md',
+  'identity-universe/events/email.md': 'identity-universe/events/actions/email.md',
+  'identity-universe/events/grant-access-to-send-emails-through-microsoft-365.md': 'identity-universe/events/actions/grant-access-to-send-emails-through-microsoft-365.md',
+  'identity-universe/events/sms.md': 'identity-universe/events/actions/sms.md',
 };

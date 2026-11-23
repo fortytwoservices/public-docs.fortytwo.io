@@ -1,3 +1,5 @@
+# Collections Migration patterns
+
 ## Migration patterns
 
 This guide describes recommended patterns for migrating existing access models to Identity Universe collections.

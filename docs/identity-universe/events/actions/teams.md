@@ -7,7 +7,7 @@ sidebarTitle: Teams message
 
 The **Fortytwo Universe** app for Microsoft Teams delivers the messages your workflows send. A workflow can tell a person in a chat, post in a team's channel, or both, when something happens in Identity Universe: a license is about to be reclaimed, an access request is waiting, a student was added to a policy.
 
-![The Fortytwo Universe app icon](./media/fortytwo-universe-app-icon.png)
+![The Fortytwo Universe app icon](../media/fortytwo-universe-app-icon.png)
 
 You decide what is sent, to whom and when, under **Workflows** in Fortytwo Universe. The app only delivers those messages.
 
@@ -17,7 +17,7 @@ You need:
 
 - a **Teams administrator** in your organization, to add the app;
 - a person with the **Workflow - administrator** role in Fortytwo Universe, to build the workflows (see [Permissions](../get-started/permissions/index.md));
-- the app package, a zip file named `fortytwo-universe-teams-prod-<version>.zip`, which you get from Fortytwo.
+- the app package, a zip file you download below.
 
 ### What the app can do in your tenant
 
@@ -25,6 +25,16 @@ You need:
 - It can only post where it is installed: for a person who has the app, or in a team the app is added to.
 - It only posts what your own workflows ask for.
 - It does not read your chats or channels. It only sees what is written directly to it, and answers that with a short help text.
+
+## Download the app
+
+Download the app package and keep it as a zip file. You upload it to Teams in the next step; do not unpack it.
+
+[Download the Fortytwo Universe app for Teams](./teams-app/fortytwo-universe-teams.zip) (`fortytwo-universe-teams.zip`). The link always gives the latest version, so you can use it again for an update: in the Teams admin center, open **Teams apps** > **Manage apps**, select **Fortytwo Universe** and select **Upload file**.
+
+:::details[Fortytwo's development environment]
+Only for tenants connected to Fortytwo's development environment, not for production use: [Fortytwo Universe (Dev)](./teams-app/fortytwo-universe-teams-dev.zip) (`fortytwo-universe-teams-dev.zip`). It is a separate app with its own name, so it can be installed beside the production app.
+:::
 
 ## Install the app
 
@@ -88,7 +98,7 @@ The **Preview** beside the form shows the message as it arrives in Teams, with *
 **Send test message** sends the message, as written, to the channel and the specific person you chose. A test has no event, so a test needs a channel or one specific person.
 ::::
 
-![The Send Teams message action: recipients, title, message, values from the event, a button and the preview](./media/send-teams-message-action.png)
+![The Send Teams message action: recipients, title, message, values from the event, a button and the preview](../media/send-teams-message-action.png)
 
 The title can be up to 150 characters, the message up to 4,000 and the button text up to 40.
 
@@ -144,7 +154,7 @@ You can find the messages that were not delivered in two places:
 - **The audit log** shows **Message sent**, **Message not delivered**, **Teams app installed** and **Teams app removed**, from the source **Notifications**. Open an event to see who the message was for and why it failed. See [Audit log](../auditlog/index.md).
 - **A workflow can react to it.** The trigger **When a message cannot be delivered**, under **Notifications**, starts a workflow each time a Teams message, a [Slack message](./slack.md) or an [email](./email.md) is given up on, for example to tell an operations channel or to call a webhook.
 
-![The trigger When a message cannot be delivered, under Notifications](./media/message-failed-trigger.png)
+![The trigger When a message cannot be delivered, under Notifications](../media/message-failed-trigger.png)
 
 It is safe to answer with another Teams message, an email or a Slack message: if that one fails too, it does not start the workflow again.
 

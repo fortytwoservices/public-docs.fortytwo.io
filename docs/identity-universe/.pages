@@ -4,6 +4,9 @@ arrange:
   - get-started
   - iam-core
   - collections
+  - events  
   - organization
+  - change-email
+  - auditlog
   - education
-  - events
+  

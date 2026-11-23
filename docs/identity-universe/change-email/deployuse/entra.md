@@ -7,15 +7,19 @@ Change email will require write permissions to Entra to be able to update attrib
 In this step, we will show how to limit permissions using Administrative Units in Entra. We will assume you have some kind of identifier on your users you can use to scope your users into an admin unit.
 
 In Microsoft Entra admin center, navigate to **Roles & admins** and **Admin units**. Click **+Add**.
+
 ![](../media/au-1.png)
 
 Give your admin unit a descriptive name and click **Review + create**. Click **Review + create** again without adding any roles (enterprise applications can't be assigned permissions at create). Click **Create**.
+
 ![](../media/au-2.png)
 
 Find your admin unit and click **Properties**. Change **Membership type** to **Dynamic User**.
+
 ![](../media/au-3.png)
 
 Click **Add dynamic query** and create a query that would include all users in scope for identity universe. In this example, all users with an EmployeeId starting with **E** is in scope. Click **Save**.
+
 ![](../media/au-4.png)
 
 Here are some more examples of how you can create your query.

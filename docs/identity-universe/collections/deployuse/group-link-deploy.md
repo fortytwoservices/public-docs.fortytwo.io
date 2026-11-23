@@ -1,4 +1,4 @@
-# Group Link
+# Group Link Preparations
 
 ## Existing Entra ID groups
 

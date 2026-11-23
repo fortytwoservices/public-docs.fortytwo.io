@@ -1,12 +1,7 @@
-icon: square-chart-gantt
-title: Events
+icon: clipboard-check
+title: Workflows
 
 arrange:
   - index.md
-  - webhook.md
-  - teams.md
-  - slack.md
-  - email.md
-  - sms.md
+  - actions
   - conditions.md
-  - grant-access-to-send-emails-through-microsoft-365.md
