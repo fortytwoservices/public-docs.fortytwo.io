@@ -60,7 +60,10 @@ The platform does not read mail, files, calendars, Teams or SharePoint.
 |-|-|-|
 | Contributor | The platform's resource group | Runs and upgrades the platform. |
 | Contributor | Each app's resource group | Creates and updates the app's resources. The platform creates a resource group for every app and grants itself Contributor on it. |
-| Role Based Access Control Administrator | The subscription | Gives each app's own identity the roles it needs. A condition limits it to those roles, so it cannot grant Owner or any other role. |
+| Role Based Access Control Administrator | The subscription | Gives each app's own identity the roles it needs, and gives the platform the Galaxy Vault Secrets role on each app's key vault. A condition limits it to those roles, so it cannot grant Owner or any other role. |
+| Fortytwo Galaxy Vault Secrets (custom role) | Each app's key vault | Lists, changes, removes and restores the app's secrets for **Keys & passwords**. It cannot read a secret's value. |
+
+On a deployment installed before the Galaxy Vault Secrets role existed, the **Upgrade** page lists the command that creates it and permits the platform to assign it, for an Azure administrator to run. Until then, **Keys & passwords** reaches each app's key vault through the app, as before.
 
 Because the platform can create resource groups and grant itself Contributor on them, its access amounts to Contributor on the whole subscription. Give it a [dedicated subscription](../get-started/before-you-install.md#checklist), and the boundary is that subscription: nothing else in your tenant is in reach.
 

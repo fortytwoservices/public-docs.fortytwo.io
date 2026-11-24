@@ -14,7 +14,7 @@ Open an app and choose the **Settings** tab.
 | **Details** | Name, description and department, and the app's **Owner** (**Assign owner**). The owner is named in cost and vulnerability reports. |
 | **Model** | Which model the app uses by default. |
 | **AI agent** | The agent's settings. Most of this is easier from the [Agents](agents.md) tab. |
-| **Keys & passwords** | Secrets the app needs, such as an API key for another system. They are stored in Azure Key Vault, never in the code. |
+| **Keys & passwords** | Secrets the app needs, such as an API key for another system. They are stored in the app's own Azure Key Vault, never in the code. The control panel lists, changes and removes them in the key vault directly, so you can correct a secret while the app is stopped or fails to start. It never reads a value back. The app picks up a changed value within 5 minutes. |
 | **Size & database** | How much computing power the app gets, and its database. |
 | **Rate limit** | How many AI requests the app may make, to protect your budget. |
 | **Cost** | What this app has spent on AI. |
