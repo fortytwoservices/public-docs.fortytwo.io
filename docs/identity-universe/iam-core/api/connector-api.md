@@ -13,7 +13,13 @@ An API based connector is tied to exactly one Entra ID application registration,
 1. **Create an app registration** in your own Entra ID.
 2. **Grant** the enterprise application Fortytwo Universe the `iam-core.connector-data.readwrite.self` application permissions and grant Admin consent.
 ![Grant application permission](./media/api-permissions.png)
-3. **Create the connector** from the `API` template, giving it the application's client id:
+3. Make sure you have installed [EntraIDAccessToken](./authentication-powershell.md#powershell-module-entraidaccesstoken) and do an interactive sign-in.
+
+    ```PowerShell
+    Add-EntraIDInteractiveUserAccessTokenProfile -Profile "Default" -TenantId "TENANTID" -ClientId "68bf2f1d-b9e1-4477-8b90-81314861f05f" -Scope https://api.fortytwo.io/.default 
+    ```
+    
+4. **Create the connector** from the `API` template, giving it the application's client id:
 
     ```PowerShell
     $Connector = New-IAMCoreConnector `
