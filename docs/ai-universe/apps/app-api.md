@@ -22,10 +22,12 @@ The section shows:
 | Part | What it lists |
 |-|-|
 | **Identifier URI** | `api://<client id>`, the address another app requests a token for. When the app registration does not contain it, the section says so. |
-| **Roles and scopes** | Each role and scope of the app registration, with its value, its kind (**App role** or **Scope**), its name and its state (**Enabled** or **Disabled**). |
+| **Roles and scopes** | Each role and scope of the app registration, with its value, its kind (**Application** for an app role, **Delegated** for a scope), its name and its state (**Enabled** or **Disabled**). |
 
-An **App role** is checked in the `roles` claim of a token the calling app gets as itself. A **Scope**
-is checked in the `scp` claim of a token the calling app gets for its signed-in user.
+An app role is an application permission: it is checked in the `roles` claim of a token the calling
+app gets as itself, with no user signed in. A scope is a delegated permission: it is checked in the
+`scp` claim of a token the calling app gets for its signed-in user. These are the words Microsoft Entra
+lists on the calling app's **API permissions** page, and the words of the **API assignments** section.
 
 :::note
 When the section cannot read the app registration from Entra, it shows the reason and no list. The
@@ -35,8 +37,8 @@ list is then unknown, not empty.
 ## Add a role or scope
 
 1. Choose **Add role or scope**.
-2. Select the **Kind**: **App role** when another app calls as itself, **Scope** when another app calls
-   as its signed-in user.
+2. Select the **Kind**: **Application permission (app role)** when another app calls as itself, with no
+   user signed in, or **Delegated permission (scope)** when another app calls for its signed-in user.
 3. Enter the **Value your code checks**, for example `Organisations.Write`. The value has 1 to 120
    characters: letters, digits, `.`, `-` or `_`, starting with a letter. It cannot be changed later.
    `platform.call`, `access_as_user` and values that start with `galaxy` or `platform` are reserved
