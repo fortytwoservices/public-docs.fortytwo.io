@@ -69,3 +69,22 @@ IwyS3qoFyITbuBVy4k6x6arsCtZuiQI+OrWN5SZykmu7ilRX1d4JEtfRh9hUU/HB
 =QPGO
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
+### Encrypt a message
+
+Use this form to send us a token, password, key or other secret. The text is encrypted in your browser with the key above, so only the Fortytwo security team can read it. Copy the encrypted message and send it to us by email or any other channel.
+
+:::pgp-encrypt
+The form needs JavaScript. You can also encrypt with GnuPG, as shown below.
+:::
+
+:::details[Encrypt with GnuPG instead]
+Save the key above as `fortytwo.asc`, then run:
+
+```bash
+gpg --import fortytwo.asc
+echo "my secret" | gpg --encrypt --armor --recipient security@fortytwo.io
+```
+
+Check that the key fingerprint is `09E8 3A10 8A00 B638 9AC9 387E E183 E198 4D44 4896`.
+:::

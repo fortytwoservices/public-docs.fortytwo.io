@@ -686,3 +686,62 @@ details.callout[open] > summary.callout-title {
   .screen-side { grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; }
   .screen-side .screen-stage { padding: 10px 12px; }
 }
+
+.pgp-encrypt {
+  margin: 0 0 20px;
+  padding: 20px;
+  border: 1px solid hsl(var(--card-border));
+  border-radius: var(--radius-panel);
+  background: hsl(var(--card));
+}
+
+.pgp-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--heading));
+}
+
+.pgp-input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid hsl(var(--input-border) / 0.6);
+  border-radius: var(--radius-md);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.pgp-input:focus-visible {
+  outline-offset: 0;
+  border-radius: var(--radius-md);
+}
+
+.pgp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 12px 0 16px;
+}
+
+.pgp-note,
+.pgp-encrypt .pgp-key {
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+}
+
+.pgp-encrypt .pgp-key {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.prose .pgp-output pre {
+  max-height: 320px;
+  overflow-y: auto;
+}
