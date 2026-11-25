@@ -1,6 +1,6 @@
 # Create Sync Rules
 
-It is now time to create sync rules. We will do this in this order: Org Unit, Person, Employment. 
+It is now time to create sync rules. For HR, we will do this in this order: Org Unit, Person, Employment. We will then create the Entra sync rules.
 
 ::::steps
 
@@ -11,7 +11,7 @@ In the New rule window, accept the proposed values and click **Start Draft**.
 
 ![](./media/syncrule-orgunit-1.png)
 
-Click **+Add Mapping** and add the rules as defined in the table below.
+Click **+Add Mapping** and add the rules as defined in the table below. Details for the non-obvious flows will follow below.
 
 | Source | Target |
 | --- | --- |
@@ -146,9 +146,16 @@ For the displayName attribute, we will use the ability to paste an expression in
   ]
 }
 ```
+
+If you save and look at it using a preview, it would look like this:
+
+![](./media/syncrule-employment-preview.png)
+
+As you can see, we are following both the references to the person object and the orgUnit object to find values to populate this relationship object.
+
 Save the sync rule, enable it and enable provisioning. Run a fulll sync.
 
-### Review the result on an object
+### Review the result on an object for all data from HR
 
 In Identity Explorer, find one user and look at all properties.
 
@@ -171,5 +178,9 @@ This should be quite simple. Select the Entra connector and add a sync rule. The
 Don't forget to enable the sync rule (but do not turn on provisioning) and run a full sync.
 
 Go back to your user in identity explorer and ensure everything has joined up and attributes from Entra are visible as well.
+
+![](./media/syncrule-entra-result1.png)
+
+![](./media/syncrule-entra-result2.png)
 
 ::::
