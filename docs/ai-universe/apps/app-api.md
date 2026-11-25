@@ -8,27 +8,16 @@ icon: plug
 One app can expose an API to other apps. For example, a master data app lets a CRM app read its
 organisations.
 
-The roles and scopes are stored in Microsoft Entra, on the app's registration. AI Universe stores only
-whether the API is enabled, and reads the roles and scopes from Entra each time you open the section.
+The roles and scopes are stored in Microsoft Entra, on the app's registration. AI Universe stores no
+copy, and reads them from Entra each time you open the section.
 
 ## Open the API section
 
 Open the app, choose the **Settings** tab, then **API**.
 
-## Enable or disable the API
-
-A new app's API is not enabled. A platform admin selects **Enable the API**. An app admin sees that
-the API is not enabled and that a platform admin enables it.
-
-A platform admin selects **Disable the API** to turn the API setting off. While it is off, the app's
-admin cannot add or remove roles and scopes.
-
-Enabling and disabling write nothing to Entra. Disabling leaves the roles, the scopes and the
-assignments of other apps to them unchanged.
-
 ## What the section shows
 
-While the API is enabled, the section shows:
+The section shows:
 
 | Part | What it lists |
 |-|-|
@@ -63,6 +52,7 @@ the app registration. When Entra rejects the removal, the section shows Entra's 
 
 ## Let another app call the API
 
-The app's API is a registered API in Entra, like any other. To let another app call it, assign that app
-a role or scope of this app in the **API assignments** section of the calling app's settings. See
-[API assignments](../control-panel/api-assignments.md).
+The app's API is a registered API in Entra, like any other. Entra lists the app as an API another app
+can be assigned once the app has at least one enabled role or scope. To let another app call it, assign
+that app a role or scope of this app in the **API assignments** section of the calling app's settings.
+See [API assignments](../control-panel/api-assignments.md).
