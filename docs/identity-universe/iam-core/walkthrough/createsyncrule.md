@@ -24,7 +24,7 @@ When you select parent, you will get the warning *Incompatible types*. Click the
 
 While we are here, we will show how to test the function to see if it works. At the top, in the box **Test against**, select **Information Technology** and see the result. The guid is the same as the parent (**Corporate**).
 
-![](./media/syncrule-orgunit-prefiew.png)
+![](./media/syncrule-orgunit-preview.png)
 
 Click **Apply** to save the expression.
 
