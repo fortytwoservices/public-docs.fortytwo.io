@@ -19,15 +19,15 @@ Both places are shown to platform admins only.
 
 ### Every app
 
-The **API assignments** page is a table with one row for each assigned permission. The columns are:
+The **API assignments** page lists one card for each app that has an assignment. A card is collapsed when the page opens. Its header shows:
 
-- **App**, which opens the **API assignments** section of that app;
-- **Enterprise app**;
-- **Permission**, with its value (such as `User.Read`) and its display name;
-- **Kind** and **Consent**, as described below, with **Grant consent in Entra** on a permission that is **Not granted**;
-- **Remove**, which removes the assignment that holds the permission.
+- the app name, with the number of assigned permissions and enterprise apps, and how many permissions are **Not granted**;
+- **Grant consent in Entra**, when at least one permission of the app is **Not granted**;
+- **Settings**, which opens the **API assignments** section of that app.
 
-An app with no assignment, or with no Entra app registration, has no row. When the platform cannot read an app from Entra, a notice above the table names the app and the reason. That app's assignments are unknown, not empty, and the other apps are still listed.
+Choose the app name to expand the card. It lists each enterprise app with its **Remove** button, and under it each assigned permission with its value (such as `User.Read`), its display name, its **Kind** and its **Consent**, as described below. An enterprise app that is another app on the platform is shown with that app's name and a **Galaxy** badge.
+
+An app with no assignment, or with no Entra app registration, has no card. When the platform cannot read an app from Entra, a notice above the cards names the app and the reason. That app's assignments are unknown, not empty, and the other apps are still listed.
 
 ### One app
 
@@ -81,7 +81,7 @@ The control panel reads the consent state again each time the page or the sectio
 
 ## Remove an assignment
 
-Choose **Remove** on the enterprise app in the app's **API assignments** section, or on a row of the **API assignments** page, and confirm. Removing an assignment takes every permission on that enterprise app away from the app, also on the **API assignments** page, where Remove is on one permission's row. To keep some of them, remove the assignment and assign those permissions again.
+Choose **Remove** on the enterprise app in the app's **API assignments** section, or on the enterprise app in an app's card on the **API assignments** page, and confirm. Removing an assignment takes every permission on that enterprise app away from the app. To keep some of them, remove the assignment and assign those permissions again.
 
 - The platform deletes the app role assignments it can delete, before it changes the required permissions.
 - The platform removes the enterprise app's scopes and roles from the required permissions of the app's registration.
