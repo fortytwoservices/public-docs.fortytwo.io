@@ -67,7 +67,7 @@ $('.toc-mobile')?.addEventListener('click', (e) => {
 });
 
 // ---------- Code copy ----------
-for (const block of $$('.code-block')) {
+function addCopyButton(block: HTMLElement) {
   const pre = $('pre', block)!;
   const button = document.createElement('button');
   button.className = 'copy-button';
@@ -83,6 +83,18 @@ for (const block of $$('.code-block')) {
     }, 1600);
   });
   $('.code-header', block)!.append(button);
+}
+$$('.code-block').forEach(addCopyButton);
+
+// ---------- PGP encryption form (security page) ----------
+// OpenPGP.js is bundled rather than loaded from a CDN, and only fetched on the page that uses it.
+const pgpBox = $('.pgp-encrypt');
+if (pgpBox) {
+  import('./pgp-encrypt').then(async ({ mountPgpEncrypt }) => {
+    await mountPgpEncrypt(pgpBox);
+    const output = $('.pgp-output', pgpBox);
+    if (output) addCopyButton(output);
+  });
 }
 
 // ---------- Tabs ----------
