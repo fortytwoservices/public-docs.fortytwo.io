@@ -59,9 +59,7 @@ A scope requires the identifier URI on the app registration.
 ## Remove a role or scope
 
 Choose **Remove** on the role or scope and confirm. The role or scope is set disabled, then removed from
-the app registration.
-
-Entra rejects the removal while another app is assigned the role or scope. Remove that assignment first.
+the app registration. When Entra rejects the removal, the section shows Entra's error.
 
 ## Let another app call the API
 
