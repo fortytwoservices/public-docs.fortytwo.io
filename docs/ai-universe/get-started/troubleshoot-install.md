@@ -20,10 +20,18 @@ The installer, `fortytwo-setup`, explains every stop in its own output. When a r
 **What to do.** Fix what the error names, then run the installer again against the same resource group:
 
 ```bash
-fortytwo-setup -g <resource group>
+fortytwo-setup -g <resource group> --default-access <open or restricted>
 ```
 
-The installer reads the deployment's own record, so you do not type the values again, and no secret it can read is regenerated. Copy the command the installer prints rather than typing your own: it adds `--default-access` and `--allowed-ips` when you set them, because those are not recorded.
+The installer reads the deployment's own record, so you do not type the values again, and no secret it can read is regenerated.
+
+Who may reach the deployment is not recorded. If the run stopped before the Application Gateway was built, the installer rejects a re-run without `--default-access` and changes nothing. Pass the value the install started with: `open`, the default, or `restricted` together with the same `--allowed-ips`. The command the installer prints when it stops contains these flags, so copying it is the simplest way to get them right.
+
+The printed command does not contain the other flags you passed, such as `--postgres-sku`. Add them again yourself.
+
+:::warning[Each re-run can request a new certificate]
+If you passed `--galaxy-cert-acme`, a run that stops before the infrastructure deploy finishes does not keep the wildcard certificate it requested, and the next run requests another one. With `--galaxy-cert-acme-production`, Let's Encrypt issues at most five certificates for the same domain names in seven days. Fix the cause before you re-run, rather than re-running to see whether the error comes back.
+:::
 
 Resume with the same installer version that stopped. The stop message names it. A newer installer refuses to continue an install started by an older one, because the templates and the images it deploys are one version.
 
@@ -57,14 +65,14 @@ The uninstall frees the names the stopped run reserved.
 
 **What to do.**
 
-- `LocationIsOfferRestricted` and `SkuNotAvailable` cannot be resumed. Remove the stopped install with `fortytwo-setup --uninstall -g <resource group>`, then start again in a new resource group with a different `--region`. The installer suggests Sweden Central, `--region swedencentral`.
-- A capacity shortage is usually temporary. Re-run later with `fortytwo-setup -g <resource group>`. If the region stays short, remove the install and start again in another region as above.
+- `LocationIsOfferRestricted` and `SkuNotAvailable` cannot be resumed. Remove the stopped install with `fortytwo-setup --uninstall -g <resource group>`, then start again in a new resource group with a different `--region`. The installer suggests Sweden Central, `--region swedencentral`. The exception is `SkuNotAvailable` on the PostgreSQL server: see [The database server cannot be created](#the-database-server-cannot-be-created).
+- A capacity shortage is usually temporary. Re-run later with `fortytwo-setup -g <resource group> --default-access <open or restricted>`, as described in [The install stopped part-way](#the-install-stopped-part-way). If the region stays short, remove the install and start again in another region as above.
 
 The installer accepts only the regions it has checked model availability in: `swedencentral`, `norwayeast`, `westeurope`, `northeurope`, `eastus`, `eastus2`, `westus2`, `southeastasia` and `australiaeast`. To test a region before you commit to it, add `--probe-region`. It runs a real check that takes about five minutes.
 
 ## The preflight check fails
 
-Before it deploys anything, the installer checks that PostgreSQL and the AI model are available in the region and runs a dry run of the deployment. A failed check stops the run with *Preflight failed*. Fix what it names and run the installer again with `-g <resource group>`. Nothing needs to be deleted.
+Before it deploys anything, the installer checks that PostgreSQL and the AI model are available in the region and runs a dry run of the deployment. A failed check stops the run with *Preflight failed*. Fix what it names and run the installer again with `-g <resource group>` and the flags described in [The install stopped part-way](#the-install-stopped-part-way). Nothing needs to be deleted.
 
 | The check says | What to do |
 |-|-|
@@ -76,17 +84,17 @@ Before it deploys anything, the installer checks that PostgreSQL and the AI mode
 
 ## The database server cannot be created
 
-**Symptom.** The PostgreSQL server fails with `CapacityNotAvailable`, again after the installer's own retries.
+**Symptom.** The PostgreSQL server fails with `RegionalAllocationFailed`, `SkuNotAvailable`, or `CapacityNotAvailable` after the installer's own retries.
 
-**Cause.** Azure has no capacity for the server size in that region right now. The default size is `Standard_B2s`.
+**Cause.** Azure has no capacity for the server size in that region right now, or does not offer that size there. The default size is `Standard_B2s`. The region itself can still host the platform, and no server was created, so the install can be resumed in the same resource group and region.
 
 **What to do.** Re-run with a different size:
 
 ```bash
-fortytwo-setup -g <resource group> --postgres-sku Standard_D2s_v3
+fortytwo-setup -g <resource group> --postgres-sku Standard_D2s_v3 --default-access <open or restricted>
 ```
 
-A flag you pass on a re-run takes precedence over the recorded value. The same setting can come from the `FORTYTWO_POSTGRES_SKU` environment variable.
+The server size is not recorded, so `--postgres-sku` applies to the run you pass it on. Pass it on every re-run until the install completes. The same setting can come from the `FORTYTWO_POSTGRES_SKU` environment variable. `--default-access` is explained in [The install stopped part-way](#the-install-stopped-part-way).
 
 :::warning[Avoid the smallest size]
 `Standard_B1ms` is accepted but leaves only 35 usable database connections. The platform can use them all up while it rolls out a new version. The installer warns when you choose it.
