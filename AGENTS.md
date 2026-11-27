@@ -58,7 +58,7 @@ CI runs the build and the link check on every pull request and fails on any prob
   literal `:::` text, which the link check reports.
 - Code blocks always get a language (`powershell`, `bash`, `json`, `http`, `hcl`...).
 - Write about the product as it is. Do not invent features, prices, limits or UI labels; check the
-  product or ask. Use fictional names in examples (Nordlys AS, not a real customer).
+  product or ask. Use fictional names in examples: `acme` or Acme for names, and `example.com` (reserved for documentation) for domains and email addresses. Never a real company or customer.
 - When restructuring a page for readability, keep the wording. Changing what a page says is a
   separate change for the product owner to approve.
 - Screenshots that belong to one page sit next to it (for example `media/`) and are linked relatively.
