@@ -25,7 +25,7 @@ Changing the brand later reaches the apps created after the change. An app creat
 
 ```ts
 export const branding: Branding = {
-  displayName: 'Nordlys Expenses',
+  displayName: 'Acme Expenses',
   primaryHsl: '214 84% 45%',
   accentHsl: '38 92% 55%',
   logoPath: '/branding/logo.svg',

@@ -4,5 +4,16 @@ arrange:
   - before-you-install.md
   - install.md
   - troubleshoot-install.md
+  - troubleshoot-before-deployment.md
+  - troubleshoot-during-deployment.md
+  - troubleshoot-after-install.md
+  - troubleshoot-custom-flags.md
   - first-sign-in.md
   - connect-github.md
+sections:
+  - title: Troubleshoot an install
+    icon: life-buoy
+    pages: [troubleshoot-install.md, troubleshoot-before-deployment.md, troubleshoot-during-deployment.md, troubleshoot-after-install.md, troubleshoot-custom-flags.md]
+  - title: After install
+    icon: circle-check
+    pages: [first-sign-in.md, connect-github.md]

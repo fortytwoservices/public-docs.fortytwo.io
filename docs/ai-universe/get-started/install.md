@@ -20,12 +20,12 @@ Choose **Configure account now**. It opens the install page at [marketplace.fort
 
 | Question | Rule | Example |
 |-|-|-|
-| Platform name | 3 to 17 lowercase letters, digits and hyphens, starting with a letter | `nordlys` |
+| Platform name | 3 to 17 lowercase letters, digits and hyphens, starting with a letter | `acme` |
 | Region | Sweden Central, Norway East, West Europe, North Europe, East US, East US 2, West US 2, Southeast Asia or Australia East | Sweden Central |
-| Workspace domain | A domain you control. Your apps get their addresses under it. | `ai.nordlys.no` |
-| Alert and certificate email | Gets Azure Monitor alerts and is the Let's Encrypt contact | `platform-admins@nordlys.no` |
+| Workspace domain | A domain you control. Your apps get their addresses under it. | `ai.example.com` |
+| Alert and certificate email | Gets Azure Monitor alerts and is the Let's Encrypt contact | `platform-admins@example.com` |
 
-The resource group is named after the platform, for example `nordlys-rg`.
+The resource group is named after the platform, for example `rg-acme`.
 
 :::warning[Choose the domain carefully]
 Changing the domain later means every app has to be set up again. See [Before you install](before-you-install.md).
@@ -53,7 +53,7 @@ The installer asks which subscription to install into. When it asks, add one NS 
 
 ### Leave it running
 
-The install takes 20 to 45 minutes. If it stops, or Cloud Shell disconnects, paste the same command again and it carries on. If it stops with an error, see [Troubleshoot an install](troubleshoot-install.md).
+The install takes 20 to 45 minutes. If it stops, or Cloud Shell disconnects, see [Resume the install](troubleshoot-install.md#resume-the-install).
 ::::::
 
 ## When it finishes
