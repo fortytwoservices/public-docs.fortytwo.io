@@ -7,7 +7,7 @@ sidebarTitle: Custom install flags
 
 The command from [marketplace.fortytwo.io](https://marketplace.fortytwo.io/) sets the installer's flags for you. This page is for when you changed them or wrote your own command.
 
-Every flag can also come from an environment variable, and a flag wins over its environment variable. Run `./fortytwo-setup --help`, or `./fortytwo-setup.exe --help` on Windows, for every flag.
+Every flag can also come from an environment variable: `FORTYTWO_` followed by the flag name in capitals, with underscores for hyphens, for example `FORTYTWO_PORTAL_NAME` for `--portal-name`. A flag wins over its environment variable. Run `./fortytwo-setup --help`, or `./fortytwo-setup.exe --help` on Windows, for every flag.
 
 :::note
 If an install with your own flags does not complete, contact Fortytwo support with a [deployment report](troubleshoot-install.md#still-stuck) and the command you ran.
@@ -49,15 +49,15 @@ The resume command in [Resume the install](troubleshoot-install.md#resume-the-in
 
 **What to do.** Supply each value listed. The required ones:
 
-| Value | Flag | Environment variable |
+| Value | Flag | Example |
 |-|-|-|
-| Platform name | `--portal-name` | `FORTYTWO_PORTAL_NAME` |
-| Resource group | `--resource-group` or `-g` | `FORTYTWO_RESOURCE_GROUP` |
-| Region | `--region` | `FORTYTWO_REGION` |
-| App domain | `--galaxy-domain` | `FORTYTWO_GALAXY_DOMAIN` |
-| Subscription, when your login sees more than one | `--subscription` | `FORTYTWO_SUBSCRIPTION` |
+| Platform name | `--portal-name` | `acme` |
+| Resource group | `--resource-group` or `-g` | `rg-acme` |
+| Region | `--region` | `swedencentral` |
+| App domain | `--galaxy-domain` | `ai.example.com` |
+| Subscription, when your login sees more than one | `--subscription` | The subscription's ID or name |
 
-Also pass `--alert-email` or set `FORTYTWO_ALERT_EMAIL`. Without it the platform raises no alerts at all. The certificate password is read only from `FORTYTWO_GALAXY_CERT_PASSWORD`, so it never appears in the shell history.
+Also pass `--alert-email`. Without it the platform raises no alerts at all. The certificate password is read only from `FORTYTWO_GALAXY_CERT_PASSWORD`, so it never appears in the shell history.
 
 ::::tabs
 :::tab[macOS and Linux]
