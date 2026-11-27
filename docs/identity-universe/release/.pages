@@ -1,0 +1,5 @@
+icon: text-pen
+title: Release
+
+arrange:
+  - changelog.md
